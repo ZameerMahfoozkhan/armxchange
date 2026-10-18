@@ -44,9 +44,9 @@ const accessories = PRODUCTS.filter(p => p.category === 'accessories');
 
     <!-- Product Grid -->
     <div id="accessoryGrid" class="product-grid">
-      {accessories.map(product => (
+      {accessories.map((product, idx) => (
         <div class="accessory-item" data-sub={product.subcategory}>
-          <ProductCard product={product} />
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         </div>
       ))}
     </div>
@@ -58,20 +58,35 @@ const accessories = PRODUCTS.filter(p => p.category === 'accessories');
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     color: var(--color-text-body);
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: var(--radius-sm);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 0.04em;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-spring), background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow var(--transition-smooth);
+    will-change: transform;
   }
 
-  .filter-chip:hover, .filter-chip.active {
+  .filter-chip:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-1px);
+  }
+
+  .filter-chip:active {
+    transform: scale(0.96) !important;
+  }
+
+  .filter-chip.active {
     background: var(--color-ink);
     color: #FFFFFF;
     border-color: var(--color-ink);
+    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.18);
+  }
+
+  .accessory-item {
+    transition: opacity 0.25s ease, transform 0.25s var(--ease-out-expo);
   }
 </style>
 

@@ -35,7 +35,7 @@ const newWeapons = PRODUCTS.filter(p => p.category === 'new-weapons');
     </div>
 
     <!-- GST Information Banner -->
-    <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px 24px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div class="reveal-on-scroll" style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px 24px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 14px;">
         <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: #FFFFFF; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink); flex-shrink: 0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -55,7 +55,7 @@ const newWeapons = PRODUCTS.filter(p => p.category === 'new-weapons');
       </div>
       <a href="/legal/eligibility/" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.78rem; font-family: var(--font-mono); white-space: nowrap;">
         <span>ELIGIBILITY GUIDE</span>
-        <span>&rarr;</span>
+        <span class="btn-trailing-icon">→</span>
       </a>
     </div>
 
@@ -83,9 +83,9 @@ const newWeapons = PRODUCTS.filter(p => p.category === 'new-weapons');
 
     <!-- Product Grid -->
     <div id="weaponGrid" class="product-grid">
-      {newWeapons.map(product => (
+      {newWeapons.map((product, idx) => (
         <div class="weapon-item" data-sub={product.subcategory} data-brand={product.brand}>
-          <ProductCard product={product} />
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         </div>
       ))}
     </div>
@@ -102,20 +102,35 @@ const newWeapons = PRODUCTS.filter(p => p.category === 'new-weapons');
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     color: var(--color-text-body);
-    padding: 6px 14px;
+    padding: 7px 15px;
     border-radius: var(--radius-sm);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 0.04em;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-spring), background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow var(--transition-smooth);
+    will-change: transform;
   }
 
-  .filter-chip:hover, .filter-chip.active {
+  .filter-chip:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-1px);
+  }
+
+  .filter-chip:active {
+    transform: scale(0.96) !important;
+  }
+
+  .filter-chip.active {
     background: var(--color-ink);
     color: #FFFFFF;
     border-color: var(--color-ink);
+    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.18);
+  }
+
+  .weapon-item {
+    transition: opacity 0.25s ease, transform 0.25s var(--ease-out-expo);
   }
 </style>
 

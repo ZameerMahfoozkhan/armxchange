@@ -4,13 +4,14 @@ import { getWhatsAppListingUrl } from '../data/products';
 
 interface Props {
   product: Product;
+  class?: string;
 }
 
-const { product } = Astro.props;
+const { product, class: className = '' } = Astro.props;
 const whatsappUrl = getWhatsAppListingUrl(product.title, `https://armxchange.in/listing/${product.slug}/`);
 ---
 
-<article class="product-card">
+<article class={`product-card ${className}`.trim()}>
   <a href={`/listing/${product.slug}/`} class="product-image-box" aria-label={`View details for ${product.title}`}>
     <img 
       src={product.images[0]} 
