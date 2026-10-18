@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { CONTACT_INFO } from '../../data/products';
+---
+
+<Layout
+  title="Privacy Policy | ArmXchange"
+  description="Privacy policy and data protection terms for ArmXchange users and enquiry participants."
+>
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px; max-width: 860px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Privacy Policy</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 36px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">PRIVACY PROTOCOL</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          ATHLETE DATA PROTECTION
+        </span>
+      </div>
+      <h1 style="font-size: clamp(2rem, 3.8vw, 2.8rem); margin-bottom: 16px; color: var(--color-ink); font-weight: 800; letter-spacing: -0.03em;">
+        Privacy Policy
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Our commitment to confidentiality, transparent athlete communications, and lean data retention.
+      </p>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 40px 36px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 28px;">
+      <div>
+        <h2 style="font-size: 1.15rem; color: var(--color-ink); margin-bottom: 10px; font-weight: 700;">1. Zero Account Tracking</h2>
+        <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-body);">
+          ArmXchange does not require user accounts, passwords, or personal profiles to browse our equipment catalogue. When you reach out via WhatsApp or phone, you interact directly through standard encrypted communication channels.
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--color-border-subtle); padding-top: 24px;">
+        <h2 style="font-size: 1.15rem; color: var(--color-ink); margin-bottom: 10px; font-weight: 700;">2. Direct Concierge & WhatsApp Communications</h2>
+        <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-body);">
+          Any details you choose to share in WhatsApp communications (such as your shooting academy, state association affiliation, or equipment preferences) are used solely to assist you with equipment selection and technical verification. We never sell, rent, or share athlete data with third-party telemarketers.
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--color-border-subtle); padding-top: 24px;">
+        <h2 style="font-size: 1.15rem; color: var(--color-ink); margin-bottom: 10px; font-weight: 700;">3. Athlete Credentials & Identity Verification</h2>
+        <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-body);">
+          Where shooter credentials (NRAI ID, state affiliation) are verified for statutory compliance or GST relief, documents are handled strictly between coach and athlete and are never stored in any public web-accessible database.
+        </p>
+      </div>
+
+      <div style="border-top: 1px solid var(--color-border-subtle); padding-top: 24px;">
+        <h2 style="font-size: 1.15rem; color: var(--color-ink); margin-bottom: 10px; font-weight: 700;">4. Privacy Inquiries</h2>
+        <p style="font-size: 0.92rem; line-height: 1.7; color: var(--color-text-body);">
+          For any privacy questions, contact founder Coach Pranatpal Singh directly via WhatsApp or phone at {CONTACT_INFO.phoneDisplay}.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

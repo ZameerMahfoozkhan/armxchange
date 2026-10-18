@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { PRODUCTS, CONTACT_INFO } from '../data/products';
+
+const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
+---
+
+<Layout
+  title="Pre-Owned Air Rifles & Pistols | Second-Hand Weapons | ArmXchange"
+  description="Verified pre-owned 10m competition air rifles and air pistols in India. Transparent condition disclosures, cylinder validity checks, and direct WhatsApp enquiry."
+>
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Second-Hand Weapons</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div style="margin-bottom: 48px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge tech-badge-preowned">PRE-OWNED EXCHANGE</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          CERTIFIED 10M HARDWARE
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Verified Pre-Owned Competition Air Weapons
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Every second-hand air rifle and air pistol listed on ArmXchange undergoes thorough physical inspection: cylinder manufacturing timestamps, regulator velocity spreads, stock integrity, and transparent cosmetic disclosures. Direct concierge and coach consultation prior to any transaction.
+      </p>
+    </div>
+
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 64px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border);">
+        <div style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 700; color: var(--color-ink);">
+          Available Verified Weapons ({preOwnedListings.length})
+        </div>
+        <div style="font-size: 0.75rem; color: var(--color-text-muted); font-family: var(--font-mono); font-weight: 600; letter-spacing: 0.05em;">
+          INSPECTED &bull; 100% TRANSPARENT &bull; WHATSAPP DIRECT
+        </div>
+      </div>
+
+      <div class="product-grid">
+        {preOwnedListings.map(product => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Upcoming Pre-Owned Inventory & Seller Submission Banner -->
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 40px 36px; margin-bottom: 64px; box-shadow: var(--shadow-card);">
+      <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: center;" class="preowned-banner-grid">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+            <span class="tech-badge">ACQUISITION PIPELINE</span>
+          </div>
+          <h2 style="font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin-bottom: 14px; color: var(--color-ink); font-weight: 800;">
+            Looking For A Specific Match Weapon Or Consigning Your Own?
+          </h2>
+          <p style="font-size: 0.94rem; line-height: 1.65; margin-bottom: 24px; color: var(--color-text-body);">
+            We maintain an active registry of competition weapons (Feinwerkbau 700/800, Walther LG400, Steyr Challenge & LP10, Morini 162) being inspected by our coaching team. If you are seeking a specific model or wish to consign your existing match rifle to a deserving junior shooter, contact Coach Pranatpal Singh directly.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a 
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Coach Pranatpal, I am looking for a specific pre-owned 10m competition weapon on ArmXchange.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp-solid"
+              style="padding: 11px 20px;"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+              </svg>
+              <span>Request Specific Weapon</span>
+            </a>
+            <a 
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Coach Pranatpal, I want to submit my pre-owned rifle/pistol for listing review on ArmXchange.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+              style="padding: 11px 20px;"
+            >
+              <span>Consign Your Match Weapon</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="background: var(--color-canvas-subtle); border-radius: var(--radius-sm); padding: 24px; border: 1px solid var(--color-border);">
+          <div style="font-weight: 700; font-size: 0.82rem; color: var(--color-ink); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-mono);">
+            ArmXchange Inspection Protocol:
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.86rem; color: var(--color-text-body);">
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-signal-green); flex-shrink: 0; margin-top: 2px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Cylinder Age Verification:</strong> 10-year ISSF rule strictly disclosed.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-signal-green); flex-shrink: 0; margin-top: 2px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Valve & Regulator Integrity:</strong> Verified velocity spread under match conditions.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-signal-green); flex-shrink: 0; margin-top: 2px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Zero Masked Wear:</strong> High-resolution macro photos of all contact points.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: flex-start;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-signal-green); flex-shrink: 0; margin-top: 2px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span><strong>Safe Transfer Protocol:</strong> Full compliance with Arms Rules 2016 Category III(f).</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div>
+      <div style="margin-bottom: 24px;">
+        <span class="tech-badge" style="margin-bottom: 8px;">INTELLIGENCE & ADVICE</span>
+        <h2 style="font-size: 1.5rem; color: var(--color-ink); font-weight: 700; margin-top: 4px;">
+          Pre-Owned Equipment FAQ
+        </h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            Why is the cylinder manufacturing date so critical?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Under ISSF and NRAI equipment control rules, high-pressure aluminium compressed air cylinders have a maximum certified lifespan of 10 years from the date of manufacture. Our featured 2018 Feinwerkbau 800 includes a factory-new 2024 cylinder valid until 2034.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            How does the WhatsApp enquiry process work?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Clicking "Enquire on WhatsApp" opens a chat directly with founder Pranatpal Singh with the listing title pre-filled. You can discuss weapon history, request additional test group sheets, and schedule an inspection.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            Do I need a gun licence for these air rifles?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Under the Arms Rules 2016, 0.177 calibre (4.5mm) target air rifles with muzzle energy below 20 Joules do not require a firearm licence. They are classified for shooting sports participation across India.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @media (max-width: 868px) {
+    .preowned-banner-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+  }
+</style>

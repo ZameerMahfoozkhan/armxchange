@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { PRODUCTS, CONTACT_INFO } from '../data/products';
+
+const pellets = PRODUCTS.filter(p => p.category === 'pellets');
+---
+
+<Layout
+  title="RWS R10 Match Pellets .177 Caliber | ArmXchange"
+  description="Batch-tested RWS R10 match rifle and air pistol pellets in 4.49mm and 4.50mm head sizes. Flat head wadcutters with courier delivery across India."
+>
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Match Pellets</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">PRECISION BALLISTICS</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          0.177 CAL / 4.5MM WADCUTTER
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        RWS R10 Competition Match Pellets
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Selected from premium German production runs, RWS R10 Match pellets are the international gold standard for 10m target competitions. Precision engineered flat-head wadcutters delivering razor-clean hole cuts in target paper and consistent optical sensor triggers on electronic target systems.
+      </p>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" style="margin-bottom: 64px;">
+      {pellets.map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+
+    <!-- Calibre & Batch Guidance Banner -->
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; margin-bottom: 64px; box-shadow: var(--shadow-sm);">
+      <div style="margin-bottom: 24px;">
+        <span class="tech-badge" style="margin-bottom: 8px;">TECHNICAL SIZING DOSSIER</span>
+        <h2 style="font-size: 1.5rem; color: var(--color-ink); font-weight: 700; margin-top: 4px;">
+          Selecting Correct Head Size: 4.49mm vs 4.50mm
+        </h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+        <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">4.49 mm (Match Rifle &bull; 8.2 gr)</h3>
+            <span class="tech-badge">TIGHT CHOKE</span>
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Preferred by athletes with modern German match barrels (Walther LG500, Feinwerkbau 900) where tight manufacturing tolerances require a slightly smaller head diameter to eliminate lead shaving and optimize harmonic flight stability.
+          </p>
+        </div>
+        <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">4.50 mm (Universal Match &bull; 8.2 gr / 7.0 gr)</h3>
+            <span class="tech-badge">UNIVERSAL</span>
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            The universal match standard. Provides optimal rifling seal in Steyr, Morini, and standard match barrels. For air pistol athletes, the 7.0 grains (0.45g) pistol pellet reduces dwell time for cleaner follow-through.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academy / Bulk Order Enquiry -->
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 48px 32px; text-align: center; box-shadow: var(--shadow-sm);">
+      <div style="max-width: 620px; margin: 0 auto;">
+        <span class="tech-badge" style="margin-bottom: 14px;">ACADEMIES & TEAMS</span>
+        <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-bottom: 12px; color: var(--color-ink); font-weight: 800;">
+          Club & Academy Batch Ammunition Supply
+        </h2>
+        <p style="margin-bottom: 28px; font-size: 0.95rem; color: var(--color-text-body); line-height: 1.65;">
+          Looking for identical single-batch carton orders (10+ tins / 5,000+ pellets) for barrel testing and junior academy training? Enquire directly with Coach Pranatpal Singh for verified batch lot numbers.
+        </p>
+        <a 
+          href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Coach Pranatpal, I would like to enquire about bulk carton orders for RWS R10 match pellets on ArmXchange.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp-solid"
+          style="padding: 12px 24px; font-size: 0.95rem;"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+          </svg>
+          <span>Enquire for Academy Carton Orders</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

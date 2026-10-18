@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { PRODUCTS } from '../data/products';
+
+const accessories = PRODUCTS.filter(p => p.category === 'accessories');
+---
+
+<Layout
+  title="Competition Shooting Accessories & Footwear | ArmXchange"
+  description="Precision MEC match diopter sights, anatomical buttplates, cheek pieces, and ISSF approved competition shooting boots from Sauer, AHG, and Corami."
+>
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Accessories</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">MATCH ACCESSORIES & FOOTWEAR</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          OPTICAL & ERGONOMIC UPGRADES
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Shooting Accessories & ISSF Footwear
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Fine-tune your shooting posture, sight alignment, and stance stability. Explore precision German MEC optical match diopters, variable irises, multi-axis buttplates, and ISSF-compliant shooting footwear from Sauer, ahg-Anschütz, and Corami.
+      </p>
+    </div>
+
+    <!-- Subcategory Filter Chips -->
+    <div style="margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);">
+      <button class="filter-chip active" data-filter="all">ALL ACCESSORIES ({accessories.length})</button>
+      <button class="filter-chip" data-filter="sights">MATCH SIGHTS & OPTICS ({accessories.filter(p => p.subcategory === 'sights').length})</button>
+      <button class="filter-chip" data-filter="footwear">SHOOTING BOOTS ({accessories.filter(p => p.subcategory === 'footwear').length})</button>
+      <button class="filter-chip" data-filter="accessories">STOCK HARDWARE ({accessories.filter(p => p.subcategory === 'accessories').length})</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="accessoryGrid" class="product-grid">
+      {accessories.map(product => (
+        <div class="accessory-item" data-sub={product.subcategory}>
+          <ProductCard product={product} />
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .filter-chip {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-body);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all var(--transition-fast);
+  }
+
+  .filter-chip:hover, .filter-chip.active {
+    background: var(--color-ink);
+    color: #FFFFFF;
+    border-color: var(--color-ink);
+  }
+</style>
+
+<script>
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const items = document.querySelectorAll('.accessory-item');
+
+  filterChips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterChips.forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLElement).dataset.filter || 'all';
+
+      items.forEach(el => {
+        const itemEl = el as HTMLElement;
+        const sub = itemEl.dataset.sub;
+        if (filter === 'all' || sub === filter) {
+          itemEl.style.display = 'block';
+        } else {
+          itemEl.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

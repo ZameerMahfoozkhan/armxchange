@@ -1,0 +1,93 @@
+---
+import type { Product } from '../data/products';
+import { getWhatsAppListingUrl } from '../data/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const whatsappUrl = getWhatsAppListingUrl(product.title, `https://armxchange.in/listing/${product.slug}/`);
+---
+
+<article class="product-card">
+  <a href={`/listing/${product.slug}/`} class="product-image-box" aria-label={`View details for ${product.title}`}>
+    <img 
+      src={product.images[0]} 
+      alt={`${product.brand} ${product.title} - ${product.categoryLabel || 'Competition Target Shooting'}`}
+      width="300"
+      height="170"
+      loading="lazy"
+      decoding="async"
+    />
+    <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 6px;">
+      {product.isPreOwned ? (
+        <span class="tech-badge tech-badge-preowned">Pre-Owned</span>
+      ) : (
+        <span class="tech-badge tech-badge-new">Brand New</span>
+      )}
+    </div>
+  </a>
+
+  <div class="product-content">
+    <div class="product-brand">{product.brand}</div>
+    
+    <h3 class="product-title">
+      <a href={`/listing/${product.slug}/`}>{product.title}</a>
+    </h3>
+
+    <p class="product-desc">{product.shortDescription}</p>
+
+    <!-- Technical tags -->
+    <div style="margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px;">
+      <span class="tech-badge">
+        {product.conditionGrade}
+      </span>
+      {product.specifications["Calibre"] && (
+        <span class="tech-badge">
+          .177 Cal
+        </span>
+      )}
+      {product.specifications["Cylinder Validity"] && (
+        <span class="tech-badge tech-badge-new">
+          Cylinder to 2034
+        </span>
+      )}
+    </div>
+
+    <div class="product-footer">
+      <div>
+        {product.priceDisplay === 'Price on Enquiry' ? (
+          <span class="product-price-enquiry">Price on Enquiry</span>
+        ) : (
+          <div>
+            <div class="product-price">{product.priceDisplay}</div>
+            {product.taxNote && (
+              <div style="font-size: 0.68rem; color: var(--color-text-light); line-height: 1.2;">+18% GST (Non-Renowned)</div>
+            )}
+          </div>
+        )}
+      </div>
+
+      <div style="display: flex; gap: 6px;">
+        <a 
+          href={`/listing/${product.slug}/`}
+          class="btn btn-secondary"
+          style="padding: 7px 12px; font-size: 0.78rem;"
+        >
+          Details
+        </a>
+        <a 
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp-solid"
+          style="padding: 7px 12px; font-size: 0.78rem;"
+          title="Direct WhatsApp Consultation"
+        >
+          Enquire
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

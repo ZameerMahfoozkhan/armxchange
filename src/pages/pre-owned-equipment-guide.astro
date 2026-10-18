@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT_INFO } from '../data/products';
+---
+
+<Layout
+  title="Pre-Owned Shooting Equipment Buyer's Guide | ArmXchange"
+  description="Practical guide for evaluating pre-owned 10m competition air rifles and pistols: 10-year cylinder validity, regulator consistency, and electronic trigger inspection."
+>
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Equipment Guide</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 48px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">ATHLETE INTELLIGENCE BRIEFING</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          EQUIPMENT CONTROL PROTOCOLS
+        </span>
+      </div>
+      <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 18px; color: var(--color-ink); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;">
+        The Technical Guide to Evaluating Pre-Owned 10m Air Rifles
+      </h1>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-text-body);">
+        Acquiring a pre-owned match rifle is one of the most cost-effective routes to compete at state and national levels. However, without knowing the critical inspection checkpoints, athletes risk purchasing weapons with expired cylinders or degraded regulators. Here is our essential range checklist.
+      </p>
+    </div>
+
+    <!-- Guide Content -->
+    <div style="display: flex; flex-direction: column; gap: 32px; max-width: 900px; margin-bottom: 64px;">
+      <!-- Section 1: The 10-Year Cylinder Rule -->
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--color-signal-red); letter-spacing: 0.06em;">CHECKPOINT 01 //</span>
+          <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">The 10-Year Air Cylinder Rule (ISSF & NRAI)</h2>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 18px;">
+          Compressed air cylinders operate at high pressures between 200 and 300 bar (2,900 to 4,350 PSI). Under international ISSF and domestic NRAI Equipment Control regulations, every aluminium match air cylinder has a legally mandated maximum service life of <strong>10 years</strong> from its stamped manufacturing date.
+        </p>
+        <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 20px; margin-bottom: 18px;">
+          <div style="color: var(--color-ink); font-size: 0.88rem; font-weight: 700; margin-bottom: 6px;">
+            Case Study: 2018 Feinwerkbau 800 with 2024 Cylinder
+          </div>
+          <p style="font-size: 0.86rem; color: var(--color-text-body); line-height: 1.6;">
+            While the chassis and barrel of this rifle were manufactured in 2018, it is equipped with a <strong>brand-new 2024 original Feinwerkbau cylinder</strong>. This guarantees a full 10-year competition validity period (up to 2034) without needing an expensive cylinder replacement.
+          </p>
+        </div>
+        <p style="font-size: 0.84rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+          CRITICAL ADVICE: Always inspect a clear photograph of the stamped manufacturing month and year on the cylinder collar before finalizing any pre-owned acquisition.
+        </p>
+      </div>
+
+      <!-- Section 2: Regulator Consistency -->
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--color-signal-red); letter-spacing: 0.06em;">CHECKPOINT 02 //</span>
+          <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">Regulator Consistency & Chronograph Diagnostics</h2>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 16px;">
+          A competition 10m rifle lives or dies by muzzle velocity consistency. A healthy 10m target rifle shooting standard 8.2 grain match pellets should deliver a muzzle velocity between 170 m/s and 175 m/s, with a maximum velocity spread of under <strong>2 m/s (approx. 6 fps)</strong> over a 10-shot string.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-body);">
+          If a pre-owned rifle shows extreme velocity jumps (e.g. 164 m/s on one shot and 177 m/s on the next), the internal regulator disc springs or valve seal require immediate overhaul. At ArmXchange, we test and verify regulator velocity stability.
+        </p>
+      </div>
+
+      <!-- Section 3: Electronic vs Mechanical Triggers -->
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--color-signal-red); letter-spacing: 0.06em;">CHECKPOINT 03 //</span>
+          <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">Electronic vs Mechanical Trigger Mechanisms</h2>
+        </div>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 18px;">
+          Both trigger systems have proven international Olympic pedigrees:
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">Mechanical Triggers</h3>
+              <span class="tech-badge">ZERO BATTERY</span>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-body); line-height: 1.6;">
+              Zero battery dependency. Tactile mechanical break with independently adjustable first-stage travel, release weight, and overtravel stop. (e.g., Feinwerkbau 800/900, Walther LG500 M).
+            </p>
+          </div>
+          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">Electronic Triggers</h3>
+              <span class="tech-badge">MICRO-SWITCH</span>
+            </div>
+            <p style="font-size: 0.86rem; color: var(--color-text-body); line-height: 1.6;">
+              Zero sear friction. Releases through a precision micro-switch with dry-fire capability without cocking the valve mechanism. (e.g., Walther LG500 E, Morini CM200EI).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Founder Consultation CTA -->
+    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); max-width: 900px; padding: 48px 32px; text-align: center; box-shadow: var(--shadow-sm);">
+      <span class="tech-badge" style="margin-bottom: 14px;">COACH DIAGNOSTICS</span>
+      <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-bottom: 12px; color: var(--color-ink); font-weight: 800;">
+        Need Objective Technical Guidance on a Rifle You're Evaluating?
+      </h2>
+      <p style="max-width: 540px; margin: 0 auto 28px auto; font-size: 0.95rem; color: var(--color-text-body); line-height: 1.65;">
+        Reach out directly to Coach Pranatpal Singh on WhatsApp for an unvarnished technical assessment of condition, cylinder dates, and fair market valuation.
+      </p>
+      <a 
+        href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Coach Pranatpal, I read your equipment evaluation guide and would like to ask your technical advice on a 10m competition rifle.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-whatsapp-solid"
+        style="padding: 12px 24px; font-size: 0.95rem;"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+        </svg>
+        <span>Consult With Coach Pranatpal</span>
+      </a>
+    </div>
+  </div>
+</Layout>
