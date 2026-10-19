@@ -7,178 +7,788 @@ interface Props {
 }
 
 const { currentPath = '/' } = Astro.props;
+
+// Active path helper
+const isActive = (path: string) => {
+  if (path === '/') return currentPath === '/' || currentPath === '';
+  const cleanPath = path.replace(/^\/|\/$/g, '');
+  return currentPath.includes(cleanPath);
+};
 ---
 
-<header class="site-header">
-  <div class="container">
+<header class="site-header" id="siteHeader">
+  <div class="container header-container">
     <div class="site-header-inner">
-      <a href="/" aria-label="ArmXchange Homepage" style="display: flex; align-items: center;">
+      <!-- ArmXchange Brand Logo -->
+      <a href="/" class="site-brand-link" aria-label="ArmXchange - Shooting Sports Marketplace Homepage">
         <Logo variant="dark" size="md" />
       </a>
 
-      <nav aria-label="Main Navigation">
+      <!-- Desktop & Laptop Navigation Menu -->
+      <nav class="site-nav" aria-label="Main Navigation">
         <ul class="site-nav-links">
           <li>
-            <a href="/second-hand-weapons/" class={`site-nav-link highlight ${currentPath.includes('second-hand') ? 'active' : ''}`}>
-              Pre-Owned
+            <a 
+              href="/second-hand-weapons/" 
+              class={`site-nav-link nav-link-preowned ${isActive('/second-hand-weapons') ? 'active' : ''}`}
+            >
+              <span class="nav-pulse-dot" aria-hidden="true"></span>
+              <span>Pre-Owned</span>
+              <span class="nav-verified-badge">Verified</span>
             </a>
           </li>
           <li>
-            <a href="/new-weapons/" class={`site-nav-link ${currentPath.includes('new-weapons') ? 'active' : ''}`}>
+            <a 
+              href="/new-weapons/" 
+              class={`site-nav-link ${isActive('/new-weapons') ? 'active' : ''}`}
+            >
               New Weapons
             </a>
           </li>
           <li>
-            <a href="/accessories/" class={`site-nav-link ${currentPath.includes('accessories') ? 'active' : ''}`}>
+            <a 
+              href="/accessories/" 
+              class={`site-nav-link ${isActive('/accessories') ? 'active' : ''}`}
+            >
               Accessories
             </a>
           </li>
           <li>
-            <a href="/pellets/" class={`site-nav-link ${currentPath.includes('pellets') ? 'active' : ''}`}>
+            <a 
+              href="/pellets/" 
+              class={`site-nav-link ${isActive('/pellets') ? 'active' : ''}`}
+            >
               Pellets
             </a>
           </li>
           <li>
-            <a href="/how-it-works/" class={`site-nav-link ${currentPath.includes('how-it-works') ? 'active' : ''}`}>
+            <a 
+              href="/how-it-works/" 
+              class={`site-nav-link ${isActive('/how-it-works') ? 'active' : ''}`}
+            >
               How It Works
             </a>
           </li>
           <li>
-            <a href="/about-armxchange/" class={`site-nav-link ${currentPath.includes('about') ? 'active' : ''}`}>
+            <a 
+              href="/about-armxchange/" 
+              class={`site-nav-link ${isActive('/about-armxchange') ? 'active' : ''}`}
+            >
               Founder
             </a>
           </li>
           <li>
-            <a href="/contact/" class={`site-nav-link ${currentPath.includes('contact') ? 'active' : ''}`}>
+            <a 
+              href="/contact/" 
+              class={`site-nav-link ${isActive('/contact') ? 'active' : ''}`}
+            >
               Contact
             </a>
           </li>
         </ul>
       </nav>
 
+      <!-- Header Actions -->
       <div class="site-header-actions">
+        <!-- Desktop WhatsApp Concierge Button -->
         <a 
           href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about competition shooting sports equipment on ArmXchange.')}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-primary nav-whatsapp-btn"
-          aria-label="Direct WhatsApp Consultation"
+          class="nav-cta-whatsapp"
+          aria-label="Direct WhatsApp Consultation with Coach Pranatpal Singh"
         >
-          <span class="live-pulse-dot" style="margin-right: 3px;"></span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
+          <span class="live-pulse-dot" aria-hidden="true"></span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon" aria-hidden="true">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
-          <span class="nav-whatsapp-label">Enquire on WhatsApp</span>
+          <span class="nav-cta-text">
+            <span class="nav-cta-text-full">Enquire on WhatsApp</span>
+            <span class="nav-cta-text-short">WhatsApp</span>
+          </span>
         </a>
 
-        <button id="mobileMenuBtn" class="mobile-toggle" aria-label="Toggle Navigation Menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+        <!-- Mobile Quick WhatsApp Tap Button -->
+        <a 
+          href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-quick-whatsapp"
+          aria-label="Direct WhatsApp Consultation"
+        >
+          <span class="live-pulse-dot" aria-hidden="true"></span>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" class="mobile-toggle-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-box">
+            <span class="hamburger-line line-1"></span>
+            <span class="hamburger-line line-2"></span>
+            <span class="hamburger-line line-3"></span>
+          </span>
         </button>
       </div>
     </div>
   </div>
 </header>
 
+<!-- Mobile Navigation Drawer Backdrop & Sheet -->
+<div id="drawerBackdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
+
+<aside id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+  <div class="mobile-drawer-inner">
+    <div class="mobile-drawer-header">
+      <a href="/" class="drawer-brand" aria-label="ArmXchange Homepage">
+        <Logo variant="dark" size="sm" />
+      </a>
+      <button id="closeDrawerBtn" class="drawer-close-btn" aria-label="Close Navigation Menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Verified Athlete Status Pill -->
+    <div class="drawer-coach-pill">
+      <span class="live-pulse-dot" aria-hidden="true"></span>
+      <span>National Shooter & Coach Consultation</span>
+    </div>
+
+    <div class="drawer-scroll-body">
+      <!-- Section 1: Marketplace Categories -->
+      <div class="drawer-group">
+        <div class="drawer-group-title">EQUIPMENT MARKETPLACE</div>
+        <ul class="drawer-links">
+          <li>
+            <a href="/second-hand-weapons/" class="drawer-link drawer-link-preowned">
+              <div class="drawer-link-content">
+                <span class="preowned-dot" aria-hidden="true"></span>
+                <span>Pre-Owned Weapons</span>
+              </div>
+              <span class="drawer-badge-red">Verified Priority</span>
+            </a>
+          </li>
+          <li>
+            <a href="/new-weapons/" class="drawer-link">
+              <span>New Competition Weapons</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/accessories/" class="drawer-link">
+              <span>Shooting Accessories & Boots</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pellets/" class="drawer-link">
+              <span>RWS Match Pellets</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2: Verification & Services -->
+      <div class="drawer-group">
+        <div class="drawer-group-title">ATHLETE SERVICES & INFO</div>
+        <ul class="drawer-links">
+          <li>
+            <a href="/how-it-works/" class="drawer-link">
+              <span>How ArmXchange Works</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pre-owned-equipment-guide/" class="drawer-link">
+              <span>Used Equipment Guide</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about-armxchange/" class="drawer-link">
+              <span>Founder Pranatpal Singh</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a href="/contact/" class="drawer-link">
+              <span>Official Contact & Support</span>
+              <span class="drawer-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Card -->
+    <div class="drawer-footer">
+      <a 
+        href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="drawer-whatsapp-cta"
+      >
+        <span class="live-pulse-dot" aria-hidden="true"></span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Direct WhatsApp: {CONTACT_INFO.phoneDisplay}</span>
+      </a>
+      <p class="drawer-guarantee-caption">
+        Direct athlete-to-athlete consultation &bull; Cylinder validity verified
+      </p>
+    </div>
+  </div>
+</aside>
+
 <style>
+  /* Base Layout & Brand */
+  .header-container {
+    height: 100%;
+  }
+
+  .site-brand-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s var(--ease-out);
+    flex-shrink: 0;
+  }
+
+  .site-brand-link:hover {
+    opacity: 0.88;
+  }
+
+  /* Nav Links Architecture - Clean, Open, High-End */
+  .site-nav {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .site-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: #475569;
+    padding: 7px 11px;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .site-nav-link:hover {
+    color: #0B0F17;
+    background: rgba(15, 23, 42, 0.05);
+    transform: translateY(-1px);
+  }
+
+  .site-nav-link.active {
+    color: #0B0F17;
+    background: rgba(15, 23, 42, 0.07);
+    font-weight: 600;
+  }
+
+  /* Pre-Owned Verified Special Accent */
+  .site-nav-link.nav-link-preowned {
+    color: #0B0F17;
+    font-weight: 600;
+  }
+
+  .nav-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D9263E;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(217, 38, 62, 0.2);
+  }
+
+  .nav-verified-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: #FFF1F2;
+    color: #D9263E;
+    border: 1px solid #FFE4E6;
+    padding: 1px 5px;
+    border-radius: 4px;
+    line-height: 1.2;
+    transition: background 0.18s ease;
+  }
+
+  .site-nav-link.nav-link-preowned:hover {
+    background: #FFF1F2;
+    color: #D9263E;
+  }
+
+  .site-nav-link.nav-link-preowned:hover .nav-verified-badge {
+    background: #FFE4E6;
+  }
+
+  .site-nav-link.nav-link-preowned.active {
+    background: #FFF1F2;
+    color: #D9263E;
+  }
+
+  /* Actions Area */
   .site-header-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
   }
-  .nav-whatsapp-btn {
-    font-size: 0.82rem;
+
+  /* Desktop WhatsApp CTA Button */
+  .nav-cta-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0B0F17;
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
     padding: 8px 16px;
+    border-radius: 9999px;
+    text-decoration: none;
     white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 1px 3px rgba(11, 15, 23, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-cta-whatsapp:hover {
+    background: #1E293B;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(11, 15, 23, 0.22);
+  }
+
+  .nav-cta-whatsapp:active {
+    transform: translateY(0);
+  }
+
+  .whatsapp-icon {
+    flex-shrink: 0;
+    color: #25D366;
+  }
+
+  .nav-cta-text-full {
+    display: inline;
+  }
+
+  .nav-cta-text-short {
+    display: none;
+  }
+
+  /* Mobile Quick WhatsApp Button */
+  .mobile-quick-whatsapp {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9999px;
+    background: #0B0F17;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.1);
+    transition: transform 0.16s var(--ease-spring), background-color 0.18s ease;
+  }
+
+  .mobile-quick-whatsapp svg {
+    color: #25D366;
+  }
+
+  .mobile-quick-whatsapp .live-pulse-dot {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .mobile-quick-whatsapp:active {
+    transform: scale(0.92);
+  }
+
+  /* Mobile Hamburger Toggle Button */
+  .mobile-toggle-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(11, 15, 23, 0.04);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    padding: 0;
+    color: var(--color-ink);
+    transition: background-color 0.2s ease, transform 0.16s var(--ease-spring);
+  }
+
+  .mobile-toggle-btn:hover {
+    background: rgba(11, 15, 23, 0.08);
+  }
+
+  .mobile-toggle-btn:active {
+    transform: scale(0.92);
+  }
+
+  .hamburger-box {
+    width: 18px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-line {
+    width: 100%;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.24s var(--ease-out), opacity 0.24s ease;
+  }
+
+  /* Drawer Aesthetics */
+  .mobile-drawer-inner {
+    height: 100%;
+    max-height: 100dvh;
+    padding: 20px 18px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .mobile-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .drawer-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .drawer-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(11, 15, 23, 0.05);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-ink);
+    transition: background-color 0.2s ease, transform 0.16s ease;
+  }
+
+  .drawer-close-btn:hover {
+    background: rgba(11, 15, 23, 0.1);
+  }
+
+  .drawer-close-btn:active {
+    transform: scale(0.92);
+  }
+
+  .drawer-coach-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+  }
+
+  .drawer-scroll-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 4px;
+    padding-bottom: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+  }
+
+  .drawer-scroll-body::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .drawer-scroll-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .drawer-scroll-body::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.35);
     border-radius: 9999px;
   }
-  @media (max-width: 540px) {
-    .site-header-actions {
-      gap: 8px;
+
+  .drawer-group-title {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #94A3B8;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    padding-left: 6px;
+  }
+
+  .drawer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .drawer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 11px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: background-color 0.16s ease, transform 0.16s ease;
+  }
+
+  .drawer-link:hover, .drawer-link:active {
+    background: #F8FAFC;
+    transform: translateX(3px);
+  }
+
+  .drawer-link-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .preowned-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D9263E;
+  }
+
+  .drawer-badge-red {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #FFF1F2;
+    color: #D9263E;
+    border: 1px solid #FFE4E6;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .drawer-arrow {
+    color: #94A3B8;
+    font-size: 0.88rem;
+    transition: transform 0.16s ease;
+  }
+
+  .drawer-link:hover .drawer-arrow {
+    transform: translateX(3px);
+    color: var(--color-ink);
+  }
+
+  .drawer-footer {
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+
+  .drawer-whatsapp-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #0B0F17;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.84rem;
+    padding: 11px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(11, 15, 23, 0.14);
+    transition: background-color 0.2s ease, transform 0.16s ease;
+  }
+
+  .drawer-whatsapp-cta:hover {
+    background: #1E293B;
+  }
+
+  .drawer-whatsapp-cta:active {
+    transform: scale(0.98);
+  }
+
+  .drawer-whatsapp-cta svg {
+    color: #25D366;
+    flex-shrink: 0;
+  }
+
+  .drawer-guarantee-caption {
+    font-size: 0.70rem;
+    color: #94A3B8;
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* Responsive Calibration */
+  /* Laptop & Mid-screen View (921px - 1180px) */
+  @media (max-width: 1180px) and (min-width: 921px) {
+    .site-nav-links {
+      gap: 2px;
     }
-    .nav-whatsapp-btn {
-      padding: 7px 12px;
-      font-size: 0.78rem;
+    .site-nav-link {
+      padding: 6px 8px;
+      font-size: 0.80rem;
+      gap: 4px;
     }
-    .nav-whatsapp-label {
+    .nav-verified-badge {
+      font-size: 0.58rem;
+      padding: 1px 3px;
+    }
+    .nav-cta-text-full {
       display: none;
     }
-    .nav-whatsapp-btn::after {
-      content: 'WhatsApp';
+    .nav-cta-text-short {
+      display: inline;
+    }
+    .nav-cta-whatsapp {
+      padding: 7px 11px;
+      font-size: 0.76rem;
+    }
+  }
+
+  /* Mobile & Tablet View (<= 920px) */
+  @media (max-width: 920px) {
+    .site-nav {
+      display: none !important;
+    }
+    .nav-cta-whatsapp {
+      display: none !important;
+    }
+    .mobile-quick-whatsapp {
+      display: inline-flex !important;
+    }
+    .mobile-toggle-btn {
+      display: inline-flex !important;
+    }
+    .site-header-actions {
+      gap: 8px;
     }
   }
 </style>
 
-<!-- Mobile Navigation Drawer Backdrop & Sheet -->
-<div id="drawerBackdrop" class="mobile-drawer-backdrop"></div>
-<div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-  <div class="mobile-drawer-header">
-    <a href="/" class="nav-brand">
-      <Logo variant="dark" size="sm" />
-    </a>
-    <button id="closeDrawerBtn" class="mobile-toggle" style="display: flex;" aria-label="Close Navigation Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-
-  <ul class="mobile-drawer-links">
-    <li><a href="/" class="mobile-drawer-link"><span>Home</span><span>→</span></a></li>
-    <li><a href="/second-hand-weapons/" class="mobile-drawer-link" style="color: var(--color-signal-red);"><span>Second-Hand Weapons</span><span class="tech-badge tech-badge-preowned" style="font-size: 0.65rem;">Priority</span></a></li>
-    <li><a href="/new-weapons/" class="mobile-drawer-link"><span>New Competition Weapons</span><span>→</span></a></li>
-    <li><a href="/accessories/" class="mobile-drawer-link"><span>Shooting Accessories & Boots</span><span>→</span></a></li>
-    <li><a href="/pellets/" class="mobile-drawer-link"><span>RWS Match Pellets</span><span>→</span></a></li>
-    <li><a href="/how-it-works/" class="mobile-drawer-link"><span>How ArmXchange Works</span><span>→</span></a></li>
-    <li><a href="/pre-owned-equipment-guide/" class="mobile-drawer-link"><span>Used Equipment Guide</span><span>→</span></a></li>
-    <li><a href="/about-armxchange/" class="mobile-drawer-link"><span>About Founder Pranatpal Singh</span><span>→</span></a></li>
-    <li><a href="/contact/" class="mobile-drawer-link"><span>Official Contact</span><span>→</span></a></li>
-  </ul>
-
-  <div style="margin-top: auto; padding-top: 24px;">
-    <a 
-      href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn btn-whatsapp-solid"
-      style="width: 100%; justify-content: center; padding: 12px; border-radius: 10px;"
-    >
-      <span class="live-pulse-dot" style="margin-right: 4px;"></span>
-      <span>Direct WhatsApp: {CONTACT_INFO.phoneDisplay}</span>
-    </a>
-  </div>
-</div>
-
 <script>
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const closeBtn = document.getElementById('closeDrawerBtn');
-  const backdrop = document.getElementById('drawerBackdrop');
-  const drawer = document.getElementById('mobileDrawer');
+  // Ensure header interactions run reliably across page loads and Astro view transitions
+  function initHeader() {
+    const header = document.getElementById('siteHeader');
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+    const backdrop = document.getElementById('drawerBackdrop');
+    const drawer = document.getElementById('mobileDrawer');
+    const drawerLinks = drawer?.querySelectorAll('a');
 
-  function openMenu() {
-    drawer?.classList.add('open');
-    backdrop?.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+    // Dynamic scroll elevation listener
+    const handleScroll = () => {
+      if (window.scrollY > 15) {
+        header?.classList.add('is-scrolled');
+      } else {
+        header?.classList.remove('is-scrolled');
+      }
+    };
 
-  function closeMenu() {
-    drawer?.classList.remove('open');
-    backdrop?.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
 
-  menuBtn?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  backdrop?.addEventListener('click', closeMenu);
-
-  // Close on ESC key (Emil Kowalski principle)
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer?.classList.contains('open')) {
-      closeMenu();
+    // Mobile drawer toggling
+    function openMenu() {
+      drawer?.classList.add('open');
+      backdrop?.classList.add('open');
+      menuBtn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     }
-  });
+
+    function closeMenu() {
+      drawer?.classList.remove('open');
+      backdrop?.classList.remove('open');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn?.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // Close menu when any drawer link is clicked
+    drawerLinks?.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer?.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeader);
+  } else {
+    initHeader();
+  }
+
+  document.addEventListener('astro:page-load', initHeader);
 </script>
