@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import HeroCarousel from '../components/HeroCarousel.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
 const preOwnedFeatured = PRODUCTS.find(p => p.isPreOwned);
@@ -9,118 +10,10 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
 
 <Layout 
   title="ArmXchange | Competition 10m Shooting Sports Equipment"
-  description="India's specialized platform for competition-grade 10m air rifles, Olympic air pistols, match accessories, and pellets. Inspected cylinder validity and direct consultation with national coach Pranatpal Singh."
+  description="India's specialized platform for competition-grade 10m air rifles, Olympic air pistols, match accessories, and pellets. Inspected cylinder validity and direct consultation with national-level shooter Pranatpal Singh."
 >
-  <!-- Master Editorial Hero Section -->
-  <section class="hero-editorial">
-    <div class="hero-editorial-backdrop"></div>
-    <div class="hero-editorial-gradient"></div>
-    
-    <!-- Hero Main Body -->
-    <div class="hero-content-wrap">
-      <div class="container" style="width: 100%;">
-        <div style="max-width: 820px;">
-          <div class="hero-status-pill hero-anim-kicker">
-            <span class="live-pulse-dot"></span>
-            <span>VERIFIED INVENTORY // 2026 ISSF MATCH SPEC</span>
-          </div>
-
-          <h1 class="hero-h1 hero-anim-h1">
-            Precision 10m Match Weapons. <br />
-            <span class="hero-h1-lead">Inspected for the 10-Ring.</span>
-          </h1>
-
-          <p class="hero-subtext hero-anim-subtext">
-            India’s dedicated exchange for competition 10m air rifles, Olympic air pistols, precision sights, and match-grade ammunition. Complete cylinder date disclosures and direct consultation with national coach Pranatpal Singh.
-          </p>
-
-          <div class="hero-actions hero-anim-actions">
-            <a href="/second-hand-weapons/" class="btn btn-primary" style="background: #FFFFFF; color: #0B0F17; border-color: #FFFFFF; padding: 12px 20px; font-size: 0.92rem;">
-              <span>Browse Verified Pre-Owned</span>
-              <span class="btn-trailing-icon" style="background: rgba(11, 15, 23, 0.08); color: #0B0F17;">→</span>
-            </a>
-            <a href="/new-weapons/" class="btn btn-secondary" style="background: rgba(255, 255, 255, 0.08); color: #FFFFFF; border-color: rgba(255, 255, 255, 0.2); padding: 12px 20px; font-size: 0.92rem;">
-              <span>Olympic Catalogue</span>
-              <span class="btn-trailing-icon">↗</span>
-            </a>
-            <a 
-              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to consult with you regarding competition shooting equipment on ArmXchange.')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-whatsapp-solid"
-              style="padding: 12px 20px; font-size: 0.92rem;"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-              </svg>
-              <span>Coach WhatsApp Consultation</span>
-              <span class="btn-trailing-icon" style="background: rgba(255, 255, 255, 0.2);">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Full-Width Horizontal Telemetry Strip (Laptop: Spanning Bar, Mobile: Train Ticker) -->
-    <div class="hero-telemetry-strip">
-      <div class="telemetry-train-wrapper">
-        <div class="telemetry-train">
-          <div class="telemetry-group">
-            <div class="telemetry-item">
-              <span class="telemetry-val">0.177 CAL</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">ISSF 10m Target Spec</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">&lt; 20 JOULES</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Arms Rules 2016 III(f)</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">10-YEAR</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Factory Cylinder Audits</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">DIRECT</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Athlete-to-Coach Review</span>
-            </div>
-          </div>
-          <!-- Duplicate group for seamless mobile train ticker -->
-          <div class="telemetry-group telemetry-group-duplicate" aria-hidden="true">
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">0.177 CAL</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">ISSF 10m Target Spec</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">&lt; 20 JOULES</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Arms Rules 2016 III(f)</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">10-YEAR</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Factory Cylinder Audits</span>
-            </div>
-            <div class="telemetry-divider"></div>
-            <div class="telemetry-item">
-              <span class="telemetry-val">DIRECT</span>
-              <span class="telemetry-sep">•</span>
-              <span class="telemetry-lbl">Athlete-to-Coach Review</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ArmXchange Premium Hero Carousel & Category Navigation -->
+  <HeroCarousel />
 
   <!-- Sporting Disciplines Grid -->
   <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);">
@@ -250,7 +143,9 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
                     rel="noopener noreferrer"
                     class="btn btn-whatsapp-solid"
                   >
-                    <span class="live-pulse-dot" style="background: #FFFFFF; box-shadow: 0 0 0 0 rgba(255,255,255,0.7);"></span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+                    </svg>
                     <span>Enquire on WhatsApp</span>
                     <span class="btn-trailing-icon">→</span>
                   </a>
@@ -297,7 +192,7 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
             "Equipment should never be the barrier between a dedicated shooter and an Olympic podium."
           </h2>
           <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 16px; color: #CBD5E1;">
-            As an active national shooter and coach, I experienced the uncertainty young Indian athletes encounter when sourcing match equipment. Outdated cylinders, undisclosed pressure drops, and speculative pricing frequently mislead emerging shooters.
+            As a competitive national shooter (and having also begun my coaching journey over the past year), I experienced the uncertainty young Indian athletes encounter when sourcing match equipment. Outdated cylinders, undisclosed pressure drops, and speculative pricing frequently mislead emerging shooters.
           </p>
           <p style="font-size: 0.94rem; line-height: 1.65; margin-bottom: 28px; color: #94A3B8;">
             ArmXchange was founded to establish transparency: item-specific inspections, verified factory cylinder dates, and honest guidance tailored to each athlete’s discipline.
@@ -336,7 +231,7 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
             </div>
             <div>
               <div style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">
-                03 / Technical Coach Consultation
+                03 / Technical Equipment Consultation
               </div>
               <div style="font-size: 0.84rem; color: #94A3B8; line-height: 1.55;">
                 Grip sizing, electronic trigger selection, and barrel batch recommendations before any acquisition.
@@ -366,12 +261,12 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
         <div class="how-step-card reveal-on-scroll stagger-2">
           <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--color-ink); margin-bottom: 10px;">02</div>
           <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Review Disclosures</h3>
-          <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.55;">Check cylinder manufacture dates, regulator stability reports, and applicable GST notes (18% for non-renowned shooters).</p>
+          <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.55;">Check cylinder manufacture dates, regulator stability reports, and applicable GST notes (18% on new weapons for non-renowned shooters).</p>
         </div>
 
         <div class="how-step-card reveal-on-scroll stagger-3">
           <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--color-ink); margin-bottom: 10px;">03</div>
-          <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Coach Consultation</h3>
+          <h3 style="font-size: 1.05rem; margin-bottom: 6px;">Athlete Consultation</h3>
           <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.55;">Connect directly with founder Pranatpal Singh on WhatsApp with the pre-filled equipment dossier and your athlete requirements.</p>
         </div>
 
@@ -401,7 +296,7 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
           class="btn btn-primary"
           style="padding: 14px 24px; font-size: 0.92rem;"
         >
-          <span>Consign Equipment with Coach</span>
+          <span>Consign Equipment with Us</span>
           <span class="btn-trailing-icon">→</span>
         </a>
       </div>

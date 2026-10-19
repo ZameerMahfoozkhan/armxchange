@@ -857,10 +857,10 @@ export const CONTACT_INFO = {
   phoneDisplay: "+91 63924 21574",
   whatsappBaseUrl: "https://wa.me/916392421574",
   founder: "Pranatpal Singh",
-  founderTitle: "Founder & National-Level 10m Air Rifle Shooter / Coach",
+  founderTitle: "Founder, National-Level Shooter & Coach (1 Year)",
   brandMotto: "Every Shooter Deserves a Fair Start.",
   location: "India",
-  armsActDisclaimer: "ArmXchange operates in strict compliance with the Indian Arms Act & Arms Rules 2016 for 0.177 calibre (4.5mm) air weapons with muzzle energy under 20 Joules. All enquiries undergo manual verification. 18% GST applicable for non-renowned shooters as per Indian tax norms."
+  armsActDisclaimer: "ArmXchange operates in strict compliance with the Indian Arms Act & Arms Rules 2016 for 0.177 calibre (4.5mm) air weapons with muzzle energy under 20 Joules. All enquiries undergo manual verification. 18% GST applicable for non-renowned shooters on new weapons as per Indian tax norms."
 };
 
 export function getWhatsAppListingUrl(productTitle: string, currentUrl?: string): string {

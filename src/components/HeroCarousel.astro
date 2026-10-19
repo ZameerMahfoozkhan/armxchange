@@ -1,0 +1,428 @@
+---
+import '../styles/hero-carousel.css';
+import { HERO_SLIDES, HERO_CATEGORY_CARDS } from '../data/heroSlides';
+---
+
+<!-- Master Hero Section: Cinematic Full-Width Hero Carousel -->
+<section class="armx-hero-section" aria-label="Featured Equipment Carousel">
+  <div class="armx-carousel-viewport" data-armx-carousel>
+    <!-- Screen Reader Live Region for Slide Announcements -->
+    <div class="sr-only" aria-live="polite" aria-atomic="true" data-live-region>
+      Showing slide 1 of 4: Pre-Owned Air Rifles
+    </div>
+
+    <!-- Slides Track -->
+    <div class="armx-carousel-track">
+      {HERO_SLIDES.map((slide, index) => {
+        const isFirst = index === 0;
+        return (
+          <article
+            class={`armx-slide ${isFirst ? 'is-active' : ''}`}
+            data-slide={index}
+            data-slide-title={`${slide.headlinePrefix}${slide.headlineHighlight}${slide.headlineSuffix || ''}`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`Slide ${slide.index} of ${slide.total}: ${slide.eyebrow.replace(/^.*?—\s*/, '')}`}
+            aria-hidden={!isFirst ? "true" : "false"}
+          >
+            <!-- Background Image with Responsive Art Direction -->
+            <div class="armx-slide-media">
+              <picture class="armx-slide-picture">
+                <source media="(max-width: 768px)" srcset={slide.imageMobile} type="image/webp" />
+                {slide.imageWebp && (
+                  <source srcset={slide.imageWebp} type="image/webp" />
+                )}
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  class="armx-slide-img"
+                  width="1920"
+                  height="768"
+                  loading={isFirst ? "eager" : "lazy"}
+                  fetchpriority={isFirst ? "high" : "auto"}
+                  decoding={isFirst ? "sync" : "async"}
+                />
+              </picture>
+              <!-- Cinematic Dark Gradient Overlay (Protects Text Contrast) -->
+              <div class="armx-slide-overlay" aria-hidden="true"></div>
+            </div>
+
+            <!-- Slide Content Overlay -->
+            <div class="armx-slide-content-wrap">
+              <div class="container">
+                <div class="armx-slide-content">
+                  <!-- Eyebrow with Target Motif -->
+                  <div class="armx-eyebrow">
+                    <svg class="armx-target-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" />
+                      <circle cx="12" cy="12" r="6" />
+                      <circle cx="12" cy="12" r="2" />
+                      <line x1="12" y1="2" x2="12" y2="4" />
+                      <line x1="12" y1="20" x2="12" y2="22" />
+                      <line x1="2" y1="12" x2="4" y2="12" />
+                      <line x1="20" y1="12" x2="22" y2="12" />
+                    </svg>
+                    <span>{slide.eyebrow}</span>
+                    <span class="armx-eyebrow-divider" aria-hidden="true"></span>
+                  </div>
+
+                  <!-- Headline: Strict SEO Rule - Slide 1 has h1, others have h2 -->
+                  {isFirst ? (
+                    <h1 class="armx-headline">
+                      {slide.headlinePrefix}
+                      <span class="armx-gold-text">{slide.headlineHighlight}</span>
+                      {slide.headlineSuffix && <span>{slide.headlineSuffix}</span>}
+                    </h1>
+                  ) : (
+                    <h2 class="armx-headline">
+                      {slide.headlinePrefix}
+                      <span class="armx-gold-text">{slide.headlineHighlight}</span>
+                      {slide.headlineSuffix && <span>{slide.headlineSuffix}</span>}
+                    </h2>
+                  )}
+
+                  <!-- Description -->
+                  <p class="armx-description">{slide.description}</p>
+
+                  <!-- Action CTAs -->
+                  <div class="armx-actions-group">
+                    <a href={slide.primaryCta.href} class="armx-btn-gold">
+                      <span>{slide.primaryCta.label}</span>
+                      <span class="armx-btn-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href={slide.secondaryCta.href} class="armx-btn-glass">
+                      <span>{slide.secondaryCta.label}</span>
+                      <span class="armx-btn-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  </div>
+
+                  <!-- Feature Indicators (Only for Slide 1) -->
+                  {slide.features && slide.features.length > 0 && (
+                    <ul class="armx-features-list" aria-label="Equipment features">
+                      {slide.features.map(feat => (
+                        <li class="armx-feature-item">
+                          <span class="armx-feature-dot" aria-hidden="true"></span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Circular Previous & Next Navigation Arrows -->
+    <button
+      type="button"
+      class="armx-nav-arrow armx-nav-prev"
+      data-nav="prev"
+      aria-label="Previous slide"
+      title="Previous slide"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="armx-nav-arrow armx-nav-next"
+      data-nav="next"
+      aria-label="Next slide"
+      title="Next slide"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Slide Indicators & Accessible Autoplay Toggle -->
+    <div class="armx-indicators-wrap">
+      <div class="container">
+        <div class="armx-indicators-inner">
+          <div role="tablist" aria-label="Choose slide to display" style="display: flex; gap: 8px;">
+            {HERO_SLIDES.map((slide, index) => (
+              <button
+                type="button"
+                role="tab"
+                class={`armx-indicator-btn ${index === 0 ? 'is-active' : ''}`}
+                data-indicator={index}
+                aria-label={`Go to slide ${index + 1}: ${slide.eyebrow.replace(/^.*?—\s*/, '')}`}
+                aria-selected={index === 0 ? "true" : "false"}
+                tabindex={index === 0 ? 0 : -1}
+              >
+                <span class="armx-indicator-bar" aria-hidden="true"></span>
+              </button>
+            ))}
+          </div>
+
+          <!-- Autoplay Pause / Play Toggle -->
+          <button
+            type="button"
+            class="armx-autoplay-toggle"
+            data-autoplay-toggle
+            aria-label="Pause automatic slide rotation"
+            title="Pause slide rotation"
+          >
+            <svg class="armx-pause-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <svg class="armx-play-icon" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style="display: none;" aria-hidden="true">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span class="armx-autoplay-text">PAUSE</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Below-the-Hero Category Cards (Section 9) -->
+  <aside class="armx-hero-categories" aria-label="Shooting Sports Equipment Categories">
+    <div class="container">
+      <div class="armx-cat-grid">
+        {HERO_CATEGORY_CARDS.map(cat => (
+          <a href={cat.href} class="armx-cat-card">
+            <div class="armx-cat-thumb-box">
+              <img
+                src={cat.image}
+                alt=""
+                class="armx-cat-thumb"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="armx-cat-content">
+              <div class="armx-cat-title-row">
+                <span class="armx-cat-title">{cat.title}</span>
+                <span class="armx-cat-arrow" aria-hidden="true">→</span>
+              </div>
+              <p class="armx-cat-desc">{cat.subtitle}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </aside>
+</section>
+
+<!-- Vanilla JS Carousel Controller -->
+<script>
+  function initArmxCarousel() {
+    const carousel = document.querySelector('[data-armx-carousel]');
+    if (!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
+    const indicators = Array.from(carousel.querySelectorAll('[data-indicator]'));
+    const prevBtn = carousel.querySelector('[data-nav="prev"]');
+    const nextBtn = carousel.querySelector('[data-nav="next"]');
+    const toggleBtn = carousel.querySelector('[data-autoplay-toggle]');
+    const liveRegion = carousel.querySelector('[data-live-region]');
+    
+    if (slides.length <= 1) return;
+
+    const pauseIcon = toggleBtn?.querySelector('.armx-pause-icon');
+    const playIcon = toggleBtn?.querySelector('.armx-play-icon');
+    const toggleText = toggleBtn?.querySelector('.armx-autoplay-text');
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    const AUTOPLAY_DELAY = 7500; // 7.5 seconds
+    let autoplayTimer = null;
+    let isPausedManually = false;
+    let isHoveredOrFocused = false;
+
+    // Detect user's reduced-motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function goToSlide(newIndex, announce = false) {
+      const targetIndex = (newIndex + totalSlides) % totalSlides;
+      if (targetIndex === currentIndex && slides[currentIndex].classList.contains('is-active')) {
+        return;
+      }
+
+      // Update Slides
+      slides.forEach((slide, idx) => {
+        const isActive = idx === targetIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      // Update Indicators
+      indicators.forEach((btn, idx) => {
+        const isActive = idx === targetIndex;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        btn.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+
+      currentIndex = targetIndex;
+
+      // Announce for Screen Readers
+      if (announce && liveRegion) {
+        const title = slides[targetIndex].getAttribute('data-slide-title') || '';
+        liveRegion.textContent = `Showing slide ${targetIndex + 1} of ${totalSlides}: ${title}`;
+      }
+
+      resetAutoplayTimer();
+    }
+
+    function nextSlide(announce = true) {
+      goToSlide(currentIndex + 1, announce);
+    }
+
+    function prevSlide(announce = true) {
+      goToSlide(currentIndex - 1, announce);
+    }
+
+    function startAutoplay() {
+      if (prefersReducedMotion || isPausedManually || isHoveredOrFocused) return;
+      clearTimeout(autoplayTimer);
+      autoplayTimer = setTimeout(() => {
+        nextSlide(false);
+        startAutoplay();
+      }, AUTOPLAY_DELAY);
+    }
+
+    function stopAutoplay() {
+      clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+
+    function resetAutoplayTimer() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    // Previous & Next Arrow Controls
+    prevBtn?.addEventListener('click', () => {
+      prevSlide(true);
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      nextSlide(true);
+    });
+
+    // Indicator Tabs
+    indicators.forEach((indicator, idx) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(idx, true);
+        indicator.focus();
+      });
+    });
+
+    // Autoplay Pause/Play Toggle Button
+    toggleBtn?.addEventListener('click', () => {
+      isPausedManually = !isPausedManually;
+      if (isPausedManually) {
+        stopAutoplay();
+        if (pauseIcon && playIcon && toggleText) {
+          pauseIcon.style.display = 'none';
+          playIcon.style.display = 'block';
+          toggleText.textContent = 'PLAY';
+          toggleBtn.setAttribute('aria-label', 'Play automatic slide rotation');
+          toggleBtn.setAttribute('title', 'Play slide rotation');
+        }
+      } else {
+        if (pauseIcon && playIcon && toggleText) {
+          pauseIcon.style.display = 'block';
+          playIcon.style.display = 'none';
+          toggleText.textContent = 'PAUSE';
+          toggleBtn.setAttribute('aria-label', 'Pause automatic slide rotation');
+          toggleBtn.setAttribute('title', 'Pause slide rotation');
+        }
+        startAutoplay();
+      }
+    });
+
+    // Pause on Hover & Focus
+    carousel.addEventListener('mouseenter', () => {
+      isHoveredOrFocused = true;
+      stopAutoplay();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isHoveredOrFocused = false;
+      startAutoplay();
+    });
+
+    carousel.addEventListener('focusin', () => {
+      isHoveredOrFocused = true;
+      stopAutoplay();
+    });
+
+    carousel.addEventListener('focusout', (e) => {
+      if (!carousel.contains(e.relatedTarget)) {
+        isHoveredOrFocused = false;
+        startAutoplay();
+      }
+    });
+
+    // Keyboard Navigation (Arrow Keys)
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide(true);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextSlide(true);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goToSlide(0, true);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goToSlide(totalSlides - 1, true);
+      }
+    });
+
+    // Touch Swipe Gesture Detection (Preserves vertical scrolling)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleTouchGesture();
+    }, { passive: true });
+
+    function handleTouchGesture() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+
+      // Only trigger if horizontal swipe is significantly greater than vertical movement
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) {
+          // Swiped left -> Next slide
+          nextSlide(true);
+        } else {
+          // Swiped right -> Previous slide
+          prevSlide(true);
+        }
+      }
+    }
+
+    // Initialize Autoplay
+    startAutoplay();
+  }
+
+  // Support both direct initial load and Astro client-side page transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initArmxCarousel);
+  } else {
+    initArmxCarousel();
+  }
+  document.addEventListener('astro:page-load', initArmxCarousel);
+</script>

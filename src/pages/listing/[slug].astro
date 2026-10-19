@@ -19,7 +19,7 @@ const currentUrl = `https://armxchange.in/listing/${product.slug}/`;
 const whatsappUrl = getWhatsAppListingUrl(product.title, currentUrl);
 const relatedProducts = PRODUCTS
   .filter(p => p.id !== product.id && p.category === product.category)
-  .slice(0, 3);
+  .slice(0, 4);
 
 const productSchema = {
   "@context": "https://schema.org",
@@ -82,7 +82,7 @@ const breadcrumbSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
-  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+  <div class="container product-page-container">
     <!-- Minimalist Breadcrumb -->
     <nav aria-label="Breadcrumb" class="product-breadcrumb">
       <a href="/">Home</a> 
@@ -122,6 +122,12 @@ const breadcrumbSchema = {
                 </span>
               )}
             </div>
+
+            {product.images.length > 1 && (
+              <span class="photo-counter-pill" id="photoCounter">
+                1 / {product.images.length}
+              </span>
+            )}
             
             <button id="zoomBtn" class="zoom-action-trigger" title="Inspect full-resolution photograph">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -130,22 +136,25 @@ const breadcrumbSchema = {
                 <line x1="11" y1="8" x2="11" y2="14"></line>
                 <line x1="8" y1="11" x2="14" y2="11"></line>
               </svg>
-              <span>CLICK TO EXPAND HIGH-RES VIEW</span>
+              <span>EXPAND HIGH-RES</span>
             </button>
           </div>
 
           <!-- Multi-Image Thumbnails -->
           {product.images.length > 1 && (
-            <div class="thumbnail-strip">
+            <div class="thumbnail-strip" role="tablist" aria-label="Product image gallery thumbnails">
               {product.images.map((img, idx) => (
                 <button 
                   class={`thumb-btn ${idx === 0 ? 'active' : ''}`}
                   data-img={img}
-                  aria-label={`View photo ${idx + 1}`}
+                  data-index={idx + 1}
+                  aria-label={`View photo ${idx + 1} of ${product.images.length}`}
+                  role="tab"
+                  aria-selected={idx === 0 ? "true" : "false"}
                 >
                   <img 
                     src={img} 
-                    alt={`${product.title} - inspection photograph view ${idx + 1}`} 
+                    alt={`${product.title} - angle ${idx + 1}`} 
                     width="70"
                     height="50"
                     loading="lazy"
@@ -232,31 +241,18 @@ const breadcrumbSchema = {
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-whatsapp-solid"
-              style="padding: 13px 20px; font-size: 0.95rem; width: 100%; justify-content: center;"
+              style="padding: 14px 22px; font-size: 0.95rem; width: 100%; justify-content: center; gap: 10px; font-weight: 700;"
             >
-              <span class="live-pulse-dot" style="background: #FFFFFF; box-shadow: 0 0 0 0 rgba(255,255,255,0.7);"></span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
               </svg>
               <span>Enquire On WhatsApp ({CONTACT_INFO.phoneDisplay})</span>
               <span class="btn-trailing-icon">→</span>
             </a>
-
-            <a 
-              href={`tel:${CONTACT_INFO.phone}`}
-              class="btn btn-secondary"
-              style="padding: 11px 20px; font-size: 0.9rem; width: 100%; justify-content: center;"
-            >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span>Direct Coach Line: Pranatpal Singh</span>
-              <span class="btn-trailing-icon">→</span>
-            </a>
           </div>
 
           <div class="pricing-guarantee">
-            Direct athlete & coach interaction. No payment gateways or unverified checkouts.
+            Direct athlete consultation with founder Pranatpal Singh. No unverified online checkouts.
           </div>
         </div>
 
@@ -307,6 +303,63 @@ const breadcrumbSchema = {
       </div>
     </div>
 
+    <!-- Trust & Authenticity Guarantee Grid (Zero AI Slop) -->
+    <div class="product-trust-strip reveal-on-scroll">
+      <div class="product-trust-item">
+        <div class="trust-icon-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">ISSF 10m Target Standard</div>
+          <div class="trust-desc">.177 Calibre (4.5mm) match precision certified for state & national championships.</div>
+        </div>
+      </div>
+
+      <div class="product-trust-item">
+        <div class="trust-icon-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Cylinder Safety Audit</div>
+          <div class="trust-desc">Factory manufacturing stamp & 10-year hydro-test validity verified on chamber.</div>
+        </div>
+      </div>
+
+      <div class="product-trust-item">
+        <div class="trust-icon-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Indian Arms Rules 2016</div>
+          <div class="trust-desc">Category III(f) compliant (&lt; 20 Joules). No arms licence required under MHA rules.</div>
+        </div>
+      </div>
+
+      <div class="product-trust-item">
+        <div class="trust-icon-pill">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="trust-title">Shooter Consultation</div>
+          <div class="trust-desc">Direct technical vetting with founder Pranatpal Singh before equipment handover.</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Technical Specifications Table -->
     <div class="spec-section-card reveal-on-scroll">
       <div class="spec-section-header">
@@ -327,7 +380,7 @@ const breadcrumbSchema = {
     {relatedProducts.length > 0 && (
       <div class="related-section reveal-on-scroll">
         <div class="related-header">
-          <h2 style="font-size: 1.4rem; color: var(--color-ink);">Related {product.categoryLabel}</h2>
+          <h2 style="font-size: 1.35rem; color: var(--color-ink); font-weight: 800;">Related {product.categoryLabel}</h2>
           <a href={`/${product.category}/`} class="related-view-all">
             <span>View All</span>
             <span class="btn-trailing-icon">→</span>
@@ -341,6 +394,31 @@ const breadcrumbSchema = {
       </div>
     )}
   </div>
+
+  <!-- Mobile Sticky Bottom WhatsApp Consultation Bar -->
+  <aside class="mobile-sticky-action-bar" aria-label="Mobile Quick Action">
+    <div class="mobile-sticky-inner">
+      <div class="mobile-sticky-pricing">
+        <span class="mobile-sticky-label">{product.isPreOwned ? 'Verified Valuation' : 'Official Pricing'}</span>
+        <div class="mobile-sticky-price">
+          {product.priceDisplay.toLowerCase().includes('enquire') ? 'Price on Request' : product.priceDisplay}
+        </div>
+      </div>
+      <a 
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-sticky-whatsapp-btn"
+        aria-label={`Enquire on WhatsApp about ${product.title}`}
+      >
+        <span class="live-pulse-dot" style="margin-right: 4px;"></span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+        </svg>
+        <span>Enquire on WhatsApp</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- High-Res Zoom Modal -->
   <div id="zoomModal" class="zoom-modal" role="dialog" aria-modal="true">
@@ -364,6 +442,11 @@ const breadcrumbSchema = {
 </Layout>
 
 <style>
+  .product-page-container {
+    padding-top: 28px;
+    padding-bottom: 88px;
+  }
+
   .product-breadcrumb {
     font-size: 0.82rem;
     color: var(--color-text-muted);
@@ -400,7 +483,7 @@ const breadcrumbSchema = {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 40px;
-    margin-bottom: 64px;
+    margin-bottom: 48px;
     align-items: start;
   }
 
@@ -410,12 +493,13 @@ const breadcrumbSchema = {
     border-radius: var(--radius-card);
     padding: 16px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
   }
 
   .main-image-viewport {
     width: 100%;
-    min-height: 520px;
-    max-height: 640px;
+    min-height: 480px;
+    max-height: 600px;
     border-radius: var(--radius-md);
     background: #FFFFFF;
     border: 1px solid var(--color-border-subtle);
@@ -446,6 +530,23 @@ const breadcrumbSchema = {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    z-index: 2;
+  }
+
+  .photo-counter-pill {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(11, 15, 23, 0.75);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 0.70rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+    z-index: 2;
+    letter-spacing: 0.04em;
   }
 
   .zoom-action-trigger {
@@ -466,6 +567,7 @@ const breadcrumbSchema = {
     align-items: center;
     gap: 6px;
     transition: all var(--transition-fast);
+    z-index: 2;
   }
 
   .zoom-action-trigger:hover {
@@ -491,6 +593,7 @@ const breadcrumbSchema = {
     padding: 4px;
     transition: transform var(--transition-spring), border-color 0.2s ease, box-shadow var(--transition-smooth);
     will-change: transform;
+    flex-shrink: 0;
   }
 
   .thumb-btn img {
@@ -506,39 +609,27 @@ const breadcrumbSchema = {
     box-shadow: var(--shadow-sm);
   }
 
-  .thumb-btn:hover img {
-    transform: scale(1.04);
-  }
-
-  .thumb-btn:active {
-    transform: scale(0.95) !important;
-  }
-
   .thumb-btn.active {
-    border-color: var(--color-signal-red);
-    box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.2);
+    border-color: var(--color-ink);
+    box-shadow: 0 0 0 1px var(--color-ink);
   }
 
   .compliance-box {
     background: var(--color-canvas-subtle);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
-    padding: 20px;
+    padding: 18px 20px;
     display: flex;
-    gap: 14px;
+    gap: 16px;
     align-items: flex-start;
   }
 
   .compliance-icon-wrap {
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-sm);
-    background: #FFFFFF;
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-ink);
+    color: var(--color-signal-red);
+    background: var(--color-signal-red-bg);
+    border: 1px solid var(--color-signal-red-border);
+    border-radius: 6px;
+    padding: 6px;
     flex-shrink: 0;
   }
 
@@ -551,11 +642,11 @@ const breadcrumbSchema = {
 
   .compliance-text {
     font-size: 0.82rem;
-    color: var(--color-text-muted);
+    color: var(--color-text-body);
     line-height: 1.55;
+    margin: 0;
   }
 
-  /* Right Column Details */
   .product-intel-col {
     display: flex;
     flex-direction: column;
@@ -566,16 +657,13 @@ const breadcrumbSchema = {
     align-items: center;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 0.76rem;
-    color: var(--color-text-muted);
+    font-size: 0.74rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
     margin-bottom: 8px;
-  }
-
-  .product-meta-brand {
-    font-weight: 700;
-    color: var(--color-ink);
+    flex-wrap: wrap;
   }
 
   .meta-dot {
@@ -583,210 +671,261 @@ const breadcrumbSchema = {
   }
 
   .product-main-heading {
-    font-size: clamp(1.8rem, 3.2vw, 2.3rem);
-    margin-bottom: 14px;
-    line-height: 1.2;
-    color: var(--color-ink);
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
     font-weight: 800;
+    color: var(--color-ink);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
   }
 
   .product-lead-text {
-    font-size: 0.96rem;
-    line-height: 1.65;
+    font-size: 0.98rem;
     color: var(--color-text-body);
+    line-height: 1.65;
     margin-bottom: 24px;
   }
 
-  /* Pricing Box */
   .pricing-card {
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     padding: 24px;
-    margin-bottom: 24px;
     box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
   }
 
   .pricing-header-row {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
     margin-bottom: 14px;
   }
 
   .price-kicker {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: var(--color-text-muted);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-weight: 600;
+    color: var(--color-text-muted);
     display: block;
     margin-bottom: 4px;
   }
 
   .price-num {
     font-family: var(--font-sans);
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     font-weight: 800;
     color: var(--color-ink);
-    letter-spacing: -0.03em;
     line-height: 1.1;
   }
 
   .pricing-tax-note {
-    font-size: 0.8rem;
-    color: var(--color-text-body);
-    background: var(--color-canvas-subtle);
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    margin-bottom: 20px;
-    border: 1px solid var(--color-border);
-    line-height: 1.5;
     display: flex;
-    gap: 8px;
     align-items: flex-start;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    background: var(--color-canvas-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    line-height: 1.4;
   }
 
   .pricing-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .pricing-guarantee {
-    text-align: center;
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
     font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: 1.4;
   }
 
-  /* Checklist Card */
   .dossier-checklist-card {
-    background: #FFFFFF;
+    background: var(--color-canvas-subtle);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
   }
 
   .dossier-checklist-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     margin-bottom: 14px;
     padding-bottom: 10px;
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   }
 
   .dossier-checklist-title {
+    font-family: var(--font-sans);
     font-size: 0.88rem;
     font-weight: 700;
     color: var(--color-ink);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-family: var(--font-sans);
   }
 
   .dossier-checklist {
     list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 0.88rem;
-    color: var(--color-text-body);
   }
 
   .dossier-checklist li {
     display: flex;
-    gap: 10px;
     align-items: flex-start;
+    gap: 10px;
+    font-size: 0.86rem;
+    color: var(--color-text-body);
     line-height: 1.5;
   }
 
   .dossier-checklist svg {
-    color: var(--color-signal-green);
+    color: #0D9488;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 3px;
   }
 
   .package-list svg {
-    color: var(--color-text-muted);
+    color: var(--color-ink);
   }
 
-  /* Technical Specs Table */
+  /* 4-Pillar Trust Verification Grid */
+  .product-trust-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 22px 24px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .product-trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .trust-icon-pill {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--color-canvas-subtle);
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .trust-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 3px;
+    line-height: 1.25;
+  }
+
+  .trust-desc {
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  /* Technical Specifications Section */
   .spec-section-card {
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
-    padding: 32px;
-    margin-bottom: 64px;
+    padding: 28px;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow-sm);
   }
 
   .spec-section-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    gap: 16px;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 16px;
   }
 
   .spec-section-title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.35rem;
+    font-weight: 800;
     color: var(--color-ink);
     margin: 0;
   }
 
   .spec-metric-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
   }
 
   .spec-metric-tile {
     background: var(--color-canvas-subtle);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    padding: 14px 18px;
+    padding: 14px 16px;
   }
 
   .spec-metric-key {
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    color: var(--color-text-muted);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    color: var(--color-text-muted);
     margin-bottom: 4px;
   }
 
   .spec-metric-val {
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
     font-weight: 700;
-    font-size: 0.95rem;
     color: var(--color-ink);
+    line-height: 1.35;
   }
 
-  /* Related Products */
+  /* Related Products Section */
   .related-section {
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
   .related-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .related-view-all {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-ink);
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
   }
 
   .related-view-all:hover {
@@ -794,61 +933,34 @@ const breadcrumbSchema = {
   }
 
   /* Zoom Modal */
-  @keyframes modalBackdropIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes modalContentIn {
-    from {
-      opacity: 0;
-      transform: scale(0.94) translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-  }
-
   .zoom-modal {
+    display: none;
     position: fixed;
     inset: 0;
-    z-index: 999;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
+    z-index: 9999;
   }
 
   .zoom-modal.is-open {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .zoom-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(11, 15, 23, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-
-  .zoom-modal.is-open .zoom-modal-backdrop {
-    animation: modalBackdropIn 0.25s ease-out forwards;
+    background: rgba(11, 15, 23, 0.88);
+    backdrop-filter: blur(8px);
   }
 
   .zoom-modal-content {
     position: relative;
-    z-index: 1000;
-    max-width: 92vw;
-    max-height: 92vh;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1000px;
-  }
-
-  .zoom-modal.is-open .zoom-modal-content {
-    animation: modalContentIn 0.35s var(--ease-out-expo) forwards;
   }
 
   .zoom-modal-bar {
@@ -900,115 +1012,184 @@ const breadcrumbSchema = {
     object-fit: contain;
   }
 
-  @media (max-width: 900px) {
-    .product-stage-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
+  /* Mobile Sticky Bottom WhatsApp Bar */
+  .mobile-sticky-action-bar {
+    display: none;
   }
 
-  @media (max-width: 768px) {
-    .product-stage-grid {
-      gap: 24px;
-      margin-bottom: 40px;
+  @media (max-width: 868px) {
+    .compliance-box {
+      display: none;
     }
+
+    .product-page-container {
+      padding-top: 18px;
+      padding-bottom: 96px; /* Clearance so content is never covered by bottom bar */
+    }
+
+    .product-stage-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
     .gallery-frame {
       padding: 12px;
       margin-bottom: 16px;
     }
+
     .main-image-viewport {
-      min-height: 260px;
-      max-height: 380px;
+      min-height: 240px;
+      max-height: 330px;
       padding: 16px;
     }
-    .zoom-action-trigger {
-      font-size: 0.65rem;
-      padding: 5px 8px;
-      bottom: 10px;
-      right: 10px;
+
+    .thumbnail-strip {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      gap: 8px;
     }
-    .zoom-action-trigger span {
-      display: none;
+
+    .thumb-btn {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
     }
-    .zoom-action-trigger::after {
-      content: 'ZOOM';
-      font-size: 0.68rem;
-    }
-    .compliance-box {
-      padding: 14px;
-      gap: 12px;
-    }
-    .compliance-title {
-      font-size: 0.85rem;
-      word-break: break-word;
-    }
-    .compliance-text {
-      font-size: 0.8rem;
-      word-break: break-word;
-    }
+
     .product-main-heading {
-      font-size: clamp(1.4rem, 6vw, 1.85rem);
-      word-break: break-word;
-      overflow-wrap: break-word;
+      font-size: clamp(1.4rem, 5.6vw, 1.85rem);
+      margin-bottom: 10px;
     }
+
     .product-lead-text {
-      font-size: 0.9rem;
-      word-break: break-word;
-      overflow-wrap: break-word;
-      margin-bottom: 20px;
+      font-size: 0.90rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
     }
+
     .pricing-card {
-      padding: 20px 16px;
-    }
-    .price-num {
-      font-size: 1.85rem;
-      word-break: break-word;
-    }
-    .pricing-actions .btn {
-      white-space: normal;
-      text-align: center;
-      padding: 12px 14px !important;
-      font-size: 0.88rem !important;
-      width: 100%;
-    }
-    .dossier-checklist-card {
       padding: 18px 16px;
     }
-    .dossier-checklist {
-      font-size: 0.84rem;
+
+    .price-num {
+      font-size: 1.8rem;
     }
-    .dossier-checklist li {
-      word-break: break-word;
+
+    .pricing-actions .btn {
+      padding: 12px 14px !important;
+      font-size: 0.88rem !important;
     }
+
+    .product-trust-strip {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 16px;
+      margin-bottom: 32px;
+    }
+
     .spec-section-card {
-      padding: 20px 16px;
-      margin-bottom: 40px;
+      padding: 18px 16px;
+      margin-bottom: 32px;
     }
-    .spec-section-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-    }
-    .spec-section-title {
-      font-size: 1.2rem;
-    }
+
     .spec-metric-grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
+
     .spec-metric-tile {
-      padding: 12px 14px;
+      padding: 10px 12px;
     }
+
+    .spec-metric-key {
+      font-size: 0.66rem;
+    }
+
     .spec-metric-val {
-      font-size: 0.88rem;
-      word-break: break-word;
-      overflow-wrap: break-word;
+      font-size: 0.82rem;
     }
-    .zoom-modal-content {
-      max-width: 95vw;
-      width: 100%;
+
+    /* Mobile Sticky Bar Display */
+    .mobile-sticky-action-bar {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(226, 232, 240, 0.95);
+      box-shadow: 0 -4px 22px rgba(11, 15, 23, 0.10);
+      padding: 10px 16px;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+
+    .mobile-sticky-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .mobile-sticky-pricing {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .mobile-sticky-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      line-height: 1.1;
+    }
+
+    .mobile-sticky-price {
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-ink);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-sticky-whatsapp-btn {
+      background: var(--color-whatsapp, #075E54);
+      color: #FFFFFF !important;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm, 6px);
+      border: 1px solid var(--color-whatsapp, #075E54);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(7, 94, 84, 0.35);
+      transition: transform 0.16s ease, background-color 0.2s ease;
+    }
+
+    .mobile-sticky-whatsapp-btn:active {
+      transform: scale(0.97);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-trust-strip {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -1016,17 +1197,24 @@ const breadcrumbSchema = {
 <script>
   const mainImg = document.getElementById('mainImage') as HTMLImageElement;
   const thumbs = document.querySelectorAll('.thumb-btn');
+  const photoCounter = document.getElementById('photoCounter');
   const zoomBtn = document.getElementById('zoomBtn');
   const zoomModal = document.getElementById('zoomModal');
   const modalBackdrop = document.getElementById('modalBackdrop');
   const closeZoomBtn = document.getElementById('closeZoomBtn');
   const zoomModalImg = document.getElementById('zoomModalImg') as HTMLImageElement;
 
-  thumbs.forEach(btn => {
+  thumbs.forEach((btn, idx) => {
     btn.addEventListener('click', () => {
       thumbs.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const newSrc = (btn as HTMLElement).dataset.img;
+      const indexNum = (btn as HTMLElement).dataset.index || (idx + 1).toString();
+      
+      if (photoCounter) {
+        photoCounter.textContent = `${indexNum} / ${thumbs.length}`;
+      }
+
       if (newSrc && mainImg && mainImg.getAttribute('src') !== newSrc) {
         mainImg.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
         mainImg.style.opacity = '0.35';
@@ -1058,7 +1246,6 @@ const breadcrumbSchema = {
   closeZoomBtn?.addEventListener('click', closeZoom);
   modalBackdrop?.addEventListener('click', closeZoom);
 
-  // Esc key closes modal
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && zoomModal?.classList.contains('is-open')) {
       closeZoom();

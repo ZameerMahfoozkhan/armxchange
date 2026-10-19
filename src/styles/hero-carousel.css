@@ -1,0 +1,762 @@
+/* ==========================================================================
+   ArmXchange Premium Hero Carousel Styles
+   Visual Identity: Engineered Gallery Theme
+   Matches Website Palette: Deep Obsidian (#0B0F17), Crisp White (#FFFFFF),
+   Precision Silver (#94A3B8, #CBD5E1), Signal Red (#D9263E) accents.
+   ========================================================================== */
+
+:root {
+  --hero-bg: #0B0F17;
+  --hero-text-primary: #FFFFFF;
+  --hero-text-muted: #94A3B8;
+  --hero-text-subtle: #CBD5E1;
+  --hero-accent-red: #D9263E;
+
+  /* Button Tokens matching Website Theme */
+  --hero-btn-primary-bg: #FFFFFF;
+  --hero-btn-primary-color: #0B0F17;
+  --hero-btn-primary-hover: #F1F5F9;
+
+  --hero-btn-glass-bg: rgba(255, 255, 255, 0.08);
+  --hero-btn-glass-border: rgba(255, 255, 255, 0.22);
+  --hero-btn-glass-hover: rgba(255, 255, 255, 0.16);
+
+  /* Category Cards Tokens matching Website Theme */
+  --hero-card-bg: #FFFFFF;
+  --hero-card-border: #E2E8F0;
+  --hero-card-hover-border: #0B0F17;
+  --hero-card-title: #0B0F17;
+  --hero-card-desc: #64748B;
+}
+
+/* Screen Reader Accessible Utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+/* Master Hero Section Wrapper */
+.armx-hero-section {
+  position: relative;
+  background-color: var(--hero-bg);
+  color: #FFFFFF;
+  width: 100%;
+  overflow: visible; /* Allows upward shifted category cards to float cleanly */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Main Viewport Container */
+.armx-carousel-viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(500px, 62vh, 580px);
+  min-height: 480px;
+  max-height: 620px;
+  overflow: hidden;
+  background: #080C12;
+}
+
+/* Individual Slides */
+.armx-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.armx-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+  transform: scale(1.02);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.armx-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+  transform: scale(1);
+}
+
+/* Slide Background Image & Art Direction */
+.armx-slide-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.armx-slide-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.armx-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  display: block;
+  transform: scale(1);
+  transition: transform 8s ease-out;
+}
+
+.armx-slide.is-active .armx-slide-img {
+  transform: scale(1.03);
+}
+
+/* Cinematic Dark Overlays: Ensures Flawless Text Contrast */
+.armx-slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: 
+    linear-gradient(90deg, 
+      rgba(11, 15, 23, 0.96) 0%, 
+      rgba(11, 15, 23, 0.88) 38%, 
+      rgba(11, 15, 23, 0.55) 64%, 
+      rgba(11, 15, 23, 0.18) 85%, 
+      transparent 100%
+    ),
+    linear-gradient(180deg, 
+      rgba(11, 15, 23, 0.45) 0%, 
+      transparent 20%, 
+      transparent 72%, 
+      rgba(11, 15, 23, 0.90) 100%
+    );
+}
+
+/* Slide Content Container */
+.armx-slide-content-wrap {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.armx-slide-content {
+  max-width: 580px;
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 74px; /* Generous clearance from shifted indicators */
+}
+
+/* Eyebrow Label with Target / Crosshair Motif */
+.armx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #CBD5E1;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.armx-target-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--color-signal-red, #D9263E); /* Matches website red highlight */
+}
+
+.armx-eyebrow-divider {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Slide Headlines */
+.armx-headline {
+  font-size: clamp(2.3rem, 4.3vw, 3.6rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+/* Website Theme Headline Lead Contrast */
+.armx-gold-text {
+  color: #94A3B8;
+  font-weight: 500;
+  display: inline;
+}
+
+/* Slide Description */
+.armx-description {
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  color: #CBD5E1;
+  line-height: 1.65;
+  margin-bottom: 26px;
+  max-width: 520px;
+  text-wrap: pretty;
+}
+
+/* Slide Actions / CTA Group */
+.armx-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+/* Primary White Button (Matches Website Hero Primary CTA) */
+.armx-btn-gold {
+  background: #FFFFFF;
+  color: #0B0F17 !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.24s ease,
+              background-color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.armx-btn-gold:hover {
+  background: #F1F5F9;
+  border-color: #F1F5F9;
+  color: #0B0F17 !important;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.armx-btn-gold .armx-btn-arrow {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(11, 15, 23, 0.08);
+  color: #0B0F17;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.armx-btn-gold:hover .armx-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Secondary Glass Button */
+.armx-btn-glass {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.armx-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+.armx-btn-glass .armx-btn-arrow {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.armx-btn-glass:hover .armx-btn-arrow {
+  transform: translateX(2px);
+}
+
+/* Feature Indicators (Slide 1) */
+.armx-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 0;
+  margin: 6px 0 16px 0;
+  list-style: none;
+}
+
+.armx-feature-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.02em;
+}
+
+.armx-feature-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-signal-red, #D9263E);
+  box-shadow: 0 0 6px rgba(217, 38, 62, 0.6);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Navigation Controls: Previous/Next Circular Buttons
+   ========================================================================== */
+
+.armx-nav-arrow {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(11, 15, 23, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.armx-nav-arrow:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #0B0F17;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.armx-nav-arrow:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+.armx-nav-prev {
+  left: 24px;
+}
+
+.armx-nav-next {
+  right: 24px;
+}
+
+/* ==========================================================================
+   Slide Indicators (Pagination Bar at Bottom of Hero)
+   Positioned above the upward-shifted category cards
+   ========================================================================== */
+
+.armx-indicators-wrap {
+  position: absolute;
+  bottom: 84px; /* Cleanly positioned above the shifted category shelf */
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.armx-indicators-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.armx-indicator-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.armx-indicator-bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.armx-indicator-btn:hover .armx-indicator-bar {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.armx-indicator-btn.is-active .armx-indicator-bar {
+  width: 48px;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.armx-indicator-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Autoplay Pause / Play Toggle (Accessibility) */
+.armx-autoplay-toggle {
+  background: rgba(11, 15, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+  color: #CBD5E1;
+  padding: 3px 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 12px;
+}
+
+.armx-autoplay-toggle:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Category Cards: Shifted Upward & Styled in Website Color Theme
+   Matches Website: Clean White (#FFFFFF) Cards, Subtle Border (#E2E8F0),
+   Dark Ink Text (#0B0F17), Light Image Box (#F8FAFC), Tactile Elevation
+   ========================================================================== */
+
+.armx-hero-categories {
+  position: relative;
+  z-index: 20;
+  margin-top: -56px; /* Shifted upward to bridge the hero and white page content */
+  padding: 0 0 32px 0;
+  background: transparent;
+  border: none;
+}
+
+.armx-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.armx-cat-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border, #E2E8F0);
+  border-radius: var(--radius-card, 10px);
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px -2px rgba(11, 15, 23, 0.09), 0 2px 6px rgba(11, 15, 23, 0.04);
+  transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.2s ease,
+              box-shadow 0.24s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.armx-cat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-ink, #0B0F17);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.armx-cat-card:hover {
+  background: #FFFFFF;
+  border-color: var(--color-ink, #0B0F17);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px -4px rgba(11, 15, 23, 0.15), 0 4px 10px rgba(11, 15, 23, 0.05);
+}
+
+.armx-cat-card:hover::before {
+  opacity: 1;
+}
+
+.armx-cat-card:focus-visible {
+  outline: 2px solid var(--color-ink, #0B0F17);
+  outline-offset: 2px;
+}
+
+.armx-cat-thumb-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  background: var(--color-canvas-subtle, #F8FAFC);
+  border: 1px solid var(--color-border, #E2E8F0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.armx-cat-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.armx-cat-card:hover .armx-cat-thumb {
+  transform: scale(1.08);
+}
+
+.armx-cat-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.armx-cat-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.armx-cat-title {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-ink, #0B0F17);
+  margin: 0;
+  line-height: 1.25;
+  transition: color 0.2s ease;
+}
+
+.armx-cat-arrow {
+  color: var(--color-text-muted, #64748B);
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.armx-cat-card:hover .armx-cat-arrow {
+  transform: translateX(3px);
+  color: var(--color-ink, #0B0F17);
+}
+
+.armx-cat-desc {
+  font-size: 0.76rem;
+  color: var(--color-text-muted, #64748B);
+  line-height: 1.4;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+/* Large Tablets & Medium Desktops (1024px and below) */
+@media (max-width: 1024px) {
+  .armx-carousel-viewport {
+    height: 560px;
+  }
+  .armx-hero-categories {
+    margin-top: -48px;
+  }
+  .armx-indicators-wrap {
+    bottom: 70px;
+  }
+  .armx-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .armx-headline {
+    font-size: clamp(2rem, 3.8vw, 3rem);
+  }
+  .armx-nav-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  .armx-nav-prev {
+    left: 14px;
+  }
+  .armx-nav-next {
+    right: 14px;
+  }
+}
+
+/* Mobile & Small Tablets (768px and below) */
+@media (max-width: 768px) {
+  .armx-carousel-viewport {
+    height: 580px;
+    min-height: 540px;
+  }
+
+  .armx-slide-overlay {
+    background: 
+      linear-gradient(180deg, 
+        rgba(11, 15, 23, 0.90) 0%, 
+        rgba(11, 15, 23, 0.72) 45%, 
+        rgba(11, 15, 23, 0.94) 85%, 
+        #0B0F17 100%
+      );
+  }
+
+  .armx-slide-img {
+    object-position: 70% center;
+  }
+
+  .armx-slide-content {
+    max-width: 100%;
+    padding: 24px 16px 50px 16px;
+  }
+
+  .armx-headline {
+    font-size: clamp(1.85rem, 6.8vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  .armx-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .armx-actions-group {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .armx-btn-gold,
+  .armx-btn-glass {
+    padding: 10px 18px;
+    font-size: 0.86rem;
+  }
+
+  .armx-features-list {
+    gap: 10px;
+  }
+
+  .armx-feature-item {
+    font-size: 0.72rem;
+  }
+
+  .armx-nav-arrow {
+    display: none;
+  }
+
+  .armx-indicators-wrap {
+    bottom: 46px;
+  }
+
+  .armx-hero-categories {
+    margin-top: -30px;
+    padding: 0 0 20px 0;
+  }
+
+  .armx-cat-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Very Small Mobile Screens (360px and below) */
+@media (max-width: 375px) {
+  .armx-carousel-viewport {
+    height: 600px;
+  }
+  .armx-headline {
+    font-size: 1.7rem;
+  }
+  .armx-actions-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .armx-btn-gold,
+  .armx-btn-glass {
+    justify-content: center;
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .armx-slide {
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
+  }
+  .armx-slide.is-active .armx-slide-img {
+    transform: none !important;
+  }
+  .armx-indicator-bar {
+    transition: none !important;
+  }
+  .armx-cat-card,
+  .armx-btn-gold,
+  .armx-btn-glass {
+    transition: none !important;
+    transform: none !important;
+  }
+}

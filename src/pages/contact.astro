@@ -20,7 +20,7 @@ import { CONTACT_INFO } from '../data/products';
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
         <span class="tech-badge">DIRECT ATHLETE COMMUNICATION</span>
         <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
-          COACH CONCIERGE LINE
+          ATHLETE CONCIERGE LINE
         </span>
       </div>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 18px; color: var(--color-ink); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;">
@@ -48,10 +48,10 @@ import { CONTACT_INFO } from '../data/products';
             </div>
           </div>
           <p style="font-size: 0.92rem; color: var(--color-text-body); margin-bottom: 20px; line-height: 1.6;">
-            Direct discussion with founder and coach Pranatpal Singh. Share your current equipment setup, discuss grip sizes, or request test group sheets.
+            Direct discussion with founder and national shooter Pranatpal Singh (who has also been coaching for the past year). Share your current equipment setup, discuss grip sizes, or request test group sheets.
           </p>
           <a 
-            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Coach Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
+            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-whatsapp-solid"
@@ -77,7 +77,7 @@ import { CONTACT_INFO } from '../data/products';
             </div>
           </div>
           <p style="font-size: 0.92rem; color: var(--color-text-body); margin-bottom: 20px; line-height: 1.6;">
-            Speak directly with our coaching team for technical comparisons, academy carton orders, and consignment evaluations.
+            Speak directly with our team for technical comparisons, academy carton orders, and consignment evaluations.
           </p>
           <a 
             href={`tel:${CONTACT_INFO.phone}`}
@@ -108,7 +108,7 @@ import { CONTACT_INFO } from '../data/products';
             Equipment Consultation Request
           </h2>
           <p style="font-size: 0.86rem; color: var(--color-text-muted); margin-bottom: 24px; line-height: 1.6;">
-            Select your discipline requirements below to generate an exact inquiry message to Coach Pranatpal Singh on WhatsApp.
+            Select your discipline requirements below to generate an exact inquiry message to Pranatpal Singh on WhatsApp.
           </p>
 
           <form id="consultForm" style="display: flex; flex-direction: column; gap: 18px;">
@@ -217,7 +217,7 @@ import { CONTACT_INFO } from '../data/products';
     const level = (document.getElementById('shooterLevel') as HTMLSelectElement).value;
     const msg = (document.getElementById('consultMessage') as HTMLTextAreaElement).value;
 
-    const fullText = `Hi Coach Pranatpal, my name is ${name} (${level}). I am enquiring on ArmXchange regarding: ${item}.\nDetails: ${msg || 'Please share availability and next steps.'}`;
+    const fullText = `Hi Pranatpal, my name is ${name} (${level}). I am enquiring on ArmXchange regarding: ${item}.\nDetails: ${msg || 'Please share availability and next steps.'}`;
     const url = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(fullText)}`;
     window.open(url, '_blank');
   });

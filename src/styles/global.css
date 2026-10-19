@@ -1070,7 +1070,30 @@ footer {
 
 @media (max-width: 768px) {
   .discipline-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .discipline-card {
+    padding: 10px !important;
+    border-radius: 10px !important;
+  }
+  .discipline-card .img-box {
+    margin-bottom: 8px !important;
+    padding: 8px !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+  .discipline-title {
+    font-size: 0.88rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.25 !important;
+  }
+  .discipline-desc {
+    display: none !important;
+  }
+  .discipline-link {
+    font-size: 0.74rem !important;
+    margin-top: 4px !important;
+    color: var(--color-signal-red) !important;
   }
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1124,10 +1147,60 @@ footer {
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 640px) {
   .product-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .product-card {
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .product-image-box {
+    height: 120px;
+    padding: 6px;
+    border-radius: 8px;
+  }
+  .product-content {
+    padding: 8px 0 0 0;
+  }
+  .product-brand {
+    font-size: 0.62rem;
+    margin-bottom: 2px;
+  }
+  .product-title {
+    font-size: 0.82rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+    min-height: 2.1em;
+  }
+  .product-desc {
+    display: none; /* Hide long paragraph on 2-col mobile for crisp, uniform catalog cards */
+  }
+  .product-card .tech-badge {
+    font-size: 0.60rem;
+    padding: 2px 4px;
+    gap: 3px;
+  }
+  .product-footer {
+    padding-top: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .product-footer > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-size: 0.88rem;
+  }
+  .product-footer .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 8px !important;
+    font-size: 0.74rem !important;
   }
   .site-header-inner {
     height: 58px;
