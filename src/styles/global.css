@@ -609,8 +609,7 @@ section {
   padding-top: 12px;
   border-top: 1px solid var(--color-border-subtle);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -618,6 +617,7 @@ section {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: 100%;
 }
 
 .price-retail-label,
@@ -633,7 +633,7 @@ section {
 
 .product-price {
   font-family: var(--font-display, var(--font-sans));
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.025em;
   color: var(--color-ink);
@@ -641,10 +641,10 @@ section {
 }
 
 .product-tax-note {
-  font-size: 0.64rem;
+  font-size: 0.65rem;
   color: var(--color-text-light);
   line-height: 1.2;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .product-price-enquiry {
@@ -657,10 +657,10 @@ section {
 }
 
 .product-card-actions {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
 }
 
 .card-btn-details {
@@ -671,14 +671,17 @@ section {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.01em;
-  padding: 7px 12px;
+  padding: 8px 10px;
   border-radius: 7px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   text-decoration: none;
   box-shadow: 0 1px 2px rgba(11, 15, 23, 0.04);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card-btn-details:hover {
@@ -710,7 +713,7 @@ section {
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.01em;
-  padding: 7px 13px;
+  padding: 8px 10px;
   border-radius: 7px;
   display: inline-flex;
   align-items: center;
@@ -719,6 +722,8 @@ section {
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(5, 150, 105, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .card-btn-enquire:hover {

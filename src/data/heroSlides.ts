@@ -140,19 +140,11 @@ export const HERO_SLIDES: HeroSlide[] = [
 
 export const HERO_CATEGORY_CARDS: HeroCategoryCard[] = [
   {
-    id: "pre-owned-rifles",
-    title: "Pre-Owned Air Rifles",
+    id: "pre-owned-weapons",
+    title: "Pre-Owned Weapons",
     subtitle: "Detailed condition & cylinder validity",
     href: "/second-hand-weapons/",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
-    badge: "Pre-Owned"
-  },
-  {
-    id: "pre-owned-pistols",
-    title: "Pre-Owned Air Pistols",
-    subtitle: "Electronic & mechanical 10m match pistols",
-    href: "/second-hand-weapons/",
-    image: "/images/products/pistols/morini-cm200ei-ticino-electronic-air-pistol.webp",
     badge: "Pre-Owned"
   },
   {
@@ -164,11 +156,20 @@ export const HERO_CATEGORY_CARDS: HeroCategoryCard[] = [
     badge: "Brand New"
   },
   {
-    id: "accessories-pellets",
-    title: "Accessories & Pellets",
-    subtitle: "RWS R10 match pellets, MEC sights & footwear",
+    id: "shooting-accessories",
+    title: "Shooting Accessories",
+    subtitle: "MEC precision sights, Sauer shoes & gear",
     href: "/accessories/",
+    image: "/images/products/accessories/sauer-rifle-shoes-perfect-top.webp",
+    badge: "Accessories"
+  },
+  {
+    id: "pellets",
+    title: "Match Pellets",
+    subtitle: "RWS R10, Qiang Yuan 4.49 & 4.50mm",
+    href: "/pellets/",
     image: "/images/products/pellets/rws-r10-match-rifle-pellets-449mm.webp",
-    badge: "Match Gear"
+    badge: "Match Grade"
   }
 ];
+
