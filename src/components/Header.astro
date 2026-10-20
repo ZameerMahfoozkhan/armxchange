@@ -28,31 +28,214 @@ const isActive = (path: string) => {
       <!-- Desktop & Laptop Navigation Menu -->
       <nav class="site-nav" aria-label="Main Navigation">
         <ul class="site-nav-links">
-          <li>
+          <!-- 1. Pre-Owned Dropdown -->
+          <li class="nav-item-dropdown">
             <a 
               href="/second-hand-weapons/" 
               class={`site-nav-link nav-link-preowned ${isActive('/second-hand-weapons') ? 'active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded="false"
             >
               <span class="nav-pulse-dot" aria-hidden="true"></span>
               <span>Pre-Owned</span>
-              <span class="nav-verified-badge">Verified</span>
+              <span class="nav-verified-badge">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Verified</span>
+              </span>
+              <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
             </a>
+
+            <div class="nav-dropdown-menu" role="menu">
+              <div class="dropdown-header-tag">VERIFIED PRE-OWNED HARDWARE</div>
+              <div class="dropdown-links-list">
+                <a href="/second-hand-weapons/?category=air-rifles" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="3" y1="12" x2="21" y2="12"></line>
+                      <line x1="16" y1="8" x2="21" y2="12"></line>
+                      <line x1="16" y1="16" x2="21" y2="12"></line>
+                      <circle cx="9" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">10m Air Rifles</span>
+                      <span class="dropdown-item-pill">Inspected</span>
+                    </div>
+                    <p class="dropdown-item-desc">Certified match air rifles with valid cylinder checks</p>
+                  </div>
+                </a>
+
+                <a href="/second-hand-weapons/?category=air-pistols" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="8" width="14" height="5" rx="1"></rect>
+                      <path d="M12 13v6a2 2 0 0 1-2 2H8"></path>
+                      <circle cx="16" cy="10" r="1"></circle>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">10m Air Pistols</span>
+                      <span class="dropdown-item-pill">Concierge</span>
+                    </div>
+                    <p class="dropdown-item-desc">Olympic precision match pistols & athlete requests</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="dropdown-footer">
+                <a href="/second-hand-weapons/" class="dropdown-footer-link">
+                  <span>Browse All Pre-Owned Weapons</span>
+                  <span class="dropdown-footer-arrow">→</span>
+                </a>
+              </div>
+            </div>
           </li>
-          <li>
+
+          <!-- 2. New Weapons Dropdown -->
+          <li class="nav-item-dropdown">
             <a 
               href="/new-weapons/" 
               class={`site-nav-link ${isActive('/new-weapons') ? 'active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              New Weapons
+              <span>New Weapons</span>
+              <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
             </a>
+
+            <div class="nav-dropdown-menu" role="menu">
+              <div class="dropdown-header-tag">FACTORY-DIRECT IMPORTS</div>
+              <div class="dropdown-links-list">
+                <a href="/new-weapons/?category=air-rifles" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="3" y1="12" x2="21" y2="12"></line>
+                      <line x1="16" y1="8" x2="21" y2="12"></line>
+                      <line x1="16" y1="16" x2="21" y2="12"></line>
+                      <circle cx="9" cy="12" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">10m Match Air Rifles</span>
+                      <span class="dropdown-item-pill new">New</span>
+                    </div>
+                    <p class="dropdown-item-desc">Walther LG500, Feinwerkbau 900 & Steyr Challenge</p>
+                  </div>
+                </a>
+
+                <a href="/new-weapons/?category=air-pistols" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="8" width="14" height="5" rx="1"></rect>
+                      <path d="M12 13v6a2 2 0 0 1-2 2H8"></path>
+                      <circle cx="16" cy="10" r="1"></circle>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">10m Match Air Pistols</span>
+                      <span class="dropdown-item-pill new">New</span>
+                    </div>
+                    <p class="dropdown-item-desc">Morini CM200EI / 162 & Steyr Evo 10 E</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="dropdown-footer">
+                <a href="/new-weapons/" class="dropdown-footer-link">
+                  <span>Explore All New Match Weapons</span>
+                  <span class="dropdown-footer-arrow">→</span>
+                </a>
+              </div>
+            </div>
           </li>
-          <li>
+
+          <!-- 3. Accessories Dropdown -->
+          <li class="nav-item-dropdown">
             <a 
               href="/accessories/" 
               class={`site-nav-link ${isActive('/accessories') ? 'active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              Accessories
+              <span>Accessories</span>
+              <svg class="nav-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
             </a>
+
+            <div class="nav-dropdown-menu dropdown-menu-wide" role="menu">
+              <div class="dropdown-header-tag">PRECISION GEAR & APPAREL</div>
+              <div class="dropdown-links-list">
+                <a href="/accessories/?category=footwear" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 17l4-9 4 1 1 5 7 1v3H4z"></path>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">Shooting Boots</span>
+                      <span class="dropdown-item-pill">Boots</span>
+                    </div>
+                    <p class="dropdown-item-desc">ISSF stability match footwear: Sauer, AHG & Corami</p>
+                  </div>
+                </a>
+
+                <a href="/accessories/?category=sights" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <line x1="12" y1="3" x2="12" y2="7"></line>
+                      <line x1="12" y1="17" x2="12" y2="21"></line>
+                      <line x1="3" y1="12" x2="7" y2="12"></line>
+                      <line x1="17" y1="12" x2="21" y2="12"></line>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">Match Sights & Scopes</span>
+                      <span class="dropdown-item-pill">Scope</span>
+                    </div>
+                    <p class="dropdown-item-desc">Precision MEC Spy diopters, variable irises & optics</p>
+                  </div>
+                </a>
+
+                <a href="/accessories/?category=accessories" class="dropdown-item-card" role="menuitem">
+                  <div class="dropdown-item-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="7" width="18" height="10" rx="2"></rect>
+                      <line x1="7" y1="7" x2="7" y2="17"></line>
+                      <line x1="17" y1="7" x2="17" y2="17"></line>
+                    </svg>
+                  </div>
+                  <div class="dropdown-item-text">
+                    <div class="dropdown-item-title-row">
+                      <span class="dropdown-item-title">Stock Hardware & Buttplates</span>
+                      <span class="dropdown-item-pill">Stock</span>
+                    </div>
+                    <p class="dropdown-item-desc">MEC Contact 4 buttplates, cheekpieces & balance weights</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="dropdown-footer">
+                <a href="/accessories/" class="dropdown-footer-link">
+                  <span>Explore All Match Accessories</span>
+                  <span class="dropdown-footer-arrow">→</span>
+                </a>
+              </div>
+            </div>
           </li>
           <li>
             <a 
@@ -168,20 +351,59 @@ const isActive = (path: string) => {
                 <span class="preowned-dot" aria-hidden="true"></span>
                 <span>Pre-Owned Weapons</span>
               </div>
-              <span class="drawer-badge-red">Verified Priority</span>
+              <span class="drawer-badge-red">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #059669; flex-shrink: 0;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Verified</span>
+              </span>
             </a>
+            <div class="drawer-sublinks">
+              <a href="/second-hand-weapons/?category=air-rifles" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>10m Air Rifles</span>
+              </a>
+              <a href="/second-hand-weapons/?category=air-pistols" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>10m Air Pistols</span>
+              </a>
+            </div>
           </li>
           <li>
             <a href="/new-weapons/" class="drawer-link">
               <span>New Competition Weapons</span>
               <span class="drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <div class="drawer-sublinks">
+              <a href="/new-weapons/?category=air-rifles" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>10m Match Air Rifles</span>
+              </a>
+              <a href="/new-weapons/?category=air-pistols" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>10m Match Air Pistols</span>
+              </a>
+            </div>
           </li>
           <li>
             <a href="/accessories/" class="drawer-link">
-              <span>Shooting Accessories & Boots</span>
+              <span>Shooting Accessories</span>
               <span class="drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <div class="drawer-sublinks">
+              <a href="/accessories/?category=footwear" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>Shooting Boots</span>
+              </a>
+              <a href="/accessories/?category=sights" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>Match Sights & Scopes</span>
+              </a>
+              <a href="/accessories/?category=accessories" class="drawer-sublink">
+                <span class="drawer-sublink-bullet"></span>
+                <span>Stock Hardware & Buttplates</span>
+              </a>
+            </div>
           </li>
           <li>
             <a href="/pellets/" class="drawer-link">
@@ -314,9 +536,15 @@ const isActive = (path: string) => {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #D9263E;
+    background: #059669;
     flex-shrink: 0;
-    box-shadow: 0 0 0 2px rgba(217, 38, 62, 0.2);
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.24);
+    animation: navDotPulse 2.4s infinite ease-in-out;
+  }
+
+  @keyframes navDotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.25); opacity: 0.75; }
   }
 
   .nav-verified-badge {
@@ -324,28 +552,233 @@ const isActive = (path: string) => {
     font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    background: #FFF1F2;
-    color: #D9263E;
-    border: 1px solid #FFE4E6;
-    padding: 1px 5px;
+    letter-spacing: 0.04em;
+    background: #F0FDF4;
+    color: #166534;
+    border: 1px solid #BBF7D0;
+    padding: 1.5px 6px;
     border-radius: 4px;
     line-height: 1.2;
-    transition: background 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    transition: all 0.18s ease;
+  }
+
+  .nav-verified-badge svg {
+    color: #059669;
+    flex-shrink: 0;
   }
 
   .site-nav-link.nav-link-preowned:hover {
-    background: #FFF1F2;
-    color: #D9263E;
+    background: rgba(15, 23, 42, 0.05);
+    color: #0B0F17;
   }
 
   .site-nav-link.nav-link-preowned:hover .nav-verified-badge {
-    background: #FFE4E6;
+    background: #DCFCE7;
+    border-color: #86EFAC;
+    color: #14532D;
   }
 
   .site-nav-link.nav-link-preowned.active {
-    background: #FFF1F2;
-    color: #D9263E;
+    background: rgba(15, 23, 42, 0.07);
+    color: #0B0F17;
+  }
+
+  /* Desktop Dropdown Architecture */
+  .nav-item-dropdown {
+    position: relative;
+    list-style: none;
+  }
+
+  .nav-chevron {
+    color: #94A3B8;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.18s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-item-dropdown:hover .nav-chevron,
+  .nav-item-dropdown:focus-within .nav-chevron {
+    transform: rotate(180deg);
+    color: #0B0F17;
+  }
+
+  .nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 320px;
+    background: #FFFFFF;
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 16px 38px -6px rgba(11, 15, 23, 0.14), 0 4px 14px -2px rgba(11, 15, 23, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    z-index: 1000;
+  }
+
+  /* Hover Bridge: prevents menu from closing when moving mouse across gap */
+  .nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: transparent;
+  }
+
+  .nav-item-dropdown:hover .nav-dropdown-menu,
+  .nav-item-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .dropdown-menu-wide {
+    width: 340px;
+  }
+
+  .dropdown-header-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #94A3B8;
+    padding: 6px 10px 8px;
+    text-transform: uppercase;
+  }
+
+  .dropdown-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .dropdown-item-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.16s ease, transform 0.16s ease;
+  }
+
+  .dropdown-item-card:hover {
+    background: #F8FAFC;
+    transform: translateX(2px);
+  }
+
+  .dropdown-item-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #334155;
+    flex-shrink: 0;
+    transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+  }
+
+  .dropdown-item-card:hover .dropdown-item-icon {
+    background: #0B0F17;
+    color: #FFFFFF;
+    border-color: #0B0F17;
+  }
+
+  .dropdown-item-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dropdown-item-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .dropdown-item-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0F172A;
+    line-height: 1.25;
+    transition: color 0.16s ease;
+  }
+
+  .dropdown-item-card:hover .dropdown-item-title {
+    color: var(--color-ink);
+  }
+
+  .dropdown-item-pill {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: #F1F5F9;
+    color: #64748B;
+    letter-spacing: 0.03em;
+  }
+
+  .dropdown-item-pill.new {
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+  }
+
+  .dropdown-item-desc {
+    font-size: 0.72rem;
+    color: #64748B;
+    margin: 2px 0 0;
+    line-height: 1.35;
+  }
+
+  .dropdown-footer {
+    border-top: 1px solid #F1F5F9;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .dropdown-footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    transition: background 0.16s ease, color 0.16s ease;
+  }
+
+  .dropdown-footer-link:hover {
+    background: #F1F5F9;
+    color: #0B0F17;
+  }
+
+  .dropdown-footer-arrow {
+    color: #94A3B8;
+    transition: transform 0.16s ease, color 0.16s ease;
+  }
+
+  .dropdown-footer-link:hover .dropdown-footer-arrow {
+    transform: translateX(3px);
+    color: #0B0F17;
   }
 
   /* Actions Area */
@@ -626,7 +1059,7 @@ const isActive = (path: string) => {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #D9263E;
+    background: #059669;
   }
 
   .drawer-badge-red {
@@ -634,11 +1067,14 @@ const isActive = (path: string) => {
     font-size: 0.62rem;
     font-weight: 700;
     text-transform: uppercase;
-    background: #FFF1F2;
-    color: #D9263E;
-    border: 1px solid #FFE4E6;
+    background: #F0FDF4;
+    color: #166534;
+    border: 1px solid #BBF7D0;
     padding: 2px 6px;
     border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
   }
 
   .drawer-arrow {
@@ -650,6 +1086,44 @@ const isActive = (path: string) => {
   .drawer-link:hover .drawer-arrow {
     transform: translateX(3px);
     color: var(--color-ink);
+  }
+
+  /* Drawer Nested Sublinks */
+  .drawer-sublinks {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 3px 0 8px 14px;
+    border-left: 2px solid #E2E8F0;
+    margin: 4px 0 8px 14px;
+  }
+
+  .drawer-sublink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    transition: all 0.15s ease;
+  }
+
+  .drawer-sublink:hover, .drawer-sublink:active {
+    background: #F1F5F9;
+    color: #0B0F17;
+    transform: translateX(2px);
+  }
+
+  .drawer-sublink-bullet {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #94A3B8;
+    flex-shrink: 0;
   }
 
   .drawer-footer {
@@ -750,6 +1224,9 @@ const isActive = (path: string) => {
   // Ensure header interactions run reliably across page loads and Astro view transitions
   function initHeader() {
     const header = document.getElementById('siteHeader');
+    if (!header || header.hasAttribute('data-header-initialized')) return;
+    header.setAttribute('data-header-initialized', 'true');
+
     const menuBtn = document.getElementById('mobileMenuBtn');
     const closeBtn = document.getElementById('closeDrawerBtn');
     const backdrop = document.getElementById('drawerBackdrop');

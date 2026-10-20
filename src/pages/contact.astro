@@ -223,6 +223,9 @@ import { CONTACT_INFO } from '../data/products';
 
     const fullText = `Hi Pranatpal, my name is ${name} (${level}). I am enquiring on ArmXchange regarding: ${item}.\nDetails: ${msg || 'Please share availability and next steps.'}`;
     const url = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(fullText)}`;
-    window.open(url, '_blank');
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      window.location.href = url;
+    }
   });
 </script>

@@ -865,5 +865,5 @@ export const CONTACT_INFO = {
 
 export function getWhatsAppListingUrl(productTitle: string, currentUrl?: string): string {
   const text = encodeURIComponent(`Hi Pranatpal, I am enquiring about ${productTitle} listed on ArmXchange${currentUrl ? ` (${currentUrl})` : ''}. Could you please share availability and next steps?`);
-  return `https://wa.me/916392421574?text=${text}`;
+  return `${CONTACT_INFO.whatsappBaseUrl}?text=${text}`;
 }

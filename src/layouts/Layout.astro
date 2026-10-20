@@ -87,8 +87,9 @@ const ogImageUrl = resolvedImage.startsWith('http')
     })} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header currentPath={Astro.url.pathname} />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

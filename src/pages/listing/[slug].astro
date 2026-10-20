@@ -1227,10 +1227,15 @@ const breadcrumbSchema = {
         mainImg.style.transform = 'scale(0.98)';
         setTimeout(() => {
           mainImg.src = newSrc;
-          mainImg.onload = () => {
+          const restoreOpacity = () => {
             mainImg.style.opacity = '1';
             mainImg.style.transform = 'scale(1)';
           };
+          if (mainImg.complete) {
+            restoreOpacity();
+          } else {
+            mainImg.onload = restoreOpacity;
+          }
           if (zoomModalImg) zoomModalImg.src = newSrc;
         }, 120);
       }

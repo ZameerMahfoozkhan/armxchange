@@ -35,6 +35,13 @@ const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
       </p>
     </div>
 
+    <!-- Filter Buttons & Controls -->
+    <div style="margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);">
+      <button class="filter-chip active" data-filter="all">ALL PRE-OWNED ({preOwnedListings.length})</button>
+      <button class="filter-chip" data-filter="air-rifles">10M AIR RIFLES ({preOwnedListings.filter(p => p.subcategory === 'air-rifles').length})</button>
+      <button class="filter-chip" data-filter="air-pistols">10M AIR PISTOLS ({preOwnedListings.filter(p => p.subcategory === 'air-pistols').length})</button>
+    </div>
+
     <!-- Active Listings Section -->
     <div style="margin-bottom: 64px;">
       <div class="reveal-on-scroll" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border);">
@@ -46,10 +53,40 @@ const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
         </div>
       </div>
 
-      <div class="product-grid">
+      <div id="preownedGrid" class="product-grid">
         {preOwnedListings.map((product, idx) => (
-          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+          <div class="preowned-item" data-sub={product.subcategory}>
+            <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+          </div>
         ))}
+      </div>
+
+      <!-- Empty State for filtered subcategories with zero listings -->
+      <div id="noPreownedResults" style="display: none; background: #FFFFFF; border: 1px dashed var(--color-border); border-radius: var(--radius-card); padding: 48px 32px; text-align: center; margin-top: 16px;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: #F0FDF4; border: 1px solid #BBF7D0; display: inline-flex; align-items: center; justify-content: center; color: #166534; margin: 0 auto 16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-ink); margin-bottom: 8px;">
+          No Pre-Owned 10m Air Pistols Currently Listed
+        </h3>
+        <p style="font-size: 0.94rem; color: var(--color-text-body); max-width: 540px; margin: 0 auto 20px; line-height: 1.6;">
+          Verified match pistols (Morini 162/200, Steyr Evo10/LP10) are in high demand and frequently transfer directly via our athlete network before open listing. Contact Coach Pranatpal Singh to request upcoming pistols or consign your weapon.
+        </p>
+        <a 
+          href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I am looking for a verified pre-owned 10m match air pistol (Morini / Steyr). Please let me know of upcoming availability.')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp-solid"
+          style="padding: 12px 22px; display: inline-flex; align-items: center; gap: 9px;"
+        >
+          <WhatsAppIcon size={18} />
+          <span>Request 10m Air Pistol on WhatsApp</span>
+          <span class="btn-trailing-icon">→</span>
+        </a>
       </div>
     </div>
 
@@ -166,6 +203,41 @@ const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
 </Layout>
 
 <style>
+  .filter-chip {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-body);
+    padding: 7px 15px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: transform var(--transition-spring), background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow var(--transition-smooth);
+    will-change: transform;
+  }
+
+  .filter-chip:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-1px);
+  }
+
+  .filter-chip:active {
+    transform: scale(0.96) !important;
+  }
+
+  .filter-chip.active {
+    background: var(--color-ink);
+    color: #FFFFFF;
+    border-color: var(--color-ink);
+    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.18);
+  }
+
+  .preowned-item {
+    transition: opacity 0.25s ease, transform 0.25s var(--ease-out-expo);
+  }
+
   @media (max-width: 868px) {
     .preowned-banner-grid {
       grid-template-columns: 1fr !important;
@@ -173,3 +245,64 @@ const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
     }
   }
 </style>
+
+<script>
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const items = document.querySelectorAll('.preowned-item');
+  const noResults = document.getElementById('noPreownedResults');
+  const grid = document.getElementById('preownedGrid');
+
+  function applyFilter(filter: string) {
+    let visibleCount = 0;
+    let matched = false;
+
+    filterChips.forEach(c => {
+      const isTarget = (c as HTMLElement).dataset.filter === filter;
+      c.classList.toggle('active', isTarget);
+      if (isTarget) matched = true;
+    });
+
+    if (!matched) {
+      filterChips[0]?.classList.add('active');
+      filter = 'all';
+    }
+
+    items.forEach(el => {
+      const itemEl = el as HTMLElement;
+      const sub = itemEl.dataset.sub;
+      if (filter === 'all' || sub === filter) {
+        itemEl.style.display = 'block';
+        visibleCount++;
+      } else {
+        itemEl.style.display = 'none';
+      }
+    });
+
+    if (noResults && grid) {
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+        grid.style.display = 'none';
+      } else {
+        noResults.style.display = 'none';
+        grid.style.display = 'grid';
+      }
+    }
+  }
+
+  filterChips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter || 'all';
+      applyFilter(filter);
+    });
+  });
+
+  // Handle URL query parameters (?category=air-rifles, ?sub=air-rifles, ?category=air-pistols)
+  const searchParams = new URLSearchParams(window.location.search);
+  const urlParam = (searchParams.get('category') || searchParams.get('sub') || searchParams.get('filter') || '').toLowerCase();
+  if (urlParam) {
+    let targetFilter = urlParam;
+    if (['air-rifles', 'rifles', 'rifle'].includes(urlParam)) targetFilter = 'air-rifles';
+    if (['air-pistols', 'pistols', 'pistol'].includes(urlParam)) targetFilter = 'air-pistols';
+    applyFilter(targetFilter);
+  }
+</script>

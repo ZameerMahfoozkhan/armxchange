@@ -216,7 +216,8 @@ import { HERO_SLIDES, HERO_CATEGORY_CARDS } from '../data/heroSlides';
 <script>
   function initArmxCarousel() {
     const carousel = document.querySelector('[data-armx-carousel]');
-    if (!carousel) return;
+    if (!carousel || carousel.hasAttribute('data-carousel-initialized')) return;
+    carousel.setAttribute('data-carousel-initialized', 'true');
 
     const slides = Array.from(carousel.querySelectorAll('[data-slide]'));
     const indicators = Array.from(carousel.querySelectorAll('[data-indicator]'));

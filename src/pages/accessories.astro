@@ -94,21 +94,45 @@ const accessories = PRODUCTS.filter(p => p.category === 'accessories');
   const filterChips = document.querySelectorAll('.filter-chip');
   const items = document.querySelectorAll('.accessory-item');
 
+  function applyFilter(filter: string) {
+    let matched = false;
+    filterChips.forEach(c => {
+      const isTarget = (c as HTMLElement).dataset.filter === filter;
+      c.classList.toggle('active', isTarget);
+      if (isTarget) matched = true;
+    });
+
+    if (!matched) {
+      filterChips[0]?.classList.add('active');
+      filter = 'all';
+    }
+
+    items.forEach(el => {
+      const itemEl = el as HTMLElement;
+      const sub = itemEl.dataset.sub;
+      if (filter === 'all' || sub === filter) {
+        itemEl.style.display = 'block';
+      } else {
+        itemEl.style.display = 'none';
+      }
+    });
+  }
+
   filterChips.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterChips.forEach(c => c.classList.remove('active'));
-      btn.classList.add('active');
       const filter = (btn as HTMLElement).dataset.filter || 'all';
-
-      items.forEach(el => {
-        const itemEl = el as HTMLElement;
-        const sub = itemEl.dataset.sub;
-        if (filter === 'all' || sub === filter) {
-          itemEl.style.display = 'block';
-        } else {
-          itemEl.style.display = 'none';
-        }
-      });
+      applyFilter(filter);
     });
   });
+
+  // Handle URL query parameters (?category=footwear/boots, ?sub=footwear, ?category=sights/scope, ?category=accessories/stock)
+  const searchParams = new URLSearchParams(window.location.search);
+  const urlParam = (searchParams.get('category') || searchParams.get('sub') || searchParams.get('filter') || '').toLowerCase();
+  if (urlParam) {
+    let targetFilter = urlParam;
+    if (['footwear', 'boots', 'shoes'].includes(urlParam)) targetFilter = 'footwear';
+    if (['sights', 'scope', 'scopes', 'optics', 'diopter'].includes(urlParam)) targetFilter = 'sights';
+    if (['accessories', 'stock', 'stocks', 'buttplate', 'hardware'].includes(urlParam)) targetFilter = 'accessories';
+    applyFilter(targetFilter);
+  }
 </script>

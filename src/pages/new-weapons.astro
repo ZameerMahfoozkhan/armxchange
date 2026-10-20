@@ -194,4 +194,21 @@ const newWeapons = PRODUCTS.filter(p => p.category === 'new-weapons');
     });
     applyFilters();
   });
+
+  // Handle URL query parameters (?category=air-rifles, ?sub=air-rifles, ?category=air-pistols)
+  const searchParams = new URLSearchParams(window.location.search);
+  const urlParam = (searchParams.get('category') || searchParams.get('sub') || searchParams.get('filter') || '').toLowerCase();
+  if (urlParam) {
+    let targetSub = urlParam;
+    if (['air-rifles', 'rifles', 'rifle'].includes(urlParam)) targetSub = 'air-rifles';
+    if (['air-pistols', 'pistols', 'pistol'].includes(urlParam)) targetSub = 'air-pistols';
+
+    const targetChip = Array.from(filterChips).find(c => (c as HTMLElement).dataset.filter === targetSub);
+    if (targetChip) {
+      filterChips.forEach(b => b.classList.remove('active'));
+      targetChip.classList.add('active');
+      activeSub = targetSub;
+      applyFilters();
+    }
+  }
 </script>
