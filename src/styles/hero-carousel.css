@@ -118,7 +118,8 @@
   object-position: right center;
   display: block;
   transform: scale(1);
-  transition: transform 8s ease-out;
+  transition: transform 8s ease-out, filter 0.4s ease;
+  filter: brightness(0.68) contrast(1.12) saturate(0.92);
 }
 
 .armx-slide.is-active .armx-slide-img {
@@ -133,17 +134,17 @@
   pointer-events: none;
   background: 
     linear-gradient(90deg, 
-      rgba(11, 15, 23, 0.96) 0%, 
-      rgba(11, 15, 23, 0.88) 38%, 
-      rgba(11, 15, 23, 0.55) 64%, 
-      rgba(11, 15, 23, 0.18) 85%, 
+      rgba(11, 15, 23, 0.97) 0%, 
+      rgba(11, 15, 23, 0.89) 36%, 
+      rgba(11, 15, 23, 0.58) 62%, 
+      rgba(11, 15, 23, 0.18) 84%, 
       transparent 100%
     ),
     linear-gradient(180deg, 
-      rgba(11, 15, 23, 0.45) 0%, 
-      transparent 20%, 
-      transparent 72%, 
-      rgba(11, 15, 23, 0.90) 100%
+      rgba(11, 15, 23, 0.50) 0%, 
+      transparent 22%, 
+      transparent 68%, 
+      rgba(11, 15, 23, 0.92) 100%
     );
 }
 
@@ -160,8 +161,14 @@
 .armx-slide-content {
   max-width: 580px;
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 74px; /* Generous clearance from shifted indicators */
+  padding-top: 10px;
+  padding-bottom: 92px; /* Generous clearance from shifted indicators */
+}
+
+@media (min-width: 769px) {
+  .armx-slide-content {
+    padding-left: 44px;
+  }
 }
 
 /* Eyebrow Label with Target / Crosshair Motif */
@@ -175,7 +182,7 @@
   letter-spacing: 0.12em;
   color: #CBD5E1;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .armx-target-icon {
@@ -193,31 +200,38 @@
 }
 
 /* Slide Headlines */
+h1.armx-headline,
+h2.armx-headline,
 .armx-headline {
-  font-size: clamp(2.3rem, 4.3vw, 3.6rem);
-  font-weight: 800;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: clamp(2.3rem, 4.3vw, 3.6rem) !important;
+  font-weight: 800 !important;
   color: #FFFFFF;
   line-height: 1.14;
   letter-spacing: -0.035em;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   text-wrap: balance;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85), 0 1px 4px rgba(0, 0, 0, 0.95);
 }
 
-/* Website Theme Headline Lead Contrast */
+/* Precision Steel Headline Highlight (High Intensity Technical Steel Finish) */
+.armx-steel-text,
 .armx-gold-text {
-  color: #94A3B8;
-  font-weight: 500;
+  color: #CBD5E1 !important;
+  font-weight: 700 !important;
   display: inline;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.85), 0 0 16px rgba(148, 163, 184, 0.25) !important;
 }
 
 /* Slide Description */
 .armx-description {
   font-size: clamp(0.96rem, 1.1vw, 1.08rem);
   color: #CBD5E1;
-  line-height: 1.65;
-  margin-bottom: 26px;
+  line-height: 1.6;
+  margin-bottom: 20px;
   max-width: 520px;
   text-wrap: pretty;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
 }
 
 /* Slide Actions / CTA Group */
@@ -226,15 +240,16 @@
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
 }
 
 /* Primary White Button (Matches Website Hero Primary CTA) */
 .armx-btn-gold {
   background: #FFFFFF;
   color: #0B0F17 !important;
-  font-family: var(--font-sans);
+  font-family: var(--font-display, var(--font-sans));
   font-weight: 700;
+  letter-spacing: -0.01em;
   font-size: 0.92rem;
   padding: 12px 22px;
   border-radius: var(--radius-sm, 6px);
@@ -281,8 +296,9 @@
 .armx-btn-glass {
   background: rgba(255, 255, 255, 0.08);
   color: #FFFFFF !important;
-  font-family: var(--font-sans);
+  font-family: var(--font-display, var(--font-sans));
   font-weight: 600;
+  letter-spacing: -0.01em;
   font-size: 0.92rem;
   padding: 12px 22px;
   border-radius: var(--radius-sm, 6px);
@@ -326,7 +342,7 @@
   align-items: center;
   gap: 16px;
   padding: 0;
-  margin: 6px 0 16px 0;
+  margin: 0 0 6px 0;
   list-style: none;
 }
 
@@ -522,22 +538,25 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--color-ink, #0B0F17);
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0B0F17 0%, #475569 50%, #94A3B8 100%);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: scaleX(0.7);
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 2;
 }
 
 .armx-cat-card:hover {
   background: #FFFFFF;
-  border-color: var(--color-ink, #0B0F17);
+  border-color: rgba(203, 213, 225, 0.95);
   transform: translateY(-4px);
   box-shadow: 0 14px 34px -4px rgba(11, 15, 23, 0.15), 0 4px 10px rgba(11, 15, 23, 0.05);
 }
 
 .armx-cat-card:hover::before {
   opacity: 1;
+  transform: scaleX(1);
 }
 
 .armx-cat-card:focus-visible {
@@ -584,9 +603,10 @@
 }
 
 .armx-cat-title {
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-family: var(--font-display, var(--font-sans));
+  font-size: 0.90rem;
   font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--color-ink, #0B0F17);
   margin: 0;
   line-height: 1.25;
@@ -651,16 +671,16 @@
 /* Mobile & Small Tablets (768px and below) */
 @media (max-width: 768px) {
   .armx-carousel-viewport {
-    height: 580px;
-    min-height: 540px;
+    height: 590px;
+    min-height: 550px;
   }
 
   .armx-slide-overlay {
     background: 
       linear-gradient(180deg, 
-        rgba(11, 15, 23, 0.90) 0%, 
-        rgba(11, 15, 23, 0.72) 45%, 
-        rgba(11, 15, 23, 0.94) 85%, 
+        rgba(11, 15, 23, 0.95) 0%, 
+        rgba(11, 15, 23, 0.80) 40%, 
+        rgba(11, 15, 23, 0.96) 85%, 
         #0B0F17 100%
       );
   }
@@ -671,23 +691,31 @@
 
   .armx-slide-content {
     max-width: 100%;
-    padding: 24px 16px 50px 16px;
+    padding: 20px 16px 44px 16px;
   }
 
+  h1.armx-headline,
+  h2.armx-headline,
   .armx-headline {
-    font-size: clamp(1.85rem, 6.8vw, 2.4rem);
-    margin-bottom: 14px;
+    font-size: clamp(1.85rem, 6.6vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 12px !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.95);
   }
 
   .armx-description {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    margin-bottom: 20px;
+    font-size: 0.92rem !important;
+    line-height: 1.54 !important;
+    color: #E2E8F0 !important;
+    margin-bottom: 18px !important;
   }
 
   .armx-actions-group {
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .armx-btn-gold,
@@ -697,11 +725,16 @@
   }
 
   .armx-features-list {
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 14px;
+    margin: 2px 0 12px 0;
   }
 
   .armx-feature-item {
     font-size: 0.72rem;
+    color: #CBD5E1;
   }
 
   .armx-nav-arrow {
@@ -709,7 +742,7 @@
   }
 
   .armx-indicators-wrap {
-    bottom: 46px;
+    bottom: 40px;
   }
 
   .armx-hero-categories {
@@ -726,18 +759,33 @@
 /* Very Small Mobile Screens (360px and below) */
 @media (max-width: 375px) {
   .armx-carousel-viewport {
-    height: 600px;
+    height: 610px;
+    min-height: 570px;
   }
+  h1.armx-headline,
+  h2.armx-headline,
   .armx-headline {
-    font-size: 1.7rem;
+    font-size: 1.72rem !important;
+    line-height: 1.16 !important;
+  }
+  .armx-description {
+    font-size: 0.88rem !important;
   }
   .armx-actions-group {
-    flex-direction: column;
-    align-items: stretch;
+    gap: 8px;
   }
   .armx-btn-gold,
   .armx-btn-glass {
+    flex: 1 1 auto;
+    padding: 9px 12px;
+    font-size: 0.80rem;
     justify-content: center;
+  }
+  .armx-features-list {
+    gap: 6px 10px;
+  }
+  .armx-feature-item {
+    font-size: 0.68rem;
   }
 }
 

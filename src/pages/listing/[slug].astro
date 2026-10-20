@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
 import { PRODUCTS, CONTACT_INFO, getWhatsAppListingUrl, type Product } from '../../data/products';
 
 export async function getStaticPaths() {
@@ -241,12 +242,10 @@ const breadcrumbSchema = {
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-whatsapp-solid"
-              style="padding: 14px 22px; font-size: 0.95rem; width: 100%; justify-content: center; gap: 10px; font-weight: 700;"
+              style="padding: 14px 24px; font-size: 0.98rem; width: 100%; justify-content: center; gap: 10px; font-weight: 700;"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink: 0;">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
-              </svg>
-              <span>Enquire On WhatsApp ({CONTACT_INFO.phoneDisplay})</span>
+              <WhatsAppIcon size={20} />
+              <span>Enquire on WhatsApp</span>
               <span class="btn-trailing-icon">→</span>
             </a>
           </div>
@@ -411,10 +410,7 @@ const breadcrumbSchema = {
         class="mobile-sticky-whatsapp-btn"
         aria-label={`Enquire on WhatsApp about ${product.title}`}
       >
-        <span class="live-pulse-dot" style="margin-right: 4px;"></span>
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
-        </svg>
+        <WhatsAppIcon size={18} />
         <span>Enquire on WhatsApp</span>
       </a>
     </div>
@@ -715,9 +711,10 @@ const breadcrumbSchema = {
   }
 
   .price-num {
-    font-family: var(--font-sans);
+    font-family: var(--font-display, var(--font-sans));
     font-size: 2.1rem;
     font-weight: 800;
+    letter-spacing: -0.025em;
     color: var(--color-ink);
     line-height: 1.1;
   }
@@ -767,9 +764,10 @@ const breadcrumbSchema = {
   }
 
   .dossier-checklist-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display, var(--font-sans));
     font-size: 0.88rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--color-ink);
   }
 
@@ -834,9 +832,10 @@ const breadcrumbSchema = {
   }
 
   .trust-title {
-    font-family: var(--font-sans);
+    font-family: var(--font-display, var(--font-sans));
     font-size: 0.85rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--color-ink);
     margin-bottom: 3px;
     line-height: 1.25;
@@ -899,9 +898,10 @@ const breadcrumbSchema = {
   }
 
   .spec-metric-val {
-    font-family: var(--font-sans);
+    font-family: var(--font-display, var(--font-sans));
     font-size: 0.92rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--color-ink);
     line-height: 1.35;
   }
@@ -1154,9 +1154,10 @@ const breadcrumbSchema = {
     }
 
     .mobile-sticky-price {
-      font-family: var(--font-sans);
+      font-family: var(--font-display, var(--font-sans));
       font-size: 1.15rem;
       font-weight: 800;
+      letter-spacing: -0.02em;
       color: var(--color-ink);
       line-height: 1.2;
       white-space: nowrap;
@@ -1165,25 +1166,30 @@ const breadcrumbSchema = {
     }
 
     .mobile-sticky-whatsapp-btn {
-      background: var(--color-whatsapp, #075E54);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
       color: #FFFFFF !important;
-      font-family: var(--font-sans);
+      font-family: var(--font-display, var(--font-sans));
       font-weight: 700;
-      font-size: 0.86rem;
-      padding: 10px 16px;
-      border-radius: var(--radius-sm, 6px);
-      border: 1px solid var(--color-whatsapp, #075E54);
+      letter-spacing: -0.01em;
+      font-size: 0.88rem;
+      padding: 11px 18px;
+      border-radius: 8px;
+      border: 1px solid #047857;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       text-decoration: none;
       flex-shrink: 0;
-      box-shadow: 0 4px 14px rgba(7, 94, 84, 0.35);
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transition: transform 0.16s ease, background-color 0.2s ease;
     }
 
     .mobile-sticky-whatsapp-btn:active {
       transform: scale(0.97);
+    }
+
+    .mobile-sticky-whatsapp-btn .wa-icon-svg {
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
     }
   }
 

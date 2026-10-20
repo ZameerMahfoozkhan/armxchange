@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
 const preOwnedFeatured = PRODUCTS.find(p => p.isPreOwned);
-const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).slice(0, 6);
+const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured || p.category === 'new-weapons')).slice(0, 4);
 ---
 
 <Layout 
@@ -36,14 +37,14 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
                 decoding="async"
               />
             </div>
-            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-signal-red); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px;">
+            <div class="discipline-tag">
               {cat.tag}
             </div>
             <h3 class="discipline-title">{cat.title}</h3>
             <p class="discipline-desc">{cat.subtitle}</p>
             <div class="discipline-link">
               <span>Explore {cat.count} {cat.count === 1 ? 'Listing' : 'Listings'}</span>
-              <span class="arrow-icon">→</span>
+              <span class="discipline-link-arrow" aria-hidden="true">→</span>
             </div>
           </a>
         ))}
@@ -57,7 +58,7 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
       <div class="container">
         <div class="reveal-on-scroll" style="margin-bottom: 36px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
           <div>
-            <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-signal-red); margin-bottom: 4px;">
+            <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
               VERIFIED PRE-OWNED SPOTLIGHT
             </div>
             <h2>Championship Ready 2018 Feinwerkbau 800 Alu</h2>
@@ -80,9 +81,17 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
                 loading="lazy"
                 decoding="async"
               />
-              <div style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 6px;">
-                <span class="tech-badge tech-badge-preowned">Verified Pre-Owned</span>
-                <span class="tech-badge tech-badge-new">2024 Cylinder Installed</span>
+              <div style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 5;">
+                <span class="product-badge product-badge-preowned">
+                  <span class="badge-pulse-dot" aria-hidden="true"></span>
+                  <span>Verified Pre-Owned</span>
+                </span>
+                <span class="product-badge product-badge-new">
+                  <svg class="badge-shield-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  <span>2024 Cylinder Installed (To 2034)</span>
+                </span>
               </div>
             </div>
 
@@ -142,10 +151,9 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn btn-whatsapp-solid"
+                    style="gap: 9px;"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
-                    </svg>
+                    <WhatsAppIcon size={18} />
                     <span>Enquire on WhatsApp</span>
                     <span class="btn-trailing-icon">→</span>
                   </a>
@@ -311,13 +319,32 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && p.featured).sl
     border-radius: var(--radius-card);
     padding: 24px;
     box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
     transition: transform var(--transition-spring), border-color 0.2s ease, box-shadow var(--transition-smooth);
     will-change: transform;
   }
+  .how-step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0B0F17 0%, #475569 50%, #94A3B8 100%);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transition: opacity 0.25s ease, transform 0.3s var(--ease-spring);
+    z-index: 2;
+  }
   .how-step-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(11, 15, 23, 0.22);
+    border-color: rgba(203, 213, 225, 0.9);
     box-shadow: var(--shadow-md);
+  }
+  .how-step-card:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
   }
   .consign-callout {
     transition: box-shadow var(--transition-smooth), border-color 0.2s ease;

@@ -77,7 +77,12 @@ export const HERO_SLIDES: HeroSlide[] = [
     secondaryCta: {
       label: "How It Works",
       href: "/how-it-works/"
-    }
+    },
+    features: [
+      "ISSF 10m Match Pistols",
+      "Regulator & Grip Inspected",
+      "Direct Coach Consultation"
+    ]
   },
   {
     id: "new-equipment",
@@ -98,7 +103,12 @@ export const HERO_SLIDES: HeroSlide[] = [
     secondaryCta: {
       label: "Contact Us",
       href: "/contact/"
-    }
+    },
+    features: [
+      "Feinwerkbau · Walther · Steyr",
+      "Brand-New Factory Warranty",
+      "Renowned Shooter Guidance"
+    ]
   },
   {
     id: "accessories-pellets",
@@ -119,7 +129,12 @@ export const HERO_SLIDES: HeroSlide[] = [
     secondaryCta: {
       label: "Explore Pellets",
       href: "/pellets/"
-    }
+    },
+    features: [
+      "RWS R10 Selected Pellets",
+      "MEC Precision Match Sights",
+      "Sauer & Corami Footwear"
+    ]
   }
 ];
 
