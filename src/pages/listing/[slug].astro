@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const currentUrl = `https://armxchange.in/listing/${product.slug}/`;
+const currentUrl = `https://armsxchange.in/listing/${product.slug}/`;
 const whatsappUrl = getWhatsAppListingUrl(product.title, currentUrl);
 const relatedProducts = PRODUCTS
   .filter(p => p.id !== product.id && p.category === product.category)
@@ -26,7 +26,7 @@ const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": product.title,
-  "image": product.images.map(img => new URL(img, "https://armxchange.in").toString()),
+  "image": product.images.map(img => new URL(img, "https://armsxchange.in").toString()),
   "description": product.fullDescription,
   "brand": {
     "@type": "Brand",
@@ -43,7 +43,7 @@ const productSchema = {
     "itemCondition": product.isPreOwned ? "https://schema.org/UsedCondition" : "https://schema.org/NewCondition",
     "seller": {
       "@type": "Organization",
-      "name": "ArmXchange"
+      "name": "ArmsXchange"
     }
   }
 };
@@ -56,13 +56,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://armxchange.in/"
+      "item": "https://armsxchange.in/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": product.categoryLabel,
-      "item": `https://armxchange.in/${product.category}/`
+      "item": `https://armsxchange.in/${product.category}/`
     },
     {
       "@type": "ListItem",
@@ -75,7 +75,7 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title={`${product.title} | ${product.brand} | ArmXchange`}
+  title={`${product.title} | ${product.brand} | ArmsXchange`}
   description={`${product.title} (${product.brand}). ${product.shortDescription} Enquire with founder Pranatpal Singh on WhatsApp.`}
   image={product.images[0]}
   type="product"

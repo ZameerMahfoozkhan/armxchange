@@ -5,7 +5,7 @@ import { CONTACT_INFO } from '../data/products';
 ---
 
 <Layout
-  title="Contact ArmXchange | Official Consultation & WhatsApp Enquiries"
+  title="Contact ArmsXchange | Official Consultation & WhatsApp Enquiries"
   description="Connect directly with founder and national shooter Pranatpal Singh at +91 6392421574 for shooting sports equipment consultation, pre-owned listings, and match inquiries."
 >
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
@@ -50,7 +50,7 @@ import { CONTACT_INFO } from '../data/products';
             Direct discussion with founder and national shooter Pranatpal Singh (who has also been coaching for the past year). Share your current equipment setup, discuss grip sizes, or request test group sheets.
           </p>
           <a 
-            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmXchange.')}`}
+            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmsXchange.')}`}
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-whatsapp-solid"
@@ -98,7 +98,7 @@ import { CONTACT_INFO } from '../data/products';
             Range Visitation Protocol:
           </div>
           <p style="font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.6;">
-            ArmXchange operates on an appointment-first basis. All match rifle test firings, dry-fire inspections, and face-to-face evaluations are coordinated through our verified shooting range partners across India.
+            ArmsXchange operates on an appointment-first basis. All match rifle test firings, dry-fire inspections, and face-to-face evaluations are coordinated through our verified shooting range partners across India.
           </p>
         </div>
       </div>
@@ -221,7 +221,7 @@ import { CONTACT_INFO } from '../data/products';
     const level = (document.getElementById('shooterLevel') as HTMLSelectElement).value;
     const msg = (document.getElementById('consultMessage') as HTMLTextAreaElement).value;
 
-    const fullText = `Hi Pranatpal, my name is ${name} (${level}). I am enquiring on ArmXchange regarding: ${item}.\nDetails: ${msg || 'Please share availability and next steps.'}`;
+    const fullText = `Hi Pranatpal, my name is ${name} (${level}). I am enquiring on ArmsXchange regarding: ${item}.\nDetails: ${msg || 'Please share availability and next steps.'}`;
     const url = `https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(fullText)}`;
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {

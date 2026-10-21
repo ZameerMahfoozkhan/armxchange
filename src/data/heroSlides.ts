@@ -118,10 +118,10 @@ export const HERO_SLIDES: HeroSlide[] = [
     headlinePrefix: "Every Detail ",
     headlineHighlight: "Matters.",
     description: "Explore compatible shooting accessories, equipment-care products, and eligible sporting supplies.",
-    image: "/images/hero/ArmXchange_Accessories_Hero_1920x768.png",
-    imageWebp: "/images/hero/ArmXchange_Accessories_Hero_1920x768.webp",
-    imageMobile: "/images/hero/ArmXchange_Accessories_Hero_1920x768-mobile.webp",
-    alt: "ArmXchange competition accessories, precision match sights, RWS match pellets, and shooting footwear",
+    image: "/images/hero/ArmsXchange_Accessories_Hero_1920x768.png",
+    imageWebp: "/images/hero/ArmsXchange_Accessories_Hero_1920x768.webp",
+    imageMobile: "/images/hero/ArmsXchange_Accessories_Hero_1920x768-mobile.webp",
+    alt: "ArmsXchange competition accessories, precision match sights, RWS match pellets, and shooting footwear",
     primaryCta: {
       label: "Explore Accessories",
       href: "/accessories/"

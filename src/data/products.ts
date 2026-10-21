@@ -820,7 +820,7 @@ export const CATEGORIES = [
     count: 1,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
-    description: "Every pre-owned listing on ArmXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."
+    description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."
   },
   {
     slug: "new-weapons",
@@ -860,10 +860,10 @@ export const CONTACT_INFO = {
   founderTitle: "Founder, National-Level Shooter & Coach (1 Year)",
   brandMotto: "Every Shooter Deserves a Fair Start.",
   location: "India",
-  armsActDisclaimer: "ArmXchange operates in strict compliance with the Indian Arms Act & Arms Rules 2016 for 0.177 calibre (4.5mm) air weapons with muzzle energy under 20 Joules. All enquiries undergo manual verification. 18% GST applicable for non-renowned shooters on new weapons as per Indian tax norms."
+  armsActDisclaimer: "ArmsXchange operates in strict compliance with the Indian Arms Act & Arms Rules 2016 for 0.177 calibre (4.5mm) air weapons with muzzle energy under 20 Joules. All enquiries undergo manual verification. 18% GST applicable for non-renowned shooters on new weapons as per Indian tax norms."
 };
 
 export function getWhatsAppListingUrl(productTitle: string, currentUrl?: string): string {
-  const text = encodeURIComponent(`Hi Pranatpal, I am enquiring about ${productTitle} listed on ArmXchange${currentUrl ? ` (${currentUrl})` : ''}. Could you please share availability and next steps?`);
+  const text = encodeURIComponent(`Hi Pranatpal, I am enquiring about ${productTitle} listed on ArmsXchange${currentUrl ? ` (${currentUrl})` : ''}. Could you please share availability and next steps?`);
   return `${CONTACT_INFO.whatsappBaseUrl}?text=${text}`;
 }

@@ -11,15 +11,15 @@ interface Props {
 }
 
 const {
-  title = "ArmXchange | India's Shooting Sports Equipment Marketplace",
-  description = "ArmXchange connects Indian shooting athletes with approved pre-owned and new 10m air rifles, match air pistols, competition footwear, and precision accessories. Founded by national shooter Pranatpal Singh.",
-  image = "/images/brand/armxchange-logo.webp",
+  title = "ArmsXchange | India's Shooting Sports Equipment Marketplace",
+  description = "ArmsXchange connects Indian shooting athletes with approved pre-owned and new 10m air rifles, match air pistols, competition footwear, and precision accessories. Founded by national shooter Pranatpal Singh.",
+  image = "/images/brand/armsxchange-logo.webp",
   type = "website"
 } = Astro.props;
 
-const siteUrl = Astro.site ? Astro.site.toString() : "https://armxchange.in";
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : "https://armsxchange.in";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
-const resolvedImage = image || "/images/brand/armxchange-logo.webp";
+const resolvedImage = image || "/images/brand/armsxchange-logo.webp";
 const ogImageUrl = resolvedImage.startsWith('http') 
   ? resolvedImage 
   : new URL(resolvedImage, siteUrl).toString();
@@ -57,7 +57,7 @@ const ogImageUrl = resolvedImage.startsWith('http')
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:site_name" content="ArmXchange" />
+    <meta property="og:site_name" content="ArmsXchange" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -68,22 +68,36 @@ const ogImageUrl = resolvedImage.startsWith('http')
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ArmXchange",
-      "url": siteUrl,
-      "logo": new URL("/images/brand/armxchange-logo.webp", siteUrl).toString(),
-      "description": "India's dedicated platform for approved competition shooting sports equipment, pre-owned 10m match air rifles, match air pistols, accessories, and match pellets.",
-      "founder": {
-        "@type": "Person",
-        "name": "Pranatpal Singh",
-        "jobTitle": "National-Level 10m Air Rifle Shooter & Coach"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-6392421574",
-        "contactType": "Customer Support & Equipment Consultations",
-        "areaServed": "IN"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteUrl}/#organization`,
+          "name": "ArmsXchange",
+          "url": siteUrl,
+          "logo": new URL("/images/brand/armsxchange-logo.webp", siteUrl).toString(),
+          "description": "India's dedicated platform for approved competition shooting sports equipment, pre-owned 10m match air rifles, match air pistols, accessories, and match pellets.",
+          "founder": {
+            "@type": "Person",
+            "name": "Pranatpal Singh",
+            "jobTitle": "National-Level 10m Air Rifle Shooter & Coach"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-6392421574",
+            "contactType": "Customer Support & Equipment Consultations",
+            "areaServed": "IN"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          "url": siteUrl,
+          "name": "ArmsXchange",
+          "publisher": {
+            "@id": `${siteUrl}/#organization`
+          }
+        }
+      ]
     })} />
   </head>
   <body>
