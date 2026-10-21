@@ -6,7 +6,7 @@ import { CONTACT_INFO } from '../data/products';
 
 <Layout
   title="Contact ArmsXchange | Official Consultation & WhatsApp Enquiries"
-  description="Connect directly with founder and national shooter Pranatpal Singh at +91 6392421574 for shooting sports equipment consultation, pre-owned listings, and match inquiries."
+  description="Connect directly with ArmsXchange at +91 89220 12598 (WhatsApp Orders) and +91 63924 21574 (Direct Consultation) with founder Pranatpal Singh for competition shooting sports equipment."
 >
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
@@ -21,14 +21,14 @@ import { CONTACT_INFO } from '../data/products';
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
         <span class="tech-badge">DIRECT ATHLETE COMMUNICATION</span>
         <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
-          ATHLETE CONCIERGE LINE
+          ATHLETE CONCIERGE & ORDERS
         </span>
       </div>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 18px; color: var(--color-ink); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;">
-        Official Equipment Consultations & Enquiries
+        Official Equipment Consultations & Orders
       </h1>
       <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-text-body);">
-        Have technical questions regarding specific competition air rifles, trigger assemblies, anatomical grip sizing, or cylinder manufacturing stamps? We handle all athlete consultations directly through WhatsApp and phone.
+        Have technical questions regarding specific competition air rifles, trigger assemblies, anatomical grip sizing, or cylinder manufacturing stamps? We handle all athlete orders and technical consultations directly via WhatsApp and phone.
       </p>
     </div>
 
@@ -42,22 +42,22 @@ import { CONTACT_INFO } from '../data/products';
               <WhatsAppIcon size={22} />
             </div>
             <div>
-              <div style="color: var(--color-ink); font-size: 1.1rem; font-weight: 700;">Direct WhatsApp Concierge</div>
-              <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">PRIMARY FAST-RESPONSE ROUTE</span>
+              <div style="color: var(--color-ink); font-size: 1.1rem; font-weight: 700;">WhatsApp Orders & Concierge</div>
+              <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">PRIMARY WHATSAPP: {CONTACT_INFO.whatsappPhoneDisplay}</span>
             </div>
           </div>
           <p style="font-size: 0.92rem; color: var(--color-text-body); margin-bottom: 20px; line-height: 1.6;">
-            Direct discussion with founder and national shooter Pranatpal Singh (who has also been coaching for the past year). Share your current equipment setup, discuss grip sizes, or request test group sheets.
+            Direct channel for placing orders, inquiring about pre-owned weapons, sharing grip measurements, or requesting chronograph velocity sheets with founder Pranatpal Singh.
           </p>
           <a 
-            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about shooting sports equipment on ArmsXchange.')}`}
+            href={`https://wa.me/${CONTACT_INFO.whatsappPhoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to place an order / enquire about shooting sports equipment on ArmsXchange.')}`}
             target="_blank"
             rel="noopener noreferrer"
             class="btn btn-whatsapp-solid"
             style="width: 100%; justify-content: center; font-size: 0.95rem; padding: 13px 20px; gap: 9px;"
           >
             <WhatsAppIcon size={19} />
-            <span>Direct WhatsApp Consultation</span>
+            <span>Order / Chat on WhatsApp ({CONTACT_INFO.whatsappPhoneDisplay})</span>
             <span class="btn-trailing-icon">→</span>
           </a>
         </div>
@@ -70,26 +70,43 @@ import { CONTACT_INFO } from '../data/products';
               </svg>
             </div>
             <div>
-              <div style="color: var(--color-ink); font-size: 1.1rem; font-weight: 700;">Direct Phone Consultation</div>
+              <div style="color: var(--color-ink); font-size: 1.1rem; font-weight: 700;">Direct Phone Consultation Lines</div>
               <span style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">MON - SAT 09:00 - 19:00 IST</span>
             </div>
           </div>
-          <p style="font-size: 0.92rem; color: var(--color-text-body); margin-bottom: 20px; line-height: 1.6;">
-            Speak directly with our team for technical comparisons, academy carton orders, and consignment evaluations.
+          <p style="font-size: 0.92rem; color: var(--color-text-body); margin-bottom: 18px; line-height: 1.6;">
+            Speak directly with our team for technical comparisons, academy carton orders, consignment evaluations, and platform support across both dedicated lines:
           </p>
-          <a 
-            href={`tel:${CONTACT_INFO.phone}`}
-            class="btn btn-secondary"
-            style="width: 100%; justify-content: center; font-size: 0.95rem; padding: 13px 20px; gap: 9px;"
-          >
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>Direct Phone Consultation</span>
-            <span class="btn-trailing-icon">→</span>
-          </a>
-          <div style="font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono); margin-top: 10px; text-align: center;">
-            Direct line: {CONTACT_INFO.phoneDisplay}
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px;">
+            <a 
+              href={`tel:${CONTACT_INFO.whatsappPhoneRaw}`}
+              class="btn btn-secondary"
+              style="width: 100%; justify-content: space-between; font-size: 0.9rem; padding: 11px 18px;"
+            >
+              <span style="display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Call Orders Line: <strong>{CONTACT_INFO.whatsappPhoneDisplay}</strong></span>
+              </span>
+              <span class="btn-trailing-icon">→</span>
+            </a>
+            <a 
+              href={`tel:${CONTACT_INFO.secondaryPhoneRaw}`}
+              class="btn btn-secondary"
+              style="width: 100%; justify-content: space-between; font-size: 0.9rem; padding: 11px 18px;"
+            >
+              <span style="display: inline-flex; align-items: center; gap: 8px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span>Call Founder Line: <strong>{CONTACT_INFO.secondaryPhoneDisplay}</strong></span>
+              </span>
+              <span class="btn-trailing-icon">→</span>
+            </a>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--color-text-muted); font-family: var(--font-mono); text-align: center;">
+            Both lines monitored Mon - Sat 09:00 - 19:00 IST
           </div>
         </div>
 

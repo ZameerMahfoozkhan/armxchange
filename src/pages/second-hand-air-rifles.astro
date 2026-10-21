@@ -1,0 +1,220 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import { PRODUCTS, CONTACT_INFO } from '../data/products';
+
+const preOwnedRifles = PRODUCTS.filter(p => p.isPreOwned && p.subcategory === 'air-rifles');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Second Hand 10m Competition Air Rifles",
+  "description": "Verified pre-owned 10m target air rifles in India with inspected cylinder validity and chronograph diagnostics.",
+  "numberOfItems": preOwnedRifles.length,
+  "itemListElement": preOwnedRifles.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": `Second Hand ${p.title}`,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Second-Hand Weapons",
+      "item": "https://armsxchange.in/second-hand-weapons/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "10m Air Rifles",
+      "item": "https://armsxchange.in/second-hand-air-rifles/"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does ArmsXchange verify second hand 10m air rifles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every rifle undergoes rigorous checks: stamped cylinder manufacturing dates for 10-year ISSF validity, chronograph velocity consistency, regulator pressure stability, and high-resolution photo documentation of cosmetic wear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test fire a pre-owned air rifle before purchasing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Range test-firings and dry-fire inspections can be coordinated at affiliated shooting ranges across India, or verified via comprehensive live video inspection with Coach Pranatpal Singh."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a gun license for a second-hand 10m air rifle in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Under the Arms Rules 2016, 0.177 calibre (4.5mm) target air rifles generating under 20 Joules of muzzle energy do not require an individual arms licence. Shooter credentials (club ID or NRAI registration) are verified for transfer."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Second Hand 10m Air Rifles | Pre-Owned Target Rifles | ArmsXchange India"
+  description="Verified second hand 10m match air rifles in India. Feinwerkbau, Walther, Steyr with certified cylinder validity, chronograph reports & direct WhatsApp chat."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <a href="/second-hand-weapons/" style="color: var(--color-ink); font-weight: 500;">Second-Hand Weapons</a>
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">10m Air Rifles</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge tech-badge-preowned">PRE-OWNED 10M RIFLES</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          CERTIFIED COMPETITION HARDWARE
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Verified Second Hand 10m Competition Air Rifles
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Explore authentic, inspected pre-owned 10m target air rifles from Feinwerkbau and Walther. Every listed rifle includes certified cylinder manufacturing timestamps, velocity chronograph data, and direct athlete-to-coach consultation before transfer.
+      </p>
+    </div>
+
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 64px;">
+      <div class="reveal-on-scroll" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: 12px;">
+        <div style="font-family: var(--font-display, var(--font-sans)); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink);">
+          Available Verified Rifles ({preOwnedRifles.length})
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="/second-hand-air-pistols/" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.78rem; font-family: var(--font-mono);">
+            <span>SWITCH TO 10M PISTOLS</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        {preOwnedRifles.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Technical Trust Banner -->
+    <div class="reveal-on-scroll" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 40px 36px; margin-bottom: 64px; box-shadow: var(--shadow-card);">
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;" class="rifles-banner-grid">
+        <div>
+          <span class="tech-badge" style="margin-bottom: 14px;">EQUIPMENT CONTROL COMPLIANCE</span>
+          <h2 style="font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 14px; color: var(--color-ink); font-weight: 800;">
+            Never Buy An Expired Cylinder
+          </h2>
+          <p style="font-size: 0.94rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 18px;">
+            Under ISSF and NRAI Equipment Control rules, compressed air cylinders have a strictly enforced 10-year lifespan. Rifles with expired cylinders are disqualified at championship weapon checks. ArmsXchange explicitly documents stamped manufacture dates on every rifle.
+          </p>
+          <a href="/pre-owned-equipment-guide/" class="btn btn-secondary" style="font-size: 0.88rem; padding: 10px 18px;">
+            <span>Read 10-Year Cylinder Guide</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+
+        <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted); text-transform: uppercase; margin-bottom: 12px; font-weight: 700;">
+            LOOKING FOR A SPECIFIC RIFLE?
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body); margin-bottom: 18px;">
+            Need a specific grip size (Left-Hand / Right-Hand S/M/L) or model like Walther LG400 Monotec or FWB 800X? Contact Coach Pranatpal Singh to place a direct athlete request.
+          </p>
+          <a 
+            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I am looking for a specific second-hand 10m match air rifle. Please let me know of upcoming listings.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp-solid"
+            style="width: 100%; justify-content: center; font-size: 0.88rem; padding: 11px 16px; gap: 8px;"
+          >
+            <WhatsAppIcon size={17} />
+            <span>Request Rifle on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div>
+      <div style="margin-bottom: 24px;">
+        <span class="tech-badge" style="margin-bottom: 8px;">INTELLIGENCE & ADVICE</span>
+        <h2 style="font-size: 1.5rem; color: var(--color-ink); font-weight: 700; margin-top: 4px;">
+          Second Hand 10m Air Rifle FAQ
+        </h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            How are second-hand air rifles verified?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Every rifle undergoes manual inspection: stamped cylinder manufacturing dates for 10-year ISSF validity, chronograph velocity consistency, regulator pressure stability, and high-resolution photo documentation.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            Can I test fire before buying?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Yes. Range test-firings and dry-fire inspections can be coordinated at affiliated shooting ranges across India, or verified via comprehensive live video inspection with Coach Pranatpal Singh.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            Do I need a gun license in India?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Under the Arms Rules 2016, 0.177 calibre (4.5mm) target air rifles generating under 20 Joules of muzzle energy do not require an individual arms licence. They are classified for shooting sports participation across India.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @media (max-width: 868px) {
+    .rifles-banner-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+  }
+</style>

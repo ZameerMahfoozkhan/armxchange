@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import { CONTACT_INFO } from '../data/products';
+---
+
+<Layout
+  title="404: Target Not Found | ArmsXchange India"
+  description="The shooting sports equipment listing or page you requested may have been relocated or transferred. Explore verified pre-owned air rifles, match pistols, or contact Coach Pranatpal Singh."
+>
+  <div class="container" style="padding-top: 64px; padding-bottom: 96px; text-align: center; max-width: 760px; margin: 0 auto;">
+    <!-- 404 Target Graphic / Icon -->
+    <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--color-canvas-subtle); border: 2px solid var(--color-border); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--color-ink);">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="22" y1="12" x2="18" y2="12"></line>
+        <line x1="6" y1="12" x2="2" y2="12"></line>
+        <line x1="12" y1="6" x2="12" y2="2"></line>
+        <line x1="12" y1="22" x2="12" y2="18"></line>
+      </svg>
+    </div>
+
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span class="tech-badge">ERROR 404 // TARGET MISS</span>
+    </div>
+
+    <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--color-ink); margin-bottom: 16px; letter-spacing: -0.03em;">
+      Target Off Range: Page Not Found
+    </h1>
+
+    <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body); margin-bottom: 36px;">
+      The weapon listing, accessory, or guide you are looking for may have been transferred to an athlete or relocated. Choose a section below to get back on target:
+    </p>
+
+    <!-- Quick Navigation Cards Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px; text-align: left;">
+      <a href="/second-hand-weapons/" class="nav-card" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 20px; text-decoration: none; display: block; transition: all 0.2s ease;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 6px;">PRIORITY CATALOGUE</div>
+        <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-ink); margin-bottom: 4px;">Second-Hand Weapons →</div>
+        <p style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">Verified 10m pre-owned match air rifles & pistols</p>
+      </a>
+
+      <a href="/new-weapons/" class="nav-card" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 20px; text-decoration: none; display: block; transition: all 0.2s ease;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 6px;">FACTORY DIRECT</div>
+        <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-ink); margin-bottom: 4px;">New 10m Weapons →</div>
+        <p style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">Olympic air rifles & pistols (Walther, FWB, Steyr)</p>
+      </a>
+
+      <a href="/accessories/" class="nav-card" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 20px; text-decoration: none; display: block; transition: all 0.2s ease;">
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 6px;">MATCH GEAR</div>
+        <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-ink); margin-bottom: 4px;">Accessories & Shoes →</div>
+        <p style="font-size: 0.84rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">MEC sights, buttplates, Sauer & AHG shooting boots</p>
+      </a>
+    </div>
+
+    <!-- Direct Concierge Help -->
+    <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px; display: inline-flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;">
+      <span style="font-size: 0.92rem; color: var(--color-text-body); font-weight: 500;">
+        Looking for a specific competition weapon or cylinder?
+      </span>
+      <a 
+        href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I encountered a 404 page on ArmsXchange and was looking for specific shooting equipment.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-whatsapp-solid"
+        style="padding: 10px 18px; font-size: 0.88rem; gap: 8px;"
+      >
+        <WhatsAppIcon size={17} />
+        <span>Ask Coach Pranatpal on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .nav-card:hover {
+    border-color: var(--color-ink) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+</style>

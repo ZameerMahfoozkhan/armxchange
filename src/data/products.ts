@@ -953,10 +953,22 @@ export const CATEGORIES = [
 ];
 
 export const CONTACT_INFO = {
-  phone: "+91 6392421574",
-  phoneRaw: "916392421574",
-  phoneDisplay: "+91 63924 21574",
-  whatsappBaseUrl: "https://wa.me/916392421574",
+  // Primary WhatsApp & Orders line
+  whatsappPhone: "+91 8922012598",
+  whatsappPhoneDisplay: "+91 89220 12598",
+  whatsappPhoneRaw: "918922012598",
+  whatsappBaseUrl: "https://wa.me/918922012598",
+
+  // Primary Phone (WhatsApp & Orders)
+  phone: "+91 8922012598",
+  phoneRaw: "918922012598",
+  phoneDisplay: "+91 89220 12598",
+
+  // Direct Consultation & Support Line (Retained Old Number)
+  secondaryPhone: "+91 6392421574",
+  secondaryPhoneRaw: "916392421574",
+  secondaryPhoneDisplay: "+91 63924 21574",
+
   founder: "Pranatpal Singh",
   founderTitle: "Founder, National-Level Shooter & Coach (1 Year)",
   brandMotto: "Every Shooter Deserves a Fair Start.",

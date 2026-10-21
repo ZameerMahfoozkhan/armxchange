@@ -1,0 +1,63 @@
+{
+  "$schema": "https://agenticresource.org/schemas/ai-catalog.json",
+  "name": "ArmsXchange Shooting Sports Catalog",
+  "description": "Verified pre-owned and new 10m competition air rifles, pistols, match accessories, and ammunition in India.",
+  "version": "1.1.0",
+  "provider": {
+    "name": "ArmsXchange",
+    "url": "https://armsxchange.in",
+    "contact": "+91-8922012598 (WhatsApp Orders), +91-6392421574 (Direct Support)"
+  },
+  "resources": [
+    {
+      "name": "Second-Hand 10m Air Rifles",
+      "url": "https://armsxchange.in/second-hand-air-rifles/",
+      "type": "marketplace",
+      "discipline": "10m Air Rifle",
+      "condition": "Pre-Owned / Verified"
+    },
+    {
+      "name": "Second-Hand 10m Air Pistols",
+      "url": "https://armsxchange.in/second-hand-air-pistols/",
+      "type": "marketplace",
+      "discipline": "10m Air Pistol",
+      "condition": "Pre-Owned / Verified"
+    },
+    {
+      "name": "New 10m Match Air Rifles",
+      "url": "https://armsxchange.in/10m-air-rifles/",
+      "type": "catalog",
+      "brands": ["Walther", "Feinwerkbau", "Steyr"]
+    },
+    {
+      "name": "New 10m Match Air Pistols",
+      "url": "https://armsxchange.in/10m-air-pistols/",
+      "type": "catalog",
+      "brands": ["Morini", "Steyr"]
+    },
+    {
+      "name": "Shooting Boots & Footwear",
+      "url": "https://armsxchange.in/shooting-boots/",
+      "type": "catalog",
+      "brands": ["Sauer", "AHG", "Corami"]
+    },
+    {
+      "name": "Match Pellets (.177 Calibre)",
+      "url": "https://armsxchange.in/pellets/",
+      "type": "catalog",
+      "brands": ["RWS R10"]
+    },
+    {
+      "name": "Equipment Inspection Guide",
+      "url": "https://armsxchange.in/pre-owned-equipment-guide/",
+      "type": "guide",
+      "topics": ["10-year cylinder validity", "Regulator consistency", "Arms Rules 2016"]
+    },
+    {
+      "name": "Technical Journal & Equipment Comparisons",
+      "url": "https://armsxchange.in/blog/",
+      "type": "articles",
+      "topics": ["Walther vs FWB comparison", "Second hand air rifle prices in India", "Equipment control"]
+    }
+  ]
+}

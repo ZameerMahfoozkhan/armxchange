@@ -5,12 +5,60 @@ import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CONTACT_INFO } from '../data/products';
 
 const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Verified Second Hand & Pre-Owned 10m Air Rifles & Pistols",
+  "description": "Curated pre-owned competition shooting sports air weapons in India with verified cylinder validity.",
+  "numberOfItems": preOwnedListings.length,
+  "itemListElement": preOwnedListings.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": `Second Hand ${p.title}`,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is the cylinder manufacturing date so critical?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under ISSF and NRAI equipment control rules, high-pressure aluminium compressed air cylinders have a maximum certified lifespan of 10 years from the date of manufacture. Expired cylinders are disqualified at pre-competition equipment control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the WhatsApp enquiry process work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Clicking 'Enquire on WhatsApp' opens a chat directly with founder Pranatpal Singh with the listing title pre-filled. You can discuss weapon history, request additional test group sheets, and schedule a range inspection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a gun licence for these air rifles in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under the Arms Rules 2016, 0.177 calibre (4.5mm) target air rifles with muzzle energy below 20 Joules do not require a firearm licence. They are classified for shooting sports participation across India."
+      }
+    }
+  ]
+};
 ---
 
 <Layout
-  title="Pre-Owned Air Rifles & Pistols | Second-Hand Weapons | ArmsXchange"
-  description="Verified pre-owned 10m competition air rifles and air pistols in India. Transparent condition disclosures, cylinder validity checks, and direct WhatsApp enquiry."
+  title="Second Hand 10m Air Rifles & Air Pistols | ArmsXchange India"
+  description="Verified second hand 10m competition air rifles & match pistols in India. 10-year cylinder validity checks, chronograph velocity reports & direct WhatsApp chat."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
@@ -28,7 +76,7 @@ const preOwnedListings = PRODUCTS.filter(p => p.isPreOwned);
         </span>
       </div>
       <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
-        Verified Pre-Owned Competition Air Weapons
+        Verified Second Hand & Pre-Owned 10m Air Rifles & Pistols
       </h1>
       <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
         Every second-hand air rifle and air pistol listed on ArmsXchange undergoes thorough physical inspection: cylinder manufacturing timestamps, regulator velocity spreads, stock integrity, and transparent cosmetic disclosures. Direct concierge and athlete consultation prior to any transaction.

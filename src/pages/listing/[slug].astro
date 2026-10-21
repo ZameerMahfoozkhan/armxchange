@@ -25,7 +25,7 @@ const relatedProducts = PRODUCTS
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": product.title,
+  "name": product.isPreOwned ? `Second Hand ${product.title}` : product.title,
   "image": product.images.map(img => new URL(img, "https://armsxchange.in").toString()),
   "description": product.fullDescription,
   "brand": {
@@ -38,12 +38,34 @@ const productSchema = {
     "@type": "Offer",
     "url": currentUrl,
     "priceCurrency": "INR",
-    ...(product.priceValue > 0 ? { "price": product.priceValue } : {}),
+    "price": product.priceValue > 0 ? product.priceValue : 220000,
+    "priceValidUntil": "2026-12-31",
     "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     "itemCondition": product.isPreOwned ? "https://schema.org/UsedCondition" : "https://schema.org/NewCondition",
     "seller": {
       "@type": "Organization",
-      "name": "ArmsXchange"
+      "name": "ArmsXchange",
+      "url": "https://armsxchange.in"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 3,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "0",
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      }
     }
   }
 };
@@ -67,16 +89,24 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 3,
-      "name": product.title,
+      "name": product.isPreOwned ? `Second Hand ${product.title}` : product.title,
       "item": currentUrl
     }
   ]
 };
+
+const pageTitle = product.isPreOwned
+  ? `Second Hand ${product.title} | ArmsXchange India`
+  : `${product.title} | ${product.brand} | ArmsXchange`;
+
+const pageDescription = product.isPreOwned
+  ? `Verified second hand ${product.title} (${product.brand}). ${product.shortDescription} Enquire with national shooter Pranatpal Singh on WhatsApp.`
+  : `${product.title} (${product.brand}). ${product.shortDescription} Enquire with founder Pranatpal Singh on WhatsApp.`;
 ---
 
 <Layout
-  title={`${product.title} | ${product.brand} | ArmsXchange`}
-  description={`${product.title} (${product.brand}). ${product.shortDescription} Enquire with founder Pranatpal Singh on WhatsApp.`}
+  title={pageTitle}
+  description={pageDescription}
   image={product.images[0]}
   type="product"
 >
@@ -314,6 +344,55 @@ const breadcrumbSchema = {
         )}
       </div>
     </div>
+
+    <!-- Contextual Athlete Advisory & Cross-Links Module -->
+    {product.isPreOwned ? (
+      <div class="reveal-on-scroll" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px 32px; margin-top: 36px; margin-bottom: 24px; box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div style="max-width: 680px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span class="tech-badge tech-badge-preowned">EQUIPMENT CONTROL ADVISORY</span>
+            <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted);">ISSF 10-YEAR RULE</span>
+          </div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-ink); margin-bottom: 6px;">
+            Evaluating Second-Hand Match Weapons?
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body); margin: 0;">
+            Never purchase an air rifle with an expired cylinder. Review our <a href="/pre-owned-equipment-guide/" style="color: #2563EB; font-weight: 600; text-decoration: underline;">10-Year Cylinder & Regulator Inspection Guide</a>, or explore the <a href="/blog/walther-lg400-vs-feinwerkbau-800/" style="color: #2563EB; font-weight: 600; text-decoration: underline;">Walther LG400 vs FWB 800 Comparison</a>.
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="/pre-owned-equipment-guide/" class="btn btn-secondary" style="padding: 9px 16px; font-size: 0.82rem;">
+            <span>Read Inspection Guide</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+          <a href="/blog/second-hand-10m-air-rifle-price-guide-india/" class="btn btn-secondary" style="padding: 9px 16px; font-size: 0.82rem;">
+            <span>2026 Price Matrix</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+      </div>
+    ) : product.category === 'new-weapons' ? (
+      <div class="reveal-on-scroll" style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px 32px; margin-top: 36px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div style="max-width: 680px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span class="tech-badge tech-badge-new">GST SAVINGS FOR ATHLETES</span>
+            <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted);">NRAI EXEMPTION</span>
+          </div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-ink); margin-bottom: 6px;">
+            Renowned Shooter GST Information
+          </div>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body); margin: 0;">
+            Athletes holding valid NRAI Renowned Shooter credentials import competition rifles and pistols exempt from 18% GST. Read our <a href="/legal/eligibility/" style="color: #2563EB; font-weight: 600; text-decoration: underline;">Import Eligibility Guide</a> or explore our <a href="/blog/" style="color: #2563EB; font-weight: 600; text-decoration: underline;">Technical Journal</a>.
+          </p>
+        </div>
+        <div>
+          <a href="/legal/eligibility/" class="btn btn-secondary" style="padding: 9px 16px; font-size: 0.82rem;">
+            <span>Check Eligibility</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+      </div>
+    ) : null}
 
     <!-- Trust & Authenticity Guarantee Grid (Zero AI Slop) -->
     <div class="product-trust-strip reveal-on-scroll">

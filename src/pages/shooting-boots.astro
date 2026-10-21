@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { PRODUCTS } from '../data/products';
+
+const footwearProducts = PRODUCTS.filter(p => p.subcategory === 'footwear');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Competition Shooting Boots & Footwear",
+  "description": "ISSF approved competition match shooting shoes and boots from Sauer, AHG, and Corami for rifle and pistol disciplines.",
+  "numberOfItems": footwearProducts.length,
+  "itemListElement": footwearProducts.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": p.title,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shooting Boots",
+      "item": "https://armsxchange.in/shooting-boots/"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Competition Shooting Boots & Shoes | Sauer, AHG, Corami | ArmsXchange India"
+  description="ISSF approved match shooting boots and rifle footwear from Sauer, AHG, and Corami. Flat rigid soles, anatomical ankle support, and all size availability in India."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Shooting Boots</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">ISSF EQUIPMENT CONTROL</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          COMPETITION MATCH FOOTWEAR
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Competition Shooting Boots & Footwear
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Precision match footwear engineered for standing stability, rigid platform base, and ISSF rule compliance. Featuring Sauer Perfect Top, Sauer Easy Top, AHG Allround, AHG Strong, and Corami match shoes across all sizes.
+      </p>
+    </div>
+
+    <!-- Technical Guide Banner -->
+    <div class="reveal-on-scroll" style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 22px 28px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div style="font-size: 0.94rem; font-weight: 700; color: var(--color-ink); margin-bottom: 4px;">
+          ISSF Footwear Rule Compliance (Rule 6.5.3)
+        </div>
+        <p style="font-size: 0.84rem; color: var(--color-text-muted); margin: 0; line-height: 1.55;">
+          All featured shooting boots adhere to ISSF sole flatness and ankle flexibility specifications, ensuring zero disqualification risk at equipment control. Available in EU sizes 36 to 48.
+        </p>
+      </div>
+      <a href="/accessories/" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.78rem; font-family: var(--font-mono); white-space: nowrap;">
+        <span>VIEW ALL ACCESSORIES</span>
+        <span class="btn-trailing-icon">→</span>
+      </a>
+    </div>
+
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 64px;">
+      <div class="reveal-on-scroll" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: 12px;">
+        <div style="font-family: var(--font-display, var(--font-sans)); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink);">
+          Featured Match Footwear ({footwearProducts.length})
+        </div>
+        <div style="font-size: 0.75rem; color: var(--color-text-muted); font-family: var(--font-mono); font-weight: 600;">
+          ALL SIZES &bull; ALL COLOURS &bull; GENUINE IMPORTS
+        </div>
+      </div>
+
+      <div class="product-grid">
+        {footwearProducts.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

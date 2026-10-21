@@ -1,0 +1,335 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
+import { BLOG_POSTS } from '../../data/blogPosts';
+import { CONTACT_INFO } from '../../data/products';
+
+const featuredPost = BLOG_POSTS.find(p => p.featured) || BLOG_POSTS[0];
+const regularPosts = BLOG_POSTS.filter(p => p.slug !== featuredPost.slug);
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "ArmsXchange Shooting Sports Journal & Equipment Guides",
+  "description": "Technical insights, head-to-head equipment comparisons, and second-hand air rifle price guides for Indian shooting athletes.",
+  "url": "https://armsxchange.in/blog/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "ArmsXchange",
+    "url": "https://armsxchange.in",
+    "logo": "https://armsxchange.in/images/brand/armsxchange-logo.webp"
+  },
+  "blogPost": BLOG_POSTS.map(p => ({
+    "@type": "BlogPosting",
+    "headline": p.title,
+    "description": p.excerpt,
+    "url": `https://armsxchange.in/blog/${p.slug}/`,
+    "datePublished": p.date,
+    "author": {
+      "@type": "Person",
+      "name": p.author.name
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Journal",
+      "item": "https://armsxchange.in/blog/"
+    }
+  ]
+};
+---
+
+<Layout
+  title="Shooting Sports Journal & Equipment Guides | ArmsXchange India"
+  description="Technical insights, head-to-head equipment comparisons, and second-hand air rifle price guides for Indian shooting athletes. Authored by coach Pranatpal Singh."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">Journal & Guides</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div style="margin-bottom: 48px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge">ATHLETE INTELLIGENCE</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          RANGE NOTES & VALUATIONS
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em; line-height: 1.15;">
+        ArmsXchange Technical Journal & Guides
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Unbiased equipment reviews, cylinder compliance rules, head-to-head rifle comparisons, and second-hand valuation benchmarks curated for Indian competition shooting athletes and parents.
+      </p>
+    </div>
+
+    <!-- Featured Post Hero Card -->
+    {featuredPost && (
+      <div class="featured-blog-card reveal-on-scroll">
+        <div class="featured-image-col">
+          <img 
+            src={featuredPost.coverImage} 
+            alt={featuredPost.title} 
+            loading="eager"
+            width="640"
+            height="380"
+            style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-card) 0 0 var(--radius-card);"
+          />
+        </div>
+        <div class="featured-content-col">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+            <span class="tech-badge tech-badge-new">{featuredPost.category}</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">{featuredPost.dateFormatted}</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">&bull; {featuredPost.readTime}</span>
+          </div>
+
+          <h2 style="font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 800; margin-bottom: 14px; line-height: 1.25;">
+            <a href={`/blog/${featuredPost.slug}/`} style="color: var(--color-ink); text-decoration: none;">
+              {featuredPost.title}
+            </a>
+          </h2>
+
+          <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-body); margin-bottom: 24px;">
+            {featuredPost.excerpt}
+          </p>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: #0F172A; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.78rem;">
+                PS
+              </div>
+              <div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-ink);">{featuredPost.author.name}</div>
+                <div style="font-size: 0.75rem; color: var(--color-text-muted);">{featuredPost.author.role}</div>
+              </div>
+            </div>
+
+            <a href={`/blog/${featuredPost.slug}/`} class="btn btn-primary" style="padding: 9px 18px; font-size: 0.84rem;">
+              <span>Read Full Analysis</span>
+              <span class="btn-trailing-icon">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Regular Posts Grid -->
+    <div style="margin-top: 48px; margin-bottom: 64px;">
+      <div style="font-family: var(--font-display, var(--font-sans)); font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; color: var(--color-ink);">
+        All Guides & Technical Articles
+      </div>
+
+      <div class="blog-grid">
+        {BLOG_POSTS.map(post => (
+          <article class="blog-card reveal-on-scroll">
+            <div class="blog-card-media">
+              <img 
+                src={post.coverImage} 
+                alt={post.title} 
+                loading="lazy"
+                width="400"
+                height="220"
+                style="width: 100%; height: 210px; object-fit: cover;"
+              />
+              <span class="blog-card-category">{post.category}</span>
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <span>{post.dateFormatted}</span>
+                <span>&bull;</span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3 class="blog-card-title">
+                <a href={`/blog/${post.slug}/`}>{post.title}</a>
+              </h3>
+              <p class="blog-card-excerpt">
+                {post.excerpt}
+              </p>
+              <div class="blog-card-footer">
+                <div class="blog-card-author">
+                  <span>By {post.author.name}</span>
+                </div>
+                <a href={`/blog/${post.slug}/`} class="blog-card-read-more">
+                  Read Guide →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Direct Technical Assistance Banner -->
+    <div class="reveal-on-scroll" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 40px 36px; box-shadow: var(--shadow-card); text-align: center;">
+      <span class="tech-badge" style="margin-bottom: 12px;">ATHLETE CONCIERGE</span>
+      <h2 style="font-size: clamp(1.4rem, 2.2vw, 1.85rem); font-weight: 800; color: var(--color-ink); margin-bottom: 12px;">
+        Have an Equipment Question Not Covered in Our Guides?
+      </h2>
+      <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text-body); max-width: 580px; margin: 0 auto 24px;">
+        Reach out directly to National Coach Pranatpal Singh on WhatsApp for practical range advice on trigger tuning, cylinder safety, or finding the right pre-owned match weapon.
+      </p>
+      <a 
+        href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I was reading the ArmsXchange technical journal and would like to ask a technical question about 10m shooting equipment.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-whatsapp-solid"
+        style="padding: 12px 24px; display: inline-flex; align-items: center; gap: 8px;"
+      >
+        <WhatsAppIcon size={18} />
+        <span>Ask Question on WhatsApp</span>
+        <span class="btn-trailing-icon">→</span>
+      </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .featured-blog-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .featured-blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .featured-content-col {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+  }
+  .blog-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .blog-card-media {
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-card-category {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    backdrop-filter: blur(4px);
+  }
+  .blog-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .blog-card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .blog-card-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+  .blog-card-title a {
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .blog-card-title a:hover {
+    color: #2563EB;
+  }
+  .blog-card-excerpt {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text-body);
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+  }
+  .blog-card-author {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  .blog-card-read-more {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #2563EB;
+    text-decoration: none;
+  }
+  .blog-card-read-more:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .featured-blog-card {
+      grid-template-columns: 1fr;
+    }
+    .featured-image-col img {
+      border-radius: var(--radius-card) var(--radius-card) 0 0 !important;
+      height: 220px !important;
+    }
+    .featured-content-col {
+      padding: 24px 20px;
+    }
+  }
+</style>

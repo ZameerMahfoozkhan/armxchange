@@ -1,4 +1,25 @@
+# ArmsXchange Production robots.txt (Indian Shooting Sports Equipment)
 User-agent: *
 Allow: /
+Disallow: /api/
 
+# Explicit Permissions for AI Search Engines & Conversational Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemaps & Agent Discovery
 Sitemap: https://armsxchange.in/sitemap-index.xml
+Sitemap: https://armsxchange.in/sitemap-images.xml
+llms-txt: https://armsxchange.in/llms.txt

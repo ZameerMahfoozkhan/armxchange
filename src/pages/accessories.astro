@@ -4,12 +4,47 @@ import ProductCard from '../components/ProductCard.astro';
 import { PRODUCTS } from '../data/products';
 
 const accessories = PRODUCTS.filter(p => p.category === 'accessories');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Competition Shooting Accessories & Match Footwear",
+  "description": "Precision MEC match diopter sights, anatomical buttplates, cheek pieces, and ISSF approved competition shooting boots from Sauer, AHG, and Corami.",
+  "numberOfItems": accessories.length,
+  "itemListElement": accessories.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": p.title,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Accessories",
+      "item": "https://armsxchange.in/accessories/"
+    }
+  ]
+};
 ---
 
 <Layout
-  title="Competition Shooting Accessories & Footwear | ArmsXchange"
+  title="Competition Shooting Accessories & Footwear | ArmsXchange India"
   description="Precision MEC match diopter sights, anatomical buttplates, cheek pieces, and ISSF approved competition shooting boots from Sauer, AHG, and Corami."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">

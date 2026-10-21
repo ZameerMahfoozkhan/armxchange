@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import { PRODUCTS, CONTACT_INFO } from '../data/products';
+
+const preOwnedPistols = PRODUCTS.filter(p => p.isPreOwned && p.subcategory === 'air-pistols');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Second Hand 10m Competition Air Pistols",
+  "description": "Verified pre-owned 10m target air pistols in India with inspected cylinder validity and trigger diagnostics.",
+  "numberOfItems": preOwnedPistols.length,
+  "itemListElement": preOwnedPistols.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": `Second Hand ${p.title}`,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Second-Hand Weapons",
+      "item": "https://armsxchange.in/second-hand-weapons/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "10m Air Pistols",
+      "item": "https://armsxchange.in/second-hand-air-pistols/"
+    }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How can I request a pre-owned 10m air pistol?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Verified match pistols like Morini CM 162/200 and Steyr EVO 10 frequently transfer directly between athletes before being catalogued online. Contact Coach Pranatpal Singh on WhatsApp to register your grip size and trigger preference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is verified on second-hand match air pistols?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every pistol undergoes physical inspection: 10-year ISSF cylinder manufacturing date verification, trigger pull weight calibration (500g minimum), electronic battery contacts, and velocity consistency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an arms licence for a 10m air pistol in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Under the Indian Arms Rules 2016, 0.177 calibre (4.5mm) target air pistols generating muzzle energy under 20 Joules do not require an arms licence."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title="Second Hand 10m Air Pistols | Pre-Owned Match Pistols | ArmsXchange India"
+  description="Verified second hand 10m competition air pistols in India. Morini, Steyr, Walther with transparent condition, cylinder checks & direct WhatsApp consultation."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <a href="/second-hand-weapons/" style="color: var(--color-ink); font-weight: 500;">Second-Hand Weapons</a>
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">10m Air Pistols</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge tech-badge-preowned">PRE-OWNED 10M PISTOLS</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          CERTIFIED COMPETITION HARDWARE
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Verified Second Hand 10m Competition Air Pistols
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Olympic precision 10m match air pistols from Morini, Steyr, and Walther. Every second-hand pistol is inspected for regulator consistency, 500g trigger weight compliance, and cylinder manufacturing timestamps.
+      </p>
+    </div>
+
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 64px;">
+      <div class="reveal-on-scroll" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: 12px;">
+        <div style="font-family: var(--font-display, var(--font-sans)); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink);">
+          Available Verified Pistols ({preOwnedPistols.length})
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="/second-hand-air-rifles/" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.78rem; font-family: var(--font-mono);">
+            <span>SWITCH TO 10M RIFLES</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+      </div>
+
+      {preOwnedPistols.length > 0 ? (
+        <div class="product-grid">
+          {preOwnedPistols.map((product, idx) => (
+            <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+          ))}
+        </div>
+      ) : (
+        <div style="background: #FFFFFF; border: 1px dashed var(--color-border); border-radius: var(--radius-card); padding: 48px 32px; text-align: center; margin-top: 16px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: #F0FDF4; border: 1px solid #BBF7D0; display: inline-flex; align-items: center; justify-content: center; color: #166534; margin: 0 auto 16px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--color-ink); margin-bottom: 8px;">
+            No Pre-Owned 10m Air Pistols Currently Listed
+          </h2>
+          <p style="font-size: 0.95rem; color: var(--color-text-body); max-width: 540px; margin: 0 auto 24px; line-height: 1.6;">
+            Verified match pistols (Morini 162/200, Steyr Evo10/LP10) are in high demand and frequently transfer directly via our athlete network before open listing. Contact Coach Pranatpal Singh to request upcoming pistols or consign your weapon.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a 
+              href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I am looking for a verified pre-owned 10m match air pistol (Morini / Steyr). Please let me know of upcoming availability.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp-solid"
+              style="padding: 12px 24px; display: inline-flex; align-items: center; gap: 9px;"
+            >
+              <WhatsAppIcon size={18} />
+              <span>Request 10m Air Pistol on WhatsApp</span>
+              <span class="btn-trailing-icon">→</span>
+            </a>
+            <a href="/second-hand-air-rifles/" class="btn btn-secondary" style="padding: 12px 22px;">
+              <span>Explore Pre-Owned Rifles</span>
+              <span class="btn-trailing-icon">→</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Consignment & Acquisition Banner -->
+    <div class="reveal-on-scroll" style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 40px 36px; margin-bottom: 64px; box-shadow: var(--shadow-card);">
+      <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;" class="pistols-banner-grid">
+        <div>
+          <span class="tech-badge" style="margin-bottom: 14px;">ATHLETE CONSIGNMENT</span>
+          <h2 style="font-size: clamp(1.4rem, 2.2vw, 1.8rem); margin-bottom: 14px; color: var(--color-ink); font-weight: 800;">
+            Upgrading Your Match Pistol? Consign With Us
+          </h2>
+          <p style="font-size: 0.94rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 18px;">
+            Transferring your competition air pistol through ArmsXchange ensures fair athlete valuation, verified shooter credentials, and secure insured transport. We conduct cylinder inspections and connect you with active junior and state athletes across India.
+          </p>
+          <a 
+            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to consign my competition air pistol on ArmsXchange.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp-solid"
+            style="font-size: 0.88rem; padding: 10px 18px; display: inline-flex; align-items: center; gap: 8px;"
+          >
+            <WhatsAppIcon size={17} />
+            <span>Consign Pistol on WhatsApp</span>
+          </a>
+        </div>
+
+        <div style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-text-muted); text-transform: uppercase; margin-bottom: 12px; font-weight: 700;">
+            POPULAR REQUESTED MODELS
+          </div>
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: var(--color-text-body); line-height: 1.8;">
+            <li><strong>Morini CM 162EI</strong> (Electronic Trigger)</li>
+            <li><strong>Morini CM 162MI</strong> (Mechanical Trigger)</li>
+            <li><strong>Steyr EVO 10 E / Mechanical</strong></li>
+            <li><strong>Steyr LP10 / LP2</strong></li>
+            <li><strong>Walther LP500 Expert / Basic</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div>
+      <div style="margin-bottom: 24px;">
+        <span class="tech-badge" style="margin-bottom: 8px;">INTELLIGENCE & ADVICE</span>
+        <h2 style="font-size: 1.5rem; color: var(--color-ink); font-weight: 700; margin-top: 4px;">
+          Second Hand 10m Air Pistol FAQ
+        </h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px;">
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            How can I request a pre-owned 10m air pistol?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Verified match pistols like Morini CM 162/200 and Steyr EVO 10 frequently transfer directly between athletes before open listing. Contact Coach Pranatpal Singh on WhatsApp to register your grip size and trigger preference.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            What is inspected on second-hand pistols?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            Every pistol undergoes physical inspection: 10-year ISSF cylinder manufacturing date verification, trigger pull weight calibration (500g minimum), electronic battery contacts, and velocity consistency.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px;">
+          <h3 style="font-size: 1.05rem; color: var(--color-ink); margin-bottom: 8px; font-weight: 700;">
+            Do I need an arms licence in India?
+          </h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body);">
+            No. Under the Indian Arms Rules 2016, 0.177 calibre (4.5mm) target air pistols generating muzzle energy under 20 Joules do not require an arms licence. Valid club membership is verified for transport.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  @media (max-width: 868px) {
+    .pistols-banner-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+  }
+</style>

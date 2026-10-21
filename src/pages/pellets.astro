@@ -5,12 +5,47 @@ import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CONTACT_INFO } from '../data/products';
 
 const pellets = PRODUCTS.filter(p => p.category === 'pellets');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "RWS R10 Competition Match Pellets",
+  "description": "Batch-tested RWS R10 match rifle and air pistol pellets in 4.49mm and 4.50mm head sizes with courier delivery across India.",
+  "numberOfItems": pellets.length,
+  "itemListElement": pellets.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": p.title,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Match Pellets",
+      "item": "https://armsxchange.in/pellets/"
+    }
+  ]
+};
 ---
 
 <Layout
-  title="RWS R10 Match Pellets .177 Caliber | ArmsXchange"
+  title="RWS R10 Match Pellets .177 Caliber | ArmsXchange India"
   description="Batch-tested RWS R10 match rifle and air pistol pellets in 4.49mm and 4.50mm head sizes. Flat head wadcutters with courier delivery across India."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">

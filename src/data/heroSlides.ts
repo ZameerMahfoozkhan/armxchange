@@ -36,17 +36,17 @@ export const HERO_SLIDES: HeroSlide[] = [
     id: "pre-owned-rifles",
     index: 1,
     total: 4,
-    eyebrow: "01 / 04 — PRE-OWNED AIR RIFLES",
-    headlinePrefix: "Find Your Next ",
-    headlineHighlight: "Competition Rifle.",
-    description: "Explore available pre-owned air rifles with detailed condition information, specifications, and clear pricing.",
+    eyebrow: "01 / 04 — VERIFIED PRE-OWNED HARDWARE",
+    headlinePrefix: "Second Hand & Pre-Owned ",
+    headlineHighlight: "10m Air Rifles.",
+    description: "India's verified exchange for competition 10m air rifles and match air pistols. Inspected cylinder validity, chronograph diagnostics, and direct coach consultation.",
     image: "/images/hero/a_cinematic_high_resolution_indoor_shooting_range.webp",
     imageWebp: "/images/hero/a_cinematic_high_resolution_indoor_shooting_range.webp",
     imageMobile: "/images/hero/a_cinematic_high_resolution_indoor_shooting_range-mobile.webp",
     alt: "Precision pre-owned 10m competition target air rifle on an indoor range firing lane",
     primaryCta: {
       label: "Browse Pre-Owned Rifles",
-      href: "/second-hand-weapons/"
+      href: "/second-hand-air-rifles/"
     },
     secondaryCta: {
       label: "How It Works",
@@ -72,7 +72,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     alt: "Pre-owned precision 10m match air pistols on range firing bench with walnut anatomic grips",
     primaryCta: {
       label: "Explore Air Pistols",
-      href: "/second-hand-weapons/"
+      href: "/second-hand-air-pistols/"
     },
     secondaryCta: {
       label: "How It Works",

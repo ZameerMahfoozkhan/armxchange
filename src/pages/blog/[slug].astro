@@ -1,0 +1,429 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import WhatsAppIcon from '../../components/WhatsAppIcon.astro';
+import { BLOG_POSTS, type BlogPost } from '../../data/blogPosts';
+import { CONTACT_INFO } from '../../data/products';
+
+export async function getStaticPaths() {
+  return BLOG_POSTS.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+const currentUrl = `https://armsxchange.in/blog/${post.slug}/`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.metaDescription,
+  "image": post.coverImage.startsWith('http') ? post.coverImage : `https://armsxchange.in${post.coverImage}`,
+  "datePublished": `${post.date}T08:00:00+05:30`,
+  "dateModified": `${post.date}T08:00:00+05:30`,
+  "mainEntityOfPage": currentUrl,
+  "author": {
+    "@type": "Person",
+    "name": post.author.name,
+    "jobTitle": post.author.qualification,
+    "url": "https://armsxchange.in/about-armsxchange/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ArmsXchange",
+    "url": "https://armsxchange.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://armsxchange.in/images/brand/armsxchange-logo.webp"
+    }
+  },
+  "keywords": post.tags.join(', ')
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Journal",
+      "item": "https://armsxchange.in/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.title,
+      "item": currentUrl
+    }
+  ]
+};
+
+const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
+---
+
+<Layout
+  title={post.metaTitle}
+  description={post.metaDescription}
+  image={post.coverImage}
+  type="article"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <article class="container" style="padding-top: 28px; padding-bottom: 96px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <a href="/blog/" style="color: var(--color-ink); font-weight: 500;">Journal</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">{post.category}</span>
+    </nav>
+
+    <!-- Article Header -->
+    <header style="max-width: 860px; margin-bottom: 40px;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="tech-badge tech-badge-new">{post.category}</span>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">{post.dateFormatted}</span>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">&bull;</span>
+        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">{post.readTime}</span>
+      </div>
+
+      <h1 style="font-size: clamp(2rem, 3.8vw, 3.1rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 18px;">
+        {post.title}
+      </h1>
+
+      <p style="font-size: 1.12rem; line-height: 1.65; color: var(--color-text-body); margin-bottom: 24px;">
+        {post.excerpt}
+      </p>
+
+      <!-- Author Bio Pill -->
+      <div style="display: flex; align-items: center; gap: 14px; padding-top: 16px; border-top: 1px solid var(--color-border);">
+        <div style="width: 42px; height: 42px; border-radius: 50%; background: #0F172A; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+          PS
+        </div>
+        <div>
+          <div style="font-size: 0.92rem; font-weight: 700; color: var(--color-ink);">{post.author.name}</div>
+          <div style="font-size: 0.8rem; color: var(--color-text-muted);">{post.author.qualification}</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Cover Image -->
+    <div style="margin-bottom: 48px; border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-card); max-height: 480px;">
+      <img 
+        src={post.coverImage} 
+        alt={post.title} 
+        width="1120"
+        height="500"
+        style="width: 100%; height: 100%; object-fit: cover; max-height: 480px;"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Main Content Grid: Sidebar + Body -->
+    <div class="article-layout-grid">
+      <!-- Main Content Column -->
+      <div class="article-body-content">
+        <div set:html={post.content} />
+
+        <!-- Author Footer Card -->
+        <div style="margin-top: 56px; padding: 28px; background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); display: flex; gap: 20px; align-items: center;" class="author-bio-card">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: #0F172A; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 800; font-size: 1.15rem; flex-shrink: 0;">
+            PS
+          </div>
+          <div>
+            <div style="font-size: 1.05rem; font-weight: 800; color: var(--color-ink); margin-bottom: 4px;">
+              Written by {post.author.name}
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.6; color: var(--color-text-body); margin: 0;">
+              National-level 10m air rifle competitor, ISSF certified shooting coach, and founder of ArmsXchange. Dedicated to making verified, match-compliant target sports hardware transparently accessible to junior and state athletes across India.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Sidebar -->
+      <aside class="article-sidebar">
+        <!-- Table of Contents -->
+        {post.tableOfContents && post.tableOfContents.length > 0 && (
+          <div class="sidebar-widget">
+            <div class="sidebar-widget-title">Table of Contents</div>
+            <nav class="toc-list">
+              {post.tableOfContents.map(item => (
+                <a href={`#${item.id}`} class="toc-link">
+                  {item.title}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
+
+        <!-- Pre-Owned Rifles Widget -->
+        <div class="sidebar-widget sidebar-promo-widget">
+          <span class="tech-badge tech-badge-preowned" style="margin-bottom: 10px;">VERIFIED WEAPONS</span>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--color-ink); margin-bottom: 8px;">
+            Explore Inspected 10m Air Rifles
+          </h3>
+          <p style="font-size: 0.84rem; line-height: 1.55; color: var(--color-text-body); margin-bottom: 16px;">
+            Every pre-owned rifle includes verified cylinder validity timestamps and velocity chronograph diagnostics.
+          </p>
+          <a href="/second-hand-air-rifles/" class="btn btn-secondary" style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 9px 14px;">
+            <span>Browse Second-Hand Rifles</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+
+        <!-- Direct WhatsApp Consult Widget -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget-title">Equipment Consultation</div>
+          <p style="font-size: 0.84rem; line-height: 1.55; color: var(--color-text-body); margin-bottom: 14px;">
+            Need help checking a cylinder date stamp or finding the right grip size? Ask Coach Pranatpal directly.
+          </p>
+          <a 
+            href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent(`Hi Pranatpal, I read your article "${post.title}" and would like to ask a question.`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp-solid"
+            style="width: 100%; justify-content: center; font-size: 0.82rem; padding: 10px 14px; gap: 8px;"
+          >
+            <WhatsAppIcon size={16} />
+            <span>Consult on WhatsApp</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Related Articles -->
+    {otherPosts.length > 0 && (
+      <div style="margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--color-border);">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--color-ink); margin-bottom: 24px;">
+          Related Guides & Analysis
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+          {otherPosts.map(op => (
+            <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="tech-badge" style="margin-bottom: 8px;">{op.category}</span>
+                <h3 style="font-size: 1.08rem; font-weight: 800; line-height: 1.35; margin-bottom: 10px;">
+                  <a href={`/blog/${op.slug}/`} style="color: var(--color-ink); text-decoration: none;">
+                    {op.title}
+                  </a>
+                </h3>
+                <p style="font-size: 0.86rem; color: var(--color-text-body); line-height: 1.55; margin-bottom: 16px;">
+                  {op.excerpt}
+                </p>
+              </div>
+              <a href={`/blog/${op.slug}/`} style="font-size: 0.82rem; font-weight: 700; color: #2563EB; text-decoration: none;">
+                Read Article →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </article>
+</Layout>
+
+<style is:global>
+  .article-layout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 48px;
+    align-items: start;
+  }
+  .article-body-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #1E293B;
+  }
+  .article-body-content .article-lead {
+    font-size: 1.18rem;
+    line-height: 1.7;
+    color: var(--color-ink);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .article-body-content h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-ink);
+    margin-top: 48px;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    scroll-margin-top: 96px;
+  }
+  .article-body-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .article-body-content p {
+    margin-bottom: 20px;
+  }
+  .article-body-content ul, .article-body-content ol {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  .article-body-content li {
+    margin-bottom: 10px;
+    line-height: 1.65;
+  }
+
+  /* Comparison Summary Card */
+  .comparison-summary-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    margin: 28px 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .summary-col h3 {
+    font-size: 1.05rem;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--color-ink);
+  }
+  .summary-col ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  /* Pricing Table */
+  .pricing-table-container {
+    overflow-x: auto;
+    margin: 28px 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: #FFFFFF;
+  }
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    text-align: left;
+  }
+  .pricing-table th {
+    background: var(--color-canvas-subtle);
+    padding: 12px 16px;
+    font-weight: 700;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .pricing-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-body);
+  }
+  .pricing-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Verdict & CTA Box */
+  .verdict-card {
+    background: #F8FAFC;
+    border-left: 4px solid #2563EB;
+    padding: 24px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin: 28px 0;
+  }
+  .article-cta-box {
+    background: #FFFFFF;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 32px 28px;
+    margin-top: 48px;
+    text-align: center;
+  }
+  .article-cta-box h3 {
+    margin-top: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-ink);
+  }
+  .article-cta-box p {
+    font-size: 0.94rem;
+    max-width: 540px;
+    margin: 0 auto 20px;
+  }
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  /* Sidebar */
+  .article-sidebar {
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .sidebar-widget {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .sidebar-widget-title {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+  }
+  .toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .toc-link {
+    font-size: 0.82rem;
+    color: var(--color-text-body);
+    text-decoration: none;
+    line-height: 1.45;
+    transition: color 0.15s ease;
+  }
+  .toc-link:hover {
+    color: #2563EB;
+  }
+  .sidebar-promo-widget {
+    background: var(--color-canvas-subtle);
+  }
+
+  @media (max-width: 900px) {
+    .article-layout-grid {
+      grid-template-columns: 1fr;
+    }
+    .comparison-summary-card {
+      grid-template-columns: 1fr;
+    }
+    .article-sidebar {
+      position: static;
+    }
+  }
+</style>

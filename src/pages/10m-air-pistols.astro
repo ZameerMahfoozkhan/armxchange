@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { PRODUCTS } from '../data/products';
+
+const newPistols = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-pistols');
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "New Olympic 10m Match Air Pistols",
+  "description": "Brand-new competition air pistols from Morini and Steyr with electronic and mechanical triggers.",
+  "numberOfItems": newPistols.length,
+  "itemListElement": newPistols.map((p, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": p.title,
+    "url": `https://armsxchange.in/listing/${p.slug}/`
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "10m Air Pistols",
+      "item": "https://armsxchange.in/10m-air-pistols/"
+    }
+  ]
+};
+---
+
+<Layout
+  title="10m Match Air Pistols | New Olympic Competition Pistols | ArmsXchange India"
+  description="Brand-new Olympic 10m air pistols from Morini and Steyr. Electronic triggers, ergonomic anatomic grips, and official NRAI compliance support in India."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+      <a href="/" style="color: var(--color-ink); font-weight: 500;">Home</a> 
+      <span style="color: #CBD5E1; font-size: 0.75rem;">/</span>
+      <span style="color: var(--color-text-muted);">10m Match Pistols</span>
+    </nav>
+
+    <!-- Header -->
+    <div style="margin-bottom: 40px; max-width: 860px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+        <span class="tech-badge tech-badge-new">OLYMPIC DISCIPLINE</span>
+        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+          FACTORY DIRECT 10M PISTOLS
+        </span>
+      </div>
+      <h1 style="margin-bottom: 16px; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em;">
+        Olympic 10m Competition Match Air Pistols
+      </h1>
+      <p style="font-size: 1.05rem; line-height: 1.65; color: var(--color-text-body);">
+        Precision competition match air pistols from Morini and Steyr. Engineered to exact ISSF specifications with 500-gram trigger pull limits, electronic microswitches, Lothar Walther precision match barrels, and multi-angle anatomical wood grips.
+      </p>
+    </div>
+
+    <!-- GST Information Banner -->
+    <div class="reveal-on-scroll" style="background: var(--color-canvas-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 18px 24px; margin-bottom: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: #FFFFFF; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-ink); flex-shrink: 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size: 0.88rem; font-weight: 700; color: var(--color-ink);">
+            Renowned Shooter GST Information
+          </div>
+          <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 2px;">
+            Prices shown are base import figures. Under Indian Customs & GST regulations, an additional 18% GST applies for non-renowned shooters (athletes without an official NRAI certificate).
+          </p>
+        </div>
+      </div>
+      <a href="/legal/eligibility/" class="btn btn-secondary" style="padding: 7px 14px; font-size: 0.78rem; font-family: var(--font-mono); white-space: nowrap;">
+        <span>ELIGIBILITY GUIDE</span>
+        <span class="btn-trailing-icon">→</span>
+      </a>
+    </div>
+
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 64px;">
+      <div class="reveal-on-scroll" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-border); flex-wrap: wrap; gap: 12px;">
+        <div style="font-family: var(--font-display, var(--font-sans)); font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-ink);">
+          Featured Olympic Pistols ({newPistols.length})
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a href="/10m-air-rifles/" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.78rem; font-family: var(--font-mono);">
+            <span>SWITCH TO 10M RIFLES</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+          <a href="/second-hand-air-pistols/" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.78rem; font-family: var(--font-mono);">
+            <span>EXPLORE PRE-OWNED PISTOLS</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        {newPistols.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

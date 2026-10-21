@@ -6,7 +6,12 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [sitemap()],
   redirects: {
-    '/about-armxchange': '/about-armsxchange/'
+    '/about-armxchange': '/about-armsxchange/',
+    '/second-hand-rifles/': '/second-hand-air-rifles/',
+    '/second-hand-pistols/': '/second-hand-air-pistols/',
+    '/rifles/': '/10m-air-rifles/',
+    '/pistols/': '/10m-air-pistols/',
+    '/boots/': '/shooting-boots/'
   },
   build: {
     format: 'directory'

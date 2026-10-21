@@ -2,12 +2,98 @@
 import Layout from '../layouts/Layout.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { CONTACT_INFO } from '../data/products';
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://armsxchange.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Equipment Guide",
+      "item": "https://armsxchange.in/pre-owned-equipment-guide/"
+    }
+  ]
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Technical Guide to Evaluating Pre-Owned 10m Air Rifles in India",
+  "description": "Comprehensive technical guide for evaluating second-hand 10m competition air rifles: 10-year ISSF cylinder rule, chronograph regulator diagnostics, and trigger inspection.",
+  "image": "https://armsxchange.in/images/hero/a_cinematic_high_resolution_indoor_shooting_range.webp",
+  "author": {
+    "@type": "Person",
+    "name": "Pranatpal Singh",
+    "jobTitle": "National-Level 10m Air Rifle Competitor & Coach",
+    "url": "https://armsxchange.in/about-armsxchange/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ArmsXchange",
+    "url": "https://armsxchange.in",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://armsxchange.in/images/brand/armsxchange-logo.webp"
+    }
+  },
+  "datePublished": "2026-01-15T08:00:00+05:30",
+  "dateModified": "2026-10-21T08:00:00+05:30",
+  "mainEntityOfPage": "https://armsxchange.in/pre-owned-equipment-guide/"
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Inspect a Second Hand 10m Competition Air Rifle Before Purchase",
+  "description": "Follow this 4-step range inspection checklist to verify compressed cylinder validity, regulator stability, and trigger mechanisms before buying a pre-owned match weapon.",
+  "totalTime": "PT30M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Inspect Stamped Cylinder Manufacturing Date",
+      "text": "Check the engraved MM/YY timestamp on the aluminium cylinder collar. Under ISSF and NRAI equipment control rules, air cylinders have a strictly enforced 10-year lifespan. Never purchase a pre-owned rifle with an expired cylinder.",
+      "url": "https://armsxchange.in/pre-owned-equipment-guide/#checkpoint-01"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Measure Regulator Consistency via Chronograph",
+      "text": "Fire a 10-shot string over a ballistic chronograph using standard match pellets. Verify muzzle velocity consistently measures 170 to 175 m/s with an extreme spread of under 2 m/s (approx. 6 fps).",
+      "url": "https://armsxchange.in/pre-owned-equipment-guide/#checkpoint-02"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Test Trigger Release & Safety Disengagement",
+      "text": "Verify clean sear break and independent adjustment screws for first-stage travel and overtravel stop. For electronic triggers, inspect battery leads and verify dry-fire microswitch response.",
+      "url": "https://armsxchange.in/pre-owned-equipment-guide/#checkpoint-03"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Verify Indian Arms Rules 2016 .177 Calibre Exemption",
+      "text": "Confirm the weapon is strictly 0.177 calibre (4.5mm) generating muzzle energy under 20 Joules, exempting it from firearm licensing requirements under Indian law.",
+      "url": "https://armsxchange.in/legal/eligibility/"
+    }
+  ]
+};
 ---
 
 <Layout
-  title="Pre-Owned Shooting Equipment Buyer's Guide | ArmsXchange"
+  title="Pre-Owned Shooting Equipment Buyer's Guide | ArmsXchange India"
   description="Practical guide for evaluating pre-owned 10m competition air rifles and pistols: 10-year cylinder validity, regulator consistency, and electronic trigger inspection."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
