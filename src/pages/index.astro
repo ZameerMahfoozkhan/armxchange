@@ -5,8 +5,7 @@ import HeroCarousel from '../components/HeroCarousel.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
-const preOwnedFeatured = PRODUCTS.find(p => p.isPreOwned);
-const otherPreOwned = PRODUCTS.filter(p => p.isPreOwned && p.id !== preOwnedFeatured?.id);
+const allPreOwned = PRODUCTS.filter(p => p.isPreOwned);
 const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured || p.category === 'new-weapons')).slice(0, 4);
 ---
 
@@ -53,162 +52,46 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
     </div>
   </section>
 
-  <!-- Pre-Owned Star Spotlight: 2018 Feinwerkbau 800 Alu -->
-  {preOwnedFeatured && (
-    <section style="background: var(--color-canvas-subtle); border-bottom: 1px solid var(--color-border);">
-      <div class="container">
-        <div class="reveal-on-scroll" style="margin-bottom: 36px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
-              VERIFIED PRE-OWNED SPOTLIGHT
-            </div>
-            <h2>Championship Ready 2018 Feinwerkbau 800 Alu</h2>
-            <p style="color: var(--color-text-muted);">Equipped with brand-new factory 2024 cylinder, valid under ISSF rules through 2034.</p>
+  <!-- Olympic & Match Catalogue (Verified Pre-Owned & Brand New) -->
+  <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);" id="catalogue">
+    <div class="container">
+      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
+            VERIFIED INVENTORY // 10M MATCH EQUIPMENT
           </div>
+          <h2 style="margin-bottom: 6px;">Olympic & Match Catalogue</h2>
+          <p style="color: var(--color-text-muted);">Verified pre-owned match weapons & brand-new Olympic precision air rifles and air pistols.</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           <a href="/second-hand-weapons/" class="btn btn-secondary">
-            <span>View All Pre-Owned Listings</span>
+            <span>All Pre-Owned ({allPreOwned.length})</span>
+            <span class="btn-trailing-icon">→</span>
+          </a>
+          <a href="/new-weapons/" class="btn btn-secondary">
+            <span>New Weapons ({PRODUCTS.filter(p => p.category === 'new-weapons').length})</span>
             <span class="btn-trailing-icon">→</span>
           </a>
         </div>
-
-        <div class="dossier-card reveal-on-scroll">
-          <div class="dossier-grid">
-            <div class="dossier-media">
-              <img 
-                src={preOwnedFeatured.images[0]} 
-                alt={`${preOwnedFeatured.brand} ${preOwnedFeatured.title} - Certified Pre-Owned 10m Target Air Rifle`} 
-                width="640"
-                height="420"
-                loading="lazy"
-                decoding="async"
-              />
-              <div style="position: absolute; top: 16px; left: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 5;">
-                <span class="product-badge product-badge-preowned">
-                  <span class="badge-pulse-dot" aria-hidden="true"></span>
-                  <span>Verified Pre-Owned</span>
-                </span>
-                <span class="product-badge product-badge-new">
-                  <svg class="badge-shield-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                  <span>2024 Cylinder Installed (To 2034)</span>
-                </span>
-              </div>
-            </div>
-
-            <div class="dossier-info">
-              <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted); margin-bottom: 6px;">
-                {preOwnedFeatured.brand} // 10M MATCH AIR RIFLE
-              </div>
-              <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; color: var(--color-ink);">
-                {preOwnedFeatured.title}
-              </h3>
-              <p style="font-size: 0.94rem; line-height: 1.65; color: var(--color-text-body); margin-bottom: 20px;">
-                {preOwnedFeatured.shortDescription} Upgraded with a genuine Feinwerkbau compressed air cylinder manufactured in 2024, providing a full 10-year competition certification window. Includes original travel case and match accessories.
-              </p>
-
-              <!-- Technical Verification Table -->
-              <table class="spec-table">
-                <tbody>
-                  <tr>
-                    <td class="label">Cylinder Validity</td>
-                    <td class="val" style="color: var(--color-signal-green);">2024 Factory Cylinder (Valid to 2034)</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Discipline / Calibre</td>
-                    <td class="val">10m Air Rifle · .177 (4.5mm)</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Condition Grade</td>
-                    <td class="val">Very Good / Range Tested</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Trigger Mechanism</td>
-                    <td class="val">Match 2-Stage Fully Adjustable</td>
-                  </tr>
-                  <tr>
-                    <td class="label">Case & Accessories</td>
-                    <td class="val">Original Feinwerkbau Hard Travel Case</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div class="dossier-footer-row" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-                <div>
-                  <div style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: var(--color-text-muted);">Acquisition Method</div>
-                  <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-ink);">Price on Enquiry</div>
-                </div>
-
-                <div class="dossier-actions" style="display: flex; flex-wrap: wrap; gap: 10px;">
-                  <a 
-                    href={`/listing/${preOwnedFeatured.slug}/`}
-                    class="btn btn-secondary"
-                  >
-                    <span>Technical Dossier</span>
-                    <span class="btn-trailing-icon">→</span>
-                  </a>
-                  <a 
-                    href={`https://wa.me/${CONTACT_INFO.phoneRaw}?text=${encodeURIComponent('Hi Pranatpal, I would like to enquire about the 2018 Feinwerkbau 800 Alu (with 2024 cylinder) on ArmsXchange.')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-whatsapp-solid"
-                    style="gap: 9px;"
-                  >
-                    <WhatsAppIcon size={18} />
-                    <span>Enquire on WhatsApp</span>
-                    <span class="btn-trailing-icon">→</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {otherPreOwned.length > 0 && (
-          <div style="margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--color-border);">
-            <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
-              <div>
-                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 2px;">
-                  JUST ARRIVED // PRE-OWNED ACQUISITIONS
-                </div>
-                <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-ink); margin: 0;">
-                  More Verified Pre-Owned Rifles ({otherPreOwned.length} Available)
-                </h3>
-              </div>
-              <a href="/second-hand-weapons/" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;">
-                <span>View All Pre-Owned ({PRODUCTS.filter(p => p.isPreOwned).length})</span>
-                <span class="btn-trailing-icon">→</span>
-              </a>
-            </div>
-
-            <div class="product-grid">
-              {otherPreOwned.map((product, idx) => (
-                <ProductCard product={product} class={`reveal-on-scroll stagger-${idx + 1}`} />
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
-  )}
-
-  <!-- Featured Competition Weapons Grid -->
-  <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);">
-    <div class="container">
-      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px;">
-        <div>
-          <h2 style="margin-bottom: 6px;">Olympic & Match Catalogue</h2>
-          <p style="color: var(--color-text-muted);">Brand-new 10m competition weapons from Walther, Feinwerkbau, Steyr, and Morini.</p>
-        </div>
-        <a href="/new-weapons/" class="btn btn-secondary">
-          <span>View All New Weapons ({PRODUCTS.filter(p => p.category === 'new-weapons').length})</span>
-          <span class="btn-trailing-icon">→</span>
-        </a>
       </div>
 
-      <div class="product-grid">
+      <!-- Quick Filter Chips -->
+      <div class="reveal-on-scroll" style="margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);">
+        <button class="catalogue-filter-chip active" data-filter="all">ALL WEAPONS ({allPreOwned.length + featuredNewProducts.length})</button>
+        <button class="catalogue-filter-chip" data-filter="preowned">VERIFIED PRE-OWNED ({allPreOwned.length})</button>
+        <button class="catalogue-filter-chip" data-filter="new">BRAND NEW IMPORTS ({featuredNewProducts.length})</button>
+      </div>
+
+      <div class="product-grid" id="catalogueGrid">
+        {allPreOwned.map((product, idx) => (
+          <div class="catalogue-item" data-type="preowned">
+            <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+          </div>
+        ))}
         {featuredNewProducts.map((product, idx) => (
-          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+          <div class="catalogue-item" data-type="new">
+            <ProductCard product={product} class={`reveal-on-scroll stagger-${((idx + allPreOwned.length) % 4) + 1}`} />
+          </div>
         ))}
       </div>
     </div>
@@ -380,6 +263,36 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
     box-shadow: var(--shadow-md);
   }
 
+  .catalogue-filter-chip {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-body);
+    padding: 7px 15px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: transform var(--transition-spring), background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .catalogue-filter-chip:hover {
+    border-color: var(--color-ink);
+    transform: translateY(-1px);
+  }
+
+  .catalogue-filter-chip.active {
+    background: var(--color-ink);
+    color: #FFFFFF;
+    border-color: var(--color-ink);
+    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.18);
+  }
+
+  .catalogue-item {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
   @media (max-width: 868px) {
     .founder-grid {
       grid-template-columns: 1fr !important;
@@ -402,3 +315,25 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
     }
   }
 </style>
+
+<script>
+  const chips = document.querySelectorAll('.catalogue-filter-chip');
+  const items = document.querySelectorAll('.catalogue-item');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = (chip as HTMLElement).dataset.filter;
+
+      items.forEach(item => {
+        const type = (item as HTMLElement).dataset.type;
+        if (filter === 'all' || type === filter) {
+          (item as HTMLElement).style.display = 'block';
+        } else {
+          (item as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
