@@ -5,8 +5,26 @@ import HeroCarousel from '../components/HeroCarousel.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
-const allPreOwned = PRODUCTS.filter(p => p.isPreOwned);
-const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured || p.category === 'new-weapons')).slice(0, 4);
+// 1. All Pre-Owned Weapons (3 verified 10m match rifles)
+const preOwnedWeapons = PRODUCTS.filter(p => p.isPreOwned);
+
+// 2. Olympic & Match Catalogue (Balanced selection of rifles & pistols: Walther, Feinwerkbau, Morini, Steyr)
+const featuredNewRifles = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-rifles');
+const featuredNewPistols = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-pistols');
+const featuredOlympicWeapons = [
+  featuredNewRifles.find(p => p.id === 'walther-lg500-anatomic-e') || featuredNewRifles[0],
+  featuredNewRifles.find(p => p.id === 'fwb-900-alu-centra') || featuredNewRifles[1],
+  featuredNewPistols.find(p => p.id === 'morini-cm200ei') || featuredNewPistols[0],
+  featuredNewPistols.find(p => p.id === 'steyr-evo-10e') || featuredNewPistols[1]
+].filter(Boolean) as typeof PRODUCTS;
+
+// 3. Precision Shooting Accessories (Sights, Buttplates, Match Footwear)
+const featuredAccessories = [
+  PRODUCTS.find(p => p.id === 'mec-spy-long'),
+  PRODUCTS.find(p => p.id === 'mec-contact-4'),
+  PRODUCTS.find(p => p.id === 'sauer-rifle-shoes-perfect-top'),
+  PRODUCTS.find(p => p.id === 'ahg-shooting-boots-allround')
+].filter(Boolean) as typeof PRODUCTS;
 ---
 
 <Layout 
@@ -52,46 +70,76 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
     </div>
   </section>
 
-  <!-- Olympic & Match Catalogue (Verified Pre-Owned & Brand New) -->
-  <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);" id="catalogue">
+  <!-- Section 1: Verified Pre-Owned Weapons -->
+  <section style="background: var(--color-canvas-subtle); border-bottom: 1px solid var(--color-border);" id="pre-owned">
     <div class="container">
-      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
         <div>
           <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
-            VERIFIED INVENTORY // 10M MATCH EQUIPMENT
+            VERIFIED HARDWARE // 10M COMPETITION READY
+          </div>
+          <h2 style="margin-bottom: 6px;">Verified Pre-Owned Weapons</h2>
+          <p style="color: var(--color-text-muted);">Directly inspected 10m target air rifles with certified cylinders and transparent condition disclosures.</p>
+        </div>
+        <a href="/second-hand-weapons/" class="btn btn-secondary">
+          <span>View All Pre-Owned ({preOwnedWeapons.length})</span>
+          <span class="btn-trailing-icon">→</span>
+        </a>
+      </div>
+
+      <div class="product-grid">
+        {preOwnedWeapons.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Olympic & Match Catalogue (New Weapons - Rifles & Pistols) -->
+  <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);" id="olympic-catalogue">
+    <div class="container">
+      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
+            FACTORY SEALED // OLYMPIC & NATIONAL SPEC
           </div>
           <h2 style="margin-bottom: 6px;">Olympic & Match Catalogue</h2>
-          <p style="color: var(--color-text-muted);">Verified pre-owned match weapons & brand-new Olympic precision air rifles and air pistols.</p>
+          <p style="color: var(--color-text-muted);">Brand-new 10m competition rifles & precision match pistols from Walther, Feinwerkbau, Steyr, and Morini.</p>
         </div>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="/second-hand-weapons/" class="btn btn-secondary">
-            <span>All Pre-Owned ({allPreOwned.length})</span>
-            <span class="btn-trailing-icon">→</span>
-          </a>
-          <a href="/new-weapons/" class="btn btn-secondary">
-            <span>New Weapons ({PRODUCTS.filter(p => p.category === 'new-weapons').length})</span>
-            <span class="btn-trailing-icon">→</span>
-          </a>
-        </div>
+        <a href="/new-weapons/" class="btn btn-secondary">
+          <span>View All New Weapons ({PRODUCTS.filter(p => p.category === 'new-weapons').length})</span>
+          <span class="btn-trailing-icon">→</span>
+        </a>
       </div>
 
-      <!-- Quick Filter Chips -->
-      <div class="reveal-on-scroll" style="margin-bottom: 28px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--color-border);">
-        <button class="catalogue-filter-chip active" data-filter="all">ALL WEAPONS ({allPreOwned.length + featuredNewProducts.length})</button>
-        <button class="catalogue-filter-chip" data-filter="preowned">VERIFIED PRE-OWNED ({allPreOwned.length})</button>
-        <button class="catalogue-filter-chip" data-filter="new">BRAND NEW IMPORTS ({featuredNewProducts.length})</button>
-      </div>
-
-      <div class="product-grid" id="catalogueGrid">
-        {allPreOwned.map((product, idx) => (
-          <div class="catalogue-item" data-type="preowned">
-            <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
-          </div>
+      <div class="product-grid">
+        {featuredOlympicWeapons.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         ))}
-        {featuredNewProducts.map((product, idx) => (
-          <div class="catalogue-item" data-type="new">
-            <ProductCard product={product} class={`reveal-on-scroll stagger-${((idx + allPreOwned.length) % 4) + 1}`} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Precision Shooting Accessories -->
+  <section style="background: var(--color-canvas-subtle); border-bottom: 1px solid var(--color-border);" id="accessories">
+    <div class="container">
+      <div class="reveal-on-scroll" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 4px;">
+            COMPETITION GEAR // TUNING & APPAREL
           </div>
+          <h2 style="margin-bottom: 6px;">Precision Shooting Accessories</h2>
+          <p style="color: var(--color-text-muted);">ISSF-approved match diopter sights, anatomical buttplates, and competition footwear for peak stability.</p>
+        </div>
+        <a href="/accessories/" class="btn btn-secondary">
+          <span>View All Accessories ({PRODUCTS.filter(p => p.category === 'accessories').length})</span>
+          <span class="btn-trailing-icon">→</span>
+        </a>
+      </div>
+
+      <div class="product-grid">
+        {featuredAccessories.map((product, idx) => (
+          <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         ))}
       </div>
     </div>
@@ -263,77 +311,10 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
     box-shadow: var(--shadow-md);
   }
 
-  .catalogue-filter-chip {
-    background: #FFFFFF;
-    border: 1px solid var(--color-border);
-    color: var(--color-text-body);
-    padding: 7px 15px;
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.04em;
-    transition: transform var(--transition-spring), background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  }
-
-  .catalogue-filter-chip:hover {
-    border-color: var(--color-ink);
-    transform: translateY(-1px);
-  }
-
-  .catalogue-filter-chip.active {
-    background: var(--color-ink);
-    color: #FFFFFF;
-    border-color: var(--color-ink);
-    box-shadow: 0 2px 8px rgba(11, 15, 23, 0.18);
-  }
-
-  .catalogue-item {
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-
   @media (max-width: 868px) {
     .founder-grid {
       grid-template-columns: 1fr !important;
       gap: 32px !important;
     }
   }
-  @media (max-width: 600px) {
-    .dossier-footer-row {
-      flex-direction: column !important;
-      align-items: flex-start !important;
-      gap: 14px !important;
-    }
-    .dossier-actions {
-      width: 100%;
-      flex-direction: column;
-    }
-    .dossier-actions .btn {
-      width: 100%;
-      justify-content: center;
-    }
-  }
 </style>
-
-<script>
-  const chips = document.querySelectorAll('.catalogue-filter-chip');
-  const items = document.querySelectorAll('.catalogue-item');
-
-  chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      chips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const filter = (chip as HTMLElement).dataset.filter;
-
-      items.forEach(item => {
-        const type = (item as HTMLElement).dataset.type;
-        if (filter === 'all' || type === filter) {
-          (item as HTMLElement).style.display = 'block';
-        } else {
-          (item as HTMLElement).style.display = 'none';
-        }
-      });
-    });
-  });
-</script>
