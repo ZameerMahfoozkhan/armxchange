@@ -125,9 +125,21 @@ const breadcrumbSchema = {
             </div>
 
             {product.images.length > 1 && (
-              <span class="photo-counter-pill" id="photoCounter">
-                1 / {product.images.length}
-              </span>
+              <>
+                <span class="photo-counter-pill" id="photoCounter">
+                  1 / {product.images.length}
+                </span>
+                <button id="galleryPrevBtn" class="gallery-nav-btn gallery-prev" aria-label="Previous photograph">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                <button id="galleryNextBtn" class="gallery-nav-btn gallery-next" aria-label="Next photograph">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </>
             )}
             
             <button id="zoomBtn" class="zoom-action-trigger" title="Inspect full-resolution photograph">
@@ -155,12 +167,13 @@ const breadcrumbSchema = {
                 >
                   <img 
                     src={img} 
-                    alt={`${product.title} - angle ${idx + 1}`} 
+                    alt={`${product.title} - view angle ${idx + 1}`} 
                     width="70"
                     height="50"
                     loading="lazy"
                     decoding="async"
                   />
+                  <span class="thumb-index-tag">{idx + 1}</span>
                 </button>
               ))}
             </div>
@@ -569,6 +582,41 @@ const breadcrumbSchema = {
   .zoom-action-trigger:hover {
     background: #1E293B;
     border-color: #CBD5E1;
+  .gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(11, 15, 23, 0.72);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+    z-index: 3;
+  }
+
+  .gallery-nav-btn:hover {
+    background: #0B0F17;
+    border-color: #CBD5E1;
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .gallery-nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .gallery-prev {
+    left: 14px;
+  }
+
+  .gallery-next {
+    right: 14px;
   }
 
   .thumbnail-strip {
@@ -579,6 +627,7 @@ const breadcrumbSchema = {
   }
 
   .thumb-btn {
+    position: relative;
     width: 72px;
     height: 72px;
     border-radius: var(--radius-sm);
@@ -608,6 +657,29 @@ const breadcrumbSchema = {
   .thumb-btn.active {
     border-color: var(--color-ink);
     box-shadow: 0 0 0 1px var(--color-ink);
+  }
+
+  .thumb-index-tag {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    line-height: 1;
+    background: rgba(11, 15, 23, 0.85);
+    color: #FFFFFF;
+    padding: 2px 5px;
+    border-radius: 3px;
+    pointer-events: none;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(2px);
+  }
+
+  .thumb-btn.active .thumb-index-tag {
+    background: var(--color-signal-red, #DC2626);
+    color: #FFFFFF;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
 
   .compliance-box {
@@ -1202,44 +1274,70 @@ const breadcrumbSchema = {
 
 <script>
   const mainImg = document.getElementById('mainImage') as HTMLImageElement;
-  const thumbs = document.querySelectorAll('.thumb-btn');
+  const thumbs = Array.from(document.querySelectorAll('.thumb-btn')) as HTMLElement[];
   const photoCounter = document.getElementById('photoCounter');
   const zoomBtn = document.getElementById('zoomBtn');
   const zoomModal = document.getElementById('zoomModal');
   const modalBackdrop = document.getElementById('modalBackdrop');
   const closeZoomBtn = document.getElementById('closeZoomBtn');
   const zoomModalImg = document.getElementById('zoomModalImg') as HTMLImageElement;
+  const prevBtn = document.getElementById('galleryPrevBtn');
+  const nextBtn = document.getElementById('galleryNextBtn');
+
+  let currentIndex = 0;
+
+  function setActiveImageIndex(index: number) {
+    if (thumbs.length === 0) return;
+    currentIndex = ((index % thumbs.length) + thumbs.length) % thumbs.length;
+    
+    thumbs.forEach((b, i) => {
+      const isActive = i === currentIndex;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    const activeBtn = thumbs[currentIndex];
+    const newSrc = activeBtn.dataset.img;
+    const indexNum = activeBtn.dataset.index || (currentIndex + 1).toString();
+
+    if (photoCounter) {
+      photoCounter.textContent = `${indexNum} / ${thumbs.length}`;
+    }
+
+    if (newSrc && mainImg && mainImg.getAttribute('src') !== newSrc) {
+      mainImg.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+      mainImg.style.opacity = '0.35';
+      mainImg.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        mainImg.src = newSrc;
+        const restoreOpacity = () => {
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
+        };
+        if (mainImg.complete) {
+          restoreOpacity();
+        } else {
+          mainImg.onload = restoreOpacity;
+        }
+        if (zoomModalImg) zoomModalImg.src = newSrc;
+      }, 120);
+    }
+  }
 
   thumbs.forEach((btn, idx) => {
     btn.addEventListener('click', () => {
-      thumbs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const newSrc = (btn as HTMLElement).dataset.img;
-      const indexNum = (btn as HTMLElement).dataset.index || (idx + 1).toString();
-      
-      if (photoCounter) {
-        photoCounter.textContent = `${indexNum} / ${thumbs.length}`;
-      }
-
-      if (newSrc && mainImg && mainImg.getAttribute('src') !== newSrc) {
-        mainImg.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
-        mainImg.style.opacity = '0.35';
-        mainImg.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          mainImg.src = newSrc;
-          const restoreOpacity = () => {
-            mainImg.style.opacity = '1';
-            mainImg.style.transform = 'scale(1)';
-          };
-          if (mainImg.complete) {
-            restoreOpacity();
-          } else {
-            mainImg.onload = restoreOpacity;
-          }
-          if (zoomModalImg) zoomModalImg.src = newSrc;
-        }, 120);
-      }
+      setActiveImageIndex(idx);
     });
+  });
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setActiveImageIndex(currentIndex - 1);
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setActiveImageIndex(currentIndex + 1);
   });
 
   function openZoom() {
@@ -1260,6 +1358,10 @@ const breadcrumbSchema = {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && zoomModal?.classList.contains('is-open')) {
       closeZoom();
+    } else if (e.key === 'ArrowLeft' && thumbs.length > 1) {
+      setActiveImageIndex(currentIndex - 1);
+    } else if (e.key === 'ArrowRight' && thumbs.length > 1) {
+      setActiveImageIndex(currentIndex + 1);
     }
   });
 </script>

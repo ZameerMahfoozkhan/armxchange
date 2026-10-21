@@ -6,6 +6,7 @@ import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
 const preOwnedFeatured = PRODUCTS.find(p => p.isPreOwned);
+const otherPreOwned = PRODUCTS.filter(p => p.isPreOwned && p.id !== preOwnedFeatured?.id);
 const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured || p.category === 'new-weapons')).slice(0, 4);
 ---
 
@@ -162,6 +163,31 @@ const featuredNewProducts = PRODUCTS.filter(p => !p.isPreOwned && (p.featured ||
             </div>
           </div>
         </div>
+
+        {otherPreOwned.length > 0 && (
+          <div style="margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--color-border);">
+            <div class="reveal-on-scroll" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 2px;">
+                  JUST ARRIVED // PRE-OWNED ACQUISITIONS
+                </div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--color-ink); margin: 0;">
+                  More Verified Pre-Owned Rifles ({otherPreOwned.length} Available)
+                </h3>
+              </div>
+              <a href="/second-hand-weapons/" class="btn btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;">
+                <span>View All Pre-Owned ({PRODUCTS.filter(p => p.isPreOwned).length})</span>
+                <span class="btn-trailing-icon">→</span>
+              </a>
+            </div>
+
+            <div class="product-grid">
+              {otherPreOwned.map((product, idx) => (
+                <ProductCard product={product} class={`reveal-on-scroll stagger-${idx + 1}`} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )}

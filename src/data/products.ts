@@ -72,6 +72,107 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "walther-lg400-anatomic-2022-01",
+    slug: "2022-walther-lg400-anatomic-air-rifle",
+    title: "2022 Walther LG400 Anatomic Match Air Rifle (Mechanical Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Excellent / Certified Range Ready",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquiry with verified condition report",
+    images: [
+      "/images/products/rifles/walther-lg400-anatomic-2022-1.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2022-2.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2022-3.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2022-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2022 Walther LG400 Anatomic 10m match air rifle. Laminated anatomic stock, receiver DE 2022 (SN KBB8774), and original Walther cylinder valid to June 2032.",
+    fullDescription: "A prime opportunity to acquire an authentic, verified 2022 Walther LG400 Anatomic 10m match air rifle. Manufactured in Germany in 2022 (Receiver DE 2022, Serial KBB8774), this competition air rifle features Walther's precision mechanical two-stage match trigger with integrated dry-fire training mode, carbon-finish barrel jacket with muzzle extension tube, and sculpted blue-grey laminated anatomic wood stock with 3D adjustable match grip and buttplate. Includes factory Walther high-pressure cylinder certified usable until June 2032 (06/32) under ISSF 10-year regulations, original hard flight case, and Walther accessory box.",
+    specifications: {
+      "Model": "Walther LG400 Anatomic (Mechanical)",
+      "Manufacturing Year": "2022 (Receiver DE 2022 / SN KBB8774)",
+      "Cylinder Validity": "Valid to June 2032 (06/32 ISSF Certified)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air",
+      "Stock Material": "Blue-Grey Laminated Anatomic Wood",
+      "Grip & Buttplate": "3D Anatomic Match Grip, Multi-Adjustable Buttplate",
+      "Trigger": "Mechanical Match Trigger with Dry-Fire Switch",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Competition Spec)"
+    },
+    conditionDisclosure: [
+      "German proofmark DE 2022 with verified serial number KBB8774.",
+      "Original Walther compressed air cylinder certified usable until 06/2032.",
+      "Two-stage mechanical trigger break and dry-fire training switch function smoothly.",
+      "Stock laminations and metal barrel shroud in excellent cosmetic and operational condition.",
+      "Supplied in Walther hard transport case with original accessory box."
+    ],
+    includedItems: [
+      "2022 Walther LG400 Anatomic 10m Air Rifle",
+      "Original Walther Air Cylinder (Certified to 06/2032)",
+      "Precision Match Diopter & Front Sight Tunnel",
+      "Original Walther Hard Flight Case",
+      "Walther Accessory Box with Tools & Adapter"
+    ],
+    badge: "Verified Pre-Owned",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lg400-anatomic-2023-01",
+    slug: "2023-walther-lg400-anatomic-air-rifle",
+    title: "2023 Walther LG400 Anatomic Match Air Rifle (Mechanical Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Like-New Condition",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquiry with verified condition report",
+    images: [
+      "/images/products/rifles/walther-lg400-anatomic-2023-1.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2023-2.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Walther LG400 Anatomic 10m match air rifle. Mint condition multi-laminate competition stock, sight risers, manual packet, and original travel case.",
+    fullDescription: "A rare, like-new 2023 Walther LG400 Anatomic 10m match air rifle. Built with Walther's celebrated mechanical match trigger, carbon barrel jacket, anatomic multi-laminate competition stock, and 3D adjustable match buttplate. Delivered complete with original factory hard flight case, dedicated Walther accessory case, diopter sight risers, factory test group paperwork, and sealed documentation envelope. Thoroughly vetted and ready for national and international ISSF competition.",
+    specifications: {
+      "Model": "Walther LG400 Anatomic (Mechanical)",
+      "Manufacturing Year": "2023",
+      "Cylinder Validity": "Original Walther Match Cylinder (Inspected)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air",
+      "Stock Material": "Anatomic Multi-Laminate Match Stock",
+      "Grip & Buttplate": "3D Sculpted Grip with Aluminium Match Buttplate",
+      "Trigger": "Mechanical Match Two-Stage Trigger",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Competition Spec)"
+    },
+    conditionDisclosure: [
+      "Manufactured in 2023 — pristine condition with minimal range time.",
+      "Original Walther compressed air cylinder with certified pressure retention.",
+      "Factory manual and documentation packet sealed in original packaging.",
+      "Dual-profile inspection confirms flawless metal finish and immaculate stock.",
+      "Complete with Walther protective case and specialized accessory box."
+    ],
+    includedItems: [
+      "2023 Walther LG400 Anatomic 10m Air Rifle",
+      "Original Walther High-Pressure Cylinder",
+      "Precision Match Diopter with Sight Elevation Risers",
+      "Original Walther Hard Protective Flight Case",
+      "Walther Dedicated Accessory Box & Filling Adapter",
+      "Factory Manual & Sealed Documentation Packet"
+    ],
+    badge: "Verified Pre-Owned",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "walther-lg500-anatomic-e",
     slug: "walther-lg500-itec-anatomic-e",
     title: "Walther LG500 itec Anatomic E (Electronic Trigger) .177",
@@ -817,7 +918,7 @@ export const CATEGORIES = [
     slug: "second-hand-weapons",
     title: "Second-Hand Weapons",
     subtitle: "Verified pre-owned 10m air rifles & pistols with transparent inspection history",
-    count: 1,
+    count: 3,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
     description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."
