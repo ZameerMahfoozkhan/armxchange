@@ -252,14 +252,15 @@ section {
 .btn-secondary {
   background: #FFFFFF;
   color: var(--color-ink);
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-sm), var(--shadow-inner-highlight);
+  border-color: #CBD5E1;
+  box-shadow: 0 1px 2px rgba(11, 15, 23, 0.05), var(--shadow-inner-highlight);
 }
 
 .btn-secondary:hover {
-  background: var(--color-canvas-subtle);
-  border-color: var(--color-text-light);
-  box-shadow: 0 2px 8px rgba(11, 15, 23, 0.06);
+  background: #F8FAFC;
+  border-color: #94A3B8;
+  color: #0B0F17;
+  box-shadow: 0 3px 10px rgba(11, 15, 23, 0.08);
   transform: translateY(-1px);
 }
 
@@ -457,13 +458,13 @@ section {
   transform: scale(1.05);
 }
 
-/* Floating Status Badges */
+/* Floating Status Badges - Subtle Frosted Capsule */
 .product-badges-float {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 9px;
+  left: 9px;
   display: flex;
-  gap: 6px;
+  gap: 5px;
   z-index: 3;
   pointer-events: none;
 }
@@ -472,48 +473,59 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 9px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 6px rgba(11, 15, 23, 0.08);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px rgba(11, 15, 23, 0.06);
+  line-height: 1.2;
+}
+
+.badge-text-desktop {
+  display: inline;
+}
+
+.badge-text-mobile {
+  display: none;
 }
 
 .product-badge-preowned {
-  background: rgba(240, 253, 244, 0.95);
-  border: 1px solid rgba(187, 247, 208, 0.95);
-  color: #166534;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #15803D;
 }
 
 .badge-pulse-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: #059669;
-  box-shadow: 0 0 6px rgba(5, 150, 105, 0.6);
+  background: #10B981;
+  box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
   display: inline-block;
+  flex-shrink: 0;
   animation: badgeDotPulse 2s infinite ease-in-out;
 }
 
 @keyframes badgeDotPulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.25); opacity: 0.75; }
+  50% { transform: scale(1.2); opacity: 0.75; }
 }
 
 .product-badge-new {
-  background: rgba(236, 253, 245, 0.95);
-  border: 1px solid rgba(167, 243, 208, 0.95);
-  color: #047857;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  color: #0369A1;
 }
 
 .badge-shield-icon {
   flex-shrink: 0;
-  color: #047857;
+  color: #0284C7;
 }
 
 /* Content Area */
@@ -1286,41 +1298,52 @@ section {
 
 .discipline-link {
   font-family: var(--font-display, var(--font-sans));
-  font-size: 0.82rem;
+  font-size: 0.80rem;
   font-weight: 600;
-  color: var(--color-ink);
+  color: #0F172A;
   margin-top: auto;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-top: 12px;
-  border-top: 1px solid var(--color-border-subtle);
-  transition: color 0.2s var(--ease-out);
+  padding: 8px 12px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(11, 15, 23, 0.04);
+  transition: all 0.22s var(--ease-out);
+  letter-spacing: -0.01em;
 }
 
 .discipline-link-arrow,
 .discipline-link .arrow-icon {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  background: #F1F5F9;
-  border: 1px solid #E2E8F0;
+  background: #0B0F17;
+  border: 1px solid #0B0F17;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-ink);
-  font-size: 0.80rem;
+  color: #FFFFFF;
+  font-size: 0.72rem;
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex-shrink: 0;
 }
 
-.discipline-card:hover .discipline-link-arrow,
-.discipline-card:hover .discipline-link .arrow-icon {
+.discipline-card:hover .discipline-link {
   background: #0B0F17;
   border-color: #0B0F17;
   color: #FFFFFF;
-  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(11, 15, 23, 0.15);
+}
+
+.discipline-card:hover .discipline-link-arrow,
+.discipline-card:hover .discipline-link .arrow-icon {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #0B0F17;
+  transform: translateX(3px);
 }
 
 /* High-Precision Showcase Section (2018 Feinwerkbau 800 spotlight) */
@@ -1480,10 +1503,49 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.82rem;
   color: #64748B;
+}
+
+.footer-credit {
+  font-size: 0.82rem;
+  color: #94A3B8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.footer-credit a {
+  color: #E2E8F0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(226, 232, 240, 0.4);
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer-credit a:hover {
+  color: #FFFFFF;
+  text-decoration-color: #FFFFFF;
+}
+
+.footer-heart {
+  display: inline-block;
+  font-size: 0.85rem;
+  animation: heartPulse 1.8s infinite ease-in-out;
+  transform-origin: center;
+  margin: 0 1px;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
 }
 
 /* Responsive Overrides */
@@ -1546,8 +1608,12 @@ footer {
   }
   .discipline-link {
     font-size: 0.74rem !important;
-    margin-top: 4px !important;
-    color: var(--color-ink) !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    margin-top: 6px !important;
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
   }
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1557,6 +1623,10 @@ footer {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+    align-items: center;
+  }
+  .footer-credit {
+    font-size: 0.78rem !important;
   }
   section {
     padding: 44px 0;
@@ -1659,6 +1729,53 @@ footer {
     padding: 6px 4px !important;
     font-size: 0.70rem !important;
     justify-content: center;
+  }
+  .discipline-link {
+    font-size: 0.70rem !important;
+    padding: 5px 8px !important;
+    border-radius: 6px !important;
+    margin-top: 6px !important;
+    background: #F1F5F9 !important;
+    border: 1px solid #CBD5E1 !important;
+    color: #0F172A !important;
+    box-shadow: 0 1px 2px rgba(11, 15, 23, 0.03) !important;
+  }
+  .discipline-link-arrow,
+  .discipline-link .arrow-icon {
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 0.62rem !important;
+  }
+  .product-badges-float {
+    top: 5px !important;
+    left: 5px !important;
+    gap: 3px !important;
+  }
+  .product-badge {
+    padding: 2px 6px !important;
+    font-size: 0.54rem !important;
+    letter-spacing: 0.03em !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    box-shadow: 0 1px 2px rgba(11, 15, 23, 0.04) !important;
+  }
+  .product-badge-preowned {
+    border-color: rgba(16, 185, 129, 0.3) !important;
+    color: #15803D !important;
+  }
+  .product-badge-new {
+    border-color: rgba(14, 165, 233, 0.3) !important;
+    color: #0369A1 !important;
+  }
+  .badge-pulse-dot {
+    width: 4px !important;
+    height: 4px !important;
+  }
+  .badge-text-desktop {
+    display: none !important;
+  }
+  .badge-text-mobile {
+    display: inline !important;
   }
   .site-header-inner {
     height: 100%;

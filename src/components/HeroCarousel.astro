@@ -181,32 +181,61 @@ import { HERO_SLIDES, HERO_CATEGORY_CARDS } from '../data/heroSlides';
     </div>
   </div>
 
-  <!-- Below-the-Hero Category Cards (Section 9) -->
+  <!-- Below-the-Hero Category Cards (Desktop Grid / Mobile Horizontal Scrolling Strip) -->
   <aside class="armx-hero-categories" aria-label="Shooting Sports Equipment Categories">
-    <div class="container">
-      <div class="armx-cat-grid">
-        {HERO_CATEGORY_CARDS.map(cat => (
-          <a href={cat.href} class="armx-cat-card">
-            <div class="armx-cat-thumb-box">
-              <img
-                src={cat.image}
-                alt=""
-                class="armx-cat-thumb"
-                width="64"
-                height="64"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="armx-cat-content">
-              <div class="armx-cat-title-row">
-                <span class="armx-cat-title">{cat.title}</span>
-                <span class="armx-cat-arrow" aria-hidden="true">→</span>
+    <div class="container armx-cat-container">
+      <div class="armx-cat-scroller" tabindex="0" role="region" aria-label="Quick category navigation">
+        <!-- Set 1: Primary Category Cards -->
+        <div class="armx-cat-grid armx-cat-track-primary">
+          {HERO_CATEGORY_CARDS.map(cat => (
+            <a href={cat.href} class="armx-cat-card">
+              <div class="armx-cat-thumb-box">
+                <img
+                  src={cat.image}
+                  alt=""
+                  class="armx-cat-thumb"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <p class="armx-cat-desc">{cat.subtitle}</p>
-            </div>
-          </a>
-        ))}
+              <div class="armx-cat-content">
+                <div class="armx-cat-title-row">
+                  <span class="armx-cat-title">{cat.title}</span>
+                  <span class="armx-cat-arrow" aria-hidden="true">→</span>
+                </div>
+                <p class="armx-cat-desc">{cat.subtitle}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <!-- Set 2: Duplicate for Seamless Continuous Horizontal Loop in Mobile Strip -->
+        <div class="armx-cat-grid armx-cat-track-clone" aria-hidden="true">
+          {HERO_CATEGORY_CARDS.map(cat => (
+            <a href={cat.href} class="armx-cat-card" tabindex="-1">
+              <div class="armx-cat-thumb-box">
+                <img
+                  src={cat.image}
+                  alt=""
+                  class="armx-cat-thumb"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="armx-cat-content">
+                <div class="armx-cat-title-row">
+                  <span class="armx-cat-title">{cat.title}</span>
+                  <span class="armx-cat-arrow" aria-hidden="true">→</span>
+                </div>
+                <p class="armx-cat-desc">{cat.subtitle}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </aside>

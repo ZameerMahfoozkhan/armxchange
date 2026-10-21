@@ -509,11 +509,20 @@ h2.armx-headline,
   border: none;
 }
 
+.armx-cat-scroller {
+  display: block;
+  width: 100%;
+}
+
 .armx-cat-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   width: 100%;
+}
+
+.armx-cat-track-clone {
+  display: none;
 }
 
 .armx-cat-card {
@@ -746,13 +755,87 @@ h2.armx-headline,
   }
 
   .armx-hero-categories {
-    margin-top: -30px;
-    padding: 0 0 20px 0;
+    margin-top: -24px;
+    padding: 0 0 16px 0;
+    overflow: hidden;
   }
 
-  .armx-cat-grid {
-    grid-template-columns: 1fr;
+  .armx-cat-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 16px, black calc(100% - 16px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 16px, black calc(100% - 16px), transparent 100%);
+  }
+
+  .armx-cat-scroller {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: armxScrollStrip 22s linear infinite;
+    will-change: transform;
+    padding: 4px 12px;
+  }
+
+  .armx-cat-scroller:hover,
+  .armx-cat-scroller:focus-within,
+  .armx-cat-scroller:active {
+    animation-play-state: paused;
+  }
+
+  .armx-cat-track-primary,
+  .armx-cat-track-clone {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+    flex-shrink: 0;
+  }
+
+  .armx-cat-card {
+    flex: 0 0 230px;
+    width: 230px;
+    min-width: 230px;
+    padding: 8px 12px;
     gap: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(11, 15, 23, 0.08);
+  }
+
+  .armx-cat-thumb-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    padding: 3px;
+  }
+
+  .armx-cat-title {
+    font-size: 0.78rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .armx-cat-desc {
+    font-size: 0.68rem;
+    line-height: 1.2;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .armx-cat-arrow {
+    font-size: 0.74rem;
+  }
+
+  @keyframes armxScrollStrip {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 6px));
+    }
   }
 }
 
@@ -806,5 +889,10 @@ h2.armx-headline,
   .armx-btn-glass {
     transition: none !important;
     transform: none !important;
+  }
+  .armx-cat-scroller {
+    animation: none !important;
+    overflow-x: auto !important;
+    width: 100% !important;
   }
 }

@@ -32,14 +32,16 @@ const whatsappUrl = getWhatsAppListingUrl(product.title, `https://armsxchange.in
       {product.isPreOwned ? (
         <span class="product-badge product-badge-preowned">
           <span class="badge-pulse-dot" aria-hidden="true"></span>
-          <span>Verified Pre-Owned</span>
+          <span class="badge-text-desktop">Verified Pre-Owned</span>
+          <span class="badge-text-mobile">Verified</span>
         </span>
       ) : (
         <span class="product-badge product-badge-new">
           <svg class="badge-shield-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
-          <span>Brand New</span>
+          <span class="badge-text-desktop">Brand New</span>
+          <span class="badge-text-mobile">New</span>
         </span>
       )}
     </div>
