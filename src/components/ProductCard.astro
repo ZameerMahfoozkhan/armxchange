@@ -10,6 +10,12 @@ interface Props {
 
 const { product, class: className = '' } = Astro.props;
 const whatsappUrl = getWhatsAppListingUrl(product.title, `https://armsxchange.in/listing/${product.slug}/`);
+
+const shortGrade = product.conditionGrade
+  ? product.conditionGrade.split('/')[0].replace(/In Box/i, '').replace(/\/\//g, '').trim()
+  : '';
+
+const cylinderYear = product.specifications["Cylinder Validity"]?.match(/20\d{2}/g)?.slice(-1)[0];
 ---
 
 <article class={`product-card ${className}`.trim()}>
@@ -60,19 +66,28 @@ const whatsappUrl = getWhatsAppListingUrl(product.title, `https://armsxchange.in
 
     <p class="product-desc">{product.shortDescription}</p>
 
-    <!-- Technical Spec Pills -->
+    <!-- Technical Spec Pills - Subtle Refined Capsules -->
     <div class="product-spec-pills">
-      <span class="spec-pill spec-pill-primary">
-        {product.conditionGrade}
-      </span>
-      {product.specifications["Calibre"] && (
-        <span class="spec-pill">
-          .177 Cal
+      {product.conditionGrade && (
+        <span class="spec-pill spec-pill-grade">
+          <span class="spec-text-desktop">{product.conditionGrade}</span>
+          <span class="spec-text-mobile">{shortGrade}</span>
         </span>
       )}
-      {product.specifications["Cylinder Validity"] && (
-        <span class="spec-pill spec-pill-highlight">
-          {product.specifications["Cylinder Validity"].match(/20\d{2}/g)?.slice(-1)[0] ? `Cylinder to ${product.specifications["Cylinder Validity"].match(/20\d{2}/g)?.slice(-1)[0]}` : 'Cylinder Inspected'}
+      {cylinderYear ? (
+        <span class="spec-pill spec-pill-cylinder">
+          <span class="spec-text-desktop">Cylinder to {cylinderYear}</span>
+          <span class="spec-text-mobile">Cyl: {cylinderYear}</span>
+        </span>
+      ) : product.specifications["Cylinder Validity"] ? (
+        <span class="spec-pill spec-pill-cylinder">
+          <span class="spec-text-desktop">Cylinder Inspected</span>
+          <span class="spec-text-mobile">Cylinder OK</span>
+        </span>
+      ) : null}
+      {product.specifications["Calibre"] && (
+        <span class={`spec-pill spec-pill-calibre ${product.specifications["Cylinder Validity"] ? 'spec-pill-calibre-preowned' : ''}`}>
+          .177 Cal
         </span>
       )}
     </div>
