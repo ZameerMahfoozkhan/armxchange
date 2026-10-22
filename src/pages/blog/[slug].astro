@@ -213,7 +213,7 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
         <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--color-ink); margin-bottom: 24px;">
           Related Guides & Analysis
         </h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 20px;">
           {otherPosts.map(op => (
             <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
               <div>
@@ -244,8 +244,16 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     grid-template-columns: minmax(0, 1fr) 300px;
     gap: 48px;
     align-items: start;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
   .article-body-content {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
     font-size: 1.05rem;
     line-height: 1.8;
     color: #1E293B;
@@ -256,6 +264,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     color: var(--color-ink);
     font-weight: 500;
     margin-bottom: 24px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .article-body-content h2 {
     font-size: 1.6rem;
@@ -265,6 +275,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     margin-bottom: 16px;
     letter-spacing: -0.02em;
     scroll-margin-top: 96px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .article-body-content h3 {
     font-size: 1.25rem;
@@ -272,9 +284,13 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     color: var(--color-ink);
     margin-top: 32px;
     margin-bottom: 12px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .article-body-content p {
     margin-bottom: 20px;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .article-body-content ul, .article-body-content ol {
     margin-bottom: 24px;
@@ -283,12 +299,14 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
   .article-body-content li {
     margin-bottom: 10px;
     line-height: 1.65;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   /* Comparison Summary Card */
   .comparison-summary-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 20px;
     background: #FFFFFF;
     border: 1px solid var(--color-border);
@@ -296,6 +314,11 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     padding: 24px;
     margin: 28px 0;
     box-shadow: var(--shadow-sm);
+    min-width: 0;
+    max-width: 100%;
+  }
+  .summary-col {
+    min-width: 0;
   }
   .summary-col h3 {
     font-size: 1.05rem;
@@ -308,31 +331,58 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     padding-left: 18px;
   }
 
-  /* Pricing Table */
+  /* Pricing Table Container & Scroll System */
+  .table-scroll-hint {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
   .pricing-table-container {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
-    margin: 28px 0;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0 28px 0;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     background: #FFFFFF;
+    display: block;
+    box-sizing: border-box;
+    box-shadow: var(--shadow-sm);
   }
   .pricing-table {
     width: 100%;
+    min-width: 580px;
     border-collapse: collapse;
     font-size: 0.88rem;
     text-align: left;
   }
   .pricing-table th {
     background: var(--color-canvas-subtle);
-    padding: 12px 16px;
+    padding: 12px 14px;
     font-weight: 700;
     color: var(--color-ink);
     border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+    font-family: var(--font-display, var(--font-sans));
   }
   .pricing-table td {
-    padding: 12px 16px;
+    padding: 12px 14px;
     border-bottom: 1px solid var(--color-border);
     color: var(--color-text-body);
+    white-space: nowrap;
+  }
+  .pricing-table th:first-child,
+  .pricing-table td:first-child {
+    white-space: normal;
+    min-width: 140px;
   }
   .pricing-table tr:last-child td {
     border-bottom: none;
@@ -345,6 +395,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     padding: 24px;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     margin: 28px 0;
+    min-width: 0;
+    max-width: 100%;
   }
   .article-cta-box {
     background: #FFFFFF;
@@ -353,6 +405,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     padding: 32px 28px;
     margin-top: 48px;
     text-align: center;
+    min-width: 0;
+    max-width: 100%;
   }
   .article-cta-box h3 {
     margin-top: 0;
@@ -372,6 +426,12 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     flex-wrap: wrap;
   }
 
+  /* Author bio card */
+  .author-bio-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
   /* Sidebar */
   .article-sidebar {
     position: sticky;
@@ -379,6 +439,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-width: 0;
+    max-width: 100%;
   }
   .sidebar-widget {
     background: #FFFFFF;
@@ -386,6 +448,8 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     border-radius: var(--radius-card);
     padding: 24px;
     box-shadow: var(--shadow-sm);
+    min-width: 0;
+    max-width: 100%;
   }
   .sidebar-widget-title {
     font-family: var(--font-mono);
@@ -417,13 +481,56 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
 
   @media (max-width: 900px) {
     .article-layout-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 36px;
     }
     .comparison-summary-card {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      padding: 18px 16px;
+      margin: 22px 0;
+    }
+    .table-scroll-hint {
+      display: flex;
     }
     .article-sidebar {
       position: static;
+    }
+    .author-bio-card {
+      padding: 20px 16px !important;
+      gap: 14px !important;
+      margin-top: 40px !important;
+    }
+    .article-cta-box {
+      padding: 24px 16px !important;
+      margin-top: 36px !important;
+    }
+    .article-cta-box h3 {
+      font-size: 1.18rem !important;
+    }
+    .article-body-content h2 {
+      font-size: 1.35rem !important;
+      margin-top: 36px !important;
+      margin-bottom: 12px !important;
+    }
+    .article-body-content h3 {
+      font-size: 1.12rem !important;
+      margin-top: 26px !important;
+    }
+    .article-body-content .article-lead {
+      font-size: 1.05rem !important;
+      line-height: 1.65 !important;
+    }
+    .verdict-card {
+      padding: 18px 16px;
+      margin: 22px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .author-bio-card {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
     }
   }
 </style>

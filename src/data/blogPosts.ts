@@ -226,6 +226,9 @@ export const BLOG_POSTS: BlogPost[] = [
         The table below reflects fair market valuation bands for inspected, match-ready air rifles in India across various condition grades:
       </p>
 
+      <div class="table-scroll-hint">
+        <span>↔ Scroll horizontally to explore full matrix</span>
+      </div>
       <div class="pricing-table-container">
         <table class="pricing-table">
           <thead>

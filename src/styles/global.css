@@ -88,6 +88,12 @@ body {
   padding-top: var(--header-height);
 }
 
+main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 /* Accessibility Skip Link */
 .skip-link {
   position: absolute;
@@ -143,10 +149,25 @@ a {
   transition: all var(--transition-fast);
 }
 
-img {
+img, picture, video, canvas, svg {
   max-width: 100%;
   height: auto;
+}
+
+/* Universal Grid Item Shrink (Prevents content blowout in CSS grids) */
+[class*="-grid"] > * {
+  min-width: 0;
+}
+
+/* Universal Responsive Table Safeguard */
+.table-responsive,
+.pricing-table-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
   display: block;
+  box-sizing: border-box;
 }
 
 /* Container */

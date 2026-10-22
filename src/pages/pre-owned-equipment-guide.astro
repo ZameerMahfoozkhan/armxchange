@@ -121,7 +121,7 @@ const howToSchema = {
     <!-- Guide Content -->
     <div style="display: flex; flex-direction: column; gap: 32px; max-width: 900px; margin-bottom: 64px;">
       <!-- Section 1: The 10-Year Cylinder Rule -->
-      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+      <div class="guide-card">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
           <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #475569; letter-spacing: 0.06em;">CHECKPOINT 01 //</span>
           <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">The 10-Year Air Cylinder Rule (ISSF & NRAI)</h2>
@@ -143,7 +143,7 @@ const howToSchema = {
       </div>
 
       <!-- Section 2: Regulator Consistency -->
-      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+      <div class="guide-card">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
           <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #475569; letter-spacing: 0.06em;">CHECKPOINT 02 //</span>
           <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">Regulator Consistency & Chronograph Diagnostics</h2>
@@ -157,7 +157,7 @@ const howToSchema = {
       </div>
 
       <!-- Section 3: Electronic vs Mechanical Triggers -->
-      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 36px 32px; box-shadow: var(--shadow-sm);">
+      <div class="guide-card">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
           <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: #475569; letter-spacing: 0.06em;">CHECKPOINT 03 //</span>
           <h2 style="font-size: 1.35rem; color: var(--color-ink); margin: 0; font-weight: 700;">Electronic vs Mechanical Trigger Mechanisms</h2>
@@ -165,9 +165,9 @@ const howToSchema = {
         <p style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-body); margin-bottom: 18px;">
           Both trigger systems have proven international Olympic pedigrees:
         </p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <div class="trigger-compare-grid">
+          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);" class="trigger-col">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
               <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">Mechanical Triggers</h3>
               <span class="tech-badge">ZERO BATTERY</span>
             </div>
@@ -175,8 +175,8 @@ const howToSchema = {
               Zero battery dependency. Tactile mechanical break with independently adjustable first-stage travel, release weight, and overtravel stop. (e.g., Feinwerkbau 800/900, Walther LG500 M).
             </p>
           </div>
-          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div style="background: var(--color-canvas-subtle); padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);" class="trigger-col">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
               <h3 style="font-size: 1.05rem; color: var(--color-ink); font-weight: 700;">Electronic Triggers</h3>
               <span class="tech-badge">MICRO-SWITCH</span>
             </div>
@@ -189,7 +189,7 @@ const howToSchema = {
     </div>
 
     <!-- Direct Founder Consultation CTA -->
-    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); max-width: 900px; padding: 48px 32px; text-align: center; box-shadow: var(--shadow-sm);">
+    <div class="guide-cta-card">
       <span class="tech-badge" style="margin-bottom: 14px;">EQUIPMENT DIAGNOSTICS</span>
       <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-bottom: 12px; color: var(--color-ink); font-weight: 800;">
         Need Objective Technical Guidance on a Rifle You're Evaluating?
@@ -211,3 +211,53 @@ const howToSchema = {
     </div>
   </div>
 </Layout>
+
+<style>
+  .guide-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-sm);
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .trigger-compare-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    min-width: 0;
+    width: 100%;
+  }
+  .trigger-col {
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .guide-cta-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    max-width: 900px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  @media (max-width: 768px) {
+    .guide-card {
+      padding: 24px 18px !important;
+    }
+    .trigger-compare-grid {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 16px !important;
+    }
+    .trigger-col {
+      padding: 18px 16px !important;
+    }
+    .guide-cta-card {
+      padding: 32px 18px !important;
+    }
+  }
+</style>

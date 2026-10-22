@@ -206,13 +206,14 @@ const breadcrumbSchema = {
 <style>
   .featured-blog-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     overflow: hidden;
     box-shadow: var(--shadow-card);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    min-width: 0;
   }
   .featured-blog-card:hover {
     transform: translateY(-2px);
@@ -223,11 +224,13 @@ const breadcrumbSchema = {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 0;
   }
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 28px;
+    min-width: 0;
   }
   .blog-card {
     background: #FFFFFF;
@@ -322,14 +325,17 @@ const breadcrumbSchema = {
 
   @media (max-width: 768px) {
     .featured-blog-card {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .featured-image-col img {
       border-radius: var(--radius-card) var(--radius-card) 0 0 !important;
       height: 220px !important;
     }
     .featured-content-col {
-      padding: 24px 20px;
+      padding: 24px 18px;
+    }
+    .blog-grid {
+      gap: 20px;
     }
   }
 </style>
