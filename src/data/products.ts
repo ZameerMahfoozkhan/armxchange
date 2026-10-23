@@ -173,6 +173,113 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "walther-lg400-alutec-2026-cylinder-01",
+    slug: "walther-lg400-alutec-air-rifle-2026-cylinder",
+    title: "Walther LG400 Alutec Match Air Rifle (with Brand-New 2026 Cylinder)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Very Good / Upgraded with 2026 Cylinder",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-1.webp",
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-2.webp",
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-3.webp",
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-4.webp",
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-5.webp",
+      "/images/products/rifles/walther-lg400-alutec-2026-cylinder-6.webp"
+    ],
+    shortDescription: "Verified pre-owned Walther LG400 Alutec 10m match air rifle in black aluminium chassis. Upgraded with a brand-new factory Walther cylinder valid until May 2036 (05/36 — full 10-year ISSF validity).",
+    fullDescription: "An exceptional, competition-ready Walther LG400 Alutec 10m match air rifle in sleek matte-black anodized aluminium finish. Built on Walther's celebrated LG400 platform with internal absorber vibration dampening and precision two-stage mechanical match trigger. This rifle has been upgraded with a brand-new, factory-original Walther compressed air cylinder certified usable until May 2036 (05/36), ensuring a full 10-year ISSF equipment control certification window. Fitted with custom Parishram Sports Equipment fore-end riser block and precision sight elevation risers, factory Walther match diopter, front sight tunnel with barrel extension, multi-axis adjustable blue cheekpiece, and adjustable match buttplate. Delivered complete in protective hard transport flight case.",
+    specifications: {
+      "Model": "Walther LG400 Alutec Competition",
+      "Cylinder Validity": "May 2026 to May 2036 (Brand-New Factory Replacement — 05/36)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air with Absorber",
+      "Stock Material": "High-Grade Matte Black Anodized Aluminium Alutec Chassis",
+      "Trigger": "Mechanical Match Two-Stage Trigger with Dry-Fire Switch",
+      "Sighting System": "Walther Precision Match Diopter with Parishram Elevation Risers",
+      "Cheekpiece & Buttplate": "Blue anodized 3D cheekpiece, multi-axis aluminium match buttplate",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules ISSF Competition Spec)"
+    },
+    conditionDisclosure: [
+      "Fitted with brand-new factory-original Walther compressed air cylinder stamped 'useable until: 05/36' (valid through May 2036 under ISSF rules).",
+      "Action absorber mechanism and two-stage mechanical match trigger break with crisp, clean release.",
+      "Custom Parishram Sports Equipment fore-end bench block and sight elevation risers installed.",
+      "Sound structural alignment and pristine rifled match barrel; minor normal handling marks on common contact areas.",
+      "Delivered in hard protective flight case with original Walther match diopter rear sight."
+    ],
+    includedItems: [
+      "Walther LG400 Alutec 10m Match Air Rifle",
+      "Brand-New Factory Walther Air Cylinder (Certified Valid to 05/2036)",
+      "Walther Precision Match Diopter Rear Sight",
+      "Parishram Sports Equipment Fore-end Block & Sight Elevation Risers",
+      "Front Match Sight Tunnel & Barrel Extension",
+      "Protective Hard Flight / Travel Case"
+    ],
+    badge: "2036 Cylinder Installed",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lg400-alutec-electronic-2023-01",
+    slug: "2023-walther-lg400-alutec-electronic-air-rifle",
+    title: "2023 Walther LG400 Alutec Electronic Match Air Rifle (E-Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Like-New Condition (E-Trigger)",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/walther-lg400-alutec-electronic-2023-1.webp",
+      "/images/products/rifles/walther-lg400-alutec-electronic-2023-2.webp",
+      "/images/products/rifles/walther-lg400-alutec-electronic-2023-3.webp",
+      "/images/products/rifles/walther-lg400-alutec-electronic-2023-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Walther LG400 Alutec Electronic 10m match air rifle. Factory E-Trigger system (German DE 2022 proof / SN KB89437), Walther cylinder valid to March 2033, and full flight case package.",
+    fullDescription: "A premier, highly sought-after 2023 Walther LG400 Alutec Electronic (LG 400-E) 10m match air rifle in mint, like-new condition. Built with Walther's celebrated electronic match trigger (E-Trigger) providing zero trigger play, frictionless micro-switch release, and integrated electronic dry-fire mode. Features natural silver anodized aluminium Alutec chassis, carbon barrel jacket, receiver proofed in Germany (DE 2022, Serial KB89437), and an original Walther high-pressure cylinder certified valid until March 2033 (03/33, SN 075185). Delivered complete in original Negrini / Walther hard flight case with Walther blue folding multi-tool, charging adapter, safety line, sight risers, and factory documentation packet.",
+    specifications: {
+      "Model": "Walther LG400 Alutec Electronic (LG 400-E)",
+      "Manufacturing / Proof Year": "2022 / 2023 (Receiver DE 2022 / SN KB89437)",
+      "Cylinder Validity": "Valid to March 2033 (03/33 ISSF Certified — SN 075185)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air with Absorber",
+      "Trigger": "Walther Electronic Match Trigger (E-Trigger) with Rechargeable Battery System",
+      "Stock Material": "Natural Silver Anodized Aluminium Alutec Competition Chassis",
+      "Grip & Buttplate": "3D Sculpted Protouch Match Grip, Walther Multi-Adjustable Aluminium Buttplate",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Competition Spec)"
+    },
+    conditionDisclosure: [
+      "German proofmark DE 2022 with verified serial number KB89437 and LG 400-E electronic receiver marking.",
+      "Original factory Walther compressed air cylinder certified valid until March 2033 (03/2033).",
+      "Electronic trigger unit thoroughly tested: holds charge, instantaneous micro-switch break, and flawless dry-fire mode.",
+      "Immaculate cosmetic condition with zero noticeable wear on silver aluminium stock or carbon shroud.",
+      "Delivered in original factory Negrini hard case with Walther blue multi-tool, safety breech line, brass adapter, and paperwork."
+    ],
+    includedItems: [
+      "2023 Walther LG400 Alutec Electronic 10m Air Rifle",
+      "Original Walther High-Pressure Cylinder (Certified Valid to 03/2033)",
+      "Original Fitted Negrini / Walther Hard Flight Case",
+      "Walther Blue Folding Multi-Tool Hex Set",
+      "Precision Match Sight Tunnel, Carbon Shroud & Risers",
+      "Compressed Air Filling Adapter & Safety Breech Line",
+      "Factory Manual & Sealed Target Paper Packet"
+    ],
+    badge: "Electronic Trigger",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "walther-lg500-anatomic-e",
     slug: "walther-lg500-itec-anatomic-e",
     title: "Walther LG500 itec Anatomic E (Electronic Trigger) .177",
@@ -918,7 +1025,7 @@ export const CATEGORIES = [
     slug: "second-hand-weapons",
     title: "Second-Hand Weapons",
     subtitle: "Verified pre-owned 10m air rifles & pistols with transparent inspection history",
-    count: 3,
+    count: 5,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
     description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."
