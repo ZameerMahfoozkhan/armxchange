@@ -280,6 +280,161 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "walther-lg500-itec-manual-2024-01",
+    slug: "2024-walther-lg500-itec-manual-air-rifle",
+    title: "2024 Walther LG500 itec M Match Air Rifle (Mechanical Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Competition Ready (2024 Flagship)",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/walther-lg500-itec-manual-2024-1.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Walther LG500 itec M (Mechanical) 10m match air rifle. Current Olympic flagship model with itec vibration management, precision match diopter, and hard flight case package.",
+    fullDescription: "A rare, elite opportunity to acquire Walther's current Olympic flagship platform on the pre-owned market. Manufactured in Germany in 2024, this Walther LG500 itec M represents the pinnacle of 10m match rifle engineering. Fitted with Walther's revolutionary itec adaptive vibration-dampening bedding, high-precision mechanical match trigger with micro-adjustable sear engagement, carbon-fibre barrel jacket with blue muzzle extension, 3D biometric match grip, and multi-axis adjustable match buttplate and cheekpiece. Delivered complete with original Walther deluxe hard flight case, Walther padded travel slip bag, precision match diopter rear sight and front sight tunnel, and dedicated Walther accessory box with tools.",
+    specifications: {
+      "Model": "Walther LG500 itec M (Mechanical Match Trigger)",
+      "Manufacturing Year": "2024 (Current Flagship Generation)",
+      "Cylinder System": "Factory 300 bar / 200 bar Match Compressed Air Cylinder",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "Pre-charged pneumatic (PCP) with itec vibration management",
+      "Trigger": "Walther Mechanical Match Two-Stage Trigger (Adjustable 50g-120g)",
+      "Stock Material": "High-Grade Matte Black itec Anatomic Alloy Chassis",
+      "Grip & Buttplate": "3D Sculpted Biometric Protouch Grip, Multi-Axis Match Buttplate",
+      "Sighting System": "Walther Precision Match Diopter & Front Sight Tunnel",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules ISSF Olympic Specification)"
+    },
+    conditionDisclosure: [
+      "Manufactured in 2024 — exceptional cosmetic and operational condition with minimal range usage.",
+      "itec chassis vibration-damping dynamics and regulator pressure output thoroughly vetted.",
+      "Crisp, hair-split mechanical two-stage match trigger release with full dry-fire training capability.",
+      "Supplied in original Walther deluxe hard flight case alongside Walther padded travel soft case and factory accessories."
+    ],
+    includedItems: [
+      "2024 Walther LG500 itec M 10m Match Air Rifle",
+      "Original Factory Match Compressed Air Cylinder",
+      "Walther Precision Match Diopter & Front Sight Tunnel",
+      "Original Walther Hard Flight Case",
+      "Walther Padded Protective Soft Travel Bag",
+      "Walther Dedicated Accessory Box with Tools & Charging Adapter"
+    ],
+    badge: "2024 Flagship Model",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lg500-itec-e-2024-01",
+    slug: "2024-walther-lg500-itec-e-air-rifle",
+    title: "2024 Walther LG500 itec E Match Air Rifle (Electronic Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Great Condition (E-Trigger)",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/walther-lg500-itec-electronic-2024-1.webp",
+      "/images/products/rifles/walther-lg500-itec-electronic-2024-2.webp",
+      "/images/products/rifles/walther-lg500-itec-electronic-2024-3.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Walther LG500 itec E (Electronic) 10m match air rifle. Equipped with frictionless electronic micro-switch trigger, itec vibration dampening bedding, and factory Walther cylinder certified usable until November 2034 (11/34).",
+    fullDescription: "An extraordinary flagship pre-owned listing: the 2024 Walther LG500 itec E (Electronic Trigger) 10m match air rifle in immaculate, competition-ready condition. Built on Walther's premier itec platform, this rifle integrates an advanced electronic micro-switch trigger providing zero mechanical trigger play, instant release, and effortless electronic dry-firing without cocking resistance. Fitted with an original Walther match compressed air cylinder stamped 'useable until: 11/34' (valid through November 2034 under ISSF regulations — full 10-year certification window). Featuring carbon-fibre barrel jacket with blue anodized muzzle extension, 3D anatomic match grip, multi-position match cheekpiece, and modular precision buttplate. Complete with original fitted Walther hard flight case, Walther padded travel rifle sleeve, match sights, and accessory box.",
+    specifications: {
+      "Model": "Walther LG500 itec E (Electronic Match Trigger)",
+      "Manufacturing Year": "2024",
+      "Cylinder Validity": "Valid to November 2034 (11/34 Factory Stamped — SN 096482)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air with itec Absorption",
+      "Trigger System": "Walther Electronic Match Trigger (E-Trigger) with Rechargeable Battery",
+      "Stock & Chassis": "itec Adaptive Black Anodized Alloy Skeleton with Carbon Tension Shroud",
+      "Grip & Buttplate": "3D Sculpted Biometric Grip, Multi-Adjustable Match Buttplate",
+      "Sighting System": "Walther Precision Match Diopter & Front Sight Tunnel with Risers",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Olympic Competition Spec)"
+    },
+    conditionDisclosure: [
+      "Manufactured in 2024 — pristine condition with flawless carbon and alloy surfaces.",
+      "Factory-original Walther compressed air cylinder stamped SN 096482, certified usable until 11/2034 under ISSF rules.",
+      "Electronic trigger circuit, micro-switch trigger break, and battery charge retention fully tested and certified.",
+      "Delivered in original factory Walther hard flight case with Walther soft padded bag and accessory compartment."
+    ],
+    includedItems: [
+      "2024 Walther LG500 itec E 10m Match Air Rifle",
+      "Factory Original Walther Air Cylinder (Certified Valid to 11/2034 — SN 096482)",
+      "Walther Precision Match Diopter & Front Sight Assembly",
+      "Walther Deluxe Hard Flight Case",
+      "Walther Padded Black Travel Soft Slip",
+      "Walther Dedicated Accessory Box, Charging Cable & Filling Adapter"
+    ],
+    badge: "2034 Cylinder / E-Trigger",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-2022-01",
+    slug: "2022-morini-cm-162ei-electronic-air-pistol",
+    title: "2022 Morini CM 162EI Electronic 10m Match Air Pistol (Size S Grip)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Very Good / National Competition Tested",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-2022-1.webp",
+      "/images/products/pistols/morini-cm-162ei-2022-2.webp",
+      "/images/products/pistols/morini-cm-162ei-2022-3.webp",
+      "/images/products/pistols/morini-cm-162ei-2022-4.webp",
+      "/images/products/pistols/morini-cm-162ei-2022-5.webp",
+      "/images/products/pistols/morini-cm-162ei-2022-6.webp"
+    ],
+    shortDescription: "Verified pre-owned 2022 Morini CM 162EI (SN 36625) electronic 10m match air pistol. Made in Switzerland, featuring Cesare Morini anatomical walnut grip (Size S), gold electronic trigger, verified championship equipment control inspection, and two active Morini air cylinders (Blue & Red).",
+    fullDescription: "A proven champion: authentic 2022 Morini CM 162EI electronic 10m competition air pistol manufactured in Bedano, Switzerland (Serial 36625). The Morini CM 162EI is the most decorated 10m air pistol in Olympic history, celebrated for its legendary electronic ball-bearing trigger mechanism that eliminates physical trigger drag and delivers a crisp, consistent 500g release. This verified pistol features an ergonomic Cesare Morini anatomical walnut match grip stamped Size S with adjustable palm shelf and bottom battery compartment. Passed official equipment controls at national-level events including the Jaspal Rana Memorial Cup and 4th North Zone Shooting Championship. Supplied complete with two factory Morini high-pressure compressed air cylinders (Blue cylinder with 2022 factory stamp and Red cylinder, both with functioning manometers) and Mangla Sports & Associates (MSA) travel storage.",
+    specifications: {
+      "Model": "Morini CM 162EI Electronic",
+      "Manufacturing Year": "2022 (Serial No. 36625, Made in Switzerland)",
+      "Cylinder Validity": "Dual Morini 200 bar Cylinders (Blue 2022 Stamped + Red Cylinder)",
+      "Calibre": ".177 (4.5 mm) Pellets",
+      "Trigger System": "Electronic Ball-Bearing Match Trigger with Gold Blade",
+      "Trigger Pull Weight": "Factory Calibrated to ISSF 500g Standard",
+      "Grip Size & Material": "Cesare Morini Anatomical Walnut Match Grip — Size S (Small)",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Blade",
+      "Muzzle Compensator": "Lothar Walther Match Barrel with Multi-Port Muzzle Compensator",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Verified Swiss manufacturing proofmark with serial number 36625.",
+      "Tested and certified at official national equipment controls (Jaspal Rana Memorial Cup & North Zone Championship seals intact).",
+      "Electronic trigger micro-switch, dry-fire training function, and battery compartment in flawless operational condition.",
+      "Supplied with two original Morini high-pressure air cylinders (Blue and Red) holding verified pressure on dual manometers.",
+      "Authentic Cesare Morini walnut grip with custom palm texturing for maximum friction and wrist lock."
+    ],
+    includedItems: [
+      "2022 Morini CM 162EI Electronic 10m Match Air Pistol (SN 36625)",
+      "Original Blue Morini Match Air Cylinder (2022 Factory Stamped)",
+      "Secondary Red Morini Match Air Cylinder with Pressure Gauge",
+      "Cesare Morini Anatomical Walnut Match Grip (Size S)",
+      "Mangla Sports & Associates (MSA) Accessory & Storage Cases",
+      "Brass Air Filling Adapter & Hex Adjustment Tools"
+    ],
+    badge: "2 Cylinders Included",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "walther-lg500-anatomic-e",
     slug: "walther-lg500-itec-anatomic-e",
     title: "Walther LG500 itec Anatomic E (Electronic Trigger) .177",
@@ -1025,7 +1180,7 @@ export const CATEGORIES = [
     slug: "second-hand-weapons",
     title: "Second-Hand Weapons",
     subtitle: "Verified pre-owned 10m air rifles & pistols with transparent inspection history",
-    count: 5,
+    count: 8,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
     description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."

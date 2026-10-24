@@ -1,39 +1,76 @@
 {
   "$schema": "https://agenticresource.org/schemas/ai-catalog.json",
   "name": "ArmsXchange Shooting Sports Catalog",
-  "description": "Verified pre-owned and new 10m competition air rifles, pistols, match accessories, and ammunition in India.",
-  "version": "1.1.0",
+  "description": "Verified pre-owned and new 10m competition air rifles, match air pistols, precision accessories, and ammunition in India.",
+  "version": "1.2.0",
   "provider": {
     "name": "ArmsXchange",
     "url": "https://armsxchange.in",
     "contact": "+91-8922012598 (WhatsApp Orders), +91-6392421574 (Direct Support)"
   },
+  "sitemaps": [
+    "https://armsxchange.in/sitemap-index.xml",
+    "https://armsxchange.in/sitemap-images.xml"
+  ],
   "resources": [
+    {
+      "name": "All Second-Hand Weapons",
+      "url": "https://armsxchange.in/second-hand-weapons/",
+      "type": "marketplace",
+      "disciplines": ["10m Air Rifle", "10m Air Pistol"],
+      "condition": "Pre-Owned / Verified",
+      "totalListings": 8,
+      "brands": ["Walther", "Feinwerkbau", "Morini"]
+    },
     {
       "name": "Second-Hand 10m Air Rifles",
       "url": "https://armsxchange.in/second-hand-air-rifles/",
       "type": "marketplace",
       "discipline": "10m Air Rifle",
-      "condition": "Pre-Owned / Verified"
+      "condition": "Pre-Owned / Verified",
+      "totalListings": 7,
+      "brands": ["Walther", "Feinwerkbau"],
+      "featuredModels": [
+        "Walther LG500 itec E (2024)",
+        "Walther LG500 itec M (2024)",
+        "Walther LG400 Anatomic (2023)",
+        "Walther LG400 Alutec Electronic (2023)",
+        "Walther LG400 Alutec with 2026 Cylinder",
+        "Walther LG400 Anatomic (2022)",
+        "Feinwerkbau 800 Alu with 2024 Cylinder"
+      ]
     },
     {
       "name": "Second-Hand 10m Air Pistols",
       "url": "https://armsxchange.in/second-hand-air-pistols/",
       "type": "marketplace",
       "discipline": "10m Air Pistol",
-      "condition": "Pre-Owned / Verified"
+      "condition": "Pre-Owned / Verified",
+      "totalListings": 1,
+      "brands": ["Morini"],
+      "featuredModels": [
+        "Morini CM 162EI Electronic (2022 - Size S Grip, Dual Cylinders)"
+      ]
     },
     {
       "name": "New 10m Match Air Rifles",
       "url": "https://armsxchange.in/10m-air-rifles/",
       "type": "catalog",
+      "discipline": "10m Air Rifle",
       "brands": ["Walther", "Feinwerkbau", "Steyr"]
     },
     {
       "name": "New 10m Match Air Pistols",
       "url": "https://armsxchange.in/10m-air-pistols/",
       "type": "catalog",
+      "discipline": "10m Air Pistol",
       "brands": ["Morini", "Steyr"]
+    },
+    {
+      "name": "Shooting Accessories & Sights",
+      "url": "https://armsxchange.in/accessories/",
+      "type": "catalog",
+      "brands": ["MEC", "Centra", "Sauer", "AHG", "Corami"]
     },
     {
       "name": "Shooting Boots & Footwear",
@@ -48,16 +85,16 @@
       "brands": ["RWS R10"]
     },
     {
-      "name": "Equipment Inspection Guide",
+      "name": "Pre-Owned Equipment Inspection Guide",
       "url": "https://armsxchange.in/pre-owned-equipment-guide/",
       "type": "guide",
-      "topics": ["10-year cylinder validity", "Regulator consistency", "Arms Rules 2016"]
+      "topics": ["10-year cylinder validity", "Regulator consistency", "Indian Arms Rules 2016"]
     },
     {
       "name": "Technical Journal & Equipment Comparisons",
       "url": "https://armsxchange.in/blog/",
       "type": "articles",
-      "topics": ["Walther vs FWB comparison", "Second hand air rifle prices in India", "Equipment control"]
+      "topics": ["Walther LG400 vs FWB 800 comparison", "Second hand air rifle prices in India", "ISSF equipment control"]
     }
   ]
 }

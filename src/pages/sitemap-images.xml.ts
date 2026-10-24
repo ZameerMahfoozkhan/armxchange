@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
     <image:image>
       <image:loc>${siteUrl}${img}</image:loc>
       <image:title>${escapeXml(product.isPreOwned ? `Second Hand ${product.title}` : product.title)}</image:title>
-      <image:caption>${escapeXml(product.description || `${product.brand} 10m target sports equipment`)}</image:caption>
+      <image:caption>${escapeXml(product.shortDescription || `${product.brand} 10m target sports equipment`)}</image:caption>
     </image:image>`).join('');
 
     return `  <url>

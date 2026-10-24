@@ -5,8 +5,17 @@ import HeroCarousel from '../components/HeroCarousel.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { PRODUCTS, CATEGORIES, CONTACT_INFO } from '../data/products';
 
-// 1. All Pre-Owned Weapons (5 verified 10m match rifles)
-const preOwnedWeapons = PRODUCTS.filter(p => p.isPreOwned);
+// 1. Curated Featured Pre-Owned Weapons on Home Page (Exactly 4 flagship listings)
+const featuredPreOwnedIds = [
+  'walther-lg400-anatomic-2023-01',
+  'walther-lg400-alutec-electronic-2023-01',
+  'walther-lg500-itec-e-2024-01',
+  'morini-cm-162ei-2022-01'
+];
+const featuredPreOwnedWeapons = featuredPreOwnedIds
+  .map(id => PRODUCTS.find(p => p.id === id))
+  .filter(Boolean) as typeof PRODUCTS;
+const totalPreOwnedCount = PRODUCTS.filter(p => p.isPreOwned).length;
 
 // 2. Olympic & Match Catalogue (Balanced selection of rifles & pistols: Walther, Feinwerkbau, Morini, Steyr)
 const featuredNewRifles = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-rifles');
@@ -17,6 +26,7 @@ const featuredOlympicWeapons = [
   featuredNewPistols.find(p => p.id === 'morini-cm200ei') || featuredNewPistols[0],
   featuredNewPistols.find(p => p.id === 'steyr-evo-10e') || featuredNewPistols[1]
 ].filter(Boolean) as typeof PRODUCTS;
+const totalNewWeaponsCount = PRODUCTS.filter(p => p.category === 'new-weapons').length;
 
 // 3. Precision Shooting Accessories (Sights, Buttplates, Match Footwear)
 const featuredAccessories = [
@@ -25,6 +35,7 @@ const featuredAccessories = [
   PRODUCTS.find(p => p.id === 'sauer-rifle-shoes-perfect-top'),
   PRODUCTS.find(p => p.id === 'ahg-shooting-boots-allround')
 ].filter(Boolean) as typeof PRODUCTS;
+const totalAccessoriesCount = PRODUCTS.filter(p => p.category === 'accessories').length;
 ---
 
 <Layout 
@@ -79,18 +90,29 @@ const featuredAccessories = [
             VERIFIED HARDWARE // 10M COMPETITION READY
           </div>
           <h2 style="margin-bottom: 6px;">Verified Pre-Owned Weapons</h2>
-          <p style="color: var(--color-text-muted);">Directly inspected 10m target air rifles with certified cylinders and transparent condition disclosures.</p>
+          <p style="color: var(--color-text-muted);">Directly inspected 10m target air rifles & match pistols with certified cylinders and transparent condition disclosures.</p>
         </div>
         <a href="/second-hand-weapons/" class="btn btn-secondary">
-          <span>View All Pre-Owned ({preOwnedWeapons.length})</span>
+          <span>View All Pre-Owned ({totalPreOwnedCount})</span>
           <span class="btn-trailing-icon">→</span>
         </a>
       </div>
 
       <div class="product-grid">
-        {preOwnedWeapons.map((product, idx) => (
+        {featuredPreOwnedWeapons.map((product, idx) => (
           <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         ))}
+      </div>
+
+      <div class="section-footer-cta reveal-on-scroll" style="margin-top: 36px; text-align: center;">
+        <a 
+          href="/second-hand-weapons/" 
+          class="btn btn-primary" 
+          style="padding: 13px 32px; font-size: 0.92rem; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; border-radius: var(--radius-card); box-shadow: var(--shadow-card);"
+        >
+          <span>Browse All Pre-Owned Weapons ({totalPreOwnedCount})</span>
+          <span class="btn-trailing-icon" style="background: rgba(255, 255, 255, 0.2);">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -107,7 +129,7 @@ const featuredAccessories = [
           <p style="color: var(--color-text-muted);">Brand-new 10m competition rifles & precision match pistols from Walther, Feinwerkbau, Steyr, and Morini.</p>
         </div>
         <a href="/new-weapons/" class="btn btn-secondary">
-          <span>View All New Weapons ({PRODUCTS.filter(p => p.category === 'new-weapons').length})</span>
+          <span>View All New Weapons ({totalNewWeaponsCount})</span>
           <span class="btn-trailing-icon">→</span>
         </a>
       </div>
@@ -116,6 +138,17 @@ const featuredAccessories = [
         {featuredOlympicWeapons.map((product, idx) => (
           <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         ))}
+      </div>
+
+      <div class="section-footer-cta reveal-on-scroll" style="margin-top: 36px; text-align: center;">
+        <a 
+          href="/new-weapons/" 
+          class="btn btn-primary" 
+          style="padding: 13px 32px; font-size: 0.92rem; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; border-radius: var(--radius-card); box-shadow: var(--shadow-card);"
+        >
+          <span>Browse All Olympic & Match Weapons ({totalNewWeaponsCount})</span>
+          <span class="btn-trailing-icon" style="background: rgba(255, 255, 255, 0.2);">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -132,7 +165,7 @@ const featuredAccessories = [
           <p style="color: var(--color-text-muted);">ISSF-approved match diopter sights, anatomical buttplates, and competition footwear for peak stability.</p>
         </div>
         <a href="/accessories/" class="btn btn-secondary">
-          <span>View All Accessories ({PRODUCTS.filter(p => p.category === 'accessories').length})</span>
+          <span>View All Accessories ({totalAccessoriesCount})</span>
           <span class="btn-trailing-icon">→</span>
         </a>
       </div>
@@ -141,6 +174,17 @@ const featuredAccessories = [
         {featuredAccessories.map((product, idx) => (
           <ProductCard product={product} class={`reveal-on-scroll stagger-${(idx % 4) + 1}`} />
         ))}
+      </div>
+
+      <div class="section-footer-cta reveal-on-scroll" style="margin-top: 36px; text-align: center;">
+        <a 
+          href="/accessories/" 
+          class="btn btn-primary" 
+          style="padding: 13px 32px; font-size: 0.92rem; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; border-radius: var(--radius-card); box-shadow: var(--shadow-card);"
+        >
+          <span>Browse All Precision Accessories ({totalAccessoriesCount})</span>
+          <span class="btn-trailing-icon" style="background: rgba(255, 255, 255, 0.2);">→</span>
+        </a>
       </div>
     </div>
   </section>
