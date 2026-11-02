@@ -19,7 +19,7 @@
       "type": "marketplace",
       "disciplines": ["10m Air Rifle", "10m Air Pistol"],
       "condition": "Pre-Owned / Verified",
-      "totalListings": 8,
+      "totalListings": 10,
       "brands": ["Walther", "Feinwerkbau", "Morini"]
     },
     {
@@ -28,9 +28,10 @@
       "type": "marketplace",
       "discipline": "10m Air Rifle",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 7,
+      "totalListings": 8,
       "brands": ["Walther", "Feinwerkbau"],
       "featuredModels": [
+        "Walther LG400 Anatomic (2024)",
         "Walther LG500 itec E (2024)",
         "Walther LG500 itec M (2024)",
         "Walther LG400 Anatomic (2023)",
@@ -46,9 +47,10 @@
       "type": "marketplace",
       "discipline": "10m Air Pistol",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 1,
-      "brands": ["Morini"],
+      "totalListings": 2,
+      "brands": ["Morini", "Walther"],
       "featuredModels": [
+        "Walther LP500 Meister Manufaktur Electronic (2024 - Dual Cylinders to 2034)",
         "Morini CM 162EI Electronic (2022 - Size S Grip, Dual Cylinders)"
       ]
     },

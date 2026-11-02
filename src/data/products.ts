@@ -173,6 +173,62 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "walther-lg400-anatomic-2024-01",
+    slug: "2024-walther-lg400-anatomic-air-rifle",
+    title: "2024 Walther LG400 Anatomic Match Air Rifle (Mechanical Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Certified Competition Ready",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquiry with verified condition report",
+    images: [
+      "/images/products/rifles/walther-lg400-anatomic-2024-1.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2024-2.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2024-3.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2024-4.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2024-5.webp",
+      "/images/products/rifles/walther-lg400-anatomic-2024-6.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Walther LG400 Anatomic 10m match air rifle. Laminated anatomic stock, mechanical match trigger with dry-fire mode, inspected 300 bar cylinder, Walther toolkit, rear match diopter, and hard flight case.",
+    fullDescription: "An exceptional, verified 2024 Walther LG400 Anatomic 10m competition air rifle in mint, range-ready condition. Engineered in Germany with Walther benchmark two-stage mechanical match trigger and smooth dry-fire practice selector, this rifle features an ergonomic sculpted blue-grey laminated wood anatomic stock with 3D adjustable match grip and multi-position aluminium buttplate. The carbon-finish barrel jacket includes an engraved LG400 aluminium muzzle tube. Complete inspection confirms healthy manometer pressure retention (~180 bar in active green zone) and intact equipment control seals. Delivered with original Walther hard protective flight case, Walther dedicated blue accessory box with hex key set and brass charging adapter, precision match rear diopter sight in protective container, and RWS match pellets.",
+    specifications: {
+      "Model": "Walther LG400 Anatomic (Mechanical)",
+      "Manufacturing Year": "2024",
+      "Cylinder Validity": "Original Walther 300 bar Cylinder (Inspected & Pressure Tested)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air Technology",
+      "Stock Material": "Blue-Grey Multi-Laminate Anatomic Wood Stock",
+      "Grip & Buttplate": "3D Sculpted Match Grip with Multi-Adjustable Buttplate",
+      "Trigger": "Two-Stage Mechanical Match Trigger with Dry-Fire Selector",
+      "Sighting System": "Precision Match Rear Diopter Sight & Front Sight Tunnel",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Competition Spec)"
+    },
+    conditionDisclosure: [
+      "2024 production model in immaculate cosmetic and mechanical condition.",
+      "Official national equipment control inspection stickers intact (No. 200).",
+      "Walther cylinder manometer verified holding steady pressure (~180 bar) in the green zone.",
+      "Crisp two-stage mechanical trigger break and dry-fire mechanism tested 100% operational.",
+      "Complete with original Walther hard protective travel case and dedicated accessory box."
+    ],
+    includedItems: [
+      "2024 Walther LG400 Anatomic 10m Match Air Rifle",
+      "Original Walther 300 bar Compressed Air Cylinder with Pressure Gauge",
+      "Precision Match Rear Diopter Sight in Protective Container",
+      "Original Walther Hard Protective Flight Case",
+      "Dedicated Walther Accessory Box with Hex Key Tool Set",
+      "Brass Air Cylinder Charging / Filling Adapter",
+      "RWS Match Pellets"
+    ],
+    badge: "Verified Pre-Owned",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "walther-lg400-alutec-2026-cylinder-01",
     slug: "walther-lg400-alutec-air-rifle-2026-cylinder",
     title: "Walther LG400 Alutec Match Air Rifle (with Brand-New 2026 Cylinder)",
@@ -431,6 +487,59 @@ export const PRODUCTS: Product[] = [
       "Brass Air Filling Adapter & Hex Adjustment Tools"
     ],
     badge: "2 Cylinders Included",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lp500-meister-manufaktur-2024-01",
+    slug: "2024-walther-lp500-meister-manufaktur-electronic-air-pistol",
+    title: "2024 Walther LP500 Meister Manufaktur Electronic 10m Match Air Pistol",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Mint / Like-New with 2034 Cylinders",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquiry with verified condition report",
+    images: [
+      "/images/products/pistols/walther-lp500-meister-manufaktur-2024-1.webp",
+      "/images/products/pistols/walther-lp500-meister-manufaktur-2024-2.webp",
+      "/images/products/pistols/walther-lp500-meister-manufaktur-2024-3.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Walther LP500 Meister Manufaktur (SN KHA0118) electronic 10m match air pistol. Flagship Olympic model featuring electronic match trigger, 3D anatomical grip, power charger, and two factory cylinders certified valid to July 2034.",
+    fullDescription: "The absolute pinnacle of German Olympic air pistol technology: authentic 2024 Walther LP500 Meister Manufaktur electronic 10m match air pistol (Serial No. KHA0118). Handcrafted as Walther top-tier Meister Manufaktur competition build, this pistol features the friction-free electronic match trigger (E-trigger) delivering a razor-sharp, zero-creep 500g release with seamless dry-fire training. Highlights include striking red engraved 'LP 500' branding, precision 3D anatomical match grip with adjustable palm shelf, rotatable sight line, and multi-port muzzle compensator. Outstanding package value: includes TWO factory-original Walther compressed air cylinders stamped 095950 with ISSF certification valid until July 2034 (07/34) — granting 8+ years of championship eligibility. Delivered complete with original hard flight case with blue velvet insert, power supply charger, USB cable, Walther hex key set, and brass charging adapter.",
+    specifications: {
+      "Model": "Walther LP500 Meister Manufaktur Electronic",
+      "Manufacturing Year": "2024 (Serial No. KHA0118, Carl Walther Ulm)",
+      "Cylinder Validity": "Dual Factory Cylinders valid to July 2034 (07/34 ISSF Certified)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Electronic Match Trigger (E-Trigger) with Red Trigger Shoe",
+      "Trigger Pull Weight": "ISSF 500g Standard (Micro-Adjustable First & Second Stage)",
+      "Grip": "3D Anatomic Match Grip with Adjustable Palm Shelf & Silver Accent",
+      "Sighting System": "Fully Adjustable Match Rear Sight & Front Blade (Rotatable Radius)",
+      "Operating Pressure": "200 bar Compressed Air System",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Carl Walther Ulm Meister Manufaktur build with verified serial number KHA0118.",
+      "Supplied with two original Walther compressed air cylinders certified usable until July 2034 (07/34).",
+      "Electronic trigger unit, battery charge retention, charging port, and dry-fire mode 100% operational.",
+      "Pristine cosmetic condition with flawless matte black anodizing and vibrant red LP500 lettering.",
+      "Complete with original Walther hard protective flight case featuring blue velvet foam cutouts."
+    ],
+    includedItems: [
+      "2024 Walther LP500 Meister Manufaktur 10m Electronic Match Air Pistol (SN KHA0118)",
+      "Fitted Original Walther Compressed Air Cylinder (Valid to 07/34)",
+      "Secondary Spare Walther Compressed Air Cylinder (Valid to 07/34)",
+      "Walther Electronic Trigger Power Supply & USB Charging Cable",
+      "Original Walther Blue Folding Hex Key Tool Set",
+      "Brass Cylinder Charging / Filling Adapter",
+      "Original Walther Hard Flight Case with Blue Velvet Foam Insert"
+    ],
+    badge: "2034 Cylinders / E-Trigger",
     inStock: true,
     featured: true
   },
@@ -1180,7 +1289,7 @@ export const CATEGORIES = [
     slug: "second-hand-weapons",
     title: "Second-Hand Weapons",
     subtitle: "Verified pre-owned 10m air rifles & pistols with transparent inspection history",
-    count: 8,
+    count: 10,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
     description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."
