@@ -193,17 +193,17 @@ section {
   padding: 72px 0;
 }
 
-/* Technical Telemetry Badges (Square/Geometric, not puffy oval pills) */
+/* Technical Telemetry Badges (Refined Swiss Geometric, not raw terminal monospace) */
 .tech-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  padding: 3.5px 9px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   border: 1px solid var(--color-border);
   background: var(--color-canvas-subtle);
@@ -494,10 +494,10 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
+  padding: 3.5px 9px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -565,8 +565,8 @@ section {
 }
 
 .product-brand {
-  font-family: var(--font-mono);
-  font-size: 0.70rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -574,13 +574,15 @@ section {
 }
 
 .product-meta-divider {
-  font-size: 0.65rem;
-  color: #CBD5E1;
+  font-size: 0.55rem;
+  color: #94A3B8;
+  opacity: 0.6;
+  line-height: 1;
 }
 
 .product-discipline-tag {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
@@ -631,33 +633,39 @@ section {
   margin-bottom: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 5px;
   align-items: center;
 }
 
 .spec-pill {
   display: inline-flex;
   align-items: center;
-  padding: 2.5px 7px;
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.60rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  padding: 3px 8.5px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   white-space: nowrap;
-  background: rgba(248, 250, 252, 0.95);
-  border: 1px solid rgba(203, 213, 225, 0.7);
-  color: #475569;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #334155;
   line-height: 1.2;
 }
 
 .spec-pill-cylinder,
 .spec-pill-highlight {
-  background: rgba(240, 253, 244, 0.85);
-  border-color: rgba(16, 185, 129, 0.28);
+  background: #F0FDF4;
+  border-color: rgba(16, 185, 129, 0.3);
   color: #15803D;
   font-weight: 600;
+}
+
+.spec-pill-calibre {
+  background: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #475569;
 }
 
 .spec-text-desktop {
@@ -687,8 +695,9 @@ section {
 
 .price-retail-label,
 .price-enquiry-label {
-  font-family: var(--font-mono);
-  font-size: 0.60rem;
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-light);
@@ -714,7 +723,7 @@ section {
 
 .product-price-enquiry {
   font-family: var(--font-display, var(--font-sans));
-  font-size: 0.96rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--color-ink);
   letter-spacing: -0.015em;
@@ -1092,11 +1101,11 @@ section {
 }
 
 .hero-kicker {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.74rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.10em;
   color: #94A3B8;
   margin-bottom: 12px;
   display: flex;
@@ -1295,12 +1304,12 @@ section {
 }
 
 .discipline-tag {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-family: var(--font-sans);
+  font-size: 0.70rem;
   font-weight: 700;
   color: #475569; /* Precision technical steel from brand logo */
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 5px;
   transition: color 0.2s var(--ease-out);
 }
@@ -1476,8 +1485,8 @@ section {
 .spec-table td.val {
   color: var(--color-ink);
   font-weight: 600;
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
 }
 
 /* Architectural Footer */
@@ -1523,14 +1532,37 @@ footer {
 }
 
 .footer-disclaimer {
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  line-height: 1.6;
-  color: #64748B;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-card);
   margin-bottom: 28px;
+}
+
+.footer-compliance-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #CBD5E1;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.footer-shield-icon {
+  color: var(--color-signal-red);
+  flex-shrink: 0;
+}
+
+.footer-compliance-text {
+  font-family: var(--font-sans);
+  font-size: 0.80rem;
+  line-height: 1.65;
+  color: #94A3B8;
+  margin: 0;
 }
 
 .footer-bottom {
@@ -1932,10 +1964,10 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 9999px;
   padding: 5px 14px 5px 10px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: #E2E8F0;
   margin-bottom: 14px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);

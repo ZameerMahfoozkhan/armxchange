@@ -71,7 +71,7 @@ const breadcrumbSchema = {
     <div style="margin-bottom: 48px; max-width: 860px;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
         <span class="tech-badge">ATHLETE INTELLIGENCE</span>
-        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+        <span style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em;">
           RANGE NOTES & VALUATIONS
         </span>
       </div>
@@ -99,8 +99,8 @@ const breadcrumbSchema = {
         <div class="featured-content-col">
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
             <span class="tech-badge tech-badge-new">{featuredPost.category}</span>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">{featuredPost.dateFormatted}</span>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-muted);">&bull; {featuredPost.readTime}</span>
+            <span style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted);">{featuredPost.dateFormatted}</span>
+            <span style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted);">&bull; {featuredPost.readTime}</span>
           </div>
 
           <h2 style="font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 800; margin-bottom: 14px; line-height: 1.25;">
@@ -260,10 +260,9 @@ const breadcrumbSchema = {
     font-weight: 700;
     padding: 4px 10px;
     border-radius: 4px;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    backdrop-filter: blur(4px);
   }
   .blog-card-body {
     padding: 24px;
@@ -272,8 +271,9 @@ const breadcrumbSchema = {
     flex: 1;
   }
   .blog-card-meta {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.74rem;
+    font-weight: 500;
     color: var(--color-text-muted);
     display: flex;
     align-items: center;

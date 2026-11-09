@@ -37,7 +37,7 @@ const aboutSchema = {
     <div style="margin-bottom: 48px; max-width: 860px;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
         <span class="tech-badge">THE ARMSXCHANGE MANIFESTO</span>
-        <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.06em;">
+        <span style="font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em;">
           ATHLETE-FOUNDED PLATFORM
         </span>
       </div>
@@ -78,12 +78,12 @@ const aboutSchema = {
                 loading="eager"
               />
               <div class="founder-img-badge">
-                <span>10M FIRING LINE // PRANATPAL SINGH</span>
+                <span>10M FIRING LINE &middot; PRANATPAL SINGH</span>
               </div>
             </div>
 
             <div class="founder-label">
-              FOUNDER STATEMENT //
+              FOUNDER STATEMENT
             </div>
             <blockquote class="founder-quote">
               &ldquo;Having competed at the national level and begun coaching emerging athletes over the past year, I want shooters' attention focused entirely on breathing, trigger reset, and natural point of aim. They should never have to wonder whether their cylinder is past its 10-year test date, or if their diopter is skipping clicks. ArmsXchange was built to give every shooter complete certainty.&rdquo;
@@ -271,7 +271,7 @@ const aboutSchema = {
             <span class="btn-trailing-icon">→</span>
           </a>
         </div>
-        <div style="margin-top: 16px; font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono);">
+        <div style="margin-top: 16px; font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-sans); font-weight: 500;">
           WhatsApp Orders: {CONTACT_INFO.whatsappPhoneDisplay} &bull; Direct Consultation: {CONTACT_INFO.secondaryPhoneDisplay} &bull; Mon - Sat 09:00 - 19:00 IST
         </div>
       </div>
@@ -353,10 +353,10 @@ const aboutSchema = {
     left: 10px;
     background: rgba(11, 15, 23, 0.88);
     backdrop-filter: blur(8px);
-    padding: 5px 11px;
-    border-radius: var(--radius-sm);
+    padding: 5px 12px;
+    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.68rem;
     color: #FFFFFF;
     font-weight: 700;
@@ -365,12 +365,24 @@ const aboutSchema = {
   }
 
   .founder-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--color-text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-sans);
+    font-size: 0.70rem;
+    color: var(--color-ink);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  .founder-label::before {
+    content: '';
+    width: 8px;
+    height: 2px;
+    background: var(--color-signal-red);
+    border-radius: 2px;
   }
 
   .founder-quote {
@@ -407,7 +419,8 @@ const aboutSchema = {
   .founder-author-title {
     font-size: 0.78rem;
     color: var(--color-text-muted);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
+    font-weight: 500;
   }
 
   /* Gallery section */
@@ -552,15 +565,15 @@ const aboutSchema = {
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-size: 0.68rem;
       color: #0F172A;
       background: #F1F5F9;
       border: 1px solid #E2E8F0;
-      padding: 3px 10px;
+      padding: 3.5px 11px;
       border-radius: var(--radius-full);
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
 
     .founder-gallery-grid {

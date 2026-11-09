@@ -97,9 +97,9 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     <header style="max-width: 860px; margin-bottom: 40px;">
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
         <span class="tech-badge tech-badge-new">{post.category}</span>
-        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">{post.dateFormatted}</span>
-        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">&bull;</span>
-        <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-text-muted);">{post.readTime}</span>
+        <span style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500; color: var(--color-text-muted);">{post.dateFormatted}</span>
+        <span style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500; color: var(--color-text-muted);">&bull;</span>
+        <span style="font-family: var(--font-sans); font-size: 0.78rem; font-weight: 500; color: var(--color-text-muted);">{post.readTime}</span>
       </div>
 
       <h1 style="font-size: clamp(2rem, 3.8vw, 3.1rem); font-weight: 800; color: var(--color-ink); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 18px;">
@@ -336,7 +336,7 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     display: none;
     align-items: center;
     gap: 6px;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.72rem;
     color: var(--color-text-muted);
     margin-bottom: 8px;
@@ -452,10 +452,10 @@ const otherPosts = BLOG_POSTS.filter(p => p.slug !== post.slug);
     max-width: 100%;
   }
   .sidebar-widget-title {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.74rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-weight: 700;
     color: var(--color-text-muted);
     margin-bottom: 12px;

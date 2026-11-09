@@ -92,20 +92,25 @@ const currentYear = new Date().getFullYear();
             </a>
           </div>
         </div>
-        <div style="font-size: 0.76rem; color: #94A3B8; font-family: var(--font-mono); line-height: 1.6;">
-          <div><strong style="color: #CBD5E1;">WhatsApp & Orders:</strong> {CONTACT_INFO.whatsappPhoneDisplay}</div>
-          <div><strong style="color: #CBD5E1;">Direct Support:</strong> {CONTACT_INFO.secondaryPhoneDisplay}</div>
-          <div style="color: #64748B; margin-top: 3px;">Mon - Sat 9:00 AM - 7:00 PM IST</div>
+        <div style="font-size: 0.80rem; color: #94A3B8; font-family: var(--font-sans); line-height: 1.6;">
+          <div><strong style="color: #CBD5E1; font-weight: 600;">WhatsApp & Orders:</strong> {CONTACT_INFO.whatsappPhoneDisplay}</div>
+          <div><strong style="color: #CBD5E1; font-weight: 600;">Direct Support:</strong> {CONTACT_INFO.secondaryPhoneDisplay}</div>
+          <div style="color: #64748B; margin-top: 3px; font-size: 0.76rem;">Mon - Sat 9:00 AM - 7:00 PM IST</div>
         </div>
       </div>
     </div>
 
     <!-- Legal Compliance -->
     <div class="footer-disclaimer">
-      <strong style="color: #E2E8F0; display: block; margin-bottom: 4px; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.04em;">
-        LEGAL & COMPLIANCE (INDIAN ARMS RULES 2016 / 0.177 CALIBRE):
-      </strong>
-      ArmsXchange is an equipment discovery and athlete consultation platform. All featured air weapons are strictly competition-grade 0.177 calibre (4.5 mm) target pneumatics generating under 20 Joules of muzzle energy in accordance with Schedule I, Category III(f) of the Arms Rules 2016 (MHA, Government of India). We do not list, facilitate, or transfer cartridge firearms or restricted arms. An additional 18% GST applies for non-renowned shooters on brand-new imported weapons per prevailing Indian customs schedules. Shooter credential verification (NRAI / State Rifle Association) is conducted prior to equipment transfer.
+      <div class="footer-compliance-head">
+        <svg class="footer-shield-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>Statutory Compliance &middot; Indian Arms Rules 2016 (0.177 Calibre)</span>
+      </div>
+      <p class="footer-compliance-text">
+        ArmsXchange is an equipment discovery and athlete consultation platform. All featured air weapons are strictly competition-grade 0.177 calibre (4.5 mm) target pneumatics generating under 20 Joules of muzzle energy in accordance with Schedule I, Category III(f) of the Arms Rules 2016 (MHA, Government of India). We do not list, facilitate, or transfer cartridge firearms or restricted arms. An additional 18% GST applies for non-renowned shooters on brand-new imported weapons per prevailing Indian customs schedules. Shooter credential verification (NRAI / State Rifle Association) is conducted prior to equipment transfer.
+      </p>
     </div>
 
     <div class="footer-bottom">
@@ -113,7 +118,7 @@ const currentYear = new Date().getFullYear();
       <p class="footer-credit">
         Designed &amp; Developed with <span class="footer-heart" aria-label="love">❤️</span> by <a href="https://zameerkhan.online" target="_blank" rel="noopener noreferrer">Zameer</a> · Powered by <a href="https://zamify.online" target="_blank" rel="noopener noreferrer">Zamify</a>
       </p>
-      <p style="font-family: var(--font-mono); font-size: 0.76rem;">Precision 10m Competition Equipment</p>
+      <p style="font-family: var(--font-sans); font-size: 0.78rem; color: #64748B; font-weight: 500;">Precision 10m Competition Equipment</p>
     </div>
   </div>
 </footer>
