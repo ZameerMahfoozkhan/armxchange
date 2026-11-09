@@ -2,12 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 import WhatsAppIcon from '../components/WhatsAppIcon.astro';
 import { CONTACT_INFO } from '../data/products';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About ArmsXchange & Founder Pranatpal Singh",
+  "url": "https://armsxchange.in/about-armsxchange/",
+  "description": "Learn how national-level shooter Pranatpal Singh founded ArmsXchange to solve equipment discovery, cylinder safety, and resale challenges for Indian athletes.",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Pranatpal Singh",
+    "jobTitle": "Founder, National Shooter & Coach",
+    "description": "National-level 10m target shooter and shooting sports coach.",
+    "image": "https://armsxchange.in/images/founder/pranatpal-singh-profile.webp"
+  }
+};
 ---
 
 <Layout
   title="Our Story & Mission | Pranatpal Singh | ArmsXchange"
   description="Learn how national-level shooter Pranatpal Singh founded ArmsXchange to solve equipment discovery, cylinder safety, and resale challenges for Indian athletes."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+
   <div class="container" style="padding-top: 28px; padding-bottom: 88px;">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
@@ -33,11 +50,11 @@ import { CONTACT_INFO } from '../data/products';
     </div>
 
     <!-- Founder Grid -->
-    <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 48px 40px; margin-bottom: 64px; box-shadow: var(--shadow-card);">
-      <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center;" class="about-grid">
-        <div>
-          <span class="tech-badge" style="margin-bottom: 14px;">THE SPORTING REALITY</span>
-          <h2 style="font-size: 1.8rem; margin-bottom: 16px; color: var(--color-ink); font-weight: 800;">
+    <div class="about-hero-card">
+      <div class="about-grid">
+        <div class="about-reality-col">
+          <span class="tech-badge" style="margin-bottom: 14px; align-self: flex-start;">THE SPORTING REALITY</span>
+          <h2 style="font-size: 1.85rem; margin-bottom: 16px; color: var(--color-ink); font-weight: 800; letter-spacing: -0.02em;">
             The Equipment Barrier in Indian Shooting Sports
           </h2>
           <p style="font-size: 0.96rem; line-height: 1.7; margin-bottom: 16px; color: var(--color-text-body);">
@@ -51,23 +68,102 @@ import { CONTACT_INFO } from '../data/products';
           </p>
         </div>
 
-        <div style="background: var(--color-canvas-subtle); border-radius: var(--radius-card); padding: 36px 32px; border: 1px solid var(--color-border);">
-          <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;">
-            FOUNDER STATEMENT //
-          </div>
-          <blockquote style="font-size: 1.05rem; line-height: 1.7; color: var(--color-ink); margin-bottom: 24px; font-weight: 500;">
-            &ldquo;Having competed at the national level and begun coaching emerging athletes over the past year, I want shooters' attention focused entirely on breathing, trigger reset, and natural point of aim. They should never have to wonder whether their cylinder is past its 10-year test date, or if their diopter is skipping clicks. ArmsXchange was built to give every shooter complete certainty.&rdquo;
-          </blockquote>
-          <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid var(--color-border);">
-            <div style="width: 44px; height: 44px; border-radius: var(--radius-sm); background: var(--color-ink); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #FFFFFF; font-size: 1rem; font-family: var(--font-mono);">
-              PS
+        <!-- Founder Quote & Visual Card -->
+        <div class="founder-card">
+          <div>
+            <div class="founder-img-box">
+              <img 
+                src="/images/founder/pranatpal-singh-profile.webp" 
+                alt="Pranatpal Singh, Founder of ArmsXchange aiming on the 10m firing line" 
+                loading="eager"
+              />
+              <div class="founder-img-badge">
+                <span>10M FIRING LINE // PRANATPAL SINGH</span>
+              </div>
             </div>
+
+            <div class="founder-label">
+              FOUNDER STATEMENT //
+            </div>
+            <blockquote class="founder-quote">
+              &ldquo;Having competed at the national level and begun coaching emerging athletes over the past year, I want shooters' attention focused entirely on breathing, trigger reset, and natural point of aim. They should never have to wonder whether their cylinder is past its 10-year test date, or if their diopter is skipping clicks. ArmsXchange was built to give every shooter complete certainty.&rdquo;
+            </blockquote>
+          </div>
+
+          <div class="founder-author-row">
+            <img 
+              src="/images/founder/pranatpal-singh-avatar.webp" 
+              alt={CONTACT_INFO.founder}
+              class="founder-author-avatar"
+              loading="lazy"
+            />
             <div>
-              <div style="color: var(--color-ink); font-size: 0.96rem; font-weight: 700;">{CONTACT_INFO.founder}</div>
-              <div style="font-size: 0.78rem; color: var(--color-text-muted); font-family: var(--font-mono);">{CONTACT_INFO.founderTitle}</div>
+              <div class="founder-author-name">{CONTACT_INFO.founder}</div>
+              <div class="founder-author-title">{CONTACT_INFO.founderTitle}</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Athletic Journey & Range Heritage Gallery -->
+    <div class="gallery-section-wrap">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span class="tech-badge" style="margin-bottom: 8px;">VERIFIED ATHLETIC BACKGROUND</span>
+        <h2 style="font-size: 1.85rem; color: var(--color-ink); font-weight: 800; letter-spacing: -0.02em;">
+          On The Range & In National Competition
+        </h2>
+        <p style="color: var(--color-text-muted); max-width: 680px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6;">
+          ArmsXchange is powered by hands-on competitive experience. Every equipment recommendation is backed by real hours logged on 10m range lanes across state and national events.
+        </p>
+      </div>
+
+      <div class="mobile-swipe-hint">
+        <span class="swipe-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+          SWIPE GALLERY
+        </span>
+        <span style="font-size: 0.76rem; color: var(--color-text-muted);">3 Photos &rarr;</span>
+      </div>
+
+      <div class="founder-gallery-grid" id="founderGallery">
+        <!-- Photo 1: 10m Firing Point -->
+        <div class="gallery-photo-item">
+          <img 
+            src="/images/founder/pranatpal-singh-10m-range.webp" 
+            alt="Pranatpal Singh on the 10m firing line at lane 42 in competition suit" 
+            style="object-position: center top;"
+            loading="lazy" 
+          />
+        </div>
+
+        <!-- Photo 2: Award Ceremony -->
+        <div class="gallery-photo-item">
+          <img 
+            src="/images/founder/pranatpal-singh-award.webp" 
+            alt="Pranatpal Singh receiving sports achievement award" 
+            style="object-position: center 20%;"
+            loading="lazy" 
+          />
+        </div>
+
+        <!-- Photo 3: Felicitation Ceremony -->
+        <div class="gallery-photo-item">
+          <img 
+            src="/images/founder/pranatpal-singh-felicitation.webp" 
+            alt="Pranatpal Singh with shooting sports athletes and federation officials" 
+            style="object-position: center 25%;"
+            loading="lazy" 
+          />
+        </div>
+      </div>
+
+      <div class="gallery-photo-dots" id="galleryDots" aria-hidden="true">
+        <span class="gallery-dot active"></span>
+        <span class="gallery-dot"></span>
+        <span class="gallery-dot"></span>
       </div>
     </div>
 
@@ -125,7 +221,15 @@ import { CONTACT_INFO } from '../data/products';
     <!-- Direct Founder Consultation -->
     <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: 48px 32px; text-align: center; box-shadow: var(--shadow-sm);">
       <div style="max-width: 600px; margin: 0 auto;">
-        <span class="tech-badge" style="margin-bottom: 14px;">DIRECT CONSULTATION</span>
+        <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+          <img 
+            src="/images/founder/pranatpal-singh-avatar.webp" 
+            alt={CONTACT_INFO.founder} 
+            style="width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-border); box-shadow: 0 4px 12px rgba(0,0,0,0.08);"
+            loading="lazy"
+          />
+        </div>
+        <span class="tech-badge" style="margin-bottom: 12px;">DIRECT CONSULTATION</span>
         <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin-bottom: 12px; color: var(--color-ink); font-weight: 800;">
           Speak Directly With Pranatpal Singh
         </h2>
@@ -175,11 +279,334 @@ import { CONTACT_INFO } from '../data/products';
   </div>
 </Layout>
 
+<script>
+  // Mobile horizontal scroll dots synchronization
+  const gallery = document.getElementById('founderGallery');
+  const dots = document.querySelectorAll('.gallery-dot');
+  if (gallery && dots.length > 0) {
+    gallery.addEventListener('scroll', () => {
+      const scrollLeft = gallery.scrollLeft;
+      const slideWidth = gallery.clientWidth * 0.78;
+      const index = Math.min(dots.length - 1, Math.max(0, Math.round(scrollLeft / slideWidth)));
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }, { passive: true });
+  }
+</script>
+
 <style>
+  .about-hero-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 44px 36px;
+    margin-bottom: 64px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 44px;
+    align-items: stretch;
+  }
+
+  .about-reality-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .founder-card {
+    background: var(--color-canvas-subtle);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .founder-img-box {
+    position: relative;
+    border-radius: calc(var(--radius-card) - 2px);
+    overflow: hidden;
+    margin-bottom: 18px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    height: 280px;
+    background: var(--color-canvas-muted);
+  }
+
+  .founder-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+  }
+
+  .founder-img-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(11, 15, 23, 0.88);
+    backdrop-filter: blur(8px);
+    padding: 5px 11px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .founder-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .founder-quote {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+    margin: 0 0 18px 0;
+    font-weight: 500;
+  }
+
+  .founder-author-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .founder-author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  .founder-author-name {
+    color: var(--color-ink);
+    font-size: 0.96rem;
+    font-weight: 700;
+  }
+
+  .founder-author-title {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* Gallery section */
+  .gallery-section-wrap {
+    margin-bottom: 64px;
+  }
+
+  .mobile-swipe-hint {
+    display: none;
+  }
+
+  .founder-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .gallery-photo-item {
+    background: var(--color-canvas-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    height: 440px;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .gallery-photo-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .gallery-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-photo-item:hover img {
+    transform: scale(1.02);
+  }
+
+  .gallery-photo-dots {
+    display: none;
+  }
+
+  /* Responsive / Mobile View */
   @media (max-width: 868px) {
+    .about-hero-card {
+      padding: 20px 16px;
+      margin-bottom: 36px;
+      border-radius: 12px;
+    }
+
     .about-grid {
       grid-template-columns: 1fr !important;
-      gap: 32px !important;
+      gap: 24px !important;
+    }
+
+    .about-reality-col h2 {
+      font-size: 1.45rem !important;
+      line-height: 1.25 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .about-reality-col p {
+      font-size: 0.91rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .founder-card {
+      padding: 16px;
+      border-radius: 10px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .founder-img-box {
+      height: 220px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+    }
+
+    .founder-img-box img {
+      object-position: center 20%;
+    }
+
+    .founder-img-badge {
+      bottom: 8px;
+      left: 8px;
+      padding: 3px 8px;
+      font-size: 0.62rem;
+    }
+
+    .founder-label {
+      font-size: 0.68rem;
+      margin-bottom: 8px;
+    }
+
+    .founder-quote {
+      font-size: 0.9rem;
+      line-height: 1.58;
+      margin-bottom: 14px;
+    }
+
+    .founder-author-row {
+      padding-top: 12px;
+      gap: 12px;
+    }
+
+    .founder-author-avatar {
+      width: 42px;
+      height: 42px;
+    }
+
+    .founder-author-name {
+      font-size: 0.92rem;
+    }
+
+    .founder-author-title {
+      font-size: 0.74rem;
+    }
+
+    /* Mobile Horizontal Gallery Carousel */
+    .gallery-section-wrap {
+      margin-bottom: 44px;
+    }
+
+    .mobile-swipe-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .swipe-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: #0F172A;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .founder-gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 12px;
+      padding: 4px 16px 14px 16px;
+      margin: 0 -16px;
+      scrollbar-width: none;
+    }
+
+    .founder-gallery-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-photo-item {
+      flex: 0 0 78vw;
+      max-width: 310px;
+      height: 380px;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      border-radius: 12px;
+    }
+
+    .gallery-photo-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .gallery-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #CBD5E1;
+      transition: all 0.25s ease;
+    }
+
+    .gallery-dot.active {
+      width: 18px;
+      border-radius: 4px;
+      background: var(--color-ink);
     }
   }
 </style>
