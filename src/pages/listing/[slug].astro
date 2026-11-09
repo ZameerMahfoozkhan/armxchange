@@ -22,6 +22,32 @@ const relatedProducts = PRODUCTS
   .filter(p => p.id !== product.id && p.category === product.category)
   .slice(0, 4);
 
+// Extract smart telemetry for athlete quick inspection
+const cylinderYear = product.specifications["Cylinder Validity"]?.match(/20\d{2}/g)?.slice(-1)[0]
+  || product.specifications["Cylinder System"]?.match(/20\d{2}/g)?.slice(-1)[0]
+  || (product.isPreOwned ? "Range Tested" : "10-Yr ISSF");
+
+const calibre = product.specifications["Calibre"]?.replace(/\(.*?\)/g, '').trim() || ".177 (4.5mm)";
+
+const triggerSpec = product.specifications["Trigger System"]
+  || product.specifications["Trigger"]
+  || (product.title.toLowerCase().includes('electronic') || product.title.toLowerCase().includes(' e ') ? 'Electronic E-Trigger' : 'Match Mechanical');
+
+const conditionGradeLabel = product.conditionGrade
+  ? product.conditionGrade.split('/')[0].trim()
+  : (product.isPreOwned ? 'Verified Pre-Owned' : 'Brand New In Box');
+
+const factoryAuthenticityDisclosure = [
+  "Direct factory import sourced from authorized European manufacturer channels.",
+  "Fitted with fresh 10-Year ISSF certified match compressed air cylinder.",
+  "Original factory 10m target test group sheet and matching serial documentation.",
+  "Category III(f) compliant (< 20 Joules) with zero licence required under Arms Rules 2016."
+];
+
+const inspectionItems = (product.conditionDisclosure && product.conditionDisclosure.length > 0)
+  ? product.conditionDisclosure
+  : (product.category === 'new-weapons' ? factoryAuthenticityDisclosure : null);
+
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -125,8 +151,8 @@ const pageDescription = product.isPreOwned
 
     <!-- Main Product Layout Grid -->
     <div class="product-stage-grid">
-      <!-- Left Column: Gallery & Verified Hardware Inspection -->
-      <div>
+      <!-- Left Column: Sticky Gallery & Certified Safety/Inspection Dossier -->
+      <div class="product-gallery-sticky-col">
         <div class="gallery-frame">
           <div id="mainImageContainer" class="main-image-viewport">
             <img 
@@ -210,6 +236,43 @@ const pageDescription = product.isPreOwned
           )}
         </div>
 
+        <!-- Range Hardware Inspection & Authenticity Dossier (Directly beneath photos) -->
+        {inspectionItems && (
+          <div class="dossier-checklist-card inspection-dossier">
+            <div class="dossier-checklist-header">
+              <div class="dossier-checklist-title-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="dossier-icon">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <span class="dossier-checklist-title">
+                  {product.isPreOwned ? 'Hardware Inspection & Range Audit' : 'Factory Quality & Import Authenticity'}
+                </span>
+              </div>
+              <span class="tech-badge tech-badge-verified">
+                {product.isPreOwned ? 'CERTIFIED AUDIT' : '100% FACTORY NEW'}
+              </span>
+            </div>
+            <ul class="dossier-checklist">
+              {inspectionItems.map(item => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="dossier-footer-note">
+              {product.isPreOwned ? (
+                <span>Inspected under ISSF 10-year pneumatic safety rules. Zero uncertified pressure vessels.</span>
+              ) : (
+                <span>Direct European manufacturer import channel with complete NRAI & customs compliance.</span>
+              )}
+            </div>
+          </div>
+        )}
+
         <!-- Indian Arms Rules 2016 Statutory Card -->
         <div class="compliance-box">
           <div class="compliance-icon-wrap">
@@ -247,12 +310,68 @@ const pageDescription = product.isPreOwned
           {product.title}
         </h1>
 
-        <p class="product-lead-text">
-          {product.fullDescription}
-        </p>
+        <!-- Quick Telemetry Spec Bar -->
+        <div class="quick-telemetry-bar">
+          <div class="telemetry-chip">
+            <div class="telemetry-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <div class="telemetry-text">
+              <span class="telemetry-label">Calibre</span>
+              <span class="telemetry-val">{calibre}</span>
+            </div>
+          </div>
 
-        <!-- Pricing & Acquisition Dossier -->
+          <div class="telemetry-chip">
+            <div class="telemetry-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="telemetry-text">
+              <span class="telemetry-label">Cylinder</span>
+              <span class="telemetry-val">{cylinderYear}</span>
+            </div>
+          </div>
+
+          <div class="telemetry-chip">
+            <div class="telemetry-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="telemetry-text">
+              <span class="telemetry-label">Trigger</span>
+              <span class="telemetry-val">{triggerSpec}</span>
+            </div>
+          </div>
+
+          <div class="telemetry-chip">
+            <div class="telemetry-icon-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <div class="telemetry-text">
+              <span class="telemetry-label">Condition</span>
+              <span class="telemetry-val">{conditionGradeLabel}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing & Concierge Acquisition Card -->
         <div class="pricing-card">
+          <div class="pricing-live-beacon">
+            <span class="beacon-dot"></span>
+            <span class="beacon-label">{product.inStock ? 'Available for Acquisition' : 'Enquire for Allocation'}</span>
+          </div>
+
           <div class="pricing-header-row">
             <div>
               <span class="price-kicker">
@@ -262,7 +381,7 @@ const pageDescription = product.isPreOwned
                 {product.priceDisplay}
               </div>
             </div>
-            <span class="tech-badge">
+            <span class="tech-badge tech-badge-verified">
               {product.isPreOwned ? 'Certified Pre-Owned' : 'Factory Sealed'}
             </span>
           </div>
@@ -285,49 +404,74 @@ const pageDescription = product.isPreOwned
               target="_blank"
               rel="noopener noreferrer"
               class="btn btn-whatsapp-solid"
-              style="padding: 14px 24px; font-size: 0.98rem; width: 100%; justify-content: center; gap: 10px; font-weight: 700;"
+              style="padding: 14px 22px; font-size: 0.98rem; width: 100%; justify-content: center; gap: 10px; font-weight: 700;"
             >
               <WhatsAppIcon size={20} />
-              <span>Enquire on WhatsApp</span>
+              <span>Direct WhatsApp Consultation</span>
               <span class="btn-trailing-icon">→</span>
+            </a>
+            
+            <a
+              href={`tel:${CONTACT_INFO.phoneRaw}`}
+              class="btn btn-secondary-call"
+              aria-label={`Call founder Pranatpal Singh at ${CONTACT_INFO.phoneDisplay}`}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span>Call Pranatpal Singh ({CONTACT_INFO.phoneDisplay})</span>
             </a>
           </div>
 
-          <div class="pricing-guarantee">
-            Direct athlete consultation with founder Pranatpal Singh. No unverified online checkouts.
+          <!-- 3-Pillar Micro Guarantees -->
+          <div class="pricing-guarantees-bar">
+            <div class="guarantee-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>ISSF Inspected</span>
+            </div>
+            <div class="guarantee-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>NRAI Protocol</span>
+            </div>
+            <div class="guarantee-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Direct Handover</span>
+            </div>
           </div>
         </div>
 
-        <!-- Range Inspection Dossier (For Pre-Owned Rifles/Pistols) -->
-        {product.conditionDisclosure && product.conditionDisclosure.length > 0 && (
-          <div class="dossier-checklist-card">
-            <div class="dossier-checklist-header">
-              <span class="dossier-checklist-title">
-                Hardware Inspection & Condition Report
-              </span>
-              <span class="tech-badge tech-badge-new">VERIFIED</span>
-            </div>
-            <ul class="dossier-checklist">
-              {product.conditionDisclosure.map(item => (
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+        <!-- Equipment Overview Card -->
+        <div class="equipment-overview-card">
+          <div class="overview-header">
+            <h2 class="overview-title">Equipment Overview</h2>
+            <span class="overview-ref">COMPETITION GRADE</span>
           </div>
-        )}
+          <p class="product-lead-text">
+            {product.fullDescription}
+          </p>
+        </div>
 
         <!-- Included Package Accessories -->
         {product.includedItems && product.includedItems.length > 0 && (
-          <div class="dossier-checklist-card">
+          <div class="dossier-checklist-card included-kit-card">
             <div class="dossier-checklist-header">
-              <span class="dossier-checklist-title">
-                Included Equipment & Accessories
-              </span>
-              <span class="tech-badge">COMPLETE KIT</span>
+              <div class="dossier-checklist-title-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="dossier-icon">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span class="dossier-checklist-title">
+                  Included Flight Case & Equipment Kit
+                </span>
+              </div>
+              <span class="tech-badge">COMPLETE PACKAGE</span>
             </div>
             <ul class="dossier-checklist package-list">
               {product.includedItems.map(item => (
@@ -582,6 +726,14 @@ const pageDescription = product.isPreOwned
     max-width: 100%;
   }
 
+  @media (min-width: 1024px) {
+    .product-gallery-sticky-col {
+      position: sticky;
+      top: 92px;
+      align-self: start;
+    }
+  }
+
   .gallery-frame {
     background: #FFFFFF;
     border: 1px solid var(--color-border);
@@ -596,8 +748,9 @@ const pageDescription = product.isPreOwned
 
   .main-image-viewport {
     width: 100%;
-    min-height: 480px;
-    max-height: 600px;
+    aspect-ratio: 16 / 10;
+    min-height: 380px;
+    max-height: 480px;
     border-radius: var(--radius-md);
     background: #FFFFFF;
     border: 1px solid var(--color-border-subtle);
@@ -835,16 +988,76 @@ const pageDescription = product.isPreOwned
     color: var(--color-ink);
     line-height: 1.15;
     letter-spacing: -0.03em;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
-  .product-lead-text {
-    font-size: 0.98rem;
-    color: var(--color-text-body);
-    line-height: 1.65;
-    margin-bottom: 24px;
+  /* Quick Telemetry Bar */
+  .quick-telemetry-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
   }
 
+  .telemetry-chip {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 1px 2px rgba(11, 15, 23, 0.04);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .telemetry-chip:hover {
+    border-color: #94A3B8;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .telemetry-icon-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: var(--color-canvas-subtle);
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .telemetry-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .telemetry-label {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    line-height: 1.15;
+  }
+
+  .telemetry-val {
+    font-family: var(--font-display, var(--font-sans));
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Pricing & Concierge Card */
   .pricing-card {
     background: #FFFFFF;
     border: 1px solid var(--color-border);
@@ -852,6 +1065,43 @@ const pageDescription = product.isPreOwned
     padding: 24px;
     box-shadow: var(--shadow-sm);
     margin-bottom: 20px;
+  }
+
+  .pricing-live-beacon {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: #059669;
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .beacon-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    animation: beacon-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes beacon-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
   }
 
   .pricing-header-row {
@@ -897,23 +1147,112 @@ const pageDescription = product.isPreOwned
   }
 
   .pricing-actions {
-    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
   }
 
-  .pricing-guarantee {
+  .btn-secondary-call {
+    background: #FFFFFF;
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-border);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: var(--font-display, var(--font-sans));
+    font-size: 0.90rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .btn-secondary-call:hover {
+    background: var(--color-canvas-subtle);
+    border-color: var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .pricing-guarantees-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border-subtle);
+    gap: 8px;
+  }
+
+  .guarantee-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
     font-family: var(--font-sans);
-    font-size: 0.74rem;
+    font-weight: 600;
     color: var(--color-text-muted);
-    text-align: center;
-    line-height: 1.4;
   }
 
+  .guarantee-chip svg {
+    color: #059669;
+    flex-shrink: 0;
+  }
+
+  /* Equipment Overview Card */
+  .equipment-overview-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .overview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .overview-title {
+    font-family: var(--font-display, var(--font-sans));
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .overview-ref {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .product-lead-text {
+    font-size: 0.95rem;
+    color: var(--color-text-body);
+    line-height: 1.68;
+    margin: 0;
+  }
+
+  /* Dossier Checklist Card */
   .dossier-checklist-card {
     background: var(--color-canvas-subtle);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
     padding: 20px 22px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .dossier-checklist-header {
@@ -924,6 +1263,17 @@ const pageDescription = product.isPreOwned
     margin-bottom: 14px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .dossier-checklist-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dossier-icon {
+    color: var(--color-ink);
+    flex-shrink: 0;
   }
 
   .dossier-checklist-title {
@@ -956,6 +1306,24 @@ const pageDescription = product.isPreOwned
     color: #0D9488;
     flex-shrink: 0;
     margin-top: 3px;
+  }
+
+  .dossier-footer-note {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--color-border);
+    font-size: 0.73rem;
+    font-family: var(--font-sans);
+    color: var(--color-text-muted);
+    line-height: 1.45;
+  }
+
+  .tech-badge-verified {
+    background: #047857;
+    color: #FFFFFF;
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   .package-list svg {
@@ -1182,24 +1550,30 @@ const pageDescription = product.isPreOwned
   }
 
   @media (max-width: 868px) {
-    .compliance-box {
-      display: none;
-    }
-
     .product-page-container {
       padding-top: 18px;
       padding-bottom: 96px; /* Clearance so content is never covered by bottom bar */
     }
 
     .product-stage-grid {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       margin-bottom: 32px;
       min-width: 0;
       width: 100%;
     }
 
+    .product-gallery-sticky-col {
+      display: contents;
+    }
+
+    .product-intel-col {
+      display: contents;
+    }
+
     .gallery-frame {
+      order: 1;
       padding: 12px;
       margin-bottom: 16px;
       min-width: 0;
@@ -1207,16 +1581,11 @@ const pageDescription = product.isPreOwned
       box-sizing: border-box;
     }
 
-    .product-intel-col {
-      min-width: 0;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-
     .main-image-viewport {
-      min-height: 240px;
-      max-height: 330px;
-      padding: 16px;
+      aspect-ratio: 16 / 10;
+      min-height: 220px;
+      max-height: 300px;
+      padding: 12px;
       min-width: 0;
       max-width: 100%;
       box-sizing: border-box;
@@ -1237,23 +1606,44 @@ const pageDescription = product.isPreOwned
       flex-shrink: 0;
     }
 
+    .product-meta-header {
+      order: 2;
+      margin-bottom: 6px;
+    }
+
     .product-main-heading {
+      order: 3;
       font-size: clamp(1.4rem, 5.6vw, 1.85rem);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       overflow-wrap: break-word;
       word-break: break-word;
     }
 
-    .product-lead-text {
-      font-size: 0.90rem;
-      line-height: 1.55;
-      margin-bottom: 18px;
-      overflow-wrap: break-word;
-      word-break: break-word;
+    .quick-telemetry-bar {
+      order: 4;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .telemetry-chip {
+      padding: 8px 10px;
+      gap: 8px;
+    }
+
+    .telemetry-icon-box {
+      width: 26px;
+      height: 26px;
+    }
+
+    .telemetry-val {
+      font-size: 0.78rem;
     }
 
     .pricing-card {
+      order: 5;
       padding: 18px 16px;
+      margin-bottom: 16px;
       min-width: 0;
       max-width: 100%;
       box-sizing: border-box;
@@ -1266,6 +1656,44 @@ const pageDescription = product.isPreOwned
     .pricing-actions .btn {
       padding: 12px 14px !important;
       font-size: 0.88rem !important;
+    }
+
+    .pricing-guarantees-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .equipment-overview-card {
+      order: 6;
+      padding: 18px 16px;
+      margin-bottom: 16px;
+    }
+
+    .product-lead-text {
+      font-size: 0.90rem;
+      line-height: 1.55;
+      margin-bottom: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .inspection-dossier {
+      order: 7;
+      margin-bottom: 16px;
+    }
+
+    .included-kit-card {
+      order: 8;
+      margin-bottom: 16px;
+    }
+
+    .compliance-box {
+      order: 9;
+      display: flex;
+      padding: 14px 16px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .product-trust-strip {
@@ -1314,9 +1742,9 @@ const pageDescription = product.isPreOwned
       left: 0;
       right: 0;
       z-index: 999;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid rgba(226, 232, 240, 0.95);
       box-shadow: 0 -4px 22px rgba(11, 15, 23, 0.10);
       padding: 10px 16px;
@@ -1462,6 +1890,34 @@ const pageDescription = product.isPreOwned
     e.stopPropagation();
     setActiveImageIndex(currentIndex + 1);
   });
+
+  // Mobile touch swipe gestures for image gallery
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const imageContainer = document.getElementById('mainImageContainer');
+
+  imageContainer?.addEventListener('touchstart', (e: TouchEvent) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  imageContainer?.addEventListener('touchend', (e: TouchEvent) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 40;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > swipeThreshold && thumbs.length > 1) {
+      if (diff < 0) {
+        // Swiped left -> next
+        setActiveImageIndex(currentIndex + 1);
+      } else {
+        // Swiped right -> prev
+        setActiveImageIndex(currentIndex - 1);
+      }
+    }
+  }
 
   function openZoom() {
     if (zoomModal) zoomModal.classList.add('is-open');
