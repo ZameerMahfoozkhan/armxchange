@@ -210,6 +210,9 @@ section {
   color: var(--color-text-muted);
   max-width: 100%;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
 }
 
 .tech-badge-preowned {

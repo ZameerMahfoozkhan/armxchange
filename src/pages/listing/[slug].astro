@@ -22,20 +22,57 @@ const relatedProducts = PRODUCTS
   .filter(p => p.id !== product.id && p.category === product.category)
   .slice(0, 4);
 
-// Extract smart telemetry for athlete quick inspection
-const cylinderYear = product.specifications["Cylinder Validity"]?.match(/20\d{2}/g)?.slice(-1)[0]
-  || product.specifications["Cylinder System"]?.match(/20\d{2}/g)?.slice(-1)[0]
-  || (product.isPreOwned ? "Range Tested" : "10-Yr ISSF");
+// Helper functions to extract clean, concise telemetry badge values that never overflow
+function getCalibreBadge(specs: Record<string, string>): string {
+  const raw = specs["Calibre"] || ".177";
+  if (raw.includes("4.5") || raw.includes(".177")) {
+    return ".177 (4.5mm)";
+  }
+  return raw.replace(/\(.*?\)/g, '').trim().slice(0, 14);
+}
 
-const calibre = product.specifications["Calibre"]?.replace(/\(.*?\)/g, '').trim() || ".177 (4.5mm)";
+function getCylinderBadge(specs: Record<string, string>, isPreOwned: boolean): string {
+  const raw = specs["Cylinder Validity"] || specs["Cylinder System"] || specs["Cylinder"] || "";
+  const yearMatch = raw.match(/20\d{2}/g);
+  if (yearMatch && yearMatch.length > 0) {
+    return `Valid to ${yearMatch[yearMatch.length - 1]}`;
+  }
+  if (raw.toLowerCase().includes("10-year") || raw.toLowerCase().includes("10-yr") || !isPreOwned) {
+    return "10-Yr ISSF";
+  }
+  return isPreOwned ? "Range Audited" : "Factory 10-Yr";
+}
 
-const triggerSpec = product.specifications["Trigger System"]
-  || product.specifications["Trigger"]
-  || (product.title.toLowerCase().includes('electronic') || product.title.toLowerCase().includes(' e ') ? 'Electronic E-Trigger' : 'Match Mechanical');
+function getTriggerBadge(specs: Record<string, string>, title: string): string {
+  const combined = `${specs["Trigger System"] || ""} ${specs["Trigger"] || ""} ${title}`.toLowerCase();
+  if (combined.includes("electronic") || combined.includes("e-trigger") || combined.includes("e trigger") || combined.includes(" e ")) {
+    return "Electronic E-Trigger";
+  }
+  if (combined.includes("mechanical") || combined.includes("two-stage") || combined.includes("2-stage")) {
+    return "Match Mechanical";
+  }
+  const raw = specs["Trigger System"] || specs["Trigger"] || "";
+  if (raw) {
+    const clean = raw.split(/[,(]/)[0].trim();
+    return clean.length <= 18 ? clean : clean.slice(0, 18);
+  }
+  return "Match Precision";
+}
 
-const conditionGradeLabel = product.conditionGrade
-  ? product.conditionGrade.split('/')[0].trim()
-  : (product.isPreOwned ? 'Verified Pre-Owned' : 'Brand New In Box');
+function getConditionBadge(grade: string | undefined, isPreOwned: boolean): string {
+  if (!isPreOwned) return "Brand New In Box";
+  if (!grade) return "Verified Pre-Owned";
+  const firstPart = grade.split('/')[0].trim();
+  if (firstPart.toLowerCase().includes("mint")) return "Mint Condition";
+  if (firstPart.toLowerCase().includes("great") || firstPart.toLowerCase().includes("very good")) return "Very Good Condition";
+  if (firstPart.toLowerCase().includes("competition")) return "Competition Ready";
+  return firstPart.slice(0, 18);
+}
+
+const calibre = getCalibreBadge(product.specifications);
+const cylinderYear = getCylinderBadge(product.specifications, product.isPreOwned);
+const triggerSpec = getTriggerBadge(product.specifications, product.title);
+const conditionGradeLabel = getConditionBadge(product.conditionGrade, product.isPreOwned);
 
 const factoryAuthenticityDisclosure = [
   "Direct factory import sourced from authorized European manufacturer channels.",
@@ -782,6 +819,7 @@ const pageDescription = product.isPreOwned
     flex-wrap: wrap;
     gap: 6px;
     z-index: 2;
+    max-width: calc(100% - 92px);
   }
 
   .photo-counter-pill {
@@ -826,41 +864,47 @@ const pageDescription = product.isPreOwned
     border-color: #CBD5E1;
   }
 
+  /* Transparent Next & Previous Image Navigation Chevrons */
   .gallery-nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: rgba(11, 15, 23, 0.72);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
+    color: #0F172A;
+    border: 1.5px solid rgba(15, 23, 42, 0.16);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    backdrop-filter: blur(6px);
-    transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
   .gallery-nav-btn:hover {
-    background: #0B0F17;
-    border-color: #CBD5E1;
-    transform: translateY(-50%) scale(1.08);
+    background: rgba(255, 255, 255, 0.88);
+    color: #000000;
+    border-color: rgba(15, 23, 42, 0.38);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
   }
 
   .gallery-nav-btn:active {
+    background: rgba(255, 255, 255, 0.98);
     transform: translateY(-50%) scale(0.95);
   }
 
   .gallery-prev {
-    left: 14px;
+    left: 12px;
   }
 
   .gallery-next {
-    right: 14px;
+    right: 12px;
   }
 
   .thumbnail-strip {
@@ -991,24 +1035,31 @@ const pageDescription = product.isPreOwned
     margin-bottom: 16px;
   }
 
-  /* Quick Telemetry Bar */
+  /* Quick Telemetry Bar - 2x2 Clean Balanced Layout That Never Overflows */
   .quick-telemetry-bar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
     margin-bottom: 22px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .telemetry-chip {
     background: #FFFFFF;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    padding: 9px 12px;
+    padding: 10px 14px;
     display: flex;
     align-items: center;
     gap: 10px;
     box-shadow: 0 1px 2px rgba(11, 15, 23, 0.04);
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .telemetry-chip:hover {
@@ -1017,8 +1068,8 @@ const pageDescription = product.isPreOwned
   }
 
   .telemetry-icon-box {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 6px;
     background: var(--color-canvas-subtle);
     border: 1px solid var(--color-border);
@@ -1033,6 +1084,8 @@ const pageDescription = product.isPreOwned
     display: flex;
     flex-direction: column;
     min-width: 0;
+    overflow: hidden;
+    flex: 1;
   }
 
   .telemetry-label {
@@ -1043,11 +1096,14 @@ const pageDescription = product.isPreOwned
     letter-spacing: 0.05em;
     color: var(--color-text-muted);
     line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .telemetry-val {
     font-family: var(--font-display, var(--font-sans));
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     font-weight: 700;
     color: var(--color-ink);
     letter-spacing: -0.01em;
@@ -1621,19 +1677,27 @@ const pageDescription = product.isPreOwned
 
     .quick-telemetry-bar {
       order: 4;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
       margin-bottom: 16px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .telemetry-chip {
       padding: 8px 10px;
       gap: 8px;
+      min-width: 0;
+      overflow: hidden;
+      box-sizing: border-box;
     }
 
     .telemetry-icon-box {
       width: 26px;
       height: 26px;
+      flex-shrink: 0;
     }
 
     .telemetry-val {
