@@ -436,6 +436,59 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "steyr-challenge-e-2023-01",
+    slug: "2023-steyr-challenge-e-electronic-air-rifle",
+    title: "2023 Steyr Challenge E Electronic 10m Match Air Rifle (Pre-Owned)",
+    brand: "Steyr",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Tested Competition Ready",
+    priceDisplay: "₹2,45,000",
+    priceValue: 245000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/rifles/steyr-challenge-e-2023-1.webp",
+      "/images/products/rifles/steyr-challenge-e-2023-2.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Steyr Challenge E electronic 10m match air rifle. Steyr flagship electronic match rifle with frictionless trigger, MEC Contact III buttplate, match diopter, Steyr barrel weights, hard case, and test card.",
+    fullDescription: "A rare and coveted opportunity: authentic verified 2023 Steyr Challenge E (Electronic) 10m match air rifle manufactured in Austria. The Steyr Challenge E is world-renowned for its patented electronic match trigger with micro-switch break and zero lock time, granting shooters unmatched stability and trigger break consistency during 60-shot qualification rounds. Built on Steyr's vibration-free monolithic chassis with integrated stabilizer, featuring an anatomical match laminated wood grip, micro-adjustable cheekpiece, and MEC Contact III competition buttplate. Complete with factory Steyr match diopter rear sight and front sight tunnel, original Steyr compressed air cylinder with manometer, barrel balance weights, Steyr blue hard transit case, factory test target card, manual, and RWS match pellets.",
+    specifications: {
+      "Model": "Steyr Challenge E (Electronic)",
+      "Manufacturing Year": "2023 (Made in Austria)",
+      "Cylinder Validity": "Original Steyr 200 bar Match Cylinder (Inspected & Pressure Tested)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Patented Steyr Electronic Match Trigger (E-Trigger) with Rechargeable Battery",
+      "Trigger Pull Weight": "Calibrated to ISSF 10m Rifle Standard",
+      "Chassis & Bedding": "Monolithic Aluminium Match Chassis with Patented Steyr Stabilizer",
+      "Buttplate & Cheekpiece": "MEC Contact III Multi-Adjustable Buttplate & Micro-Adjustable Cheekpiece",
+      "Sighting System": "Steyr Precision Match Diopter Rear Sight & Front Sight Tunnel",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Austrian Steyr manufacturing with pristine action and flawless stock finish.",
+      "Steyr electronic trigger unit, battery retention, and dry-fire mechanism verified 100% operational.",
+      "Original Steyr compressed air cylinder manometer holding healthy operational pressure.",
+      "Factory test target group documentation and owner manual included.",
+      "Complete with Steyr hard carry case, barrel weights, charging adapter, and tools."
+    ],
+    includedItems: [
+      "2023 Steyr Challenge E Electronic 10m Match Air Rifle",
+      "Original Steyr 200 bar Match Compressed Air Cylinder with Pressure Gauge",
+      "MEC Contact III Multi-Adjustable Match Buttplate",
+      "Steyr Precision Match Diopter Sight & Front Sight Tunnel",
+      "Steyr Barrel Balance Weights",
+      "Original Steyr Hard Carry Case & Factory Test Target Card",
+      "Brass Air Cylinder Charging / Filling Adapter & Hex Key Toolkit",
+      "RWS Match Pellets"
+    ],
+    badge: "E-Trigger / Mint / ₹2,45,000",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "morini-cm-162ei-2022-01",
     slug: "2022-morini-cm-162ei-electronic-air-pistol",
     title: "2022 Morini CM 162EI Electronic 10m Match Air Pistol (Size S Grip)",
@@ -540,6 +593,373 @@ export const PRODUCTS: Product[] = [
       "Original Walther Hard Flight Case with Blue Velvet Foam Insert"
     ],
     badge: "2034 Cylinders / E-Trigger",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "steyr-evo-10-silver-2018-01",
+    slug: "2018-steyr-evo-10-mechanical-air-pistol-silver",
+    title: "2018 Steyr evo 10 Mechanical 10m Match Air Pistol (Silver Frame)",
+    brand: "Steyr",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Very Good / Range Inspected",
+    priceDisplay: "₹95,000",
+    priceValue: 95000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/steyr-evo-10-silver-2018-1.webp",
+      "/images/products/pistols/steyr-evo-10-silver-2018-2.webp",
+      "/images/products/pistols/steyr-evo-10-silver-2018-3.webp",
+      "/images/products/pistols/steyr-evo-10-silver-2018-4.webp",
+      "/images/products/pistols/steyr-evo-10-silver-2018-5.webp"
+    ],
+    shortDescription: "Verified pre-owned 2018 Steyr evo 10 mechanical 10m match air pistol (Silver frame, SN 764509). Features precision mechanical ball-bearing trigger, anatomic walnut match grip, dual Steyr match cylinders, and Steyr green hard case.",
+    fullDescription: "An authentic, high-precision 2018 Steyr evo 10 mechanical 10m match air pistol in silver anodized finish (Serial No. 764509, Made in Austria). The Steyr evo 10 represents the benchmark in Olympic mechanical pistol engineering, featuring Steyr's patented stabilizer with eight-hole barrel compensator and ball-bearing supported match trigger. Fitted with an ergonomic Steyr anatomical walnut match grip with adjustable palm shelf. Supplied complete with two factory-original black Steyr 200 bar air cylinders stamped 2018/09 (tested for pressure consistency), original Steyr green hard transit case, brass fill adapter, tool set, and factory documentation.",
+    specifications: {
+      "Model": "Steyr evo 10 Mechanical (Silver)",
+      "Manufacturing Year": "2018 (Serial No. 764509, Made in Austria)",
+      "Cylinder Validity": "Dual Steyr 200 bar Cylinders (Factory Stamped 2018/09)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Precision Mechanical Two-Stage Match Trigger (Ball-Bearing Supported)",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Frame & Barrel": "Silver Anodized Frame with 8-Duct Barrel Compensator",
+      "Grip": "Ergonomic Steyr Anatomic Walnut Match Grip with Adjustable Palm Shelf",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Sight Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Verified Austrian manufacturing proofmarks with serial number 764509.",
+      "Mechanical match trigger, dry-fire training selector, and sear engagement tested 100% operational.",
+      "Supplied with two original Steyr 200 bar air cylinders holding solid pressure.",
+      "Authentic Steyr walnut match grip with adjustable palm rest.",
+      "Complete with original Steyr green hard case, charging adapter, and factory tools."
+    ],
+    includedItems: [
+      "2018 Steyr evo 10 Mechanical 10m Match Air Pistol (SN 764509)",
+      "2x Original Steyr 200 bar Compressed Air Cylinders",
+      "Steyr Original Green Hard Protective Carry Case",
+      "Brass Air Cylinder Charging / Filling Adapter",
+      "Steyr Adjustment Hex Key Tool Kit",
+      "Factory Documentation & Test Target Card"
+    ],
+    badge: "Dual Cylinders / ₹95,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-black-red-2019-01",
+    slug: "2019-morini-cm-162ei-electronic-air-pistol-black-red",
+    title: "2019 Morini CM 162 EI Electronic 10m Match Air Pistol (Red Cylinder Edition)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Very Good / Championship Proven",
+    priceDisplay: "₹1,15,000",
+    priceValue: 115000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-1.webp",
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-2.webp",
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-3.webp",
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-4.webp",
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-5.webp",
+      "/images/products/pistols/morini-cm-162ei-black-red-2019-6.webp"
+    ],
+    shortDescription: "Verified pre-owned 2019 Morini CM 162 EI electronic 10m match air pistol (Black frame). State and national championship tested. Features electronic match trigger, S&P anatomical walnut grip, Red Morini cylinder, and hard flight case.",
+    fullDescription: "An authentic, tournament-proven 2019 Morini CM 162 EI electronic 10m match air pistol in classic matte black finish (Made in Switzerland). Equipped with Morini's renowned electronic ball-bearing trigger mechanism featuring a gold trigger shoe, offering unmatched crispness and reliable dry-fire training capability. Features an ergonomic S&P / Cesare Morini anatomical walnut match grip with adjustable palm shelf, bearing official state and national competition equipment control seals. Fitted with an original Red Morini 200 bar compressed air cylinder with integrated pressure manometer. Delivered complete with original Morini hard protective carry case, charging adapter, and tools.",
+    specifications: {
+      "Model": "Morini CM 162 EI Electronic",
+      "Manufacturing Year": "2019 (Made in Bedano, Switzerland)",
+      "Cylinder Validity": "Factory Red Morini 200 bar Match Cylinder with Pressure Gauge",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Frictionless Electronic Match Trigger with Gold Blade",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Grip": "S&P / Cesare Morini Anatomical Walnut Match Grip with Adjustable Palm Rest",
+      "Sighting System": "Fully Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Swiss manufacturing with verified championship equipment control inspection seals.",
+      "Electronic trigger circuitry, micro-switch, and dry-fire mode tested 100% operational.",
+      "Original Red Morini air cylinder holding steady pressure on manometer.",
+      "Excellent mechanical condition with normal handling marks consistent with competition use.",
+      "Supplied in original Morini hard protective case with tools and fill adapter."
+    ],
+    includedItems: [
+      "2019 Morini CM 162 EI Electronic 10m Match Air Pistol",
+      "Original Red Morini 200 bar Compressed Air Cylinder",
+      "S&P / Cesare Morini Anatomical Walnut Match Grip",
+      "Original Morini Hard Protective Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter & Hex Key Set"
+    ],
+    badge: "Championship Verified / ₹1,15,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lp500-electronic-2024-01",
+    slug: "2024-walther-lp500-electronic-10m-air-pistol",
+    title: "2024 Walther LP500 Electronic 10m Match Air Pistol (E-Trigger / Blue Velvet Case)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Mint / State & All-India Verified",
+    priceDisplay: "₹1,48,000",
+    priceValue: 148000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/walther-lp500-electronic-2024-1.webp",
+      "/images/products/pistols/walther-lp500-electronic-2024-2.webp",
+      "/images/products/pistols/walther-lp500-electronic-2024-3.webp",
+      "/images/products/pistols/walther-lp500-electronic-2024-4.webp",
+      "/images/products/pistols/walther-lp500-electronic-2024-5.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Walther LP500 electronic 10m match air pistol. Verified at 57th West Bengal State & 37th All India Open Championships. Includes 2x Walther match cylinders, red trigger blade, charger, toolkit, and blue velvet case.",
+    fullDescription: "An authentic, championship-certified 2024 Walther LP500 electronic 10m match air pistol manufactured in Ulm, Germany. Celebrated for its cutting-edge electronic trigger system (E-trigger) with signature red trigger shoe, delivering an instantaneous, frictionless release and unlimited dry-fire training capability. Features an ergonomic black 3D match grip with adjustable palm shelf, carrying authentic equipment control verification stickers from the 57th West Bengal State Shooting Championship and 37th All India GV Mavalankar Open. Outstanding equipment bundle: includes TWO factory-original Walther compressed air cylinders with working manometers, original electronic battery charger, Walther blue folding hex toolkit, brass filling adapter, and Walther hard flight case with luxurious blue velvet foam insert.",
+    specifications: {
+      "Model": "Walther LP500 Electronic (E-Trigger)",
+      "Manufacturing Year": "2024 (Carl Walther Ulm, Germany)",
+      "Cylinder Validity": "Dual Original Walther 200 bar Match Cylinders (Inspected & Pressure Tested)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Frictionless Electronic Match Trigger (E-Trigger) with Red Trigger Shoe",
+      "Trigger Pull Weight": "ISSF 500g Standard (Micro-Adjustable First & Second Stage)",
+      "Grip": "3D Anatomical Match Grip with Adjustable Palm Shelf & Competition Seals",
+      "Equipment Control": "57th WB State & 37th All India Equipment Control Seals Verified",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Carl Walther Ulm German manufacture with verified championship equipment control inspection seals.",
+      "Supplied with two original Walther compressed air cylinders holding steady manometer pressure.",
+      "Electronic trigger unit, battery retention, USB charger, and dry-fire mode 100% operational.",
+      "Pristine cosmetic and mechanical condition throughout.",
+      "Complete with Walther hard case featuring blue velvet interior, charger, toolkit, and adapter."
+    ],
+    includedItems: [
+      "2024 Walther LP500 Electronic 10m Match Air Pistol",
+      "2x Original Walther Compressed Air Cylinders with Pressure Gauges",
+      "Walther Electronic Trigger Charger & USB Cable",
+      "Original Walther Blue Folding Hex Key Tool Set",
+      "Brass Air Cylinder Charging / Filling Adapter",
+      "Original Walther Hard Protective Flight Case with Blue Velvet Foam Insert"
+    ],
+    badge: "2 Cylinders / E-Trigger / ₹1,48,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-silver-2019-01",
+    slug: "2019-morini-cm-162ei-electronic-air-pistol-silver",
+    title: "2019 Morini CM 162 EI Electronic 10m Match Air Pistol (Silver Edition)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Excellent / Competition Tested",
+    priceDisplay: "₹1,50,000",
+    priceValue: 150000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-silver-2019-1.webp",
+      "/images/products/pistols/morini-cm-162ei-silver-2019-2.webp",
+      "/images/products/pistols/morini-cm-162ei-silver-2019-3.webp"
+    ],
+    shortDescription: "Verified pre-owned 2019 Morini CM 162 EI electronic 10m match air pistol in rare Silver finish (SN 2018206). Features friction-free electronic trigger, S&P anatomical walnut grip, factory Morini cylinder valid to 2029, and hard case.",
+    fullDescription: "An authentic 2019 Morini CM 162 EI electronic 10m competition air pistol in distinguished silver anodized receiver finish (Serial No. 2018206, Made in Switzerland). Featuring Morini's renowned micro-switch electronic trigger system with gold trigger shoe, this pistol provides an instantaneous, drag-free release calibrated to the 500g ISSF standard with zero lock-time delay. Equipped with an ergonomic S&P / Cesare Morini anatomical walnut match grip with adjustable palm shelf and bottom battery door. Fitted with an authentic Morini high-pressure cylinder with manometer stamped valid up to 2029 under ISSF 10-year regulations. Complete with red velvet interior Morini hard protective case and charging adapter.",
+    specifications: {
+      "Model": "Morini CM 162 EI Electronic (Silver Edition)",
+      "Manufacturing Year": "2019 (Serial No. 2018206, Bedano Switzerland)",
+      "Cylinder Validity": "Original Morini 200 bar Cylinder Valid to 2029 (ISSF Certified)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Electronic Micro-Switch Match Trigger with Gold Shoe",
+      "Trigger Pull Weight": "Factory ISSF 500g Standard",
+      "Grip": "S&P / Cesare Morini Anatomical Walnut Match Grip",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Swiss manufacture proofmarks with authentic serial number 2018206.",
+      "Electronic trigger circuitry, LED indicator, and dry-fire mode verified 100% operational.",
+      "Original Morini cylinder manometer tested and holding verified pressure (valid to 2029).",
+      "Excellent cosmetic condition on silver receiver and Lothar Walther barrel shroud.",
+      "Delivered with original Morini hard protective travel case with red velvet lining."
+    ],
+    includedItems: [
+      "2019 Morini CM 162 EI Electronic 10m Match Air Pistol (SN 2018206)",
+      "Original Morini 200 bar Match Compressed Air Cylinder (Valid to 2029)",
+      "S&P / Cesare Morini Anatomical Walnut Match Grip",
+      "Original Morini Hard Protective Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter"
+    ],
+    badge: "Cylinder Valid to 2029 / ₹1,50,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-black-blue-2023-01",
+    slug: "2023-morini-cm-162ei-electronic-air-pistol-dual-cylinders",
+    title: "2023 Morini CM 162 EI Electronic 10m Match Air Pistol (Dual 2033 Cylinders)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Mint / 65th NSCC Inspected",
+    priceDisplay: "₹1,70,000",
+    priceValue: 170000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-black-blue-2023-1.webp",
+      "/images/products/pistols/morini-cm-162ei-black-blue-2023-2.webp",
+      "/images/products/pistols/morini-cm-162ei-black-blue-2023-3.webp",
+      "/images/products/pistols/morini-cm-162ei-black-blue-2023-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Morini CM 162 EI electronic 10m match air pistol (SN 37656). Inspected at 65th National Shooting Championship (NSCC). Includes TWO 2023 Morini cylinders (Blue & Red, valid to 2033) and red velvet Morini case.",
+    fullDescription: "A standout competitive package: verified 2023 Morini CM 162 EI electronic 10m match air pistol manufactured in Bedano, Switzerland (Serial No. 37656). Thoroughly tested and carrying official equipment control verification from the 65th National Shooting Championship Competitions (NSCC). Equipped with Morini's world-leading electronic trigger system with gold trigger shoe, providing seamless release and infinite dry-fire training. Features an ergonomic Cesare Morini anatomical walnut grip with adjustable palm shelf. Exceptional value with TWO authentic Morini match cylinders: Blue cylinder (stamped 2023/A) and Red cylinder (stamped 2023/G) — both certified valid until 2033 under ISSF 10-year regulations (giving 7+ full years of active competition eligibility). Supplied complete with original Morini hard flight case with red velvet interior, tools, adapter, and documentation.",
+    specifications: {
+      "Model": "Morini CM 162 EI Electronic",
+      "Manufacturing Year": "2023 (Serial No. 37656, Made in Switzerland)",
+      "Cylinder Validity": "Dual Morini 200 bar Cylinders (Blue 2023/A & Red 2023/G, Valid to 2033 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Frictionless Electronic Match Trigger with Gold Blade",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Grip": "Cesare Morini Anatomical Walnut Match Grip with Adjustable Palm Shelf",
+      "Equipment Control": "65th NSCC Equipment Control Seal Verified",
+      "Sighting System": "Fully Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Swiss serial number 37656 with 65th NSCC equipment control seal.",
+      "Electronic trigger circuitry, contacts, and dry-fire mechanism tested 100% operational.",
+      "TWO 2023-stamped Morini cylinders (Blue & Red) with working manometers, certified valid to 2033.",
+      "Pristine matte black finish on frame and barrel compensator.",
+      "Delivered with original Morini red velvet hard case, tools, and fill adapter."
+    ],
+    includedItems: [
+      "2023 Morini CM 162 EI Electronic 10m Match Air Pistol (SN 37656)",
+      "Factory Blue Morini Compressed Air Cylinder (2023/A, Valid to 2033)",
+      "Factory Red Morini Compressed Air Cylinder (2023/G, Valid to 2033)",
+      "Cesare Morini Anatomical Walnut Match Grip",
+      "Original Morini Hard Flight Case with Red Velvet Foam Insert",
+      "Brass Air Cylinder Charging / Filling Adapter & Hex Key Set"
+    ],
+    badge: "2x 2033 Cylinders / ₹1,70,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "steyr-evo-10e-black-2026-01",
+    slug: "2026-steyr-evo-10e-electronic-air-pistol-black-cylinder-2036",
+    title: "Steyr evo 10 E Electronic 10m Match Air Pistol (Brand-New 2026 Cylinder Valid to 2036)",
+    brand: "Steyr",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Mint / 10 Full Years ISSF Eligibility",
+    priceDisplay: "₹2,20,000",
+    priceValue: 220000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/steyr-evo-10e-black-2026-1.webp",
+      "/images/products/pistols/steyr-evo-10e-black-2026-2.webp",
+      "/images/products/pistols/steyr-evo-10e-black-2026-3.webp",
+      "/images/products/pistols/steyr-evo-10e-black-2026-4.webp"
+    ],
+    shortDescription: "Verified pre-owned Steyr evo 10 E electronic 10m match air pistol (Black frame, SN 618021). Upgraded with brand-new 2026 Steyr cylinder stamped 2026/01 (certified valid to 2036 ISSF). Electronic trigger with rechargeable battery.",
+    fullDescription: "The pinnacle of Austrian electronic match pistol technology: verified Steyr evo 10 E (Electronic) 10m match air pistol in tactical matte black finish (Serial No. 618021, Made in Austria). The evo 10 E features Steyr's revolutionary electronic match trigger unit with gold trigger blade, integrated rechargeable battery with micro-USB port (up to 10,000 shots per charge), and Steyr's patented compensator and recoil-free stabilizer system. Fitted with an ergonomic Steyr anatomical walnut match grip with multi-directional palm adjustment. Critical highlight: equipped with a brand-new factory-original black Steyr 200 bar compressed air cylinder clearly stamped 2026/01 36 with working manometer — providing a full 10-year ISSF competition eligibility window up to 2036. Complete with Steyr transit case, charging cables, adapter, and tools.",
+    specifications: {
+      "Model": "Steyr evo 10 E (Electronic)",
+      "Manufacturing / Proof": "Serial No. 618021 (Made in Austria)",
+      "Cylinder Validity": "Brand-New 2026 Steyr Cylinder (Stamped 2026/01 36, Valid to 2036 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Frictionless Electronic Match Trigger with Rechargeable Battery",
+      "Trigger Pull Weight": "Precision Calibrated to ISSF 500g Standard",
+      "Stabilizer": "Steyr Patented Stabilizer & 8-Duct Compensator",
+      "Grip": "Steyr Ergonomic Anatomical Walnut Match Grip with Adjustable Palm Shelf",
+      "Sighting System": "Steyr Precision Micro-Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Austrian Steyr proofmarks with verified serial number 618021.",
+      "Electronic trigger unit, battery retention, USB charging port, and dry-fire selector 100% operational.",
+      "Brand-new 2026 original Steyr compressed air cylinder (stamped 2026/01 36) certified valid until 2036.",
+      "Pristine matte black finish across frame, compensator, and cylinder.",
+      "Complete with Steyr hard case, USB charging cable, brass filling adapter, and tools."
+    ],
+    includedItems: [
+      "Steyr evo 10 E Electronic 10m Match Air Pistol (SN 618021)",
+      "Brand-New Original Steyr 200 bar Compressed Air Cylinder (Valid to 2036)",
+      "Steyr Anatomical Walnut Match Grip",
+      "USB Charging Cable & Charging Adapter",
+      "Original Steyr Hard Protective Carry Case",
+      "Brass Air Cylinder Charging / Filling Adapter & Steyr Tool Kit"
+    ],
+    badge: "Cylinder Valid to 2036 / ₹2,20,000",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-titanium-2025-01",
+    slug: "2025-morini-cm-162ei-titanium-electronic-air-pistol-small-grip",
+    title: "2025 Morini CM 162 EI Titanium Edition Electronic 10m Match Air Pistol (Small Grip)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Like New / 2025 Titanium Edition",
+    priceDisplay: "₹2,30,000",
+    priceValue: 230000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-titanium-2025-1.webp"
+    ],
+    shortDescription: "Ultra-rare 2025 Morini CM 162 EI Titanium Edition electronic 10m match air pistol (SN 2018551). Features special Titanium gray finish, Cesare Morini Small grip with yellow signature line, dual Titanium cylinders, and hard case.",
+    fullDescription: "An exceptional and ultra-rare offering: authentic 2025 Morini CM 162 EI Titanium Edition electronic 10m match air pistol manufactured in Bedano, Switzerland (Serial No. 2018551). Finished in Morini's elite Titanium gray anodized action and barrel sleeve, this pistol represents the absolute peak of modern Olympic air pistol manufacturing. Features an authentic Cesare Morini anatomical walnut match grip in Size Small (S) accented with the signature yellow inlay stripe, designed for shooters requiring a tailored smaller hand profile without compromise. Powered by Morini's legendary electronic trigger system with gold trigger shoe and instantaneous micro-switch response. Supplied complete with two matching Titanium-finish Morini cylinders with pressure gauges, original Morini flight case, and factory accessories.",
+    specifications: {
+      "Model": "Morini CM 162 EI Titanium Edition",
+      "Manufacturing Year": "2025 (Serial No. 2018551, Made in Switzerland)",
+      "Finish": "Exclusive Titanium Gray Anodized Action & Barrel Sleeve",
+      "Cylinder Validity": "Dual Titanium Morini 200 bar Match Cylinders (Valid to 2035 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Friction-Free Electronic Match Trigger with Gold Blade",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Grip": "Cesare Morini Anatomical Walnut Match Grip — Size Small (S) with Signature Yellow Inlay",
+      "Sighting System": "Fully Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic 2025 Titanium Edition with verified Swiss serial number 2018551.",
+      "Pristine like-new condition throughout action, barrel sleeve, and grip.",
+      "Electronic trigger circuitry, micro-switch, and battery system in flawless operational order.",
+      "Dual factory Titanium cylinders with verified pressure retention.",
+      "Complete with Morini hard flight case, tools, and accessories."
+    ],
+    includedItems: [
+      "2025 Morini CM 162 EI Titanium Edition Electronic Air Pistol (SN 2018551)",
+      "2x Original Morini Titanium Compressed Air Cylinders",
+      "Cesare Morini Anatomical Walnut Match Grip (Size Small)",
+      "Original Morini Hard Protective Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter & Toolkit",
+      "QYS Competition Pellets"
+    ],
+    badge: "2025 Titanium / Size S / ₹2,30,000",
     inStock: true,
     featured: true
   },
@@ -1289,7 +1709,7 @@ export const CATEGORIES = [
     slug: "second-hand-weapons",
     title: "Second-Hand Weapons",
     subtitle: "Verified pre-owned 10m air rifles & pistols with transparent inspection history",
-    count: 10,
+    count: 18,
     tag: "Priority Focus",
     image: "/images/products/rifles/feinwerkbau-800-alu-2018-cylinder-2024.webp",
     description: "Every pre-owned listing on ArmsXchange goes through strict manual review: cylinder manufacturing dates, pressure integrity, and cosmetic condition disclosures."

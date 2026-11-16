@@ -19,8 +19,8 @@
       "type": "marketplace",
       "disciplines": ["10m Air Rifle", "10m Air Pistol"],
       "condition": "Pre-Owned / Verified",
-      "totalListings": 10,
-      "brands": ["Walther", "Feinwerkbau", "Morini"]
+      "totalListings": 18,
+      "brands": ["Walther", "Feinwerkbau", "Morini", "Steyr"]
     },
     {
       "name": "Second-Hand 10m Air Rifles",
@@ -28,9 +28,10 @@
       "type": "marketplace",
       "discipline": "10m Air Rifle",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 8,
-      "brands": ["Walther", "Feinwerkbau"],
+      "totalListings": 9,
+      "brands": ["Walther", "Feinwerkbau", "Steyr"],
       "featuredModels": [
+        "Steyr Challenge E Electronic (2023)",
         "Walther LG400 Anatomic (2024)",
         "Walther LG500 itec E (2024)",
         "Walther LG500 itec M (2024)",
@@ -47,9 +48,16 @@
       "type": "marketplace",
       "discipline": "10m Air Pistol",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 2,
-      "brands": ["Morini", "Walther"],
+      "totalListings": 9,
+      "brands": ["Morini", "Walther", "Steyr"],
       "featuredModels": [
+        "Steyr evo 10 E Electronic (2026 Cylinder valid to 2036)",
+        "Morini CM 162 EI Titanium Edition (2025 - Small Grip)",
+        "Walther LP500 Electronic (2024 - Dual Cylinders, Blue Velvet Case)",
+        "Morini CM 162 EI Electronic (2023 - Dual 2033 Cylinders)",
+        "Morini CM 162 EI Electronic (2019 - Silver Edition)",
+        "Morini CM 162 EI Electronic (2019 - Red Cylinder)",
+        "Steyr evo 10 Mechanical (2018 - Silver Frame)",
         "Walther LP500 Meister Manufaktur Electronic (2024 - Dual Cylinders to 2034)",
         "Morini CM 162EI Electronic (2022 - Size S Grip, Dual Cylinders)"
       ]
