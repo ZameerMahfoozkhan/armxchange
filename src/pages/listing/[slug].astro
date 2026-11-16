@@ -60,13 +60,13 @@ function getTriggerBadge(specs: Record<string, string>, title: string): string {
 }
 
 function getConditionBadge(grade: string | undefined, isPreOwned: boolean): string {
-  if (!isPreOwned) return "Brand New In Box";
-  if (!grade) return "Verified Pre-Owned";
+  if (!isPreOwned) return "Brand New";
+  if (!grade) return "Pre-Owned";
   const firstPart = grade.split('/')[0].trim();
-  if (firstPart.toLowerCase().includes("mint")) return "Mint Condition";
-  if (firstPart.toLowerCase().includes("great") || firstPart.toLowerCase().includes("very good")) return "Very Good Condition";
-  if (firstPart.toLowerCase().includes("competition")) return "Competition Ready";
-  return firstPart.slice(0, 18);
+  if (firstPart.toLowerCase().includes("mint")) return "Mint";
+  if (firstPart.toLowerCase().includes("great") || firstPart.toLowerCase().includes("very good")) return "Very Good";
+  if (firstPart.toLowerCase().includes("competition")) return "Match Ready";
+  return firstPart.slice(0, 12);
 }
 
 const calibre = getCalibreBadge(product.specifications);
@@ -206,13 +206,23 @@ const pageDescription = product.isPreOwned
             
             <div class="image-overlay-badges">
               {product.isPreOwned ? (
-                <span class="tech-badge tech-badge-preowned">Verified Pre-Owned</span>
+                <span class="sleek-badge sleek-badge-preowned">
+                  <span class="sleek-pulse-dot" aria-hidden="true"></span>
+                  <span class="badge-text-full">Verified Pre-Owned</span>
+                  <span class="badge-text-short">Verified</span>
+                </span>
               ) : (
-                <span class="tech-badge tech-badge-new">Brand New Import</span>
+                <span class="sleek-badge sleek-badge-new">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                  <span class="badge-text-full">Brand New Import</span>
+                  <span class="badge-text-short">Brand New</span>
+                </span>
               )}
               {product.badge && product.badge !== 'Pre-Owned' && product.badge !== 'Verified Pre-Owned' && product.badge !== 'Brand New' && (
-                <span class="tech-badge">
-                  {product.badge}
+                <span class="sleek-badge sleek-badge-feature">
+                  <span>{product.badge.replace(/\s*\/\s*₹[\d,]+/, '').trim()}</span>
                 </span>
               )}
             </div>
@@ -410,7 +420,7 @@ const pageDescription = product.isPreOwned
           </div>
 
           <div class="pricing-header-row">
-            <div>
+            <div class="pricing-headline-block">
               <span class="price-kicker">
                 {product.isPreOwned ? 'Verified Equipment Valuation' : 'Official Import Pricing'}
               </span>
@@ -418,8 +428,11 @@ const pageDescription = product.isPreOwned
                 {product.priceDisplay}
               </div>
             </div>
-            <span class="tech-badge tech-badge-verified">
-              {product.isPreOwned ? 'Certified Pre-Owned' : 'Factory Sealed'}
+            <span class="price-verified-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>{product.isPreOwned ? 'Certified Pre-Owned' : 'Factory Sealed'}</span>
             </span>
           </div>
 
@@ -813,13 +826,71 @@ const pageDescription = product.isPreOwned
 
   .image-overlay-badges {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 12px;
+    left: 12px;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 6px;
     z-index: 2;
-    max-width: calc(100% - 92px);
+    max-width: calc(100% - 90px);
+    pointer-events: none;
+  }
+
+  .sleek-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 4px rgba(11, 15, 23, 0.08);
+    transition: all var(--transition-fast);
+  }
+
+  .sleek-badge-preowned {
+    background: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    color: #15803D;
+  }
+
+  .sleek-badge-new {
+    background: rgba(255, 255, 255, 0.90);
+    border: 1px solid rgba(14, 165, 233, 0.45);
+    color: #0369A1;
+  }
+
+  .sleek-badge-feature {
+    background: rgba(11, 15, 23, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #F8FAFC;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .sleek-pulse-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.6);
+    flex-shrink: 0;
+    animation: badgeDotPulse 2s infinite ease-in-out;
+  }
+
+  .badge-text-full {
+    display: inline;
+  }
+
+  .badge-text-short {
+    display: none;
   }
 
   .photo-counter-pill {
@@ -1162,10 +1233,19 @@ const pageDescription = product.isPreOwned
 
   .pricing-header-row {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 10px 14px;
     margin-bottom: 14px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .pricing-headline-block {
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   .price-kicker {
@@ -1186,6 +1266,27 @@ const pageDescription = product.isPreOwned
     letter-spacing: -0.025em;
     color: var(--color-ink);
     line-height: 1.1;
+  }
+
+  .price-verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 9999px;
+    background: #047857;
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(4, 120, 87, 0.25);
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .pricing-tax-note {
@@ -1647,6 +1748,27 @@ const pageDescription = product.isPreOwned
       box-sizing: border-box;
     }
 
+    .image-overlay-badges {
+      top: 8px;
+      left: 8px;
+      gap: 4px;
+      max-width: calc(100% - 70px);
+    }
+
+    .sleek-badge {
+      padding: 2.5px 7px;
+      font-size: 0.58rem;
+      letter-spacing: 0.025em;
+    }
+
+    .badge-text-full {
+      display: none;
+    }
+
+    .badge-text-short {
+      display: inline;
+    }
+
     .thumbnail-strip {
       overflow-x: auto;
       flex-wrap: nowrap;
@@ -1713,8 +1835,36 @@ const pageDescription = product.isPreOwned
       box-sizing: border-box;
     }
 
+    .pricing-header-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px 10px;
+      margin-bottom: 12px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .pricing-headline-block {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
     .price-num {
-      font-size: 1.8rem;
+      font-size: clamp(1.55rem, 5.2vw, 1.85rem);
+      line-height: 1.1;
+    }
+
+    .price-verified-badge {
+      font-size: 0.62rem;
+      padding: 3.5px 8px;
+      gap: 4px;
+      align-self: flex-start;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
 
     .pricing-actions .btn {

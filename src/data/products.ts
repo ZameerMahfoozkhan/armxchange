@@ -484,7 +484,7 @@ export const PRODUCTS: Product[] = [
       "Brass Air Cylinder Charging / Filling Adapter & Hex Key Toolkit",
       "RWS Match Pellets"
     ],
-    badge: "E-Trigger / Mint / ₹2,45,000",
+    badge: "E-Trigger / Mint",
     inStock: true,
     featured: true
   },
@@ -646,7 +646,7 @@ export const PRODUCTS: Product[] = [
       "Steyr Adjustment Hex Key Tool Kit",
       "Factory Documentation & Test Target Card"
     ],
-    badge: "Dual Cylinders / ₹95,000",
+    badge: "Dual Cylinders",
     inStock: true,
     featured: true
   },
@@ -699,7 +699,7 @@ export const PRODUCTS: Product[] = [
       "Original Morini Hard Protective Flight Case",
       "Brass Air Cylinder Charging / Filling Adapter & Hex Key Set"
     ],
-    badge: "Championship Verified / ₹1,15,000",
+    badge: "Championship Verified",
     inStock: true,
     featured: true
   },
@@ -753,7 +753,7 @@ export const PRODUCTS: Product[] = [
       "Brass Air Cylinder Charging / Filling Adapter",
       "Original Walther Hard Protective Flight Case with Blue Velvet Foam Insert"
     ],
-    badge: "2 Cylinders / E-Trigger / ₹1,48,000",
+    badge: "2 Cylinders / E-Trigger",
     inStock: true,
     featured: true
   },
@@ -803,7 +803,7 @@ export const PRODUCTS: Product[] = [
       "Original Morini Hard Protective Flight Case",
       "Brass Air Cylinder Charging / Filling Adapter"
     ],
-    badge: "Cylinder Valid to 2029 / ₹1,50,000",
+    badge: "Cylinder Valid to 2029",
     inStock: true,
     featured: true
   },
@@ -856,7 +856,7 @@ export const PRODUCTS: Product[] = [
       "Original Morini Hard Flight Case with Red Velvet Foam Insert",
       "Brass Air Cylinder Charging / Filling Adapter & Hex Key Set"
     ],
-    badge: "2x 2033 Cylinders / ₹1,70,000",
+    badge: "Dual 2033 Cylinders",
     inStock: true,
     featured: true
   },
@@ -909,7 +909,7 @@ export const PRODUCTS: Product[] = [
       "Original Steyr Hard Protective Carry Case",
       "Brass Air Cylinder Charging / Filling Adapter & Steyr Tool Kit"
     ],
-    badge: "Cylinder Valid to 2036 / ₹2,20,000",
+    badge: "Cylinder Valid to 2036",
     inStock: true,
     featured: true
   },
@@ -959,7 +959,7 @@ export const PRODUCTS: Product[] = [
       "Brass Air Cylinder Charging / Filling Adapter & Toolkit",
       "QYS Competition Pellets"
     ],
-    badge: "2025 Titanium / Size S / ₹2,30,000",
+    badge: "2025 Titanium / Size S",
     inStock: true,
     featured: true
   },
