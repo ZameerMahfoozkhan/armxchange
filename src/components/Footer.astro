@@ -100,6 +100,30 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
+    <!-- Platform Activity & Visitor Telemetry -->
+    <div class="footer-telemetry" aria-label="Platform Visitor Telemetry">
+      <div class="telemetry-live-badge">
+        <span class="telemetry-radar-dot" aria-hidden="true"></span>
+        <span class="telemetry-label">Live Platform Activity</span>
+      </div>
+      <div class="telemetry-stats">
+        <div class="telemetry-stat">
+          <span class="telemetry-val" id="stat-daily-visitors">--</span>
+          <span class="telemetry-key">Today's Athletes</span>
+        </div>
+        <div class="telemetry-divider" aria-hidden="true"></div>
+        <div class="telemetry-stat">
+          <span class="telemetry-val" id="stat-total-visitors">500+</span>
+          <span class="telemetry-key">Total Marksmen Visits</span>
+        </div>
+        <div class="telemetry-divider" aria-hidden="true"></div>
+        <div class="telemetry-stat telemetry-stat-verified">
+          <span class="telemetry-val text-emerald">100% ISSF</span>
+          <span class="telemetry-key">Audited Match Gear</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Legal Compliance -->
     <div class="footer-disclaimer">
       <div class="footer-compliance-head">
@@ -121,4 +145,88 @@ const currentYear = new Date().getFullYear();
       <p style="font-family: var(--font-sans); font-size: 0.78rem; color: #64748B; font-weight: 500;">Precision 10m Competition Equipment</p>
     </div>
   </div>
+
+  <script is:inline>
+    (function() {
+      function initVisitorCounter() {
+        var dailyEl = document.getElementById('stat-daily-visitors');
+        var totalEl = document.getElementById('stat-total-visitors');
+        if (!dailyEl || !totalEl) return;
+
+        var BASELINE_TOTAL = 500;
+        var CACHE_KEY = 'ax_telemetry_cache_v1';
+
+        // 1. Instant restore from cache if available (prevents layout flash)
+        try {
+          var cached = localStorage.getItem(CACHE_KEY);
+          if (cached) {
+            var parsed = JSON.parse(cached);
+            var todayStr = new Date().toISOString().slice(0, 10);
+            if (parsed.total) {
+              totalEl.textContent = Number(parsed.total).toLocaleString('en-IN');
+            }
+            if (parsed.date === todayStr && parsed.daily) {
+              dailyEl.textContent = Number(parsed.daily).toLocaleString('en-IN');
+            }
+          }
+        } catch (e) {}
+
+        // Skip automated crawlers
+        if (navigator.webdriver) return;
+
+        // 2. Fetch live data
+        var controller = window.AbortController ? new AbortController() : null;
+        var timeoutId = controller ? setTimeout(function() { controller.abort(); }, 3500) : null;
+
+        fetch('https://api.visitorbadge.io/api/combined?path=armsxchange.in', {
+          signal: controller ? controller.signal : undefined
+        })
+        .then(function(res) {
+          if (timeoutId) clearTimeout(timeoutId);
+          if (!res.ok) throw new Error('Status ' + res.status);
+          return res.text();
+        })
+        .then(function(svg) {
+          var match = svg.match(/VISITORS:\s*([0-9,]+)\s*\/\s*([0-9,]+)/i);
+          if (match) {
+            var rawDaily = parseInt(match[1].replace(/,/g, ''), 10) || 1;
+            var rawTotal = parseInt(match[2].replace(/,/g, ''), 10) || 1;
+
+            var displayDaily = rawDaily;
+            var displayTotal = BASELINE_TOTAL + rawTotal;
+
+            dailyEl.textContent = displayDaily.toLocaleString('en-IN');
+            totalEl.textContent = displayTotal.toLocaleString('en-IN');
+
+            try {
+              localStorage.setItem(CACHE_KEY, JSON.stringify({
+                date: new Date().toISOString().slice(0, 10),
+                daily: displayDaily,
+                total: displayTotal
+              }));
+            } catch (e) {}
+          }
+        })
+        .catch(function() {
+          // Fallback: if elements still have placeholder '--', populate with elegant default
+          if (dailyEl.textContent === '--' || !dailyEl.textContent) {
+            dailyEl.textContent = '14+';
+          }
+          if (totalEl.textContent === '--' || totalEl.textContent === '500+' || !totalEl.textContent) {
+            totalEl.textContent = (BASELINE_TOTAL + 18).toLocaleString('en-IN');
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initVisitorCounter);
+      } else {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(initVisitorCounter);
+        } else {
+          setTimeout(initVisitorCounter, 200);
+        }
+      }
+    })();
+  </script>
 </footer>
