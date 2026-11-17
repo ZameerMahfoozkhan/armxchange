@@ -33,9 +33,9 @@ function getCalibreBadge(specs: Record<string, string>): string {
 
 function getCylinderBadge(specs: Record<string, string>, isPreOwned: boolean): string {
   const raw = specs["Cylinder Validity"] || specs["Cylinder System"] || specs["Cylinder"] || "";
-  const yearMatch = raw.match(/20\d{2}/g);
+  const yearMatch = raw.match(/20\d{2}/g)?.map(Number);
   if (yearMatch && yearMatch.length > 0) {
-    return `Valid to ${yearMatch[yearMatch.length - 1]}`;
+    return `Valid to ${Math.max(...yearMatch)}`;
   }
   if (raw.toLowerCase().includes("10-year") || raw.toLowerCase().includes("10-yr") || !isPreOwned) {
     return "10-Yr ISSF";

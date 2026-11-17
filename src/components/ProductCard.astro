@@ -15,7 +15,8 @@ const shortGrade = product.conditionGrade
   ? product.conditionGrade.split('/')[0].replace(/In Box/i, '').replace(/\/\//g, '').trim()
   : '';
 
-const cylinderYear = product.specifications["Cylinder Validity"]?.match(/20\d{2}/g)?.slice(-1)[0];
+const cylinderYears = product.specifications["Cylinder Validity"]?.match(/20\d{2}/g)?.map(Number);
+const cylinderYear = cylinderYears && cylinderYears.length > 0 ? String(Math.max(...cylinderYears)) : undefined;
 ---
 
 <article class={`product-card ${className}`.trim()}>

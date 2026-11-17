@@ -617,12 +617,12 @@ export const PRODUCTS: Product[] = [
       "/images/products/pistols/steyr-evo-10-silver-2018-4.webp",
       "/images/products/pistols/steyr-evo-10-silver-2018-5.webp"
     ],
-    shortDescription: "Verified pre-owned 2018 Steyr evo 10 mechanical 10m match air pistol (Silver frame, SN 764509). Features precision mechanical ball-bearing trigger, anatomic walnut match grip, dual Steyr match cylinders, and Steyr green hard case.",
-    fullDescription: "An authentic, high-precision 2018 Steyr evo 10 mechanical 10m match air pistol in silver anodized finish (Serial No. 764509, Made in Austria). The Steyr evo 10 represents the benchmark in Olympic mechanical pistol engineering, featuring Steyr's patented stabilizer with eight-hole barrel compensator and ball-bearing supported match trigger. Fitted with an ergonomic Steyr anatomical walnut match grip with adjustable palm shelf. Supplied complete with two factory-original black Steyr 200 bar air cylinders stamped 2018/09 (tested for pressure consistency), original Steyr green hard transit case, brass fill adapter, tool set, and factory documentation.",
+    shortDescription: "Verified pre-owned 2018 Steyr evo 10 mechanical 10m match air pistol (Silver frame, SN 764509). Features precision mechanical ball-bearing trigger, anatomic walnut match grip, dual Steyr match cylinders (valid to September 2028 under ISSF 10-year rule), and Steyr green hard case.",
+    fullDescription: "An authentic, high-precision 2018 Steyr evo 10 mechanical 10m match air pistol in silver anodized finish (Serial No. 764509, Made in Austria). The Steyr evo 10 represents the benchmark in Olympic mechanical pistol engineering, featuring Steyr's patented stabilizer with eight-hole barrel compensator and ball-bearing supported match trigger. Fitted with an ergonomic Steyr anatomical walnut match grip with adjustable palm shelf. Supplied complete with two factory-original black Steyr 200 bar air cylinders stamped 2018/09 (certified valid up to September 2028 under ISSF 10-year pneumatic rules and tested for pressure consistency), original Steyr green hard transit case, brass fill adapter, tool set, and factory documentation.",
     specifications: {
       "Model": "Steyr evo 10 Mechanical (Silver)",
       "Manufacturing Year": "2018 (Serial No. 764509, Made in Austria)",
-      "Cylinder Validity": "Dual Steyr 200 bar Cylinders (Factory Stamped 2018/09)",
+      "Cylinder Validity": "Dual Steyr 200 bar Cylinders — Valid to September 2028 (Factory Stamped 2018/09)",
       "Calibre": ".177 (4.5 mm) Match Pellets",
       "Trigger System": "Precision Mechanical Two-Stage Match Trigger (Ball-Bearing Supported)",
       "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
@@ -634,19 +634,19 @@ export const PRODUCTS: Product[] = [
     conditionDisclosure: [
       "Verified Austrian manufacturing proofmarks with serial number 764509.",
       "Mechanical match trigger, dry-fire training selector, and sear engagement tested 100% operational.",
-      "Supplied with two original Steyr 200 bar air cylinders holding solid pressure.",
+      "Supplied with two original Steyr 200 bar air cylinders certified valid to September 2028 under ISSF 10-year safety rules.",
       "Authentic Steyr walnut match grip with adjustable palm rest.",
       "Complete with original Steyr green hard case, charging adapter, and factory tools."
     ],
     includedItems: [
       "2018 Steyr evo 10 Mechanical 10m Match Air Pistol (SN 764509)",
-      "2x Original Steyr 200 bar Compressed Air Cylinders",
+      "2x Original Steyr 200 bar Compressed Air Cylinders (Valid to 2028)",
       "Steyr Original Green Hard Protective Carry Case",
       "Brass Air Cylinder Charging / Filling Adapter",
       "Steyr Adjustment Hex Key Tool Kit",
       "Factory Documentation & Test Target Card"
     ],
-    badge: "Dual Cylinders",
+    badge: "Cylinder to 2028",
     inStock: true,
     featured: true
   },
