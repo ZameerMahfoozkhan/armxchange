@@ -47,6 +47,7 @@ const currentYear = new Date().getFullYear();
           <li class="footer-link"><a href="/blog/">Journal & Guides</a></li>
           <li class="footer-link"><a href="/pre-owned-equipment-guide/">Used Equipment Guide</a></li>
           <li class="footer-link"><a href="/contact/">Official Contact</a></li>
+          <li class="footer-link"><a href={CONTACT_INFO.whatsappGroupUrl} target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 600;">WhatsApp Group (Updates) ↗</a></li>
           <li class="footer-link"><a href="/legal/eligibility/">Shooter Eligibility & GST</a></li>
           <li class="footer-link"><a href="/legal/terms/">Terms of Service</a></li>
           <li class="footer-link"><a href="/legal/privacy/">Privacy Policy</a></li>
@@ -72,6 +73,20 @@ const currentYear = new Date().getFullYear();
               <span>WhatsApp Orders & Concierge</span>
             </span>
             <span class="btn-trailing-icon">→</span>
+          </a>
+          <a 
+            href={CONTACT_INFO.whatsappGroupUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+            style="justify-content: space-between; padding: 10px 14px; font-size: 0.84rem; width: 100%; border-radius: 8px; background: rgba(37, 211, 102, 0.12); border-color: rgba(37, 211, 102, 0.35); color: #25D366; font-weight: 600;"
+            title="Join WhatsApp Group for Latest Updates & Equipment Drops"
+          >
+            <span style="display: inline-flex; align-items: center; gap: 8px;">
+              <WhatsAppIcon size={16} />
+              <span>Join WhatsApp Group (Updates)</span>
+            </span>
+            <span style="font-size: 0.95rem;">↗</span>
           </a>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
             <a 

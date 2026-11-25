@@ -2112,6 +2112,7 @@ export const CONTACT_INFO = {
   whatsappPhoneDisplay: "+91 89220 12598",
   whatsappPhoneRaw: "918922012598",
   whatsappBaseUrl: "https://wa.me/918922012598",
+  whatsappGroupUrl: "https://chat.whatsapp.com/LHRWFacaFmD6Szsrd1F9u6",
 
   // Primary Phone (WhatsApp & Orders)
   phone: "+91 8922012598",
