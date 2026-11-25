@@ -19,7 +19,7 @@
       "type": "marketplace",
       "disciplines": ["10m Air Rifle", "10m Air Pistol"],
       "condition": "Pre-Owned / Verified",
-      "totalListings": 18,
+      "totalListings": 24,
       "brands": ["Walther", "Feinwerkbau", "Morini", "Steyr"]
     },
     {
@@ -28,9 +28,10 @@
       "type": "marketplace",
       "discipline": "10m Air Rifle",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 11,
+      "totalListings": 12,
       "brands": ["Walther", "Feinwerkbau", "Steyr"],
       "featuredModels": [
+        "Walther LG500 itec E Electronic (2023 - Valid to 11/33)",
         "Feinwerkbau 900 Alu (2024 - Centra Sights)",
         "Feinwerkbau 900 Alu (2026 Cylinder Valid to 2036)",
         "Steyr Challenge E Electronic (2023)",
@@ -50,9 +51,11 @@
       "type": "marketplace",
       "discipline": "10m Air Pistol",
       "condition": "Pre-Owned / Verified",
-      "totalListings": 10,
+      "totalListings": 12,
       "brands": ["Morini", "Walther", "Steyr"],
       "featuredModels": [
+        "Morini CM 162 EI Electronic (2024 - Dual Cylinders to 2034, 41st NZ Verified)",
+        "Morini CM 162 EI Electronic (2019 - Silver Edition SN 2014429, NZ & Mavlankar Verified)",
         "Morini CM 162 EI Titanium Edition (2023 - Custom Grip, ₹1,90,000)",
         "Steyr evo 10 E Electronic (2026 Cylinder valid to 2036)",
         "Morini CM 162 EI Titanium Edition (2025 - Small Grip)",
@@ -70,7 +73,8 @@
       "url": "https://armsxchange.in/10m-air-rifles/",
       "type": "catalog",
       "discipline": "10m Air Rifle",
-      "brands": ["Walther", "Feinwerkbau", "Steyr"]
+      "brands": ["Walther", "Feinwerkbau", "Steyr"],
+      "featuredDeal": "Feinwerkbau 900 Alu Silver Edition (Special Offer ₹3,50,000 / Earlier ₹3,58,000)"
     },
     {
       "name": "New 10m Match Air Pistols",

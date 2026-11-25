@@ -422,10 +422,18 @@ const pageDescription = product.isPreOwned
           <div class="pricing-header-row">
             <div class="pricing-headline-block">
               <span class="price-kicker">
-                {product.isPreOwned ? 'Verified Equipment Valuation' : 'Official Import Pricing'}
+                {product.isPreOwned ? 'Verified Equipment Valuation' : (product.originalPriceDisplay ? 'Special Discounted Price' : 'Official Import Pricing')}
               </span>
-              <div class="price-num">
-                {product.priceDisplay}
+              <div class="price-num-row" style={product.originalPriceDisplay ? "display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;" : ""}>
+                {product.originalPriceDisplay && (
+                  <span class="original-price" style="font-size: 1.25rem; font-weight: 600; color: #94a3b8; text-decoration: line-through;">{product.originalPriceDisplay}</span>
+                )}
+                <span class="price-num" style={product.originalPriceDisplay ? "color: #10B981;" : ""}>
+                  {product.priceDisplay}
+                </span>
+                {product.discountBadge && (
+                  <span class="discount-badge-pill" style="font-size: 0.8rem; font-weight: 700; color: #ef4444; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); padding: 3px 8px; border-radius: 6px; letter-spacing: 0.04em;">{product.discountBadge}</span>
+                )}
               </div>
             </div>
             <span class="price-verified-badge">

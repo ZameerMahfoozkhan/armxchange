@@ -36,6 +36,12 @@ const cylinderYear = cylinderYears && cylinderYears.length > 0 ? String(Math.max
 
     <!-- Top Floating Status Badges -->
     <div class="product-badges-float">
+      {product.discountBadge && (
+        <span class="product-badge product-badge-discount" style="background: #DC2626; color: #FFFFFF; font-weight: 700; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);">
+          <span class="badge-text-desktop">{product.discountBadge}</span>
+          <span class="badge-text-mobile">{product.discountBadge}</span>
+        </span>
+      )}
       {product.isPreOwned ? (
         <span class="product-badge product-badge-preowned">
           <span class="badge-pulse-dot" aria-hidden="true"></span>
@@ -100,6 +106,22 @@ const cylinderYear = cylinderYears && cylinderYears.length > 0 ? String(Math.max
           <div>
             <div class="price-enquiry-label">{product.isPreOwned ? 'Valuation' : 'Pricing'}</div>
             <div class="product-price-enquiry">On Request</div>
+          </div>
+        ) : product.originalPriceDisplay ? (
+          <div>
+            <div class="price-retail-label" style="display: flex; align-items: center; gap: 6px;">
+              <span>Offer Price</span>
+              {product.discountBadge && (
+                <span style="font-size: 0.65rem; font-weight: 700; color: #EF4444; background: rgba(239, 68, 68, 0.12); padding: 1px 5px; border-radius: 4px; border: 1px solid rgba(239, 68, 68, 0.3);">{product.discountBadge}</span>
+              )}
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 0.82rem; color: #94A3B8; text-decoration: line-through; font-weight: 600;">{product.originalPriceDisplay}</span>
+              <span class="product-price" style="color: #10B981; font-weight: 800;">{product.priceDisplay}</span>
+            </div>
+            {product.category === 'new-weapons' && product.taxNote && (
+              <div class="product-tax-note">+18% GST (Non-Renowned)</div>
+            )}
           </div>
         ) : (
           <div>

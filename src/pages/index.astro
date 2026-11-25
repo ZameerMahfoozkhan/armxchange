@@ -21,8 +21,8 @@ const totalPreOwnedCount = PRODUCTS.filter(p => p.isPreOwned).length;
 const featuredNewRifles = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-rifles');
 const featuredNewPistols = PRODUCTS.filter(p => !p.isPreOwned && p.category === 'new-weapons' && p.subcategory === 'air-pistols');
 const featuredOlympicWeapons = [
-  featuredNewRifles.find(p => p.id === 'walther-lg500-anatomic-e') || featuredNewRifles[0],
-  featuredNewRifles.find(p => p.id === 'fwb-900-alu-centra') || featuredNewRifles[1],
+  featuredNewRifles.find(p => p.id === 'fwb-900-alu-silver-offer') || featuredNewRifles[0],
+  featuredNewRifles.find(p => p.id === 'walther-lg500-anatomic-e') || featuredNewRifles[1],
   featuredNewPistols.find(p => p.id === 'morini-cm200ei') || featuredNewPistols[0],
   featuredNewPistols.find(p => p.id === 'steyr-evo-10e') || featuredNewPistols[1]
 ].filter(Boolean) as typeof PRODUCTS;
@@ -44,6 +44,33 @@ const totalAccessoriesCount = PRODUCTS.filter(p => p.category === 'accessories')
 >
   <!-- ArmsXchange Premium Hero Carousel & Category Navigation -->
   <HeroCarousel />
+
+  <!-- Special Limited-Time Offer Alert Banner -->
+  <aside class="special-discount-ribbon" aria-label="Limited time special offer" style="background: linear-gradient(90deg, #0B0F17 0%, #1E293B 100%); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 14px 0; color: #FFFFFF;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <span style="display: inline-flex; align-items: center; gap: 6px; background: #DC2626; color: #FFFFFF; font-size: 0.70rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px;">
+          <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF;"></span>
+          SPECIAL OFFER
+        </span>
+        <div style="font-size: 0.92rem; font-weight: 600;">
+          <span>Feinwerkbau 900 Alu Match Rifle (Silver Edition)</span>
+          <span style="color: #94A3B8; margin-left: 8px;">
+            Earlier <span style="text-decoration: line-through; color: #64748B;">₹3.58 Lakh</span> &rarr; <strong style="color: #10B981; font-weight: 800;">₹3.50 Lakh</strong>
+          </span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 7px; border-radius: 4px; font-weight: 700; font-size: 0.72rem; margin-left: 8px;">₹8,000 DISCOUNT</span>
+        </div>
+      </div>
+      <a 
+        href="/listing/feinwerkbau-900-alu-silver-special-offer/" 
+        class="btn btn-secondary" 
+        style="padding: 6px 16px; font-size: 0.82rem; font-weight: 600; color: #FFFFFF; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); border-radius: 6px; display: inline-flex; align-items: center; gap: 6px;"
+      >
+        <span>View Deal</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </aside>
 
   <!-- Sporting Disciplines Grid -->
   <section style="background: var(--color-canvas); border-bottom: 1px solid var(--color-border);">

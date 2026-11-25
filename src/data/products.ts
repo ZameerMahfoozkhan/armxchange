@@ -11,6 +11,9 @@ export interface Product {
   conditionGrade: string;
   priceDisplay: string;
   priceValue: number;
+  originalPriceDisplay?: string;
+  originalPriceValue?: number;
+  discountBadge?: string;
   taxNote: string;
   images: string[];
   shortDescription: string;
@@ -432,6 +435,57 @@ export const PRODUCTS: Product[] = [
       "Walther Dedicated Accessory Box, Charging Cable & Filling Adapter"
     ],
     badge: "2034 Cylinder / E-Trigger",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "walther-lg500-itec-e-2023-01",
+    slug: "2023-walther-lg500-itec-e-air-rifle",
+    title: "2023 Walther LG500 itec E Match Air Rifle (Electronic Trigger)",
+    brand: "Walther",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Valid to 11/33 (E-Trigger)",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned equipment transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/walther-lg500-itec-electronic-2023-1.webp",
+      "/images/products/rifles/walther-lg500-itec-electronic-2023-2.webp",
+      "/images/products/rifles/walther-lg500-itec-electronic-2023-3.webp",
+      "/images/products/rifles/walther-lg500-itec-electronic-2023-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Walther LG500 itec E (Electronic) 10m match air rifle (SN KNA0363). Equipped with electronic match trigger and factory Walther cylinder valid until November 2033 (11/33).",
+    fullDescription: "A world-class Olympic tier pre-owned rifle: the 2023 Walther LG500 itec E (Electronic Trigger) 10m competition air rifle in exceptional, range-tested condition (Receiver Serial No. KNA0363, Made in Germany). Integrating Walther's cutting-edge itec vibration-dampening chassis and biometric electronic trigger system, this rifle delivers zero-recoil shot release, digital dry-fire capability, and customizable trigger parameters. Fitted with an original Walther match compressed air cylinder stamped 'useable until: 11/33' (certified valid through November 2033 under ISSF 10-year regulations). Features biometric ProTouch anatomical match grip, multi-axis 3D cheekpiece, micro-adjustable buttplate, and carbon barrel shroud. Includes original Walther deluxe hard case, tools, and charging cable.",
+    specifications: {
+      "Model": "Walther LG500 itec E (Electronic Trigger)",
+      "Manufacturing Year": "2023 (Serial No. KNA0363, Germany)",
+      "Cylinder Validity": "Valid to November 2033 (11/33 Factory Stamped)",
+      "Calibre": ".177 (4.5 mm)",
+      "Operating System": "300 bar / 200 bar Compressed Air with itec Absorption",
+      "Trigger System": "Electronic Two-Stage Match Trigger (USB-C Rechargeable)",
+      "Stock & Chassis": "itec Adaptive Black/Silver Alloy Skeleton with Carbon Tension Shroud",
+      "Grip & Buttplate": "Biometric Match Grip, 3D Adjustable Buttplate",
+      "Sighting System": "Walther Precision Match Diopter & Front Sight Assembly",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Olympic Competition Spec)"
+    },
+    conditionDisclosure: [
+      "Authentic 2023 German manufacture with verified serial number KNA0363.",
+      "Factory-original Walther compressed air cylinder certified usable until 11/2033 under ISSF rules.",
+      "Electronic trigger circuit, trigger sensor, and rechargeable battery hold full verified charge.",
+      "Pristine condition with factory Walther hard flight case and charging accessories included."
+    ],
+    includedItems: [
+      "2023 Walther LG500 itec E 10m Match Air Rifle (SN KNA0363)",
+      "Factory Original Walther Air Cylinder (Certified Valid to 11/2033)",
+      "Walther Precision Match Diopter & Front Sight Assembly",
+      "Walther Deluxe Hard Flight Case",
+      "Charging Cable, Adjustment Tools & Filling Adapter"
+    ],
+    badge: "2033 Cylinder / E-Trigger",
     inStock: true,
     featured: true
   },
@@ -912,6 +966,57 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "morini-cm-162ei-silver-2019-02",
+    slug: "2019-morini-cm-162ei-silver-electronic-air-pistol-sn2014429",
+    title: "2019 Morini CM 162 EI Electronic 10m Match Air Pistol (Silver Edition - SN 2014429)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Excellent / Range Verified (1.55L)",
+    priceDisplay: "₹1,55,000",
+    priceValue: 155000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-silver-2019-v2-1.webp",
+      "/images/products/pistols/morini-cm-162ei-silver-2019-v2-2.webp",
+      "/images/products/pistols/morini-cm-162ei-silver-2019-v2-3.webp"
+    ],
+    shortDescription: "Verified pre-owned 2019 Morini CM 162 EI electronic 10m match air pistol in Silver finish (SN 2014429). Competition verified with 40th North Zone & GV Mavlankar stickers. Valid factory red cylinder and Morini hard case.",
+    fullDescription: "A tournament-proven Swiss precision match pistol: 2019 Morini CM 162 EI electronic 10m match air pistol in refined silver anodized finish (Serial No. 2014429, Made in Switzerland). This specimen carries verified competition equipment control stickers from both the 40th North Zone Shooting Championship and the All India GV Mavlankar Shooting Championship, testifying to its active range history and adherence to ISSF standards. Features Morini's renowned electronic micro-switch trigger with gold shoe for instant, drag-free release. Fitted with an original Morini red compressed air cylinder valid to 2029 under ISSF 10-year regulations, Cesare Morini anatomical walnut match grip, and original Morini protective hard flight case.",
+    specifications: {
+      "Model": "Morini CM 162 EI Electronic (Silver Edition)",
+      "Manufacturing Year": "2019 (Serial No. 2014429, Bedano Switzerland)",
+      "Cylinder Validity": "Original Morini 200 bar Red Cylinder Valid to 2029 (ISSF Certified)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Electronic Micro-Switch Match Trigger with Gold Shoe",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Equipment Control": "40th North Zone & All India GV Mavlankar Equipment Control Seals",
+      "Grip": "Cesare Morini Anatomical Walnut Match Grip (Adjustable Palm Shelf)",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Authentic Swiss serial number 2014429 on silver anodized frame.",
+      "Verified competition equipment control stickers from 40th North Zone and GV Mavlankar championships.",
+      "Electronic trigger circuit and battery compartment fully inspected and functional.",
+      "Original red Morini cylinder holding full pressure, valid through 2029.",
+      "Supplied with Morini hard protective flight case and filling adapter."
+    ],
+    includedItems: [
+      "2019 Morini CM 162 EI Electronic Air Pistol (SN 2014429)",
+      "Factory Red Morini 200 bar Match Air Cylinder (Valid to 2029)",
+      "Cesare Morini Anatomical Walnut Match Grip",
+      "Original Morini Hard Travel Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter"
+    ],
+    badge: "Championship Verified / ₹1.55L",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "morini-cm-162ei-black-blue-2023-01",
     slug: "2023-morini-cm-162ei-electronic-air-pistol-dual-cylinders",
     title: "2023 Morini CM 162 EI Electronic 10m Match Air Pistol (Dual 2033 Cylinders)",
@@ -961,6 +1066,57 @@ export const PRODUCTS: Product[] = [
       "Brass Air Cylinder Charging / Filling Adapter & Hex Key Set"
     ],
     badge: "Dual 2033 Cylinders",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-black-blue-2024-01",
+    slug: "2024-morini-cm-162ei-electronic-air-pistol-dual-cylinder",
+    title: "2024 Morini CM 162 EI Electronic 10m Match Air Pistol (Dual Cylinders)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Mint / 41st North Zone Verified",
+    priceDisplay: "₹1,75,000",
+    priceValue: 175000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-black-blue-2024-1.webp",
+      "/images/products/pistols/morini-cm-162ei-black-blue-2024-2.webp",
+      "/images/products/pistols/morini-cm-162ei-black-blue-2024-3.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Morini CM 162 EI electronic 10m match air pistol (SN 34387). Complete with TWO blue match cylinders, 41st North Zone 2024 competition seal, anatomical walnut grip, and Morini hard case.",
+    fullDescription: "A top-tier 2024 pre-owned match pistol package: authentic 2024 Morini CM 162 EI electronic 10m air pistol manufactured in Switzerland (Serial No. 34387). Fresh from competition with an official 41st North Zone Shooting Championship 2024 equipment control sticker affixed to the receiver. Features Morini's world-leading electronic trigger mechanism with zero mechanical backlash and crisp break at 500g. Comes equipped with TWO original Morini 200 bar match cylinders (both blue), ensuring seamless competition backups with ISSF certification valid through 2034. Delivered complete with Cesare Morini anatomical walnut grip, original Morini flight case, and charging adapter.",
+    specifications: {
+      "Model": "Morini CM 162 EI Electronic (Black Frame / Blue Cylinders)",
+      "Manufacturing Year": "2024 (Serial No. 34387, Switzerland)",
+      "Cylinder Validity": "Dual Morini 200 bar Blue Cylinders (Valid to 2034 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Electronic Micro-Switch Match Trigger with Gold Shoe",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Equipment Control": "41st North Zone Shooting Championship 2024 Inspected",
+      "Grip": "Cesare Morini Anatomical Walnut Match Grip (Adjustable Palm Shelf)",
+      "Sighting System": "Fully Micro-Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Swiss serial number 34387 with verified 41st North Zone 2024 equipment control seal.",
+      "Electronic trigger circuit, micro-switch, and dry-fire selector 100% verified.",
+      "Includes TWO authentic Morini match cylinders (both blue) certified valid to 2034 under ISSF regulations.",
+      "Flawless matte black anodized receiver and compensator.",
+      "Supplied complete with Morini hard flight case, tools, and filling adapter."
+    ],
+    includedItems: [
+      "2024 Morini CM 162 EI Electronic Air Pistol (SN 34387)",
+      "2x Factory Original Blue Morini 200 bar Cylinders (Valid to 2034)",
+      "Cesare Morini Anatomical Walnut Match Grip",
+      "Original Morini Protective Hard Travel Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter"
+    ],
+    badge: "Dual Cylinders / 2024 NZ Tested",
     inStock: true,
     featured: true
   },
@@ -1116,6 +1272,57 @@ export const PRODUCTS: Product[] = [
       "Brass Air Cylinder Charging / Filling Adapter"
     ],
     badge: "Valid to 2033 / Titanium",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "fwb-900-alu-silver-offer",
+    slug: "feinwerkbau-900-alu-silver-special-offer",
+    title: "Feinwerkbau 900 Alu Match Air Rifle (Silver Edition — Special Offer)",
+    brand: "Feinwerkbau",
+    category: "new-weapons",
+    categoryLabel: "New Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Olympic Match Air Rifles",
+    isPreOwned: false,
+    conditionGrade: "Brand New Factory Import // Special Discount",
+    priceDisplay: "₹3,50,000",
+    priceValue: 350000,
+    originalPriceDisplay: "₹3,58,000",
+    originalPriceValue: 358000,
+    discountBadge: "₹8,000 OFF",
+    taxNote: "Limited-time special discount — direct factory allocation",
+    images: [
+      "/images/products/rifles/feinwerkbau-900-alu-silver-special-offer-1.webp"
+    ],
+    shortDescription: "Special discount offer: Brand-new Feinwerkbau 900 Alu in striking silver finish. Earlier ₹3.58 Lakh, now available at ₹3.50 Lakh with fresh 10-year cylinder.",
+    fullDescription: "Exclusive limited-time price drop on the pinnacle of 10m Olympic air rifle engineering: the Feinwerkbau 900 Alu in premium Silver Edition. Originally priced at ₹3,58,000, now offered at a special athletic acquisition price of ₹3,50,000 (huge discount of ₹8,000). Features Feinwerkbau's state-of-the-art maintenance-free absorber, revised trigger unit with ultra-crisp release, multi-adjustable 3D anatomic grip, precision match sight set, and fresh 10-year ISSF certified cylinder. Completely compliant with Indian Arms Rules 2016 (Category III(f), < 20 Joules, zero arms licence required).",
+    specifications: {
+      "Model": "Feinwerkbau 900 Alu (Silver Edition)",
+      "Manufacturing Year": "2024 (Brand New Factory Import)",
+      "Cylinder Validity": "2024 to 2034 (10-Year ISSF Certified)",
+      "Calibre": ".177 (4.5 mm)",
+      "System": "Pre-charged pneumatic 200 bar",
+      "Trigger System": "Match Mechanical Two-Stage (Adjustable 30g–170g)",
+      "Stock Material": "High-Grade CNC Milled Silver Anodized Aluminium",
+      "Absorber": "Patented FWB Maintenance-Free Impulse Absorber",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules, ISSF Match Spec)"
+    },
+    conditionDisclosure: [
+      "100% brand new, direct European factory import channel.",
+      "Special discounted athletic pricing: ₹3,50,000 (Earlier ₹3,58,000).",
+      "Equipped with factory-new compressed air cylinder valid for a full 10-year ISSF cycle (2024 to 2034).",
+      "Delivered in original factory case with test target group card, filling adapter, and tool kit."
+    ],
+    includedItems: [
+      "Feinwerkbau 900 Alu Silver Match Air Rifle",
+      "Factory Original 10-Year 200 bar Compressed Air Cylinder",
+      "Original Feinwerkbau Hard Protective Carry Case",
+      "Precision Match Diopter & Front Sight Tunnel",
+      "Complete Factory Toolkit & 200 bar Brass Filling Adapter",
+      "Factory 10m Test Target Group Certificate"
+    ],
+    badge: "Special Offer // ₹8,000 OFF",
     inStock: true,
     featured: true
   },
