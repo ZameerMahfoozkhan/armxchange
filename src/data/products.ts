@@ -489,6 +489,110 @@ export const PRODUCTS: Product[] = [
     featured: true
   },
   {
+    id: "fwb-900-alu-2024-01",
+    slug: "2024-feinwerkbau-900-alu-air-rifle",
+    title: "2024 Feinwerkbau 900 Alu Match Air Rifle (Centra Sights & Blue Handrest)",
+    brand: "Feinwerkbau",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Mint / Range Tested",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned competition air weapon transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/feinwerkbau-900-alu-2024-1.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2024-2.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2024-3.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2024-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2024 Feinwerkbau 900 Alu 10m match air rifle. Equipped with Feinwerkbau absorber system, custom anodized blue forend palm rest, Centra precision sights, and factory silver match cylinder.",
+    fullDescription: "An exceptional modern Olympic air rifle listing: the 2024 Feinwerkbau 900 Alu 10m match air rifle in immaculate, range-verified condition (Made in Oberndorf, Germany). The 900 series represents the pinnacle of German precision engineering, featuring Feinwerkbau's integrated impulse absorber for recoil-free shot release and a match trigger with micro-adjustment capabilities. Fitted with an original Feinwerkbau high-pressure compressed air cylinder holding solid pressure, custom blue anodized forend palm rest with riser blocks, Centra match sight system, and MEC Contact 3D adjustable buttplate. Thoroughly range tested on electronic targets for grouping and velocity consistency.",
+    specifications: {
+      "Model": "Feinwerkbau 900 Alu Match Air Rifle",
+      "Manufacturing Year": "2024 (Oberndorf, Germany)",
+      "Cylinder Validity": "Original Feinwerkbau 200 bar Match Cylinder — Valid to 2034",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Precision Mechanical Match Trigger with Dry-Fire Simulator",
+      "Trigger Pull Weight": "Calibrated to ISSF Match Standard",
+      "Stock & Chassis": "Milled Black Anodized Alloy Skeleton with Custom Blue Forend Riser",
+      "Buttplate & Cheekpiece": "MEC Contact 3D Buttplate, Fully Adjustable Cheek Assembly",
+      "Sighting System": "Centra Precision Match Diopter & Front Sight Tunnel with Risers",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Manufactured in 2024 — verified German proofmarks with immaculate matte chassis.",
+      "Precision mechanical match trigger and dry-fire simulator tested 100% operational.",
+      "Original Feinwerkbau compressed air cylinder pressure tested and certified valid to 2034 under ISSF rules.",
+      "Fitted with Centra precision match diopter and custom blue forend palm rest.",
+      "Complete with cylinder fill adapter and adjustment tools."
+    ],
+    includedItems: [
+      "2024 Feinwerkbau 900 Alu 10m Match Air Rifle",
+      "Original Feinwerkbau 200 bar Compressed Air Cylinder (Valid to 2034)",
+      "Centra Precision Match Diopter & Front Sight Tunnel",
+      "Custom Blue Anodized Forend Palm Rest & Riser Blocks",
+      "MEC Contact 3D Adjustable Match Buttplate",
+      "Brass Air Cylinder Charging / Filling Adapter & Adjustment Toolkit"
+    ],
+    badge: "2034 Cylinder / Mint 900",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "fwb-900-alu-2026-cylinder-01",
+    slug: "feinwerkbau-900-alu-air-rifle-2026-cylinder",
+    title: "Feinwerkbau 900 Alu Match Air Rifle (with 2026 Cylinder & Factory Case)",
+    brand: "Feinwerkbau",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-rifles",
+    subcategoryLabel: "Pre-Owned 10m Air Rifles",
+    isPreOwned: true,
+    conditionGrade: "Excellent / Range Inspected",
+    priceDisplay: "Enquire on WhatsApp",
+    priceValue: 0,
+    taxNote: "Pre-owned competition air weapon transfer — enquire for pricing & verified documentation",
+    images: [
+      "/images/products/rifles/feinwerkbau-900-alu-2026-cylinder-1.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2026-cylinder-2.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2026-cylinder-3.webp",
+      "/images/products/rifles/feinwerkbau-900-alu-2026-cylinder-4.webp"
+    ],
+    shortDescription: "Verified pre-owned Feinwerkbau 900 Alu 10m match air rifle. Complete with Feinwerkbau hard protective case, operator manual, factory wooden forend raiser, and match cylinder valid to 2036 (stamped 2026/01).",
+    fullDescription: "A turnkey championship package: verified pre-owned Feinwerkbau 900 Alu 10m match air rifle in black anodized finish (Made in Germany). This rifle includes a brand-new 2026-stamped factory Feinwerkbau compressed air cylinder (stamped 2026/01), granting a full 10-year ISSF competition validity window up to 2036. Features an ergonomic walnut match forend raiser, multi-element Feinwerkbau match buttplate with balance weights, and factory precision diopter sight. Supplied complete with original Feinwerkbau molded foam hard transit case, factory operator manual, and fill adapter.",
+    specifications: {
+      "Model": "Feinwerkbau 900 Alu (Black Edition)",
+      "Manufacturing Year": "Feinwerkbau Oberndorf (Cylinder Stamped 2026/01)",
+      "Cylinder Validity": "Brand-New 2026 Feinwerkbau Cylinder (Stamped 2026/01, Valid to 2036 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Two-Stage Match Mechanical Trigger with Infinite Adjustability",
+      "Stock & Chassis": "Milled Black Anodized Aluminum with Walnut Match Forend Raiser",
+      "Buttplate & Weights": "Feinwerkbau Multi-Element Precision Buttplate Assembly & Stock Weights",
+      "Sighting System": "Feinwerkbau Match Diopter & Front Sight Tunnel",
+      "Velocity / Energy": "Approx. 170-175 m/s (< 7.5 Joules Olympic Competition Spec)"
+    },
+    conditionDisclosure: [
+      "Range inspected with verified German proofmarks and serial numbering.",
+      "Fitted with brand-new 2026 replacement cylinder giving full 10-year ISSF eligibility to 2036.",
+      "Vibration absorber, dry-fire simulator, and trigger release tested 100% operational.",
+      "Supplied complete with original Feinwerkbau foam-fitted hard transit case and operator manual."
+    ],
+    includedItems: [
+      "Feinwerkbau 900 Alu 10m Match Air Rifle",
+      "Feinwerkbau 200 bar Match Compressed Air Cylinder (Valid to 2036)",
+      "Original Feinwerkbau Deluxe Fitted Hard Protective Case",
+      "Feinwerkbau Factory Operator Manual & Documentation",
+      "Walnut Forend Palm Rest & Riser Blocks",
+      "Brass Air Cylinder Charging / Filling Adapter"
+    ],
+    badge: "Cylinder to 2036 / Case Included",
+    inStock: true,
+    featured: true
+  },
+  {
     id: "morini-cm-162ei-2022-01",
     slug: "2022-morini-cm-162ei-electronic-air-pistol",
     title: "2022 Morini CM 162EI Electronic 10m Match Air Pistol (Size S Grip)",
@@ -960,6 +1064,58 @@ export const PRODUCTS: Product[] = [
       "QYS Competition Pellets"
     ],
     badge: "2025 Titanium / Size S",
+    inStock: true,
+    featured: true
+  },
+  {
+    id: "morini-cm-162ei-titanium-2023-01",
+    slug: "2023-morini-cm-162ei-titanium-electronic-air-pistol-custom-grip",
+    title: "2023 Morini CM 162 EI Titanium Edition Electronic 10m Match Air Pistol (Custom Match Grip)",
+    brand: "Morini",
+    category: "second-hand-weapons",
+    categoryLabel: "Second-Hand Weapons",
+    subcategory: "air-pistols",
+    subcategoryLabel: "Pre-Owned 10m Air Pistols",
+    isPreOwned: true,
+    conditionGrade: "Very Good / Range Tuned (1.90L)",
+    priceDisplay: "₹1,90,000",
+    priceValue: 190000,
+    taxNote: "Pre-owned competition air weapon transfer — verified condition report",
+    images: [
+      "/images/products/pistols/morini-cm-162ei-titanium-2023-1.webp",
+      "/images/products/pistols/morini-cm-162ei-titanium-2023-2.webp",
+      "/images/products/pistols/morini-cm-162ei-titanium-2023-3.webp",
+      "/images/products/pistols/morini-cm-162ei-titanium-2023-4.webp"
+    ],
+    shortDescription: "Verified pre-owned 2023 Morini CM 162 EI Titanium Edition electronic 10m match air pistol (SN 2017101). Features Titanium anodized frame, custom-contoured walnut match grip, and factory Morini cylinder stamped 2023/A valid to 2033.",
+    fullDescription: "A championship-proven Swiss competition pistol: authentic 2023 Morini CM 162 EI Titanium Edition electronic 10m match air pistol (Serial No. 2017101, Made in Switzerland). Featuring Morini's elite Titanium gray finish on the action and barrel sleeve, paired with Morini's micro-switch electronic trigger with gold trigger shoe for instant, drag-free release. Fitted with an athlete-customized anatomical match walnut grip with textured stippling and contouring for exceptional hand lock-in. Supplied with an original Morini 200 bar cylinder stamped 2023/A (certified valid until 2033 under ISSF 10-year regulations) and Morini protective hard flight case.",
+    specifications: {
+      "Model": "Morini CM 162 EI Titanium Edition",
+      "Manufacturing Year": "2023 (Serial No. 2017101, Made in Switzerland)",
+      "Finish": "Exclusive Titanium Gray Anodized Action & Barrel Sleeve",
+      "Cylinder Validity": "Original Morini 200 bar Match Cylinder Stamped 2023/A (Valid to 2033 ISSF)",
+      "Calibre": ".177 (4.5 mm) Match Pellets",
+      "Trigger System": "Friction-Free Electronic Match Trigger with Gold Blade",
+      "Trigger Pull Weight": "Calibrated to ISSF 500g Standard",
+      "Grip": "Customized Anatomical Match Grip with Ergonomic Stippling & Palm Rest",
+      "Sighting System": "Fully Adjustable Match Rear Sight & Front Blade",
+      "Velocity / Energy": "Approx. 150-155 m/s (< 7.5 Joules ISSF Competition Standard)"
+    },
+    conditionDisclosure: [
+      "Verified Swiss serial number 2017101 on Titanium anodized frame.",
+      "Electronic trigger circuitry, LED indicator, and dry-fire training selector verified 100% operational.",
+      "Original Morini 2023-stamped cylinder (2023/A) pressure tested and certified valid to 2033 under ISSF rules.",
+      "Fitted with athlete-customized anatomical match grip for optimal stability.",
+      "Complete with Morini hard flight case and charging adapter."
+    ],
+    includedItems: [
+      "2023 Morini CM 162 EI Titanium Edition Electronic Air Pistol (SN 2017101)",
+      "Original Morini 200 bar Match Cylinder Stamped 2023/A (Valid to 2033)",
+      "Customized Anatomical Match Grip with Adjustable Palm Shelf",
+      "Original Morini Protective Hard Travel Flight Case",
+      "Brass Air Cylinder Charging / Filling Adapter"
+    ],
+    badge: "Valid to 2033 / Titanium",
     inStock: true,
     featured: true
   },
